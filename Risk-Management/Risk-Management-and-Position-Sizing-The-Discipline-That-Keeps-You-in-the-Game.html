@@ -1,0 +1,717 @@
+<!DOCTYPE html><html><head><meta charset='utf-8'><style>
+* { box-sizing: border-box; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 11pt; line-height: 1.62; color: #1a1d21; margin: 0;
+}
+.cover {
+  height: 100vh; page-break-after: always;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 3cm 2.5cm; background: #0d1715; color: #e8f0ee;
+}
+.cover .rule { width: 64px; height: 4px; background: #2dd4bf; margin-bottom: 2.2rem; }
+.cover h1 { font-size: 38pt; line-height: 1.08; font-weight: 600; color: #fff; margin: 0 0 1.4rem; letter-spacing: -0.5px; }
+.cover .subtitle { font-size: 15pt; color: #9fb5ae; line-height: 1.5; max-width: 34em; }
+.cover .pub { margin-top: 3rem; font-size: 11pt; letter-spacing: 0.14em; text-transform: uppercase; color: #2dd4bf; }
+.cover .ednote { margin-top: 0.6rem; font-size: 9pt; color: #6c817b; }
+h1 { font-size: 23pt; font-weight: 600; color: #0f172a; page-break-before: always; margin: 0 0 1.1rem; padding-bottom: 0.4rem; border-bottom: 2px solid #2dd4bf; }
+h2 { font-size: 15.5pt; font-weight: 600; color: #0f766e; margin: 1.6rem 0 0.6rem; }
+h3 { font-size: 12.5pt; font-weight: 600; color: #1a1d21; margin: 1.2rem 0 0.4rem; }
+p { margin: 0.5rem 0; }
+strong { color: #0f172a; }
+em { color: #334155; }
+a { color: #0f766e; text-decoration: none; }
+hr { border: none; border-top: 1px solid #e2e8f0; margin: 2rem 0; }
+ul, ol { margin: 0.5rem 0 0.8rem; padding-left: 1.5rem; }
+li { margin: 0.25rem 0; }
+code { font-family: 'SF Mono', Menlo, Consolas, monospace; font-size: 9pt; background: #f1f5f9; padding: 1px 5px; border-radius: 3px; color: #0f766e; }
+pre { background: #0f172a; color: #e2e8f0; padding: 0.9rem 1.1rem; border-radius: 6px; font-size: 9pt; line-height: 1.5; white-space: pre-wrap; word-wrap: break-word; }
+pre code { background: none; color: inherit; padding: 0; }
+blockquote { border-left: 3px solid #2dd4bf; background: #f0fdfa; margin: 0.8rem 0; padding: 0.7rem 1rem; color: #0f3d37; font-style: italic; border-radius: 0 4px 4px 0; }
+blockquote p { margin: 0.3rem 0; }
+table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: 9.5pt; page-break-inside: avoid; }
+th, td { border: 1px solid #dbe3e8; padding: 5px 8px; text-align: left; vertical-align: top; }
+th { background: #0f766e; color: #fff; font-weight: 600; }
+tr:nth-child(even) td { background: #f8fafc; }
+h1:first-of-type { page-break-before: auto; }
+h2#important-disclaimer, h2#how-to-read-this-book, h2#table-of-contents { page-break-before: always; }
+</style></head><body><section class="cover"><div class="rule"></div><h1>Risk Management and Position Sizing: The Discipline That Keeps You in the Game</h1><div class="subtitle">A complete guide to sizing positions, managing drawdown, and surviving the tail — for traders and investors in Indian markets — with an education-only disclaimer.</div><div class="pub">Published by StratLab</div><div class="ednote">Educational content only — not investment advice. StratLab is not SEBI-registered.</div></section><h1 id="risk-management-and-position-sizing-the-discipline-that-keeps-you-in-the-game">Risk Management and Position Sizing: The Discipline That Keeps You in the Game</h1>
+<h2 id="a-complete-guide-to-sizing-positions-managing-drawdown-and-surviving-the-tail-for-traders-and-investors-in-indian-markets-with-an-education-only-disclaimer">A complete guide to sizing positions, managing drawdown, and surviving the tail — for traders and investors in Indian markets — with an education-only disclaimer.</h2>
+<hr />
+<p><strong>Published by StratLab</strong></p>
+<hr />
+<h2 id="important-disclaimer">Important Disclaimer</h2>
+<p>This book is provided for <strong>educational purposes only</strong>. It is not investment advice, a recommendation, or a solicitation to buy or sell any security.</p>
+<ul>
+<li><strong>StratLab is not registered with SEBI</strong> as an investment adviser, research analyst, or portfolio manager, and does not provide investment advisory services.</li>
+<li>Trading and investing involve substantial risk of loss, including the possible loss of principal. No position-sizing method can eliminate risk or guarantee profitability.</li>
+<li>All examples, figures, and historical observations are illustrative. Historical performance never guarantees future results.</li>
+<li>Margin, leverage, taxes (STT, stamp duty), brokerage, and regulatory details change over time. Always verify current rules and costs before trading.</li>
+<li>Nothing in this book should be read as a promise of profit or a guarantee that any method will prevent loss.</li>
+</ul>
+<p>By reading this book, you agree that you are solely responsible for your own trading and investment decisions and that you will consult a SEBI-registered adviser where appropriate.</p>
+<hr />
+<h2 id="how-to-read-this-book">How to Read This Book</h2>
+<p>This book is about the one part of trading and investing that you can actually <em>control</em>: <strong>risk</strong>. Strategy gives you an edge; risk management decides whether you are still around to collect it.</p>
+<ul>
+<li><strong>Chapters 1–2</strong> make the case: why risk management is the real edge, and the mathematics of ruin and drawdown that make it non-negotiable.</li>
+<li><strong>Chapters 3–5</strong> cover the per-trade layer: the risk-per-trade foundation, position-sizing methods, and stop-loss design.</li>
+<li><strong>Chapters 6–8</strong> cover the portfolio layer: aggregate risk, margin/leverage/tail risk, and sizing for different strategy families.</li>
+<li><strong>Chapter 9</strong> assembles it all into a written risk framework.</li>
+<li>The <strong>appendix</strong> collects every formula in one place.</li>
+</ul>
+<p>A note on language: this book describes methods and their historical behaviour — never what you "should" do. Every method is framed honestly, with its failure modes. You are responsible for your own decisions.</p>
+<hr />
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li>Why Risk Management Is the Real Edge</li>
+<li>The Math of Ruin and Drawdown</li>
+<li>The Risk-Per-Trade Foundation</li>
+<li>Position Sizing Methods</li>
+<li>Stops: Types and Placement</li>
+<li>Portfolio-Level Risk</li>
+<li>Margin, Leverage, and Tail Risk</li>
+<li>Sizing for Different Strategy Families</li>
+<li>Building a Risk Framework</li>
+</ol>
+<p>Appendix — Sizing Formulas</p>
+<hr />
+<h1 id="1-why-risk-management-is-the-real-edge">1. Why Risk Management Is the Real Edge</h1>
+<h2 id="the-part-of-trading-you-can-control">The part of trading you can control</h2>
+<p>Most of trading is uncontrollable. You cannot control whether the market goes up or down, whether a breakout succeeds or fails, or whether the next event is a calm day or a crash. You cannot control the <em>outcomes</em>.</p>
+<p>There is exactly one thing you <em>can</em> control: <strong>how much you risk on each decision, and how much you are willing to lose before you stop.</strong></p>
+<p>That single controllable — risk — is the difference between traders who compound for decades and traders who are gone in a year. It is, in a precise sense, the <em>real</em> edge: a mediocre strategy with excellent risk management survives and compounds; an excellent strategy with poor risk management eventually blows up.</p>
+<h2 id="the-asymmetry-that-defines-everything">The asymmetry that defines everything</h2>
+<p>Compounding is asymmetric, and that asymmetry is brutal:</p>
+<ul>
+<li>A <strong>10% loss</strong> requires an <strong>11% gain</strong> to recover.</li>
+<li>A <strong>25% loss</strong> requires a <strong>33% gain</strong>.</li>
+<li>A <strong>50% loss</strong> requires a <strong>100% gain</strong>.</li>
+<li>A <strong>90% loss</strong> requires a <strong>900% gain</strong> — effectively unrecoverable.</li>
+</ul>
+<p>The lesson is inescapable: <strong>large losses are not merely bad; they are nearly permanent.</strong> You can recover from many small losses; you cannot recover from one that halves or quarters your account. Risk management exists for one reason above all: to keep losses <em>small enough to recover from</em>.</p>
+<h2 id="what-edge-actually-requires">What "edge" actually requires</h2>
+<p>A trading edge is a statistical advantage — a win rate and a payoff ratio that, over many trades, produce positive expectancy. But an edge only <em>expresses itself</em> over a large number of trades. The moment you are removed from the game — by one oversized loss — the edge becomes irrelevant, because you can no longer take the next trade.</p>
+<p>Risk management is therefore not a separate discipline bolted onto strategy; it is the <strong>precondition</strong> for any strategy to work. An edge is a promise about the <em>distribution</em> of outcomes; risk management is what lets you live long enough to <em>collect</em> that distribution.</p>
+<h2 id="the-three-jobs-of-risk-management">The three jobs of risk management</h2>
+<p>Risk management, done properly, does three things:</p>
+<ol>
+<li><strong>Survival</strong> — it caps the worst case so no single trade, day, or streak can end you.</li>
+<li><strong>Compounding</strong> — it keeps losses small and recoverable, so the good periods build on a base that is still intact.</li>
+<li><strong>Psychology</strong> — it removes the emotion from the decision, because the risk is decided <em>in advance</em> and the worst case is <em>known</em> before entry.</li>
+</ol>
+<p>Notice what is <em>not</em> on the list: risk management does not predict, does not pick winners, and does not eliminate loss. It <em>bounds</em> loss — which, given the asymmetry above, is the highest-value job there is.</p>
+<h2 id="the-honest-framing">The honest framing</h2>
+<p>Framed as this book always frames such things: <em>historically, traders and investors who sized positions to a small, fixed fraction of capital — and who honoured their stops — survived long enough for their edge to express itself, while those who sized by conviction alone were frequently removed by a single adverse streak.</em> The discipline is not glamorous; it is simply what makes everything else possible.</p>
+<h2 id="summary">Summary</h2>
+<ul>
+<li>You can control only one thing: how much you risk.</li>
+<li>Losses are asymmetric: big losses are nearly permanent.</li>
+<li>Risk management is the precondition for any edge to express itself.</li>
+<li>It does three jobs: survival, compounding, and emotional discipline.</li>
+<li>It bounds loss — it does not predict or eliminate it.</li>
+</ul>
+<p>Next: the mathematics of ruin and drawdown — why small losses are the entire game.</p>
+<h1 id="2-the-math-of-ruin-and-drawdown">2. The Math of Ruin and Drawdown</h1>
+<h2 id="the-numbers-that-make-risk-management-non-negotiable">The numbers that make risk management non-negotiable</h2>
+<p>This chapter puts numbers on the ideas from Chapter 1. Three concepts — <strong>drawdown</strong>, <strong>risk of ruin</strong>, and <strong>the recovery problem</strong> — turn "risk matters" from a slogan into arithmetic.</p>
+<h2 id="drawdown-how-deep-the-hole-goes">Drawdown: how deep the hole goes</h2>
+<p>A <strong>drawdown</strong> is the peak-to-trough decline in your equity. It is the number that actually <em>hurts</em> — the distance your account falls from its high before recovering.</p>
+<p>Drawdown is not merely uncomfortable; it interacts with compounding in a way most people do not feel until it is too late. Because recovery is asymmetric (Chapter 1), the depth of a drawdown determines not just how you <em>feel</em> but how long it takes — and whether it is possible — to get back to even.</p>
+<p>The recovery table is the single most important table in risk management:</p>
+<table>
+<thead>
+<tr>
+<th>Loss</th>
+<th>Gain needed to recover</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5%</td>
+<td>5.3%</td>
+</tr>
+<tr>
+<td>10%</td>
+<td>11.1%</td>
+</tr>
+<tr>
+<td>20%</td>
+<td>25%</td>
+</tr>
+<tr>
+<td>30%</td>
+<td>42.9%</td>
+</tr>
+<tr>
+<td>50%</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>70%</td>
+<td>233%</td>
+</tr>
+<tr>
+<td>90%</td>
+<td>900%</td>
+</tr>
+</tbody>
+</table>
+<p>The rule that falls out of it: <strong>protect against the deep drawdowns.</strong> The difference between a 20% and a 50% drawdown is not "a bit worse" — it is the difference between recovering in a reasonable time and possibly never recovering at all.</p>
+<h2 id="risk-of-ruin-the-probability-of-being-wiped-out">Risk of ruin: the probability of being wiped out</h2>
+<p><strong>Risk of ruin</strong> is the probability that, over a long sequence of trades, your account is drawn down to (or near) zero. It is a function of three things: your <strong>win rate</strong>, your <strong>payoff ratio</strong>, and — critically — your <strong>position size</strong>.</p>
+<p>The brutal insight is that risk of ruin is dominated by position size, not by edge:</p>
+<ul>
+<li>With a fixed risk of <strong>1% per trade</strong>, even a modest edge survives long losing streaks: a 10-trade losing streak costs ~10%, and you are still in the game.</li>
+<li>With a fixed risk of <strong>10% per trade</strong>, a 10-trade losing streak costs ~65% — and a 20-trade streak is near-total ruin, <em>even if the underlying strategy has a positive edge.</em></li>
+</ul>
+<p>The mathematical point: <strong>over-betting is how positive-expectancy strategies get ruined.</strong> Risk of ruin is not about whether your edge is real; it is about whether your sizing lets you survive the <em>inevitable</em> losing streaks long enough for the edge to pay.</p>
+<h2 id="the-losing-streak-is-not-a-bug">The losing streak is not a bug</h2>
+<p>Here is the fact most traders resist: <strong>losing streaks are guaranteed.</strong> A strategy that wins 55% of the time will, over a long career, experience long runs of losses — 10, 15, even 20 in a row — purely by chance. This is not the strategy "breaking"; it is the normal behaviour of any probabilistic process.</p>
+<p>Risk management is built for exactly this: <strong>the point is not to avoid losing streaks (impossible); it is to make them survivable.</strong> A 1% risk per trade turns the worst realistic streak into a survivable drawdown; a 10% risk turns it into ruin.</p>
+<h2 id="the-recovery-problem-quantified">The recovery problem, quantified</h2>
+<p>Combine drawdown with the time it takes to recover, and the asymmetry compounds again:</p>
+<ul>
+<li>From a <strong>10%</strong> drawdown, a trader earning a modest 20% annual return needs roughly <strong>half a year</strong> to recover.</li>
+<li>From a <strong>50%</strong> drawdown, the same trader needs <strong>~3.8 years</strong> of unbroken 20% returns just to get back to even.</li>
+</ul>
+<p>Time is the hidden cost of drawdown. Every deep drawdown is not just a loss of money; it is a loss of <em>years</em> — and those are years in which the edge could have been compounding from a higher base.</p>
+<h2 id="the-practical-conclusions">The practical conclusions</h2>
+<ol>
+<li><strong>Size small enough that the worst realistic streak is survivable</strong> — the 1–2% rule (next chapter) is a direct consequence of risk-of-ruin math, not an arbitrary convention.</li>
+<li><strong>Protect against deep drawdowns</strong> — a rule that halves your worst drawdown is worth more than one that adds a point of return.</li>
+<li><strong>Treat the losing streak as normal</strong> — it is coming; the only question is whether your sizing survives it.</li>
+<li><strong>Never over-bet</strong> — risk of ruin rises steeply with position size, far faster than expected return does.</li>
+</ol>
+<h2 id="summary_1">Summary</h2>
+<ul>
+<li>Drawdown is the peak-to-trough fall in equity; recovery is asymmetric.</li>
+<li>Risk of ruin is dominated by position size, not by edge.</li>
+<li>Losing streaks are guaranteed, not a sign of a broken strategy.</li>
+<li>Deep drawdowns cost years, not just money.</li>
+<li>Size for survival: small enough that the worst streak is survivable.</li>
+</ul>
+<p>Next: the risk-per-trade foundation — the 1–2% rule and why it is the load-bearing decision.</p>
+<h1 id="3-the-risk-per-trade-foundation">3. The Risk-Per-Trade Foundation</h1>
+<h2 id="one-number-decides-whether-you-survive">One number decides whether you survive</h2>
+<p>The foundational rule of risk management is simple to state and hard to internalise: <strong>risk a fixed, small fraction of your capital on every trade</strong> — conventionally <strong>1–2%</strong>.</p>
+<p>This single number is the load-bearing wall of the entire discipline. Every position-sizing method in the next chapter is, at bottom, a way of implementing this one idea.</p>
+<h2 id="the-definition-of-risk">The definition of "risk"</h2>
+<p>First, precision: <strong>risk is not the size of the position; it is the distance from entry to your stop, times the size of the position.</strong> Risk is the amount you lose <em>if the trade fails and you honour the stop.</em></p>
+<ul>
+<li>A large position with a very tight stop can have <em>small</em> risk.</li>
+<li>A small position with a very wide stop can have <em>large</em> risk.</li>
+</ul>
+<p>The 1–2% rule is about <strong>risk</strong>, not position size. A trader risks 1% of capital <em>per trade</em> — meaning if the stop is hit, the account falls by 1%, no more.</p>
+<h2 id="the-rule">The rule</h2>
+<p><strong>Risk per trade = 1–2% of account equity.</strong></p>
+<p>In rupees, for a ₹10,00,000 account:</p>
+<ul>
+<li>1% risk = ₹10,000 maximum loss per trade.</li>
+<li>2% risk = ₹20,000 maximum loss per trade.</li>
+</ul>
+<p>Why so small? Because of Chapter 2's mathematics:</p>
+<ul>
+<li>At 1% risk, a 10-trade losing streak costs ~10% — uncomfortable but survivable.</li>
+<li>At 1% risk, even a catastrophic 20-trade streak costs ~18% — you are still compounding.</li>
+<li>The small size is what converts "losing streaks are guaranteed" into "losing streaks are survivable."</li>
+</ul>
+<h2 id="how-risk-translates-into-position-size">How risk translates into position size</h2>
+<p>The position size is derived from the risk, not the other way around:</p>
+<p>Position size = (Account × Risk %) ÷ (Entry − Stop)</p>
+<p>This is the single most important formula in the book. It does something remarkable: <strong>it equalises risk across all trades</strong>, regardless of how far each stop is. A trade with a tight stop gets a larger position; a trade with a wide stop gets a smaller one — so that both lose the <em>same</em> amount if stopped.</p>
+<h3 id="worked-example">Worked example</h3>
+<p>Account ₹10,00,000. Risk 1% = ₹10,000.</p>
+<ul>
+<li>Trade A: entry ₹500, stop ₹480. Distance = ₹20. Position size = 10,000 ÷ 20 = <strong>500 shares</strong>.</li>
+<li>Trade B: entry ₹500, stop ₹450. Distance = ₹50. Position size = 10,000 ÷ 50 = <strong>200 shares</strong>.</li>
+</ul>
+<p>Both positions, if stopped, lose exactly ₹10,000. The stop distance — a property of the <em>setup</em> — determines the size, so that <em>risk</em> is constant.</p>
+<h2 id="why-this-is-the-foundation">Why this is the foundation</h2>
+<p>Three reasons this rule is foundational rather than optional:</p>
+<ol>
+<li><strong>It makes ruin nearly impossible by single trades.</strong> No single trade can do more than 1–2% damage. Even a streak cannot destroy you.</li>
+<li><strong>It removes emotion from sizing.</strong> The position size is <em>computed</em> from the stop, not <em>chosen</em> by conviction. Conviction is exactly the thing that over-bets, and over-betting is exactly what causes ruin (Chapter 2).</li>
+<li><strong>It makes the edge expressible.</strong> An edge shows up only over many trades; fixed-fraction risk ensures you are <em>present</em> for enough trades to collect it.</li>
+</ol>
+<h2 id="the-hardest-part">The hardest part</h2>
+<p>The rule is mathematically simple and psychologically brutal, because it requires accepting that <strong>most individual trades do not matter.</strong> A 1%-risk trade, won or lost, barely moves the account — and that is precisely the point. The trader who needs every trade to be significant will over-bet; the trader who accepts that the <em>distribution</em> matters, not any single trade, can keep risk at 1% and survive to collect the distribution.</p>
+<p>The 1–2% rule is not a ceiling on ambition; it is a floor under survival.</p>
+<h2 id="summary_2">Summary</h2>
+<ul>
+<li>Risk = (entry − stop) × position size; it is not the position size itself.</li>
+<li>Risk 1–2% of account equity per trade.</li>
+<li>Position size is <em>derived</em> from risk: (Account × Risk%) ÷ stop distance.</li>
+<li>Fixed-fraction risk equalises risk across trades and removes emotion from sizing.</li>
+<li>It makes ruin-by-streak survivable and lets the edge express itself over many trades.</li>
+</ul>
+<p>Next: the position sizing methods — five ways to set that 1–2%.</p>
+<h1 id="4-position-sizing-methods">4. Position Sizing Methods</h1>
+<h2 id="five-ways-to-set-the-size">Five ways to set the size</h2>
+<p>The 1–2% rule says <em>how much to risk</em>; the sizing methods say <em>how to translate that risk into a number of shares or contracts</em>. This chapter presents five methods, from the simplest to the most sophisticated, with their logic and their failure modes. All are variants of the same principle: <strong>size from risk, not from conviction.</strong></p>
+<h2 id="method-1-fixed-fraction">Method 1 — Fixed fraction</h2>
+<p>Risk a <strong>constant percentage</strong> of current equity on every trade.</p>
+<p>Position size = (Equity × Risk%) ÷ (Entry − Stop)</p>
+<p>This is the default method, and it has a crucial property: <strong>it scales with the account.</strong> As equity grows, positions grow (compounding); as equity shrinks, positions shrink (automatic de-risking after losses). Fixed-fraction is self-stabilising — after a losing streak, it automatically reduces size, which is exactly the correct behaviour.</p>
+<ul>
+<li><strong>Strength:</strong> simple, self-correcting, ruin-resistant.</li>
+<li><strong>Weakness:</strong> after a large loss, it reduces size so much that recovery is slow (the "shrinking bet" effect).</li>
+</ul>
+<h2 id="method-2-fixed-ratio">Method 2 — Fixed ratio</h2>
+<p>Increase position size by a <strong>fixed unit</strong> for each fixed profit increment, rather than continuously. The idea (popularised by Ryan Jones) is to grow positions <em>stair-step-wise</em> as equity grows, but to <em>never</em> reduce below the current step on a loss.</p>
+<ul>
+<li><strong>Logic:</strong> a steadier, less jumpy growth path than raw fixed-fraction, and a deliberate anti-shrinkage bias.</li>
+<li><strong>Strength:</strong> protects capital while growing, without the aggressive drawdown of aggressive compounding.</li>
+<li><strong>Weakness:</strong> more parameters to choose (the "delta" per step), and it can still over-leverage in a fast run-up if the steps are set too large.</li>
+</ul>
+<h2 id="method-3-volatility-atr-sizing">Method 3 — Volatility / ATR sizing</h2>
+<p>Size positions <strong>inversely to volatility</strong>, so that a volatile asset gets a smaller position and a calm asset gets a larger one — equalising the <em>expected</em> swing, not just the stop distance.</p>
+<p>Position size = (Equity × Risk%) ÷ (k × ATR)</p>
+<p>where ATR (Average True Range) measures the asset's typical daily range, and <code>k</code> is a multiplier (commonly 2–3) setting how many "days of range" you are risking.</p>
+<ul>
+<li><strong>Logic:</strong> a ₹500 stock that moves ₹50/day is a different animal from a ₹500 stock that moves ₹5/day. Volatility sizing equalises them, so each position carries the same <em>market risk</em>.</li>
+<li><strong>Strength:</strong> risk is normalised across volatile and calm assets; essential when trading across very different instruments.</li>
+<li><strong>Weakness:</strong> ATR changes over time, so position size drifts; and in a volatility spike, size shrinks sharply (which is protective, but can feel like missing moves).</li>
+</ul>
+<h2 id="method-4-kelly-criterion">Method 4 — Kelly criterion</h2>
+<p>The Kelly formula gives the <strong>fraction of equity that maximises long-run growth</strong> for a known edge:</p>
+<p>Kelly fraction = (p·W − q·L) / W  (or the more general: f = p − q / (W/L))</p>
+<p>where <code>p</code> = win rate, <code>q</code> = 1 − p, <code>W</code> = average win, <code>L</code> = average loss.</p>
+<ul>
+<li><strong>Logic:</strong> the mathematically optimal bet size for compounding, given perfect knowledge of your edge.</li>
+<li><strong>Strength:</strong> maximises long-run growth <em>in theory</em>.</li>
+<li><strong>Weakness:</strong> it assumes you <em>know</em> your true edge precisely — which no trader does. Full Kelly is wildly aggressive (it routinely recommends risking 20–40%), and any error in estimating your edge makes it over-bet and increases ruin risk. This is why full Kelly is a theoretical ideal, not a practical rule.</li>
+</ul>
+<h2 id="method-5-fractional-kelly">Method 5 — Fractional Kelly</h2>
+<p>Use a <strong>fraction of the Kelly size</strong> — commonly <strong>half-Kelly or quarter-Kelly</strong> — to capture most of the growth benefit while cutting the ruin risk dramatically.</p>
+<ul>
+<li><strong>Logic:</strong> the growth curve near full Kelly is flat at the top (a bit less than Kelly is nearly as good), but the ruin risk is steeply lower. Half-Kelly gives roughly three-quarters of the growth for a fraction of the volatility and ruin risk.</li>
+<li><strong>Strength:</strong> the best practical compromise between growth and safety — <em>if</em> you can estimate your edge.</li>
+<li><strong>Weakness:</strong> still depends on estimating win rate and payoff; and for most retail traders, a simple fixed-fraction (Method 1) at 1–2% is both simpler and safer than any Kelly variant.</li>
+</ul>
+<h2 id="choosing-a-method">Choosing a method</h2>
+<p>The honest guidance:</p>
+<ul>
+<li><strong>Start with fixed fraction (Method 1)</strong> at 1–2%. It is sufficient, simple, and ruin-resistant.</li>
+<li><strong>Add volatility sizing (Method 3)</strong> when you trade across assets of very different volatility (e.g., NIFTY futures and a small-cap stock).</li>
+<li><strong>Treat Kelly (Methods 4–5) as a diagnostic, not a rule</strong> — use it to understand what your edge <em>implies</em>, but size far below it (quarter-Kelly at most), because your edge estimate is almost certainly too optimistic.</li>
+</ul>
+<p>Every method fails the same way — <strong>over-betting</strong> — and the defence is always the same: size from risk, prefer smaller, and let compounding do the work over time rather than leverage.</p>
+<h2 id="summary_3">Summary</h2>
+<ul>
+<li>Fixed fraction: constant % of equity; self-stabilising; the default.</li>
+<li>Fixed ratio: stair-step growth, anti-shrinkage; more parameters.</li>
+<li>Volatility/ATR: size inversely to volatility; equalises market risk.</li>
+<li>Kelly: theoretical optimum; assumes perfect edge knowledge; too aggressive in practice.</li>
+<li>Fractional Kelly: most of the growth, far less ruin risk; still needs an edge estimate.</li>
+</ul>
+<p>Next: stops — the other half of "risk = entry − stop".</p>
+<h1 id="5-stops-types-and-placement">5. Stops: Types and Placement</h1>
+<h2 id="the-stop-is-the-risk">The stop is the risk</h2>
+<p>The stop-loss is not an optional accessory to a trade; <strong>it is the trade's definition of risk.</strong> Recall: risk = (entry − stop) × size. The stop is half of that equation. A position without a stop has no defined risk — and therefore no correct size.</p>
+<p>This chapter covers the types of stops, how to place them, and the discipline of honouring them.</p>
+<h2 id="what-a-stop-is-and-is-not">What a stop is (and is not)</h2>
+<p>A <strong>stop</strong> is a pre-committed price at which you exit a losing position. Its purpose is not to <em>avoid</em> loss — losses are inevitable — but to <strong>bound</strong> it: to make the loss <em>known and small</em> rather than <em>open-ended and growing</em>.</p>
+<p>Three truths about stops:</p>
+<ol>
+<li><strong>A stop is a commitment made in a calm state</strong> — set at entry, before the position exists, when judgment is clean.</li>
+<li><strong>A stop is not a guarantee</strong> — a gap can jump past it (Chapter 7 covers this), so the realised loss can exceed the planned loss.</li>
+<li><strong>A stop's only job is to keep losses small.</strong> It does not predict; it enforces.</li>
+</ol>
+<h2 id="types-of-stops">Types of stops</h2>
+<h3 id="1-the-structural-stop">1. The structural stop</h3>
+<p>Placed at a level that <strong>invalidates the setup</strong> — below the pullback low, below the breakout level, below the range floor, below the reversal low. This is the <em>most meaningful</em> stop, because it is tied to <em>why you entered</em>: if price reaches it, the reason for the trade is gone.</p>
+<ul>
+<li><strong>Strength:</strong> exits exactly when the setup is proven wrong.</li>
+<li><strong>Weakness:</strong> can be wide (and therefore force a smaller position); requires correctly identifying the structural level.</li>
+</ul>
+<h3 id="2-the-volatility-stop">2. The volatility stop</h3>
+<p>Placed a fixed multiple of <strong>ATR</strong> (or a percentage) from entry, sized to the asset's normal noise so you are not stopped out by ordinary movement.</p>
+<ul>
+<li><strong>Strength:</strong> adapts to how wild the asset is; robust across instruments.</li>
+<li><strong>Weakness:</strong> ignores structure — it can sit at a level that has no meaning, or be too tight for the trade's actual invalidation point.</li>
+</ul>
+<h3 id="3-the-trailing-stop">3. The trailing stop</h3>
+<p>A stop that <strong>moves with the trade</strong> — e.g., a close below a rising 20-day or 50-day MA, or a fixed distance behind the most recent high. It lets winners run while locking in open profit.</p>
+<ul>
+<li><strong>Strength:</strong> the mechanism behind "let winners run"; converts an open gain into a protected one.</li>
+<li><strong>Weakness:</strong> can be too tight (whipsawed out of good trades) or too loose (gives back large open profit).</li>
+</ul>
+<h3 id="4-the-time-stop">4. The time stop</h3>
+<p>Exit after a fixed <strong>holding period</strong> regardless of price — e.g., "if the move has not happened in 10 days, leave." It is a stop on <em>time</em>, not price.</p>
+<ul>
+<li><strong>Strength:</strong> enforces an exit when a trade is simply not working (dead money is a real cost).</li>
+<li><strong>Weakness:</strong> can exit a trade that was about to work; best used as a <em>supplement</em> to a price stop, not a replacement.</li>
+</ul>
+<h2 id="how-to-place-the-stop">How to place the stop</h2>
+<p>The placement principle is: <strong>the stop goes at the level that would prove the setup wrong — and then you size to it.</strong></p>
+<ol>
+<li>Identify the setup's invalidation level (structural stop).</li>
+<li>Measure the distance from entry to that level.</li>
+<li>Size the position so that this distance = your fixed risk (the Chapter 3 formula).</li>
+</ol>
+<p>In other words: <strong>you do not choose the stop to fit a desired position size; you choose the stop for its logic, and let it dictate the size.</strong> A stop that is "just far enough to not be hit" is a stop that is not doing its job — it is wide enough to give back real money.</p>
+<h2 id="the-discipline-honour-the-stop">The discipline: honour the stop</h2>
+<p>The most common and most destructive failure is <strong>moving the stop</strong>. A losing trade gets "a little more room," then a little more, until a planned 1% loss becomes an unplanned 10% loss. The stop is only meaningful if it is honoured <em>at the pre-set level, without negotiation.</em></p>
+<p>The reason this is so hard is psychological (loss aversion, hope) — but the fix is mechanical: <strong>decide the stop at entry, write it down, and treat "moving the stop" as breaking the trade's contract.</strong> The stop is the one place where discipline is truly binary: you either honour it or you don't.</p>
+<h2 id="summary_4">Summary</h2>
+<ul>
+<li>The stop is the trade's definition of risk — half of "risk = entry − stop."</li>
+<li>Types: structural (invalidation), volatility (ATR), trailing (lock profit), time (dead-money).</li>
+<li>Place the stop at the level that proves the setup wrong, then size to it.</li>
+<li>The stop is a commitment made in a calm state; honouring it is binary.</li>
+</ul>
+<p>Next: portfolio-level risk — the danger that lives across trades, not within one.</p>
+<h1 id="6-portfolio-level-risk">6. Portfolio-Level Risk</h1>
+<h2 id="the-danger-that-lives-across-trades">The danger that lives across trades</h2>
+<p>Per-trade risk management is necessary but not sufficient. A portfolio can be full of individually "safe" 1%-risk positions and still be dangerous — because <strong>risk is not additive when positions are correlated.</strong> This chapter covers the risk that exists <em>between</em> trades, not within one.</p>
+<h2 id="the-correlation-problem">The correlation problem</h2>
+<p>Suppose you hold ten positions, each risking 1% with its own stop. Naively, your total risk is 10%. But if all ten are <em>long the same market</em> — ten Indian large-caps, say — then they are not ten independent bets; they are <strong>one bet on the broad market, expressed ten times.</strong></p>
+<p>In a market crash, all ten hit their stops together. Your "10% of diversified risk" is actually a single concentrated 10% loss, because the positions moved as one.</p>
+<p>The principle: <strong>your portfolio's real risk is your net exposure, not your number of positions.</strong> Ten correlated positions are one position, sized ten times too large.</p>
+<h2 id="measuring-the-exposure-that-matters">Measuring the exposure that matters</h2>
+<p>Three aggregate numbers summarise portfolio risk:</p>
+<ol>
+<li><strong>Net delta / net direction</strong> — the sum of all positions' directional exposure. If everything is long, net direction is fully long; a market down-move hurts everything at once.</li>
+<li><strong>Net exposure to a single factor</strong> — a portfolio of all large-caps is exposed to the <em>large-cap</em> factor; all banks are exposed to the <em>financials</em> factor; all momentum names to the <em>momentum</em> factor (and its crash risk). Concentration in one factor is hidden risk.</li>
+<li><strong>Correlation between positions</strong> — if your "diversified" book is all driven by the same macro driver, diversification is illusory.</li>
+</ol>
+<h2 id="portfolio-level-rules">Portfolio-level rules</h2>
+<p>A handful of rules manage this:</p>
+<h3 id="1-cap-total-open-risk">1. Cap total open risk</h3>
+<p>Limit the <strong>sum</strong> of open risk (e.g., total at-risk across all positions ≤ 6–10% of equity). If every position risks 1%, do not hold more than 6–10 concurrent positions. This caps the worst-case simultaneous drawdown.</p>
+<h3 id="2-diversify-across-drivers">2. Diversify across drivers</h3>
+<p>Hold positions that are driven by <em>different</em> things — different sectors, different sizes, different styles (momentum + value + quality), or different asset classes. True diversification is diversification of <em>drivers</em>, not of tickers.</p>
+<h3 id="3-watch-net-exposure-not-just-positions">3. Watch net exposure, not just positions</h3>
+<p>If the market is below its 200-day MA, and your entire book is long, you have one large short-the-trend bet — regardless of how many names it is spread across. A broad <strong>regime filter</strong> (reduce long exposure in downtrends) is portfolio-level risk management.</p>
+<h3 id="4-rebalance-correlation">4. Rebalance correlation</h3>
+<p>Periodically check: <em>if the market fell 10% tomorrow, what would this portfolio do?</em> If the honest answer is "fall ~10%," it is not diversified — it is one bet. Rebalance toward genuinely different drivers.</p>
+<h2 id="the-concentration-traps">The concentration traps</h2>
+<p>Three specific traps to name:</p>
+<ul>
+<li><strong>Sector concentration</strong> — ten banks is one financials bet, not ten bets.</li>
+<li><strong>Style concentration</strong> — ten momentum names all crash together in a momentum reversal.</li>
+<li><strong>Correlated "hedges"</strong> — a hedge that is itself correlated with the portfolio (e.g., hedging Indian stocks with an asset that falls when they do) is not a hedge; it is more of the same.</li>
+</ul>
+<h2 id="the-honest-bottom-line">The honest bottom line</h2>
+<p>Portfolio-level risk is the answer to the question "where could I lose a lot, all at once?" Per-trade rules answer "in any one trade" (small); portfolio rules answer "across the book" (potentially large). Both questions must be answered. A trader who sizes each trade perfectly but holds ten copies of the same bet has solved only the easy half of the problem.</p>
+<h2 id="summary_5">Summary</h2>
+<ul>
+<li>Risk is not additive when positions are correlated; ten correlated positions are one bet.</li>
+<li>Real risk is net exposure (direction, factor, correlation), not position count.</li>
+<li>Rules: cap total open risk, diversify across drivers, watch net exposure, rebalance correlation.</li>
+<li>Concentration traps: sector, style, and correlated "hedges".</li>
+<li>Manage risk both per-trade and across the book.</li>
+</ul>
+<p>Next: margin, leverage, and tail risk — the forces that turn a bad day into a catastrophe.</p>
+<h1 id="7-margin-leverage-and-tail-risk">7. Margin, Leverage, and Tail Risk</h1>
+<h2 id="the-forces-that-turn-a-bad-day-into-a-catastrophe">The forces that turn a bad day into a catastrophe</h2>
+<p>Per-trade and portfolio risk are, at bottom, about <em>sizing</em>. This chapter covers the forces that can <strong>multiply</strong> whatever sizing decision you made — margin, leverage, and tail risk — and why they deserve their own discipline, especially in Indian markets.</p>
+<h2 id="leverage-the-multiplier-of-everything">Leverage: the multiplier of everything</h2>
+<p><strong>Leverage</strong> is using borrowed money (or a derivative's built-in leverage) to control more exposure than your capital. It multiplies <em>everything</em> — gains <em>and</em> losses — and it is the single most common way traders turn a survivable drawdown into ruin.</p>
+<p>The key insight: <strong>leverage interacts multiplicatively with your risk-per-trade.</strong></p>
+<ul>
+<li>Risking 1% of capital <em>unlevered</em> = a 1% loss on a failed trade.</li>
+<li>Risking 1% of capital but controlling 5× notional via leverage = the same stop produces a <strong>5%</strong> loss if the underlying moves one stop-distance against you.</li>
+</ul>
+<p>In other words, leverage silently inflates your <em>actual</em> risk per trade far above what you intended. A trader who thinks they are risking 1% can, through leverage, actually be risking 5–10%. This is how "disciplined" traders get destroyed: the sizing was right, but the leverage was invisible.</p>
+<p>The rule: <strong>risk must be computed on the <em>levered</em> exposure, not the cash outlay.</strong> If leverage multiplies your notional, divide your intended risk by the leverage to find the correct position size — or simply size on notional, never on margin.</p>
+<h2 id="margin-capital-locked-against-risk">Margin: capital locked against risk</h2>
+<p>In Indian derivatives, <strong>margin</strong> is the collateral the exchange/broker requires to hold a position, computed under the <strong>SPAN</strong> risk model:</p>
+<ul>
+<li><strong>Buying options</strong> requires only the premium (the premium <em>is</em> the maximum loss — no extra margin).</li>
+<li><strong>Selling options</strong> (and futures) requires SPAN margin that models the position's worst-case loss.</li>
+<li><strong>Spreads</strong> are margin-efficient: a defined-risk spread requires roughly the <em>spread width</em> in margin, not the full notional.</li>
+</ul>
+<p>Two margin disciplines matter:</p>
+<ol>
+<li><strong>Keep a margin buffer.</strong> Margin requirements <em>change</em> — they rise when volatility rises or the market moves against you. A position that is "right" can still force a margin call (and an involuntary exit at the worst price) if a volatility spike inflates the requirement. Never be fully margined.</li>
+<li><strong>Understand that margin is not risk.</strong> Margin is the <em>collateral</em>; your real risk is the <em>notional</em> and the <em>stop</em>. Sizing to the margin (rather than to the risk) is how traders accidentally take on far more exposure than they meant to.</li>
+</ol>
+<h2 id="tail-risk-the-rare-catastrophic-move">Tail risk: the rare, catastrophic move</h2>
+<p><strong>Tail risk</strong> is the risk of a <em>large, rare</em> move — the kind that sits in the "tail" of the probability distribution, far beyond normal. It is the thing that makes backtests look safe and reality look brutal:</p>
+<ul>
+<li><strong>Gaps</strong> — price opening far from the close (overnight news, global shocks, budget announcements). A gap can jump <em>past</em> your stop, so the realised loss exceeds the planned loss. Stops are limits, not guarantees.</li>
+<li><strong>Volatility spikes</strong> — a sudden surge in volatility that both moves price violently <em>and</em> raises margin requirements (a double squeeze on short positions).</li>
+<li><strong>Liquidity vanishings</strong> — in a panic, the bid-ask spread widens and you cannot exit where you want.</li>
+</ul>
+<p>Tail risk is why <strong>backtests overstate the safety</strong> of a strategy and why <strong>short-volatility positions (naked shorts, condors, credit spreads) are dangerous</strong> despite their high win rates: they earn small, steady profits and then lose it all — and more — in one tail event.</p>
+<h2 id="defending-against-the-tail">Defending against the tail</h2>
+<p>The defences are structural, not predictive:</p>
+<ol>
+<li><strong>Size for the tail, not the expectation</strong> — assume the stop might be gapped past; size so that even a <em>worse-than-stop</em> outcome is survivable.</li>
+<li><strong>Avoid oversized positions through binary events</strong> — earnings, budgets, elections, policy decisions on the underlying.</li>
+<li><strong>Cap aggregate short-vol exposure</strong> — a portfolio that is short volatility everywhere is one tail event from a blow-up; bound the total.</li>
+<li><strong>Keep a margin buffer</strong> — so a volatility spike cannot force an involuntary exit.</li>
+</ol>
+<h2 id="the-indian-specific-notes">The Indian-specific notes</h2>
+<ul>
+<li><strong>STT and charges</strong> apply on the sell side and on exercise; they add to the cost of every exit, so a "tight" stop is a little less tight in reality. Factor them into the risk distance.</li>
+<li><strong>Index options are cash-settled</strong> (clean, no delivery risk); <strong>stock options are physically settled</strong> — an ITM stock option held to expiry results in delivery, which can force an unwanted, oversized position if not managed. Square off before expiry.</li>
+<li><strong>Retail short-selling of stocks is constrained</strong> in India; the clean short-side is via index derivatives, which carry their own margin and gap risk.</li>
+</ul>
+<h2 id="summary_6">Summary</h2>
+<ul>
+<li>Leverage multiplies risk silently; compute risk on notional, not cash outlay.</li>
+<li>Margin is collateral (SPAN), not risk; it changes with volatility, so keep a buffer.</li>
+<li>Tail risk — gaps, vol spikes, liquidity vanishing — makes stops limits, not guarantees.</li>
+<li>Defend structurally: size for the tail, avoid binary events, cap short-vol exposure.</li>
+<li>Indian specifics: costs, settlement (cash vs physical), and constrained shorting shape the risk.</li>
+</ul>
+<p>Next: sizing for different strategy families — one size does not fit all.</p>
+<h1 id="8-sizing-for-different-strategy-families">8. Sizing for Different Strategy Families</h1>
+<h2 id="one-size-does-not-fit-all">One size does not fit all</h2>
+<p>The 1–2% risk-per-trade rule is universal, but <em>how</em> it is applied varies by strategy family, because different families have <strong>different win rates, different payoff shapes, and different tail profiles.</strong> This chapter sizes each family correctly.</p>
+<h2 id="the-four-families-and-their-risk-profiles">The four families and their risk profiles</h2>
+<table>
+<thead>
+<tr>
+<th>Family</th>
+<th>Win rate</th>
+<th>Payoff shape</th>
+<th>Tail</th>
+<th>Sizing implication</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Trend / momentum</td>
+<td>Low (~35–45%)</td>
+<td>Few large winners</td>
+<td>Crashes in reversals</td>
+<td>Small size, strict stops, let winners run</td>
+</tr>
+<tr>
+<td>Mean reversion</td>
+<td>High (~60–70%)</td>
+<td>Many small winners</td>
+<td>Occasional blow-ups</td>
+<td>Small size <em>because</em> of the tail, not the win rate</td>
+</tr>
+<tr>
+<td>Short volatility</td>
+<td>Very high (~75%+)</td>
+<td>Steady small wins</td>
+<td>One catastrophic loss</td>
+<td>Smallest size; hard loss limits; defined-risk only</td>
+</tr>
+<tr>
+<td>Long options / convexity</td>
+<td>Low (~30%)</td>
+<td>Small losses, rare huge wins</td>
+<td>Favourable (bounded loss)</td>
+<td>Premium is the risk; can size on premium</td>
+</tr>
+</tbody>
+</table>
+<p>The lesson in one line: <strong>size by the tail, not the win rate.</strong> The high-win-rate families (mean reversion, short vol) <em>feel</em> safe precisely because their losses are rare — and that rarity is exactly why those losses must be small when they arrive.</p>
+<h2 id="trend-momentum-many-small-losses-few-big-winners">Trend / momentum: many small losses, few big winners</h2>
+<p>Trend-following loses more often than it wins, and pays for it with the occasional large winner. The sizing discipline:</p>
+<ul>
+<li><strong>Small, fixed risk per trade (1%).</strong> The many small losses must stay small.</li>
+<li><strong>Strict stops, and <em>let winners run</em></strong> — a trend strategy that caps its winners has no edge, so the exit must be trailing, not a target.</li>
+<li><strong>Survive the whipsaw streaks</strong> — trend strategies can lose 10+ in a row in choppy markets; sizing must make that survivable.</li>
+</ul>
+<h2 id="mean-reversion-high-win-rate-but-a-hidden-tail">Mean reversion: high win rate, but a hidden tail</h2>
+<p>Mean-reversion strategies win often (fading extremes works most of the time) but lose big when the "extreme" turns out to be a genuine move. The trap is that the high win rate invites over-sizing.</p>
+<ul>
+<li><strong>Small size <em>despite</em> the win rate</strong> — the occasional blow-up is the risk that dominates.</li>
+<li><strong>A trend filter</strong> (only fade <em>with</em> the longer trend) materially improves the odds.</li>
+<li><strong>A hard stop</strong> on every trade, because the "bounce" sometimes never comes.</li>
+</ul>
+<h2 id="short-volatility-the-most-dangerous-family">Short volatility: the most dangerous family</h2>
+<p>Short-vol (naked shorts, condors, credit spreads, covered calls) collects premium with a very high win rate — and carries the risk of one catastrophic, unbounded loss.</p>
+<ul>
+<li><strong>The smallest size of all</strong>, and <strong>prefer defined-risk structures</strong> (spreads, condors) over naked shorts.</li>
+<li><strong>Hard loss limits</strong> — a pre-set exit when the loss reaches a multiple of the credit, honoured without exception.</li>
+<li><strong>Cap aggregate short-vol exposure</strong> at the portfolio level — many small short-vol positions are still one tail event from a blow-up.</li>
+</ul>
+<h2 id="long-options-convexity-the-friendly-tail">Long options / convexity: the friendly tail</h2>
+<p>Long options have a <em>bounded</em> downside (the premium) and an <em>unbounded</em> upside — the friendliest tail of the four families. But they lose most of the time (time decay).</p>
+<ul>
+<li><strong>The premium is the risk</strong> — a long option's maximum loss is known and fixed at entry.</li>
+<li><strong>Size on the premium</strong> — treat the entire premium as the "risk," and size it to your 1–2% rule (you <em>can</em> lose 100% of it).</li>
+<li><strong>Budget for the low win rate</strong> — buying options is a high-variance, low-win-rate activity; the winners must be allowed to be large.</li>
+</ul>
+<h2 id="the-universal-thread">The universal thread</h2>
+<p>Whatever the family, the same three questions size the position:</p>
+<ol>
+<li><strong>What is the worst realistic loss</strong> (including the tail, not just the stop)?</li>
+<li><strong>What fraction of capital is that?</strong> (Cap it at 1–2%.)</li>
+<li><strong>Does the family's win rate invite over-betting?</strong> (If so, resist it — the tail, not the win rate, sets the size.)</li>
+</ol>
+<p>Families differ in <em>how dangerous they are</em>; the sizing question is the same, and its answer is always "small enough to survive the tail."</p>
+<h2 id="summary_7">Summary</h2>
+<ul>
+<li>Size by the tail, not the win rate.</li>
+<li>Trend: small size, strict stops, let winners run.</li>
+<li>Mean reversion: small size despite the high win rate; use a trend filter.</li>
+<li>Short vol: the most dangerous; defined-risk, hard limits, smallest size.</li>
+<li>Long options: the premium is the risk; size the premium to 1–2%.</li>
+<li>The same three questions size every family.</li>
+</ul>
+<p>Next: assembling it all into a written risk framework.</p>
+<h1 id="9-building-a-risk-framework">9. Building a Risk Framework</h1>
+<h2 id="from-rules-to-a-system-you-actually-follow">From rules to a system you actually follow</h2>
+<p>The previous chapters are a toolkit. This chapter assembles the toolkit into a <strong>risk framework</strong> — a written, repeatable system that turns risk management from a set of good intentions into a set of non-negotiable, checkable rules.</p>
+<h2 id="the-framework-in-five-parts">The framework, in five parts</h2>
+<h3 id="1-the-per-trade-rule">1. The per-trade rule</h3>
+<p>The foundation, in writing:</p>
+<ul>
+<li><strong>Risk per trade = 1–2% of equity</strong>, computed as (Account × Risk%) ÷ (Entry − Stop).</li>
+<li><strong>The stop is set at entry</strong>, at the level that invalidates the setup, and is <strong>never moved</strong> after entry.</li>
+<li><strong>The size is derived from the stop</strong>, never from conviction.</li>
+</ul>
+<h3 id="2-the-portfolio-rule">2. The portfolio rule</h3>
+<ul>
+<li><strong>Cap total open risk</strong> (e.g., sum of at-risk ≤ 6–10% of equity).</li>
+<li><strong>Cap exposure to any one driver</strong> (sector, style, factor) — diversify across genuinely different drivers.</li>
+<li><strong>Watch net direction</strong> — if the book is net-long into a downtrend, reduce it.</li>
+</ul>
+<h3 id="3-the-leverage-and-margin-rule">3. The leverage-and-margin rule</h3>
+<ul>
+<li><strong>Compute risk on notional, not cash outlay</strong> — if leverage is involved, divide size by the leverage.</li>
+<li><strong>Keep a margin buffer</strong> (never fully margined), so volatility spikes cannot force an involuntary exit.</li>
+<li><strong>Prefer defined-risk structures</strong> over naked short positions.</li>
+</ul>
+<h3 id="4-the-tail-rule">4. The tail rule</h3>
+<ul>
+<li><strong>Size for the worst plausible gap</strong>, not just the stop.</li>
+<li><strong>No oversized positions through binary events</strong> (earnings, budgets, policy).</li>
+<li><strong>Cap aggregate short-volatility exposure</strong> at the portfolio level.</li>
+</ul>
+<h3 id="5-the-review-rule">5. The review rule</h3>
+<ul>
+<li><strong>Review every closed trade</strong> against its plan: <em>was the stop honoured? Was the size correct? Was the exit by rule, not emotion?</em></li>
+<li><strong>Review the drawdown</strong> periodically: <em>is the current drawdown within what this strategy should produce, or is something broken?</em></li>
+<li><strong>Adjust rules only through a pre-committed process</strong>, never reactively mid-drawdown.</li>
+</ul>
+<h2 id="a-written-template">A written template</h2>
+<p>A one-page framework document, filled in and kept where you trade:</p>
+<pre><code>Per-trade:
+  Risk % per trade: ____ (1-2%)
+  Stop: set at entry, at the setup's invalidation level, never moved
+  Size = (Equity × Risk%) ÷ (Entry − Stop)
+
+Portfolio:
+  Max total open risk: ____ % of equity
+  Max per-driver (sector/style/factor) exposure: ____ %
+  Net-direction check: reduce longs when market &lt; 200-day MA
+
+Leverage/margin:
+  Risk computed on notional: yes
+  Margin buffer: always hold &gt; ____ % free margin
+  Naked shorts: allowed / not allowed
+
+Tail:
+  Size assumes a ____ % gap is possible
+  Binary-event rule: ____
+  Max aggregate short-vol exposure: ____ %
+
+Review:
+  Trade review cadence: every trade
+  Drawdown review cadence: weekly / monthly
+  Rule changes: only via scheduled review, never reactively
+</code></pre>
+<p>Filling this in — and keeping it visible — is the difference between <em>knowing</em> risk management and <em>doing</em> it.</p>
+<h2 id="why-a-written-framework-works">Why a written framework works</h2>
+<p>A written framework works for a specific reason: <strong>it moves the decisions out of the emotional moment and into the calm one.</strong> The stop is set <em>before</em> the loss is happening; the size is computed <em>before</em> the conviction kicks in; the rule change is decided <em>before</em> the drawdown is screaming at you.</p>
+<p>Every failure of risk management is, at root, a failure to honour a decision that was only ever in your head. Writing it down — and treating the document as binding — is the mechanical fix for a psychological problem.</p>
+<h2 id="the-honest-bottom-line_1">The honest bottom line</h2>
+<p>Risk management is not complicated, and it is not exciting. It is the quiet discipline of <em>never betting so much that you can be removed from the game.</em> Every strategy, every edge, every clever idea in trading is downstream of that single commitment. The trader who sizes small, honours stops, and survives the tail has done the hard part; everything else is detail.</p>
+<h2 id="summary_8">Summary</h2>
+<ul>
+<li>The framework has five parts: per-trade, portfolio, leverage/margin, tail, and review.</li>
+<li>Write it down; the document moves decisions out of the emotional moment.</li>
+<li>The per-trade 1–2% rule, set at entry and never moved, is the foundation.</li>
+<li>Portfolio, leverage, and tail rules prevent the correlated, multiplied, catastrophic loss.</li>
+<li>The review rule is how the framework improves rather than decays.</li>
+</ul>
+<p>This completes the main text. The appendix collects every sizing formula in one place.</p>
+<h1 id="appendix-sizing-formulas">Appendix — Sizing Formulas</h1>
+<h2 id="the-core-formulas-in-one-place">The core formulas, in one place</h2>
+<h3 id="the-foundation">The foundation</h3>
+<p><strong>Risk = (Entry − Stop) × Position size</strong></p>
+<p><strong>Position size = (Account equity × Risk%) ÷ (Entry − Stop)</strong></p>
+<h3 id="the-recovery-table">The recovery table</h3>
+<table>
+<thead>
+<tr>
+<th>Loss</th>
+<th>Gain needed to recover</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5%</td>
+<td>5.3%</td>
+</tr>
+<tr>
+<td>10%</td>
+<td>11.1%</td>
+</tr>
+<tr>
+<td>20%</td>
+<td>25%</td>
+</tr>
+<tr>
+<td>30%</td>
+<td>42.9%</td>
+</tr>
+<tr>
+<td>50%</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>70%</td>
+<td>233%</td>
+</tr>
+<tr>
+<td>90%</td>
+<td>900%</td>
+</tr>
+</tbody>
+</table>
+<h3 id="the-sizing-methods">The sizing methods</h3>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Formula / rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fixed fraction</td>
+<td>size = (Equity × Risk%) ÷ (Entry − Stop)</td>
+</tr>
+<tr>
+<td>Fixed ratio</td>
+<td>grow size by a fixed unit per fixed profit increment</td>
+</tr>
+<tr>
+<td>Volatility (ATR)</td>
+<td>size = (Equity × Risk%) ÷ (k × ATR)</td>
+</tr>
+<tr>
+<td>Kelly</td>
+<td>f = (p·W − q·L) / W</td>
+</tr>
+<tr>
+<td>Fractional Kelly</td>
+<td>size at half- or quarter-Kelly</td>
+</tr>
+</tbody>
+</table>
+<h3 id="risk-of-ruin-intuition">Risk of ruin intuition</h3>
+<p>Risk of ruin rises steeply with position size, regardless of edge. Fixed-fraction sizing at 1–2% keeps the worst realistic losing streak survivable.</p>
+<h3 id="the-load-bearing-rules-memorise-these">The load-bearing rules (memorise these)</h3>
+<ol>
+<li><strong>Risk 1–2% per trade.</strong> Compute it on notional (not cash outlay), from the stop distance.</li>
+<li><strong>Set the stop at entry, at the invalidation level, and never move it.</strong></li>
+<li><strong>Size by the tail, not the win rate</strong> — the high-win-rate families carry the sharpest tails.</li>
+<li><strong>Cap total open risk and per-driver exposure</strong> — ten correlated positions are one bet.</li>
+<li><strong>Keep a margin buffer</strong> — a volatility spike must not force an involuntary exit.</li>
+<li><strong>Protect against deep drawdowns</strong> — a 50% loss needs a 100% gain to recover.</li>
+</ol></body></html>

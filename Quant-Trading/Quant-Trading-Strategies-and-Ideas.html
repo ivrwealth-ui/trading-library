@@ -1,0 +1,677 @@
+<!DOCTYPE html><html><head><meta charset='utf-8'><style>
+* { box-sizing: border-box; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 11pt; line-height: 1.62; color: #1a1d21; margin: 0;
+}
+.cover {
+  height: 100vh; page-break-after: always;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 3cm 2.5cm; background: #0d1715; color: #e8f0ee;
+}
+.cover .rule { width: 64px; height: 4px; background: #2dd4bf; margin-bottom: 2.2rem; }
+.cover h1 { font-size: 38pt; line-height: 1.08; font-weight: 600; color: #fff; margin: 0 0 1.4rem; letter-spacing: -0.5px; }
+.cover .subtitle { font-size: 15pt; color: #9fb5ae; line-height: 1.5; max-width: 34em; }
+.cover .pub { margin-top: 3rem; font-size: 11pt; letter-spacing: 0.14em; text-transform: uppercase; color: #2dd4bf; }
+.cover .ednote { margin-top: 0.6rem; font-size: 9pt; color: #6c817b; }
+h1 { font-size: 23pt; font-weight: 600; color: #0f172a; page-break-before: always; margin: 0 0 1.1rem; padding-bottom: 0.4rem; border-bottom: 2px solid #2dd4bf; }
+h2 { font-size: 15.5pt; font-weight: 600; color: #0f766e; margin: 1.6rem 0 0.6rem; }
+h3 { font-size: 12.5pt; font-weight: 600; color: #1a1d21; margin: 1.2rem 0 0.4rem; }
+p { margin: 0.5rem 0; }
+strong { color: #0f172a; }
+em { color: #334155; }
+a { color: #0f766e; text-decoration: none; }
+hr { border: none; border-top: 1px solid #e2e8f0; margin: 2rem 0; }
+ul, ol { margin: 0.5rem 0 0.8rem; padding-left: 1.5rem; }
+li { margin: 0.25rem 0; }
+code { font-family: 'SF Mono', Menlo, Consolas, monospace; font-size: 9pt; background: #f1f5f9; padding: 1px 5px; border-radius: 3px; color: #0f766e; }
+pre { background: #0f172a; color: #e2e8f0; padding: 0.9rem 1.1rem; border-radius: 6px; font-size: 9pt; line-height: 1.5; white-space: pre-wrap; word-wrap: break-word; }
+pre code { background: none; color: inherit; padding: 0; }
+blockquote { border-left: 3px solid #2dd4bf; background: #f0fdfa; margin: 0.8rem 0; padding: 0.7rem 1rem; color: #0f3d37; font-style: italic; border-radius: 0 4px 4px 0; }
+blockquote p { margin: 0.3rem 0; }
+table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: 9.5pt; page-break-inside: avoid; }
+th, td { border: 1px solid #dbe3e8; padding: 5px 8px; text-align: left; vertical-align: top; }
+th { background: #0f766e; color: #fff; font-weight: 600; }
+tr:nth-child(even) td { background: #f8fafc; }
+h1:first-of-type { page-break-before: auto; }
+h2#important-disclaimer, h2#how-to-read-this-book, h2#table-of-contents { page-break-before: always; }
+</style></head><body><section class="cover"><div class="rule"></div><h1>Quant Trading: Strategies and Ideas</h1><div class="subtitle">Five systematic strategies, the pipeline that turns them into code, and the discipline that keeps them honest — with an education-only disclaimer.</div><div class="pub">Published by StratLab</div><div class="ednote">Educational content only — not investment advice. StratLab is not SEBI-registered.</div></section><h1 id="quant-trading-strategies-and-ideas">Quant Trading: Strategies and Ideas</h1>
+<h2 id="five-systematic-strategies-the-pipeline-that-turns-them-into-code-and-the-discipline-that-keeps-them-honest-with-an-education-only-disclaimer">Five systematic strategies, the pipeline that turns them into code, and the discipline that keeps them honest — with an education-only disclaimer.</h2>
+<hr />
+<p><strong>Published by StratLab</strong></p>
+<hr />
+<h2 id="important-disclaimer">Important Disclaimer</h2>
+<p>This book is provided for <strong>educational purposes only</strong>. It is not investment advice, a recommendation, or a solicitation to buy or sell any security.</p>
+<ul>
+<li><strong>StratLab is not registered with SEBI</strong> as an investment adviser, research analyst, or portfolio manager, and does not provide investment advisory services.</li>
+<li>Trading and investing involve substantial risk of loss, including the possible loss of principal. Past performance never guarantees future results, and backtested performance is especially prone to overstatement.</li>
+<li>All strategies, examples, and historical observations are illustrative. A strategy that <em>backtests</em> well may still lose money live, for reasons this book explains in detail.</li>
+<li>Data, costs, taxes, and regulatory details change over time. Always verify current rules and consult a qualified adviser before acting.</li>
+<li>Nothing in this book should be read as a promise of return or a guarantee that any strategy will be profitable.</li>
+</ul>
+<p>By reading this book, you agree that you are solely responsible for your own trading and investment decisions and that you will consult a SEBI-registered adviser where appropriate.</p>
+<hr />
+<h2 id="how-to-read-this-book">How to Read This Book</h2>
+<p>This book teaches <strong>quant trading</strong> — the discipline of expressing trading ideas as <em>systematic, testable rules</em>, implemented in code. It presents five strategy ideas and the process that surrounds them.</p>
+<ul>
+<li><strong>Chapters 1–3</strong> build the foundation: what quant trading is, the pipeline (idea → data → backtest → paper → live), and the evaluation metrics you will use to judge any strategy.</li>
+<li><strong>Chapters 4–8</strong> are the five strategy ideas — the heart of the book. Each is presented with its logic, its rules (in prose and language-agnostic pseudocode), and its known risks.</li>
+<li><strong>Chapters 9–10</strong> cover the two things that decide whether a quant strategy actually works: avoiding backtesting pitfalls, and surviving the journey from backtest to live.</li>
+</ul>
+<p>A note on language: this book describes what a strategy <em>is</em> and what it has <em>historically</em> tended to do — never what you "should" do. Where results are discussed, they are framed as historical observations, not promises. You are responsible for your own decisions.</p>
+<hr />
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li>What Is Quant Trading?</li>
+<li>The Quant Pipeline</li>
+<li>The Toolkit and Evaluation Metrics</li>
+<li>Strategy 1 — Cross-Sectional Momentum</li>
+<li>Strategy 2 — Mean Reversion and Pairs</li>
+<li>Strategy 3 — Time-Series Trend Following</li>
+<li>Strategy 4 — Factor Tilts</li>
+<li>Strategy 5 — Volatility Targeting and Seasonality</li>
+<li>Backtesting Pitfalls</li>
+<li>From Backtest to Live</li>
+</ol>
+<p>Appendix — Metrics and Strategy Reference</p>
+<hr />
+<h1 id="1-what-is-quant-trading">1. What Is Quant Trading?</h1>
+<h2 id="rules-over-judgement">Rules over judgement</h2>
+<p><strong>Quant trading</strong> is the practice of turning a trading idea into a <em>precise, testable set of rules</em>, and executing those rules <em>systematically</em> — by hand against a checklist, or by computer. The defining feature is not the use of computers; it is the <strong>explicitness</strong>: a quant strategy can be written down unambiguously, and therefore <em>tested</em> against history before a single rupee is risked.</p>
+<p>Where a discretionary trader might say "I like this stock because the story is improving," the quant trader says: "rank the universe by trailing 12-month return, hold the top 10%, rebalance monthly." The difference is not sophistication — it is <strong>falsifiability.</strong> A rule can be backtested; a feeling cannot.</p>
+<h2 id="the-spectrum-not-a-binary">The spectrum, not a binary</h2>
+<p>"Quant" and "discretionary" are ends of a spectrum, not two camps:</p>
+<ul>
+<li><strong>Fully systematic</strong> — every decision (what, when, how much, when to exit) is a rule.</li>
+<li><strong>Quant-assisted</strong> — a human makes the final call, but with systematic inputs (a screener, a risk model, a backtest).</li>
+<li><strong>Discretionary</strong> — judgement drives everything.</li>
+</ul>
+<p>Most of this book's ideas sit at the systematic end, because that is where the <em>testability</em> — the whole point of quant — lives.</p>
+<h2 id="the-three-promises-of-quant">The three promises of quant</h2>
+<p>Quant trading exists for three reasons, and each is a real advantage:</p>
+<ol>
+<li><strong>Testability.</strong> An explicit rule can be backtested. You can learn — <em>before</em> risking money — how it would have behaved, how deep its drawdowns were, and whether the edge survives costs. Discretionary judgement cannot be tested this way.</li>
+<li><strong>Emotion removal.</strong> A systematic rule is executed the same way whether you are euphoric or terrified. The rule, not the mood, makes the decision (the psychology chapters of this series explain why that matters).</li>
+<li><strong>Scale and repeatability.</strong> A systematic process can be run across hundreds of instruments, consistently, day after day — something no human judgement can do.</li>
+</ol>
+<h2 id="the-honest-caveats">The honest caveats</h2>
+<p>Quant trading is not a shortcut to certainty, for three reasons the book returns to:</p>
+<ol>
+<li><strong>Backtests overstate.</strong> A backtest is an <em>upper bound</em> on reality, not a forecast. Overfitting, look-ahead bias, survivorship bias, and ignored costs can make a worthless strategy look wonderful (Chapter 9).</li>
+<li><strong>The past is not the future.</strong> A rule that worked historically can stop working — markets adapt, and edges decay. This is why quant is a <em>process</em> (build, test, monitor, retire), not a one-time discovery.</li>
+<li><strong>Quant is not "code magic."</strong> The hardest part is not the programming; it is the <em>idea</em> and the <em>discipline</em> to test it honestly. The code is just the unambiguous expression of the idea.</li>
+</ol>
+<h2 id="what-a-quant-strategy-actually-is">What a quant strategy actually is</h2>
+<p>Strip away the jargon and every quant strategy is four things:</p>
+<ol>
+<li><strong>A universe</strong> — what you trade (NIFTY 500, a basket of ETFs, a list of futures).</li>
+<li><strong>A signal</strong> — a rule that says <em>when and what</em> to act on (momentum rank, mean-reversion extreme, trend state).</li>
+<li><strong>A sizing rule</strong> — <em>how much</em> (fixed fraction, volatility targeting — the Risk Management book covers this).</li>
+<li><strong>An exit</strong> — <em>when to leave</em> (a stop, a rebalance, a time rule).</li>
+</ol>
+<p>Everything in this book is a variation on those four knobs. Master the structure, and each strategy is a matter of "which settings."</p>
+<h2 id="summary">Summary</h2>
+<ul>
+<li>Quant trading is explicit, testable rules — not necessarily computers.</li>
+<li>It promises testability, emotion removal, and scale.</li>
+<li>It is not a shortcut: backtests overstate, edges decay, and the idea matters more than the code.</li>
+<li>Every strategy = universe + signal + sizing + exit.</li>
+</ul>
+<p>Next: the pipeline — the process that turns an idea into a live strategy.</p>
+<h1 id="2-the-quant-pipeline">2. The Quant Pipeline</h1>
+<h2 id="idea-to-live-in-six-stages">Idea to live, in six stages</h2>
+<p>Every quant strategy, whether it works or not, travels the same path. Knowing the stages — and <em>not skipping</em> them — is most of the discipline. This chapter walks the pipeline.</p>
+<h2 id="stage-1-idea">Stage 1 — Idea</h2>
+<p>Everything starts with a <em>hypothesis about why</em> a pattern should exist. The best ideas are not "random backtest hits" but <strong>economically motivated</strong> claims:</p>
+<ul>
+<li><em>"Investors under-react to news, so recent winners keep winning"</em> → a momentum idea.</li>
+<li><em>"Short-term overshoots revert"</em> → a mean-reversion idea.</li>
+<li><em>"Cheap, high-quality companies outperform over time"</em> → a factor idea.</li>
+</ul>
+<p>The test of a good idea: <strong>can you explain, in a sentence, <em>why</em> it should work</strong> — not just <em>that</em> it worked in one backtest? An idea with a mechanism survives; an idea with only a backtest is a coin-flip.</p>
+<h2 id="stage-2-hypothesis-rules">Stage 2 — Hypothesis → rules</h2>
+<p>Turn the idea into <strong>unambiguous rules</strong>. This is where vague becomes precise:</p>
+<ul>
+<li><em>Universe:</em> which instruments, what liquidity filter.</li>
+<li><em>Signal:</em> the exact condition (e.g., "12-month return, skip the last month, top decile").</li>
+<li><em>Sizing:</em> equal-weight, or risk-based.</li>
+<li><em>Rebalance/exit:</em> the schedule and the stop.</li>
+</ul>
+<p>If two people could implement your idea <em>differently</em>, the rules are not precise enough.</p>
+<h2 id="stage-3-data">Stage 3 — Data</h2>
+<p>A strategy is only as good as its data. The requirements:</p>
+<ul>
+<li><strong>Clean</strong> — no survivorship bias (use the <em>historical</em> universe, not today's survivors), no look-ahead (no using data not yet available at decision time), no survivorship in delisted names.</li>
+<li><strong>Aligned</strong> — prices, corporate actions (splits, dividends, bonuses) adjusted correctly; in India, adjustment for splits/bonuses/rights matters enormously.</li>
+<li><strong>Complete</strong> — enough history to span <em>different regimes</em> (a strategy tested only in a bull market has learned nothing about bear markets).</li>
+</ul>
+<p>Data quality is where most retail quant efforts quietly fail.</p>
+<h2 id="stage-4-backtest">Stage 4 — Backtest</h2>
+<p>Run the rules over history and measure the result. But treat the backtest as an <strong>experiment</strong>, not an answer. The goal is to learn:</p>
+<ul>
+<li><em>Is there an edge?</em> (positive expectancy after costs.)</li>
+<li><em>How deep are the drawdowns?</em> (Can I survive them?)</li>
+<li><em>Is the edge robust?</em> (Does it survive small changes to the parameters, or is it fragile?)</li>
+</ul>
+<p>Chapter 9 covers the traps that make backtests lie; Chapter 3 covers the metrics that tell you what you are looking at.</p>
+<h2 id="stage-5-paper-trading">Stage 5 — Paper trading</h2>
+<p>Run the strategy <strong>live, but without real money</strong> (or with tiny size), for weeks to months. This stage tests the things a backtest cannot:</p>
+<ul>
+<li><em>Does the execution match the assumption?</em> (Slippage, fills, latency.)</li>
+<li><em>Do the costs match the estimate?</em> (Real brokerage, STT, impact.)</li>
+<li><em>Does the </em>process<em> work?</em> (Can you run it every day, reliably, without mistakes?)</li>
+</ul>
+<p>Paper trading is where the <em>engineering</em> gets tested — and it is the cheapest place to find bugs.</p>
+<h2 id="stage-6-live-small-then-scale">Stage 6 — Live (small, then scale)</h2>
+<p>Go live <strong>at small size first</strong>, and only scale after the live results <em>track</em> the backtest and paper results within reason. Live is where the psychological reality (Chapter 10) and the tail events (Risk Management book) show up.</p>
+<h2 id="the-pipeline-as-discipline">The pipeline as discipline</h2>
+<p>The pipeline's most important property is that <strong>each stage is a gate, not a formality.</strong> A strategy that fails the backtest does not proceed; a strategy whose paper trading diverges from the backtest does not go live; a live strategy that stops tracking its backtest is retired. The stages exist to <em>kill bad ideas cheaply</em> — the earlier, the cheaper.</p>
+<p>The single most common quant failure is <strong>skipping a stage</strong> — going from idea straight to real money, or trusting a backtest that was never stress-tested. The pipeline is the antidote.</p>
+<h2 id="summary_1">Summary</h2>
+<ul>
+<li>The pipeline: idea → rules → data → backtest → paper → live.</li>
+<li>Ideas need a <em>mechanism</em>, not just a backtest.</li>
+<li>Rules must be unambiguous; data must be clean, aligned, and complete.</li>
+<li>Each stage is a gate: kill bad ideas cheaply, early.</li>
+<li>The biggest failure is skipping a stage.</li>
+</ul>
+<p>Next: the metrics — how to tell whether a backtest is telling the truth.</p>
+<h1 id="3-the-toolkit-and-evaluation-metrics">3. The Toolkit and Evaluation Metrics</h1>
+<h2 id="the-vocabulary-for-judging-a-strategy">The vocabulary for judging a strategy</h2>
+<p>A backtest produces a wall of numbers. This chapter explains the metrics that actually matter — and, crucially, <em>what they can and cannot tell you</em>.</p>
+<h2 id="returns-and-risk">Returns and risk</h2>
+<h3 id="cagr-compound-annual-growth-rate">CAGR (Compound Annual Growth Rate)</h3>
+<p>The annualised return, smoothing out the compounding. It answers "how fast did the equity grow?" — but it is a <em>single number</em> that hides the path.</p>
+<h3 id="volatility-standard-deviation-of-returns">Volatility (standard deviation of returns)</h3>
+<p>How much the returns swing. High volatility means a bumpy ride for the same CAGR. Volatility is <em>risk</em> in the quantitative sense.</p>
+<h3 id="maximum-drawdown-max-dd">Maximum drawdown (Max DD)</h3>
+<p>The worst peak-to-trough fall. This is the number that matters most emotionally — and practically, because of the recovery asymmetry (a 50% drawdown needs a 100% gain to recover). A strategy is only as good as its worst drawdown, because that is what decides whether you survive to collect the returns.</p>
+<h2 id="risk-adjusted-return">Risk-adjusted return</h2>
+<h3 id="sharpe-ratio">Sharpe ratio</h3>
+<p>Sharpe = (Return − risk-free) ÷ volatility.</p>
+<p>It measures return <em>per unit of risk</em>. A high Sharpe means the return was earned <em>efficiently</em> — without excessive volatility. A Sharpe above ~1 is good; above ~2 is excellent (and often too good — a red flag for overfitting, Chapter 9).</p>
+<h3 id="sortino-ratio">Sortino ratio</h3>
+<p>Like Sharpe, but only penalises <em>downside</em> volatility (the part you actually dislike). It is a fairer measure for strategies with asymmetric returns.</p>
+<h2 id="the-trade-level-metrics">The trade-level metrics</h2>
+<h3 id="win-rate">Win rate</h3>
+<p>The fraction of trades that won. <strong>Important:</strong> win rate alone is meaningless — it must be read with the payoff ratio. A 30% win rate with 4:1 winners is excellent; an 80% win rate with 1:4 losers is ruinous.</p>
+<h3 id="profit-factor">Profit factor</h3>
+<p>Gross profit ÷ gross loss. A profit factor above 1 means the strategy made more than it lost; above ~1.5 is usually considered solid. It is a quick, robust summary of edge.</p>
+<h3 id="payoff-ratio-avg-win-avg-loss">Payoff ratio (avg win ÷ avg loss)</h3>
+<p>How big winners are relative to losers. Combined with win rate, it determines expectancy:</p>
+<p>Expectancy = (Win rate × Avg win) − (Loss rate × Avg loss)</p>
+<p>A positive expectancy is the <em>minimum</em> bar for a strategy — and you should be able to compute it from these two numbers.</p>
+<h2 id="robustness-metrics-the-ones-that-catch-lies">Robustness metrics (the ones that catch lies)</h2>
+<h3 id="number-of-trades">Number of trades</h3>
+<p>A backtest with 20 trades proves almost nothing; one with 2,000 is far more credible. <strong>Small samples lie.</strong> Look at the trade count before believing any other metric.</p>
+<h3 id="parameter-sensitivity">Parameter sensitivity</h3>
+<p>Does the edge survive if you change the lookback from 12 months to 10, or 14? A robust edge is <em>insensitive</em> to small parameter changes; a fragile one (the signature of overfitting) collapses the moment you nudge anything. Plot performance against parameter — a smooth, flat-topped surface is good; a single sharp spike is a warning.</p>
+<h3 id="out-of-sample-walk-forward-performance">Out-of-sample / walk-forward performance</h3>
+<p>The gold-standard test: fit nothing, or fit on one period and <em>test on a later, unseen period</em>. A strategy that only works in-sample is overfit. Real edges persist out-of-sample.</p>
+<h3 id="regime-coverage">Regime coverage</h3>
+<p>Did the strategy make money across <em>different</em> market conditions (bull, bear, range) — or only in one? A strategy that only works in a bull market is a bet on the bull market, not a strategy.</p>
+<h2 id="the-honest-reading-order">The honest reading order</h2>
+<p>When you see a backtest, read the numbers in this order:</p>
+<ol>
+<li><strong>Trade count</strong> — is the sample big enough to mean anything?</li>
+<li><strong>Max drawdown</strong> — could I survive it?</li>
+<li><strong>Profit factor / expectancy</strong> — is there actually an edge?</li>
+<li><strong>Sharpe/Sortino</strong> — is the edge worth the risk?</li>
+<li><strong>Robustness</strong> — does it survive parameter changes and out-of-sample?</li>
+</ol>
+<p>Most people read the CAGR first — which is exactly backwards, because CAGR is the number most easily inflated by a lucky, overfit, or costless backtest.</p>
+<h2 id="summary_2">Summary</h2>
+<ul>
+<li>Return metrics (CAGR, vol, max DD) describe the path; max DD is what decides survival.</li>
+<li>Risk-adjusted metrics (Sharpe, Sortino) measure return per unit of risk.</li>
+<li>Trade-level metrics (win rate, payoff, profit factor, expectancy) describe the edge.</li>
+<li>Robustness metrics (trade count, parameter sensitivity, out-of-sample, regime coverage) catch lies.</li>
+<li>Read trade count and drawdown before you read CAGR.</li>
+</ul>
+<p>Next: Strategy 1 — cross-sectional momentum.</p>
+<h1 id="4-strategy-1-cross-sectional-momentum">4. Strategy 1 — Cross-Sectional Momentum</h1>
+<h2 id="the-canonical-quant-strategy">The canonical quant strategy</h2>
+<p>Cross-sectional momentum is the most replicated strategy in quantitative finance: <strong>rank a universe of assets by their recent returns, hold the strongest, and rebalance on a schedule.</strong> It is the direct implementation of the momentum factor, and it is the natural first strategy for any quant trader because it is simple, well-documented, and testable.</p>
+<h2 id="the-idea">The idea</h2>
+<p>The mechanism (from the companion books in this series): investors <em>under-react</em> to information, so prices adjust gradually rather than instantly. The result is that assets which have risen recently tend to <em>keep</em> rising for a while — and assets which have fallen tend to <em>keep</em> falling. Cross-sectional momentum captures this by <strong>always holding the recent winners.</strong></p>
+<p>Crucially, it is <em>cross-sectional</em>: it ranks assets <em>against each other</em>, so it is always fully invested in <em>something</em> — the best of the available options.</p>
+<h2 id="the-rules">The rules</h2>
+<p><strong>Universe:</strong> a liquid stock universe (the NIFTY 500, or a liquid subset), with a liquidity filter (minimum average daily turnover).</p>
+<p><strong>Signal (the ranking):</strong> for each asset, compute its <strong>trailing 12-month total return, skipping the most recent month</strong> (the "12-1" convention — the last month is skipped because it is dominated by short-term <em>reversal</em>, which is the opposite of momentum).</p>
+<p><strong>Selection:</strong> rank by this signal and hold the <strong>top decile</strong> (or, practically, the top 10–20 names), equal-weighted.</p>
+<p><strong>Rebalance:</strong> <strong>monthly</strong> (canonical) or quarterly (lower turnover).</p>
+<p><strong>Exit:</strong> an asset is sold when it falls out of the top group at a rebalance. There is no stop — the rebalance <em>is</em> the exit.</p>
+<h2 id="pseudocode">Pseudocode</h2>
+<pre><code>universe = liquid_stocks(min_avg_turnover = X)
+
+every month:
+    for each stock in universe:
+        signal[stock] = total_return(stock, skip=1, window=12_months)
+
+    rank = sort(universe, by=signal, descending)
+    holdings = rank[0 : top_N]
+
+    # rotate: sell what dropped out, buy what entered
+    sell(previous_holdings not in holdings)
+    buy(holdings not in previous_holdings)
+    size each holding equal-weight (or 1/top_N of capital)
+</code></pre>
+<h2 id="historical-context">Historical context</h2>
+<p>This is the strategy that <em>defined</em> the momentum literature — the "buy winners, sell losers" construction documented across markets and decades, including Indian equities. The long-only version (hold winners, hold cash/benchmark rather than shorting losers) retains most of the benefit with far less risk, because it avoids the short side's crash exposure.</p>
+<p>Framed honestly: <em>historically, a diversified portfolio of the strongest 12-1 performers, rebalanced monthly, has tended to outperform the broad market over multi-year horizons — punctuated by sharp reversals in which the prior losers recover fastest.</em></p>
+<h2 id="risks-and-limitations">Risks and limitations</h2>
+<ul>
+<li><strong>Momentum crashes.</strong> After a sharp market bottom, prior <em>losers</em> snap back hardest, and the portfolio (holding prior winners) lags sharply for a period. This is the known, unavoidable risk.</li>
+<li><strong>Turnover and costs.</strong> Monthly rotation generates trading; in India, STT, brokerage, and impact costs on frequent churn can consume the edge. A quarterly schedule or a slightly larger top-N reduces this.</li>
+<li><strong>Concentration and style drift.</strong> Holding 10–20 names is concentrated, and can become heavily tilted to one or two sectors that happened to lead.</li>
+<li><strong>Parameter fragility.</strong> The exact lookback (12 vs. 9 vs. 6 months) and skip (1 vs. 0 months) shift results; a robust implementation should show an edge across a <em>range</em> of these, not a single lucky setting (Chapter 9).</li>
+</ul>
+<h2 id="summary_3">Summary</h2>
+<ul>
+<li>Rank by 12-1 trailing return; hold the top decile / top N; rebalance monthly.</li>
+<li>The canonical momentum strategy, replicated across markets including India.</li>
+<li>Long-only, equal-weighted version retains the edge with less crash risk.</li>
+<li>Risks: momentum crashes, turnover costs, concentration, parameter fragility.</li>
+</ul>
+<p>Next: Strategy 2 — mean reversion and pairs trading.</p>
+<h1 id="5-strategy-2-mean-reversion-and-pairs">5. Strategy 2 — Mean Reversion and Pairs</h1>
+<h2 id="betting-that-extremes-snap-back">Betting that extremes snap back</h2>
+<p>Mean reversion is the <em>opposite</em> of momentum: it bets that <strong>prices that have moved too far, too fast will snap back toward their average.</strong> Where momentum buys strength, mean reversion fades it. This chapter covers the two canonical forms: single-asset mean reversion and <strong>pairs trading</strong>.</p>
+<h2 id="the-idea_1">The idea</h2>
+<p>The mechanism: markets <em>overshoot</em>. In the short term, a sharp move is often driven by temporary flows — panic, euphoria, forced selling — that push price beyond where fundamentals or normal behaviour justify. The overshoot then <em>reverts</em>.</p>
+<p>The essential caveat is that mean reversion is a <strong>short-horizon</strong> phenomenon: it works over days to weeks, and it works <em>against</em> the longer-term trend. A stock that is rising in a genuine uptrend is not "overbought"; it is strong. Fading a trend is the classic way to lose money — which is why every serious mean-reversion strategy includes a <strong>trend filter</strong>.</p>
+<h2 id="single-asset-mean-reversion">Single-asset mean reversion</h2>
+<p><strong>The rules:</strong></p>
+<ul>
+<li><strong>Universe:</strong> liquid stocks (or a liquid index).</li>
+<li><strong>Trend filter:</strong> only take <em>longs</em> when the asset is <strong>above its long-term MA</strong> (e.g., 200-day) — i.e., only buy dips <em>within an uptrend</em>.</li>
+<li><strong>Signal:</strong> a short-term oversold extreme — e.g., the <strong>2-period RSI (RSI-2) closing below 5</strong> (a deeply oversold reading after a sharp drop).</li>
+<li><strong>Entry:</strong> at the close of the oversold day.</li>
+<li><strong>Exit:</strong> when price closes back <strong>above the 5-day MA</strong> (or after a fixed few days).</li>
+<li><strong>Stop:</strong> below the entry day's low, for the times the bounce never comes.</li>
+</ul>
+<p><strong>Pseudocode:</strong></p>
+<pre><code>for each stock in liquid_universe:
+    if close &gt; sma(close, 200):            # trend filter: only dip-buy in uptrends
+        rsi2 = rsi(close, length=2)
+        if rsi2 &lt; 5 and no open position:   # deeply short-term oversold
+            enter_long(close)
+        if in_position and close &gt; sma(close, 5):  # bounce confirmed
+            exit_long()
+        if in_position and close &lt; entry_day_low:  # failed bounce
+            exit_long()   # stop
+</code></pre>
+<h2 id="pairs-trading">Pairs trading</h2>
+<p>Pairs trading is mean reversion applied to <strong>two assets</strong> rather than one: it bets that a <em>spread</em> between two related assets will revert, regardless of the market's overall direction.</p>
+<p><strong>The idea:</strong> two highly <em>correlated</em> assets (e.g., two large banks, or an index and its constituents) tend to move together. When their spread diverges abnormally far, it tends to come back together. A pairs trader goes long the underperformer and short the outperformer, profiting from the convergence.</p>
+<p><strong>The rules:</strong></p>
+<ul>
+<li><strong>Pair selection:</strong> find two fundamentally related, highly correlated assets (e.g., correlation &gt; 0.8 over a long window), ideally co-integrated (a statistical test that their spread is stationary — meaning it <em>reverts</em>, not just moves together).</li>
+<li><strong>Signal:</strong> compute the <strong>spread</strong> = price ratio (or log-ratio) of the two assets. When the spread is more than <code>k</code> standard deviations from its own mean, the pair is "stretched."</li>
+<li><strong>Entry:</strong> long the cheap leg, short the rich leg (market-neutral — the market's direction is largely cancelled).</li>
+<li><strong>Exit:</strong> when the spread reverts back to its mean (or a stop if it diverges further).</li>
+</ul>
+<p><strong>Pseudocode:</strong></p>
+<pre><code>for each candidate pair (A, B) in related_universe:
+    spread = log(price_A) - log(price_B)      # or price ratio
+    mean, sd = rolling(mean, sd, spread, window)
+    z = (spread - mean) / sd
+
+    if z &gt; +2 and no position:   # A rich vs B, expect convergence
+        enter(short A, long B)
+    if z &lt; -2 and no position:   # A cheap vs B
+        enter(long A, short B)
+    if z crosses 0:              # converged
+        exit()
+    if |z| &gt; 4:                 # diverged further (stop)
+        exit()
+</code></pre>
+<h2 id="historical-context_1">Historical context</h2>
+<p>Mean reversion is one of the oldest and most documented trading patterns — the short-horizon "reversal" effect is the mirror image of momentum, and both coexist at <em>different horizons</em> (reversal at days-to-weeks, momentum at months). Pairs trading has been a staple of statistical-arbitrage desks for decades. The unifying truth: <strong>reversion works at short horizons, <em>with</em> the trend, and against temporary overshoots</strong> — not against genuine trends.</p>
+<h2 id="risks-and-limitations_1">Risks and limitations</h2>
+<ul>
+<li><strong>Catching falling knives.</strong> Without the trend filter, single-asset mean reversion buys every crash and loses badly. <strong>The trend filter is the strategy.</strong></li>
+<li><strong>Correlation breakdown.</strong> Pairs that were correlated can <em>de-correlate</em> (a merger, a shock, a regime change), and the spread never reverts — the classic pairs-trading loss. Co-integration testing and a divergence stop are the defences.</li>
+<li><strong>Shorting constraints in India.</strong> Pairs trading requires shorting one leg, which for retail is constrained for stocks (and clean only via index derivatives). This limits the practical universe.</li>
+<li><strong>Frequent small losses.</strong> Mean reversion has a high win rate but occasional larger losses; costs and strict stops matter.</li>
+</ul>
+<h2 id="summary_4">Summary</h2>
+<ul>
+<li>Mean reversion fades short-term overshoots, against the longer trend.</li>
+<li>Single-asset: RSI-2 &lt; 5 below the 200-day MA, exit above the 5-day MA, stop below entry low.</li>
+<li>Pairs: trade a correlated pair's spread back to its mean, market-neutral.</li>
+<li>Reversion works at short horizons <em>with</em> the trend — never against a genuine trend.</li>
+<li>Risks: falling knives, correlation breakdown, shorting constraints, cost.</li>
+</ul>
+<p>Next: Strategy 3 — time-series trend following.</p>
+<h1 id="6-strategy-3-time-series-trend-following">6. Strategy 3 — Time-Series Trend Following</h1>
+<h2 id="an-assets-own-past-as-the-signal">An asset's own past, as the signal</h2>
+<p>Cross-sectional momentum ranks assets <em>against each other</em>. <strong>Time-series momentum</strong> (also called <em>trend following</em> or <em>absolute momentum</em>) asks a different question: <strong>is this asset above its own past?</strong> It holds an asset when it is trending up <em>relative to its own history</em>, and steps aside (or goes short) when it is not.</p>
+<h2 id="the-idea_2">The idea</h2>
+<p>The mechanism is the same under-reaction as cross-sectional momentum, applied to an asset's <em>own</em> history: an asset that has risen over the past 6–12 months has, historically, tended to keep rising — and an asset that has fallen has tended to keep falling. Time-series momentum formalises this with a single, robust rule: <strong>be long when the asset is above its trend, out when below.</strong></p>
+<p>Its greatest practical virtue is <strong>drawdown avoidance</strong>: it keeps you out of the market (or defensive) during sustained downtrends, which is where most long-term damage happens.</p>
+<h2 id="the-rules-the-canonical-form">The rules (the canonical form)</h2>
+<p><strong>Universe:</strong> any asset you intend to hold — a broad index (NIFTY), a set of sector indices, or a basket of assets (Indian equities, global equities, gold, bonds).</p>
+<p><strong>Signal:</strong> the asset's price relative to its <strong>200-day (or 10-month) simple moving average</strong>:</p>
+<ul>
+<li>Price <strong>above</strong> the MA → <strong>long</strong>.</li>
+<li>Price <strong>below</strong> the MA → <strong>cash</strong> (or defensive asset).</li>
+</ul>
+<p><strong>Rebalance:</strong> check the signal <strong>monthly</strong> (at month-end). Checking daily adds whipsaw without much benefit.</p>
+<p><strong>Position:</strong> fully in, or fully out. (A multi-asset version applies the same rule to each asset, holding only those above their trend.)</p>
+<h2 id="pseudocode_1">Pseudocode</h2>
+<pre><code>for each asset in basket:
+    state[asset] = &quot;long&quot; if close &gt; sma(close, 200) else &quot;cash&quot;
+
+every month_end:
+    for each asset:
+        if state[asset] == &quot;long&quot; and not invested(asset):
+            buy(asset)
+        if state[asset] == &quot;cash&quot; and invested(asset):
+            sell(asset)
+</code></pre>
+<h2 id="historical-context_2">Historical context</h2>
+<p>Time-series momentum is among the most documented effects in finance. The "above the 200-day MA = in, below = out" rule — and its equivalents — has been shown, across many markets and long periods, to deliver much of the market's return while materially reducing maximum drawdown. The mechanism is <em>avoidance</em> rather than prediction: the rule misses the worst stretches of bear markets, and because losses are asymmetric (a 50% loss needs a 100% gain to recover), avoiding them is worth more than catching every up-move.</p>
+<p>Framed honestly: <em>historically, a simple trend filter has tended to produce equity-comparable long-run returns with smaller drawdowns, at the cost of whipsaw in range-bound markets and late entries/exits at turning points.</em></p>
+<h2 id="risks-and-limitations_2">Risks and limitations</h2>
+<ul>
+<li><strong>Whipsaw in ranges.</strong> In a choppy, sideways market, price crosses the 200-day MA repeatedly, generating a string of small losing round-trips. This is the strategy's known cost, and it is why the monthly (not daily) check matters.</li>
+<li><strong>Late entries and exits.</strong> The rule acts only <em>after</em> the trend has visibly broken, so it always gives up the first leg of recoveries and the last leg of bull markets. The investor must accept being "late."</li>
+<li><strong>Lag in one-way markets.</strong> In a long, steady bull run, a trend filter occasionally steps out on a dip and misses a leg, underperforming buy-and-hold during that stretch.</li>
+<li><strong>Single-asset concentration.</strong> Applied to one index, the strategy is fully in or fully out — no diversification of the timing decision. A multi-asset version smooths this.</li>
+</ul>
+<h2 id="summary_5">Summary</h2>
+<ul>
+<li>Long above the 200-day MA, cash below; check monthly.</li>
+<li>Time-series momentum: an asset's own past predicts its own future.</li>
+<li>The value is drawdown avoidance, not prediction.</li>
+<li>Costs: whipsaw in ranges, lateness at turns, lag in one-way markets.</li>
+<li>A multi-asset version diversifies the timing decision.</li>
+</ul>
+<p>Next: Strategy 4 — factor tilts.</p>
+<h1 id="7-strategy-4-factor-tilts">7. Strategy 4 — Factor Tilts</h1>
+<h2 id="owning-the-characteristics-that-outperform">Owning the characteristics that outperform</h2>
+<p>Factor investing is a different <em>kind</em> of quant strategy: instead of timing or ranking on price alone, it <strong>tilts a portfolio toward the measurable characteristics that have historically been associated with higher returns</strong> — value, quality, size, and momentum. It is the systematic implementation of the classic "what makes a stock good" insights.</p>
+<h2 id="the-idea_3">The idea</h2>
+<p>In modern finance, a <strong>factor</strong> is a measurable characteristic that explains differences in returns across stocks. The four most established equity factors:</p>
+<ul>
+<li><strong>Value</strong> — cheap stocks (low P/E, P/B, P/CF) have historically outperformed expensive ones.</li>
+<li><strong>Quality</strong> — profitable, low-debt, high-return-on-capital businesses have outperformed weak ones.</li>
+<li><strong>Size</strong> — smaller companies have historically earned a premium over larger ones (with caveats).</li>
+<li><strong>Momentum</strong> — recent winners outperform recent losers (the subject of the last three chapters).</li>
+</ul>
+<p>A <strong>factor tilt</strong> is a portfolio that <em>overweights</em> stocks scoring high on one or more factors and <em>underweights</em> (or avoids) the rest. It is the systematic version of "buy good, cheap, trending companies" — done as a ranking and rebalancing problem.</p>
+<h2 id="the-rules-a-quality-value-momentum-tilt">The rules (a quality + value + momentum tilt)</h2>
+<p><strong>Universe:</strong> a liquid stock universe (the NIFTY 500).</p>
+<p><strong>Scoring:</strong> for each stock, compute a composite score from factor metrics:</p>
+<ul>
+<li><strong>Value:</strong> inverse P/E, inverse P/B (higher = cheaper).</li>
+<li><strong>Quality:</strong> ROE, low debt-to-equity, stable margins.</li>
+<li><strong>Momentum:</strong> trailing 12-1 return.</li>
+</ul>
+<p>Standardise each metric (convert to a z-score or percentile rank) so they are comparable, then combine:</p>
+<p>Composite score = w₁·Value + w₂·Quality + w₃·Momentum</p>
+<p><strong>Selection:</strong> hold the <strong>top decile (or quintile)</strong> by composite score, equal- or score-weighted.</p>
+<p><strong>Rebalance:</strong> <strong>quarterly or semi-annually</strong> (factor premia are slow-moving; high frequency adds cost, not edge).</p>
+<h2 id="pseudocode_2">Pseudocode</h2>
+<pre><code>universe = liquid_stocks(min_avg_turnover = X)
+
+every quarter:
+    for each stock in universe:
+        value_score  = zscore(-1 * pe_ratio) + zscore(-1 * pb_ratio)
+        qual_score   = zscore(roe) + zscore(-1 * debt_to_equity)
+        mom_score    = zscore(trailing_12m_return, skip=1)
+
+        composite = w1*value_score + w2*qual_score + w3*mom_score
+
+    rank = sort(universe, by=composite, descending)
+    holdings = rank[0 : top_N]
+    rebalance to holdings, equal-weight
+</code></pre>
+<h2 id="historical-context_3">Historical context</h2>
+<p>Factor premia — value, quality, size, momentum — are among the most extensively documented phenomena in academic finance, replicated across markets and decades. The honest nuance, well established in the literature: <strong>individual factors go through long periods of underperformance</strong> (value, in particular, has had extended dry spells), and <strong>combining factors</strong> (which are often uncorrelated) has historically produced a smoother, more robust premium than any single factor alone.</p>
+<p>Framed honestly: <em>historically, portfolios tilted toward cheap, high-quality, positive-momentum companies have tended to outperform the broad market over long horizons — but any single factor can lag for years, and the premium is compensation for real risk.</em></p>
+<h2 id="risks-and-limitations_3">Risks and limitations</h2>
+<ul>
+<li><strong>Factor droughts.</strong> A factor can underperform for a decade (value in the 2010s). A single-factor tilt requires unusual patience; combining factors reduces this.</li>
+<li><strong>Data and definition risk.</strong> The result depends heavily on <em>how</em> you define value, quality, and momentum, and on the quality of the fundamental data. In India, reliable historical fundamental data (especially point-in-time, restated correctly) is harder to obtain than price data.</li>
+<li><strong>Turnover vs. persistence.</strong> Factor premia are slow-moving; over-trading (monthly) adds cost without edge. But too-infrequent rebalancing lets the tilt drift.</li>
+<li><strong>Crowding.</strong> Popular factors (quality, momentum) can become crowded, compressing their premium in certain regimes.</li>
+</ul>
+<h2 id="summary_6">Summary</h2>
+<ul>
+<li>Factor tilts overweight measurable characteristics: value, quality, size, momentum.</li>
+<li>Combine standardised factor scores into a composite; hold the top decile; rebalance quarterly.</li>
+<li>Factors are well-documented but go through long droughts; combining them smooths the ride.</li>
+<li>Risks: factor droughts, data/definition sensitivity, turnover, crowding.</li>
+</ul>
+<p>Next: Strategy 5 — volatility targeting and seasonality.</p>
+<h1 id="8-strategy-5-volatility-targeting-and-seasonality">8. Strategy 5 — Volatility Targeting and Seasonality</h1>
+<h2 id="two-overlay-ideas-that-improve-almost-anything">Two overlay ideas that improve almost anything</h2>
+<p>The first four strategies are <em>alpha</em> ideas — ways to pick what to hold. These last two are <em>overlay</em> ideas: they do not pick assets, they <strong>adjust the size or timing</strong> of whatever you already hold. They are valuable precisely because they can be bolted onto any strategy.</p>
+<h2 id="volatility-targeting">Volatility targeting</h2>
+<p><strong>The idea:</strong> risk is not constant — the market's volatility rises and falls. A fixed position size therefore means <em>variable</em> risk: you are risking far more in a volatile market than a calm one, without intending to. <strong>Volatility targeting</strong> fixes this by <strong>scaling position size inversely to volatility</strong>, so that the <em>risk</em> is constant even as volatility moves.</p>
+<p><strong>The mechanism:</strong> estimate current volatility (e.g., the trailing 20-day standard deviation of returns, or the ATR), set a target volatility, and size accordingly:</p>
+<p>Position size = (Target volatility ÷ Realised volatility) × base size</p>
+<p>When volatility rises, size shrinks; when it falls, size grows — automatically de-risking in turbulent markets and re-risking in calm ones.</p>
+<p><strong>Why it works:</strong> it stabilises the <em>risk</em> of the portfolio, which (as the Risk Management book explains) is what determines survival. Historically, volatility-targeted portfolios have tended to show smoother returns and smaller drawdowns than fixed-size portfolios, for the same underlying holdings.</p>
+<p><strong>Pseudocode:</strong></p>
+<pre><code>target_vol = 10% (annualised)
+realised_vol = std(daily_returns, window=20) * sqrt(252)
+
+leverage = target_vol / realised_vol        # &gt;1 in calm, &lt;1 in volatile
+position_size = base_size * leverage         # capped at some max
+</code></pre>
+<h2 id="seasonality">Seasonality</h2>
+<p><strong>The idea:</strong> markets exhibit <strong>calendar patterns</strong> — returns that are systematically stronger or weaker in specific periods. The best-documented include:</p>
+<ul>
+<li><strong>Month-end / turn-of-month effects</strong> — returns concentrated around month boundaries.</li>
+<li><strong>Specific months</strong> — certain months have historically been stronger or weaker in specific markets.</li>
+<li><strong>The pre-holiday effect</strong> — returns around holidays.</li>
+<li><strong>Payday / SIP flows</strong> — in India, systematic monthly inflows (SIPs, NPS) create recurring liquidity patterns.</li>
+</ul>
+<p><strong>The mechanism:</strong> seasonality effects are driven by <em>recurring flows</em> (payroll/SIP contributions, tax-related selling, window-dressing by funds). They are weak and fragile — far weaker than the factor premia — but they have been repeatedly documented.</p>
+<p><strong>How it is used:</strong> not as a standalone strategy, but as a <strong>tilt</strong> — slightly over-weight positions during historically favourable periods, or adjust entry timing to avoid known weak windows. A seasonality overlay is a <em>small</em> adjustment to a real strategy, not a strategy in itself.</p>
+<h2 id="the-honest-caveat">The honest caveat</h2>
+<p>Both overlays are real but modest, and both carry a specific warning:</p>
+<ul>
+<li><strong>Volatility targeting</strong> is robust and broadly useful — but it does not create alpha; it stabilises risk. It can <em>reduce</em> returns in a strong bull market (because it de-risks as volatility rises) in exchange for smoother drawdowns.</li>
+<li><strong>Seasonality</strong> is weak and fragile; it is the kind of pattern that looks strong in a backtest and evaporates live, and it is a notorious source of overfitting (Chapter 9). Treat any seasonality result with scepticism unless it survives out-of-sample testing.</li>
+</ul>
+<p>Framed honestly: <em>historically, scaling positions to target a constant volatility has tended to smooth returns and reduce drawdowns, while calendar effects have been weak, recurring, and easy to overstate.</em></p>
+<h2 id="summary_7">Summary</h2>
+<ul>
+<li>Volatility targeting scales size inversely to volatility, holding risk constant.</li>
+<li>Seasonality overlays tilt toward historically favourable calendar periods.</li>
+<li>Both are overlays that improve an existing strategy, not standalone alpha.</li>
+<li>Volatility targeting is robust and stabilises risk; seasonality is weak and overfit-prone.</li>
+</ul>
+<p>Next: the backtesting pitfalls that make every strategy in this book look better than it is.</p>
+<h1 id="9-backtesting-pitfalls">9. Backtesting Pitfalls</h1>
+<h2 id="the-ways-a-backtest-lies">The ways a backtest lies</h2>
+<p>Every strategy in this book — indeed, every quant strategy ever written — will look better in a backtest than it performs live. The gap is not random; it is caused by a specific, well-understood set of <strong>biases and errors</strong>. This chapter names them, because the entire point of quant trading is to <em>test honestly</em> — and an honest test requires knowing how tests lie.</p>
+<h2 id="the-seven-deadly-pitfalls">The seven deadly pitfalls</h2>
+<h3 id="1-look-ahead-bias">1. Look-ahead bias</h3>
+<p>Using information that was <strong>not available at decision time</strong>. Example: ranking on a company's <em>today's</em> market capitalisation when backtesting <em>last year's</em> decision — but last year the market cap was different.</p>
+<p><strong>The test:</strong> for every data point, ask "did I <em>actually know</em> this on the day the trade was made?" If not, the backtest is fantasy. Look-ahead bias is the single most common source of inflated results.</p>
+<h3 id="2-survivorship-bias">2. Survivorship bias</h3>
+<p>Backtesting on the universe of companies that <strong>exist today</strong>, ignoring those that delisted, went bankrupt, or merged away. The survivors are, by definition, the ones that did well — so the backtest inherits an upward bias.</p>
+<p><strong>The fix:</strong> use a <strong>point-in-time universe</strong> — the actual list of tradeable names <em>on each historical date</em>, including the ones that later disappeared.</p>
+<h3 id="3-overfitting-curve-fitting">3. Overfitting (curve-fitting)</h3>
+<p>Tuning the strategy's parameters until it fits the <em>historical</em> data perfectly — and therefore fits the <em>future</em> not at all. An overfit backtest has a beautiful equity curve and no predictive power.</p>
+<p><strong>The signs:</strong> a Sharpe that is <em>too</em> good (a Sharpe of 3+ is suspicious), an edge that appears only for one specific parameter value, and a strategy with no economic rationale.</p>
+<p><strong>The fix:</strong> keep the strategy <em>simple</em> (few parameters), demand an economic mechanism (not just a fit), and test <strong>robustness</strong> — does the edge survive if you nudge every parameter? A robust edge is flat-topped; an overfit one is a single sharp spike.</p>
+<h3 id="4-ignoring-transaction-costs">4. Ignoring transaction costs</h3>
+<p>Backtesting on prices alone, forgetting that every trade costs brokerage, STT, stamp duty, and the <strong>bid-ask spread</strong> (which is often the largest cost of all, especially in illiquid names).</p>
+<p><strong>The test:</strong> re-run the backtest <em>with</em> realistic costs, including slippage. In India, STT and the spread on churning strategies are frequently enough to turn a "profitable" strategy negative — especially for high-turnover strategies like monthly momentum rotation.</p>
+<h3 id="5-ignoring-liquidity-and-capacity">5. Ignoring liquidity and capacity</h3>
+<p>Backtesting as if you could trade any size, in any name, at the last price. In reality, an illiquid small-cap cannot absorb your order without moving the price against you.</p>
+<p><strong>The fix:</strong> impose a <strong>liquidity filter</strong> (minimum average turnover) in the backtest, and estimate <em>impact</em> — the price you would actually get, not the printed price.</p>
+<h3 id="6-small-samples-and-regime-luck">6. Small samples and regime luck</h3>
+<p>A backtest over a short period — or over a single market regime — proves almost nothing. A strategy tested only in a bull market has learned nothing about bear markets; a strategy with 20 trades is statistically indistinguishable from noise.</p>
+<p><strong>The fix:</strong> demand a <strong>large trade count</strong> and <strong>multi-regime coverage</strong> (bull, bear, and range), and prefer longer histories. If the history is short, treat the result as a hypothesis, not an answer.</p>
+<h3 id="7-multiple-testing-data-snooping">7. Multiple-testing (data snooping)</h3>
+<p>Testing hundreds of strategies and reporting the one that happened to work. By pure chance, <em>some</em> of hundreds of random strategies will look good — and you have selected exactly those. This is the silent killer of quant credibility.</p>
+<p><strong>The fix:</strong> account for the number of tests. If you tried 100 strategies, expect ~5 to look good by luck alone. The honest question is: <strong>does this one survive out-of-sample testing it was never fit on?</strong></p>
+<h2 id="the-one-test-that-catches-most-of-them-out-of-sample">The one test that catches most of them: out-of-sample</h2>
+<p>The single most valuable defence is the <strong>out-of-sample test</strong>: develop the strategy on one period, and <em>then</em> — without further tweaking — test it on a later, unseen period. A strategy whose edge persists out-of-sample is worth something; one that collapses out-of-sample was overfit.</p>
+<p>Closely related is <strong>walk-forward testing</strong>: repeatedly fit on a rolling window and test on the <em>next</em> window, mimicking how you would actually use the strategy.</p>
+<h2 id="the-honest-mindset">The honest mindset</h2>
+<p>The purpose of a backtest is not to <em>prove</em> a strategy works; it is to <strong>try to prove it does not</strong>. A backtest that you have attacked with every pitfall in this chapter — costs added, survivorship removed, look-ahead hunted down, parameters stressed, out-of-sample tested — and that <em>still</em> shows an edge, is the only backtest worth trusting.</p>
+<p>The default assumption must be: <strong>my backtest is lying.</strong> The work is finding out how.</p>
+<h2 id="summary_8">Summary</h2>
+<ul>
+<li>Seven pitfalls: look-ahead, survivorship, overfitting, ignored costs, ignored liquidity, small samples, multiple-testing.</li>
+<li>Look-ahead and survivorship are the most common and most damaging.</li>
+<li>Ignored costs (STT, spread, impact) frequently erase retail edges.</li>
+<li>Overfitting and data-snooping make backtests look better than reality.</li>
+<li>Out-of-sample / walk-forward testing is the single best defence.</li>
+<li>Treat the backtest as an attempt to <em>disprove</em> the strategy, not prove it.</li>
+</ul>
+<p>Next: from backtest to live — the gap where even honest strategies go wrong.</p>
+<h1 id="10-from-backtest-to-live">10. From Backtest to Live</h1>
+<h2 id="the-gap-where-honest-strategies-still-fail">The gap where honest strategies still fail</h2>
+<p>An honest, out-of-sample-tested backtest with a real edge can still lose money live — because the live world differs from the backtest in ways that are easy to forget. This chapter covers the gap, and how to cross it.</p>
+<h2 id="the-four-gaps">The four gaps</h2>
+<h3 id="1-the-execution-gap">1. The execution gap</h3>
+<p>The backtest assumes you trade at the signal price, instantly, with no slippage. Live, you trade at <strong>the market's price</strong>, which is different:</p>
+<ul>
+<li><strong>Slippage</strong> — the difference between the price you expected and the price you got, especially in fast markets or illiquid names.</li>
+<li><strong>Latency</strong> — the delay between the signal firing and the order reaching the market.</li>
+<li><strong>Partial fills</strong> — not getting the full order filled at one price.</li>
+</ul>
+<p><strong>The fix:</strong> pad the backtest with realistic slippage, trade liquid instruments, and measure live execution against the backtest's assumption — if you consistently fill worse than modelled, the edge is smaller than you thought.</p>
+<h3 id="2-the-cost-gap">2. The cost gap</h3>
+<p>The backtest estimated costs; live, the real costs — brokerage, STT, stamp duty, the spread, and impact — are often larger, and they arrive in places the backtest ignored (a strategy that rebalances at the close, for example, pays the <em>close-auction</em> spread).</p>
+<p><strong>The fix:</strong> over-estimate costs in the backtest. If the edge survives <em>pessimistic</em> costs, it is robust; if it needs optimistic costs to survive, it is fragile.</p>
+<h3 id="3-the-data-gap">3. The data gap</h3>
+<p>The backtest used clean, adjusted, complete data. Live data is <strong>messy</strong>: it arrives late, contains errors, misses corporate actions, and sometimes simply is not there. A strategy that depends on data that is only available <em>after</em> the fact is backtesting with look-ahead it does not even know about.</p>
+<p><strong>The fix:</strong> build the live data pipeline <em>separately</em> from the backtest data, and reconcile the two — if the live signals differ from the backtest signals on the same day, find out why before trusting either.</p>
+<h3 id="4-the-psychological-gap">4. The psychological gap</h3>
+<p>The backtest is a line on a screen; live is real money, and it <em>feels</em> different. A 20% drawdown that was an abstract number in a backtest becomes a crisis live — and the trader responds by abandoning the strategy (usually at the drawdown's bottom).</p>
+<p><strong>The fix:</strong> the Risk Management book's framework — size small, know the drawdown in advance, and pre-commit to staying the course. The strategy's worst drawdown should be <em>known and accepted</em> before going live, not discovered at the bottom.</p>
+<h2 id="the-live-protocol">The live protocol</h2>
+<p>A disciplined path from backtest to live:</p>
+<ol>
+<li><strong>Paper trade first.</strong> Run the strategy live, in real time, with no (or tiny) money, for weeks to months. This is where execution, cost, and data gaps surface — cheaply.</li>
+<li><strong>Go live small.</strong> Even after paper trading, start at a fraction of intended size. Live reveals what paper could not.</li>
+<li><strong>Reconcile live vs. backtest.</strong> Track the live performance against what the backtest <em>predicted</em> for the same period. A persistent gap means a modelling error, not bad luck.</li>
+<li><strong>Monitor for decay.</strong> Edges decay. Watch for the point where the strategy's live behaviour stops matching its historical behaviour — and be willing to retire it.</li>
+<li><strong>Retire gracefully.</strong> The hardest decision in quant is retiring a strategy that <em>used to</em> work. Pre-commit to the conditions (a drawdown threshold, a tracking-error threshold, a regime change) under which you stop.</li>
+</ol>
+<h2 id="the-honest-bottom-line">The honest bottom line</h2>
+<p>Quant trading is a <em>process</em>, not a product. The strategy is the least important part of it; the discipline — test honestly, paper trade, go live small, reconcile, monitor, retire — is what determines whether any strategy, from this book or anywhere, actually makes money. The trader who masters the process can turn a modest edge into years of compounding; the one who skips the process will lose money even with a good strategy.</p>
+<h2 id="summary_9">Summary</h2>
+<ul>
+<li>Four gaps: execution, cost, data, and psychology.</li>
+<li>Paper trade before live; go live small; reconcile against the backtest.</li>
+<li>Costs are usually larger live than modelled — over-estimate them.</li>
+<li>Edges decay; pre-commit to retirement conditions.</li>
+<li>The process matters more than the strategy.</li>
+</ul>
+<p>This completes the main text. The appendix collects the metrics and strategies into a reference table.</p>
+<h1 id="appendix-metrics-and-strategy-reference">Appendix — Metrics and Strategy Reference</h1>
+<h2 id="the-metrics-that-matter">The metrics that matter</h2>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Formula / meaning</th>
+<th>What it tells you</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CAGR</td>
+<td>Annualised compound return</td>
+<td>Growth rate (single number)</td>
+</tr>
+<tr>
+<td>Max drawdown</td>
+<td>Worst peak-to-trough fall</td>
+<td>The risk that decides survival</td>
+</tr>
+<tr>
+<td>Volatility</td>
+<td>Std dev of returns</td>
+<td>The bumpiness of the ride</td>
+</tr>
+<tr>
+<td>Sharpe</td>
+<td>(Return − risk-free) ÷ vol</td>
+<td>Return per unit of risk</td>
+</tr>
+<tr>
+<td>Sortino</td>
+<td>Downside-only Sharpe</td>
+<td>Return per unit of <em>bad</em> risk</td>
+</tr>
+<tr>
+<td>Win rate</td>
+<td>Wins ÷ total trades</td>
+<td>Meaningless without payoff</td>
+</tr>
+<tr>
+<td>Profit factor</td>
+<td>Gross profit ÷ gross loss</td>
+<td>Robust edge summary</td>
+</tr>
+<tr>
+<td>Expectancy</td>
+<td>(Win% × AvgWin) − (Loss% × AvgLoss)</td>
+<td>The minimum bar</td>
+</tr>
+</tbody>
+</table>
+<h2 id="the-five-strategies-at-a-glance">The five strategies at a glance</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Strategy</th>
+<th>Signal</th>
+<th>Position / exit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Cross-sectional momentum</td>
+<td>Rank by 12-1 return</td>
+<td>Hold top decile; rebalance monthly</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Mean reversion / pairs</td>
+<td>RSI-2 oversold in uptrend; or pair spread z-score</td>
+<td>Bounce / convergence; stop on failure</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Time-series trend</td>
+<td>Price vs. 200-day MA</td>
+<td>Long above, cash below; check monthly</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Factor tilts</td>
+<td>Composite of value/quality/momentum z-scores</td>
+<td>Hold top decile; rebalance quarterly</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Vol targeting / seasonality</td>
+<td>Scale to target vol; calendar tilt</td>
+<td>Overlays on an existing strategy</td>
+</tr>
+</tbody>
+</table>
+<h2 id="the-universal-rules">The universal rules</h2>
+<ul>
+<li>Every strategy = <strong>universe + signal + sizing + exit</strong>.</li>
+<li>An idea needs a <strong>mechanism</strong>, not just a backtest.</li>
+<li><strong>Test to disprove</strong>: add costs, remove survivorship, hunt look-ahead, stress parameters.</li>
+<li><strong>Out-of-sample</strong> is the single best test.</li>
+<li><strong>Paper trade → live small → reconcile → monitor → retire.</strong> The process is the edge.</li>
+</ul></body></html>

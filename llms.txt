@@ -1,6 +1,6 @@
 # StratLab Trading Library
 
-> Free, open-source reference books on Indian (NSE) markets: options, momentum trading, momentum investing, and swing trading. Educational only — not investment advice; StratLab is not SEBI-registered. Content is AI-drafted and human-reviewed, not exhaustively fact-checked — verify specific numbers, formulas, and citations before relying on them. See /README.md for the full disclaimer and a log of corrections made during review.
+> Free, open-source reference books on Indian (NSE) markets: options, momentum, swing trading, techno-funda investing, quant trading, risk management, and systematic trading frameworks. Educational only — not investment advice; StratLab is not SEBI-registered. Content is AI-drafted and human-reviewed, not exhaustively fact-checked — verify specific numbers, formulas, and citations before relying on them. See /README.md for the full disclaimer and a log of corrections made during review.
 
 <!-- Links below assume this repo is published as github.com/ivrwealth-ui/trading-library. If it ends up under a different org/username, update every raw.githubusercontent.com/ivrwealth-ui/trading-library path in this file to match. -->
 
@@ -19,6 +19,22 @@
 ## Swing Trading
 
 - [Swing Trading: Capture Multi-Day Moves](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Swing-Trading/Swing-Trading-Capture-Multi-Day-Moves-with-Five-Proven-Continuation-and-Reversion-Strategies.md): 10 chapters + appendix. Five days-to-weeks strategies split across both market regimes — pullback continuation, breakout and retest, new-high momentum (continuation); RSI-2 mean reversion, range fade (reversion) — with explicit guidance on reading which regime you're in, trade plans, and risk arithmetic.
+
+## Techno-Funda
+
+- [Techno-Funda](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Techno-Funda/Techno-Funda-Strategy-Ideas-That-Combine-Fundamental-Quality-with-Technical-Timing.md): 10 chapters + appendix. Five ideas fusing a fundamental screen (quality, growth, value, dividend, earnings momentum) with a technical trigger (breakout, pullback, reversal), plus a repeatable screening workflow.
+
+## Risk Management
+
+- [Risk Management and Position Sizing](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Risk-Management/Risk-Management-and-Position-Sizing-The-Discipline-That-Keeps-You-in-the-Game.md): 9 chapters + appendix. The math of ruin and drawdown, the 1-2% risk-per-trade foundation, five position-sizing methods (fixed-fraction, fixed-ratio, ATR, Kelly, fractional-Kelly), stop types, portfolio-level risk, margin/leverage/tail risk, and a written risk-framework template. Applies across every other book in this library.
+
+## Quant Trading
+
+- [Quant Trading: Strategies and Ideas](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Quant-Trading/Quant-Trading-Strategies-and-Ideas.md): 10 chapters + appendix. The idea-to-live pipeline, evaluation metrics (Sharpe, Sortino, profit factor, expectancy), five systematic strategies (cross-sectional momentum, mean reversion/pairs, time-series trend, factor tilts, vol targeting/seasonality) with pseudocode, seven backtesting pitfalls, and the gap between backtest and live.
+
+## Systematic Trading Framework
+
+- [How to Build a Framework for Systematic Trading](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Systematic-Trading-Framework/How-to-Build-a-Framework-for-Systematic-Trading.md): 10 chapters + appendix. The eight-stage lifecycle (idea → hypothesis → data → signal → backtest → paper → live → review/retire), data integrity, signal design, portfolio construction, honest backtesting, execution/monitoring, and governance — the infrastructure the other books' strategies plug into.
 
 ## Optional
 

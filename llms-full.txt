@@ -79,3 +79,58 @@
 - [9. Trade Plans and Risk Management](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Swing-Trading/chapters/09-trade-plans-risk.md)
 - [10. Psychology and Common Mistakes](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Swing-Trading/chapters/10-psychology.md)
 - [Appendix — Strategy Quick-Reference Table](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Swing-Trading/chapters/appendix-strategy-table.md)
+
+## Techno-Funda
+
+- [1. What Is Techno-Funda?](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Techno-Funda/chapters/01-what-is-techno-funda.md)
+- [2. Why Combine Fundamentals and Technicals?](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Techno-Funda/chapters/02-why-combine.md)
+- [3. The Fundamental Screen](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Techno-Funda/chapters/03-fundamental-screen.md)
+- [4. The Technical Timing Layer](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Techno-Funda/chapters/04-technical-timing-layer.md)
+- [5. Idea 1 — Quality + Uptrend](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Techno-Funda/chapters/05-idea-quality-uptrend.md)
+- [6. Idea 2 — Growth + Breakout](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Techno-Funda/chapters/06-idea-growth-breakout.md)
+- [7. Idea 3 — Value + Reversal Timing](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Techno-Funda/chapters/07-idea-value-reversal.md)
+- [8. Idea 4 — Dividend + Trend](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Techno-Funda/chapters/08-idea-dividend-trend.md)
+- [9. Idea 5 — Earnings Momentum + Relative Strength](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Techno-Funda/chapters/09-idea-earnings-momentum-rs.md)
+- [10. Building the Screening Workflow](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Techno-Funda/chapters/10-screening-workflow.md)
+- [Appendix — Strategy Quick-Reference Table](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Techno-Funda/chapters/appendix-strategy-table.md)
+
+## Risk Management
+
+- [1. Why Risk Management Is the Real Edge](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Risk-Management/chapters/01-why-risk-is-the-edge.md)
+- [2. The Math of Ruin and Drawdown](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Risk-Management/chapters/02-math-of-ruin.md)
+- [3. The Risk-Per-Trade Foundation](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Risk-Management/chapters/03-risk-per-trade.md)
+- [4. Position Sizing Methods](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Risk-Management/chapters/04-sizing-methods.md)
+- [5. Stops: Types and Placement](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Risk-Management/chapters/05-stops.md)
+- [6. Portfolio-Level Risk](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Risk-Management/chapters/06-portfolio-risk.md)
+- [7. Margin, Leverage, and Tail Risk](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Risk-Management/chapters/07-margin-leverage-tail.md)
+- [8. Sizing for Different Strategy Families](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Risk-Management/chapters/08-sizing-by-family.md)
+- [9. Building a Risk Framework](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Risk-Management/chapters/09-risk-framework.md)
+- [Appendix — Sizing Formulas](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Risk-Management/chapters/appendix-sizing-formulas.md)
+
+## Quant Trading
+
+- [1. What Is Quant Trading?](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Quant-Trading/chapters/01-what-is-quant.md)
+- [2. The Quant Pipeline](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Quant-Trading/chapters/02-pipeline.md)
+- [3. The Toolkit and Evaluation Metrics](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Quant-Trading/chapters/03-metrics.md)
+- [4. Strategy 1 — Cross-Sectional Momentum](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Quant-Trading/chapters/04-strategy-cross-sectional-momentum.md)
+- [5. Strategy 2 — Mean Reversion and Pairs](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Quant-Trading/chapters/05-strategy-mean-reversion-pairs.md)
+- [6. Strategy 3 — Time-Series Trend Following](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Quant-Trading/chapters/06-strategy-time-series-trend.md)
+- [7. Strategy 4 — Factor Tilts](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Quant-Trading/chapters/07-strategy-factor-tilts.md)
+- [8. Strategy 5 — Volatility Targeting and Seasonality](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Quant-Trading/chapters/08-strategy-vol-targeting-seasonality.md)
+- [9. Backtesting Pitfalls](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Quant-Trading/chapters/09-backtesting-pitfalls.md)
+- [10. From Backtest to Live](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Quant-Trading/chapters/10-backtest-to-live.md)
+- [Appendix — Metrics and Strategy Reference](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Quant-Trading/chapters/appendix-metrics-strategy.md)
+
+## Systematic Trading Framework
+
+- [1. What Is Systematic Trading?](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Systematic-Trading-Framework/chapters/01-what-is-systematic.md)
+- [2. The Framework Lifecycle](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Systematic-Trading-Framework/chapters/02-lifecycle.md)
+- [3. From Idea to Testable Hypothesis](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Systematic-Trading-Framework/chapters/03-idea-to-hypothesis.md)
+- [4. Data: Sourcing, Cleaning, and Integrity](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Systematic-Trading-Framework/chapters/04-data.md)
+- [5. Signal Generation](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Systematic-Trading-Framework/chapters/05-signal-generation.md)
+- [6. Portfolio Construction and Position Sizing](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Systematic-Trading-Framework/chapters/06-portfolio-construction.md)
+- [7. Backtesting Done Right](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Systematic-Trading-Framework/chapters/07-backtesting-done-right.md)
+- [8. Execution, Costs, and Monitoring](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Systematic-Trading-Framework/chapters/08-execution-monitoring.md)
+- [9. Risk Management and Governance](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Systematic-Trading-Framework/chapters/09-risk-governance.md)
+- [10. A Working Framework Template](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Systematic-Trading-Framework/chapters/10-working-template.md)
+- [Appendix — Lifecycle Checklist](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Systematic-Trading-Framework/chapters/appendix-lifecycle-checklist.md)

@@ -1,0 +1,674 @@
+<!DOCTYPE html><html><head><meta charset='utf-8'><style>
+* { box-sizing: border-box; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 11pt; line-height: 1.62; color: #1a1d21; margin: 0;
+}
+.cover {
+  height: 100vh; page-break-after: always;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 3cm 2.5cm; background: #0d1715; color: #e8f0ee;
+}
+.cover .rule { width: 64px; height: 4px; background: #2dd4bf; margin-bottom: 2.2rem; }
+.cover h1 { font-size: 38pt; line-height: 1.08; font-weight: 600; color: #fff; margin: 0 0 1.4rem; letter-spacing: -0.5px; }
+.cover .subtitle { font-size: 15pt; color: #9fb5ae; line-height: 1.5; max-width: 34em; }
+.cover .pub { margin-top: 3rem; font-size: 11pt; letter-spacing: 0.14em; text-transform: uppercase; color: #2dd4bf; }
+.cover .ednote { margin-top: 0.6rem; font-size: 9pt; color: #6c817b; }
+h1 { font-size: 23pt; font-weight: 600; color: #0f172a; page-break-before: always; margin: 0 0 1.1rem; padding-bottom: 0.4rem; border-bottom: 2px solid #2dd4bf; }
+h2 { font-size: 15.5pt; font-weight: 600; color: #0f766e; margin: 1.6rem 0 0.6rem; }
+h3 { font-size: 12.5pt; font-weight: 600; color: #1a1d21; margin: 1.2rem 0 0.4rem; }
+p { margin: 0.5rem 0; }
+strong { color: #0f172a; }
+em { color: #334155; }
+a { color: #0f766e; text-decoration: none; }
+hr { border: none; border-top: 1px solid #e2e8f0; margin: 2rem 0; }
+ul, ol { margin: 0.5rem 0 0.8rem; padding-left: 1.5rem; }
+li { margin: 0.25rem 0; }
+code { font-family: 'SF Mono', Menlo, Consolas, monospace; font-size: 9pt; background: #f1f5f9; padding: 1px 5px; border-radius: 3px; color: #0f766e; }
+pre { background: #0f172a; color: #e2e8f0; padding: 0.9rem 1.1rem; border-radius: 6px; font-size: 9pt; line-height: 1.5; white-space: pre-wrap; word-wrap: break-word; }
+pre code { background: none; color: inherit; padding: 0; }
+blockquote { border-left: 3px solid #2dd4bf; background: #f0fdfa; margin: 0.8rem 0; padding: 0.7rem 1rem; color: #0f3d37; font-style: italic; border-radius: 0 4px 4px 0; }
+blockquote p { margin: 0.3rem 0; }
+table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: 9.5pt; page-break-inside: avoid; }
+th, td { border: 1px solid #dbe3e8; padding: 5px 8px; text-align: left; vertical-align: top; }
+th { background: #0f766e; color: #fff; font-weight: 600; }
+tr:nth-child(even) td { background: #f8fafc; }
+h1:first-of-type { page-break-before: auto; }
+h2#important-disclaimer, h2#how-to-read-this-book, h2#table-of-contents { page-break-before: always; }
+</style></head><body><section class="cover"><div class="rule"></div><h1>How to Build a Framework for Systematic Trading</h1><div class="subtitle">A complete, step-by-step architecture for turning ideas into rules, testing them honestly, and running them live — with an education-only disclaimer.</div><div class="pub">Published by StratLab</div><div class="ednote">Educational content only — not investment advice. StratLab is not SEBI-registered.</div></section><h1 id="how-to-build-a-framework-for-systematic-trading">How to Build a Framework for Systematic Trading</h1>
+<h2 id="a-complete-step-by-step-architecture-for-turning-ideas-into-rules-testing-them-honestly-and-running-them-live-with-an-education-only-disclaimer">A complete, step-by-step architecture for turning ideas into rules, testing them honestly, and running them live — with an education-only disclaimer.</h2>
+<hr />
+<p><strong>Published by StratLab</strong></p>
+<hr />
+<h2 id="important-disclaimer">Important Disclaimer</h2>
+<p>This book is provided for <strong>educational purposes only</strong>. It is not investment advice, a recommendation, or a solicitation to buy or sell any security.</p>
+<ul>
+<li><strong>StratLab is not registered with SEBI</strong> as an investment adviser, research analyst, or portfolio manager, and does not provide investment advisory services.</li>
+<li>Trading and investing involve substantial risk of loss, including the possible loss of principal. Past performance never guarantees future results.</li>
+<li>All examples, figures, and historical observations are illustrative. A framework, however well-built, cannot guarantee profitability — it can only make your process <em>systematic</em> and your testing <em>honest</em>.</li>
+<li>Data, costs, taxes, and regulatory details change over time. Always verify current rules and consult a qualified adviser before acting.</li>
+<li>Nothing in this book should be read as a promise of return or a guarantee that any strategy will be profitable.</li>
+</ul>
+<p>By reading this book, you agree that you are solely responsible for your own trading and investment decisions and that you will consult a SEBI-registered adviser where appropriate.</p>
+<hr />
+<h2 id="how-to-read-this-book">How to Read This Book</h2>
+<p>This book is about <strong>how</strong> to build a systematic trading operation — the <em>framework</em>, not any single strategy. It is the infrastructure that the strategies in the other books in this series (Quant Trading, Risk Management, Momentum, and the rest) plug into.</p>
+<ul>
+<li><strong>Chapters 1–2</strong> define systematic trading and map the full lifecycle — the end-to-end process from idea to live and back.</li>
+<li><strong>Chapters 3–6</strong> build the core: turning an idea into a testable hypothesis, sourcing clean data, generating signals, and constructing a portfolio.</li>
+<li><strong>Chapters 7–9</strong> cover the disciplines that separate working systems from broken ones: honest backtesting, execution and monitoring, and risk/governance.</li>
+<li><strong>Chapter 10</strong> assembles everything into a written framework template.</li>
+<li>The <strong>appendix</strong> is a lifecycle checklist you can run against any system you build.</li>
+</ul>
+<p>A note on language: this book describes <em>how</em> to build and test systems — never what you "should" trade. Where behaviour is discussed, it is framed as historical observation, not promise. You are responsible for your own decisions.</p>
+<hr />
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li>What Is Systematic Trading?</li>
+<li>The Framework Lifecycle</li>
+<li>From Idea to Testable Hypothesis</li>
+<li>Data: Sourcing, Cleaning, and Integrity</li>
+<li>Signal Generation</li>
+<li>Portfolio Construction and Position Sizing</li>
+<li>Backtesting Done Right</li>
+<li>Execution, Costs, and Monitoring</li>
+<li>Risk Management and Governance</li>
+<li>A Working Framework Template</li>
+</ol>
+<p>Appendix — Lifecycle Checklist</p>
+<hr />
+<h1 id="1-what-is-systematic-trading">1. What Is Systematic Trading?</h1>
+<h2 id="a-process-not-a-strategy">A process, not a strategy</h2>
+<p><strong>Systematic trading</strong> is the practice of making trading decisions through <em>explicit, pre-defined rules</em> rather than <em>in-the-moment judgement</em>. The defining feature is not the use of code — it is that the rules can be <strong>written down, tested, and repeated</strong> identically, by anyone, at any time.</p>
+<p>This book is about building the <strong>framework</strong> — the repeatable process — that surrounds those rules. A framework is not a strategy; it is the <em>machine that turns ideas into strategies, tests them, runs them, and retires them.</em></p>
+<h2 id="the-rules-versus-judgement-line">The rules-versus-judgement line</h2>
+<p>The difference between systematic and discretionary is a line, not a wall:</p>
+<ul>
+<li><strong>Fully systematic</strong> — every decision (what, when, how much, when to exit) is a rule. A computer (or a checklist) could execute it.</li>
+<li><strong>Quant-assisted</strong> — a human decides, but with systematic inputs (a screen, a risk model, a backtest).</li>
+<li><strong>Discretionary</strong> — judgement drives everything.</li>
+</ul>
+<p>A systematic <em>framework</em> can support all three; its heart is the discipline of <strong>explicitness</strong>. If a decision cannot be written as a rule, it cannot be tested — and the framework exists precisely to make decisions testable.</p>
+<h2 id="the-five-promises-of-a-framework">The five promises of a framework</h2>
+<p>Why build one at all? A framework delivers five things no ad-hoc approach can:</p>
+<ol>
+<li><strong>Testability</strong> — rules can be backtested. You can learn how an idea <em>would have behaved</em> before risking money.</li>
+<li><strong>Repeatability</strong> — the same inputs produce the same decisions, every time, regardless of mood.</li>
+<li><strong>Honesty</strong> — a framework forces you to account for costs, drawdowns, and failure modes that discretionary trading hand-waves away.</li>
+<li><strong>Scale</strong> — a systematic process can run across hundreds of instruments and thousands of decisions.</li>
+<li><strong>Improvability</strong> — because every decision is recorded and every rule is explicit, the system can be <em>measured</em> and <em>improved</em> — which is impossible for a process that lives only in someone's head.</li>
+</ol>
+<h2 id="what-a-framework-is-built-from">What a framework is built from</h2>
+<p>A complete systematic framework has <strong>five components</strong>, each the subject of a chapter in this book:</p>
+<ol>
+<li><strong>Hypothesis</strong> — the idea, stated as a testable claim (Chapter 3).</li>
+<li><strong>Data</strong> — the clean, complete, point-in-time inputs (Chapter 4).</li>
+<li><strong>Signals</strong> — the rules that say <em>what</em> and <em>when</em> (Chapter 5).</li>
+<li><strong>Portfolio construction</strong> — the rules that say <em>how much</em> (Chapter 6).</li>
+<li><strong>Execution, monitoring, and risk</strong> — the rules that keep the system honest and alive (Chapters 7–9).</li>
+</ol>
+<p>Strip any framework down and it is these five boxes, connected by a lifecycle (next chapter).</p>
+<h2 id="the-honest-caveats">The honest caveats</h2>
+<p>Three honest limits, stated up front:</p>
+<ol>
+<li><strong>A framework does not create edge.</strong> It <em>tests for</em> edge and <em>discipline</em> it — but the edge itself comes from the <em>idea</em>. A great framework around a bad idea still loses money.</li>
+<li><strong>A framework is only as honest as you let it be.</strong> The framework's whole purpose is to <em>expose</em> failure; if you use it to <em>rationalise</em> (tweak until the backtest looks good), it becomes a tool for self-deception.</li>
+<li><strong>The framework is not the point; survival is.</strong> The framework exists to keep you in the game long enough for a real edge to compound. Everything in it serves that one goal.</li>
+</ol>
+<h2 id="summary">Summary</h2>
+<ul>
+<li>Systematic trading = explicit, testable, repeatable rules.</li>
+<li>A framework is the process that surrounds the rules, not a strategy itself.</li>
+<li>It delivers testability, repeatability, honesty, scale, and improvability.</li>
+<li>Five components: hypothesis, data, signals, portfolio construction, execution/monitoring/risk.</li>
+<li>It does not create edge; it tests for it and disciplines it.</li>
+</ul>
+<p>Next: the lifecycle — how the five components connect into an end-to-end process.</p>
+<h1 id="2-the-framework-lifecycle">2. The Framework Lifecycle</h1>
+<h2 id="the-machine-end-to-end">The machine, end to end</h2>
+<p>A systematic framework is best understood as a <strong>cycle</strong> — a loop that an idea travels, again and again. Understanding the loop is more important than any single component, because most failures are failures to <em>complete the loop</em> — to carry an idea all the way around, honestly, and then to feed what is learned back in.</p>
+<h2 id="the-eight-stage-loop">The eight-stage loop</h2>
+<pre><code>1. Idea
+2. Hypothesis (a testable claim)
+3. Data
+4. Signal
+5. Backtest
+6. Paper trade
+7. Live (small → scaled)
+8. Review &amp; retire (→ back to 1)
+</code></pre>
+<h3 id="1-idea">1. Idea</h3>
+<p>A <em>why-based</em> claim about a pattern: "investors under-react, so winners keep winning." The idea is the raw material — necessary, but not yet testable.</p>
+<h3 id="2-hypothesis">2. Hypothesis</h3>
+<p>The idea, made <strong>falsifiable</strong>: "ranking stocks by 12-1 return and holding the top decile, rebalanced monthly, produces positive risk-adjusted returns after costs." A hypothesis is a claim that can be <em>shown wrong</em> — and a good framework <em>tries</em> to show it wrong.</p>
+<h3 id="3-data">3. Data</h3>
+<p>The clean, complete, <strong>point-in-time</strong> inputs (Chapter 4). This is where most retail systems quietly fail: survivorship bias, look-ahead, and corporate-action errors corrupt everything downstream.</p>
+<h3 id="4-signal">4. Signal</h3>
+<p>The rule that turns data into a <em>decision</em>: what to hold, when to enter, when to exit (Chapter 5).</p>
+<h3 id="5-backtest">5. Backtest</h3>
+<p>Running the signal over history and <em>attacking the result</em> (Chapter 7). The backtest is an attempt to <strong>disprove</strong>, not prove.</p>
+<h3 id="6-paper-trade">6. Paper trade</h3>
+<p>Running the system live, in real time, with no (or tiny) money — to test the <em>engineering</em>: execution, fills, costs, and the daily operational discipline.</p>
+<h3 id="7-live">7. Live</h3>
+<p>Going live <strong>small</strong>, then scaling only after live results <em>track</em> the backtest and paper results. Live is where the tail events and the psychology (Risk Management book) show up.</p>
+<h3 id="8-review-retire">8. Review &amp; retire</h3>
+<p>Measuring live against expectation, watching for <strong>edge decay</strong>, and <em>retiring</em> the system when it stops behaving as it should — then feeding the lessons back into the next idea.</p>
+<h2 id="the-two-properties-that-make-it-work">The two properties that make it work</h2>
+<h3 id="each-stage-is-a-gate">Each stage is a gate</h3>
+<p>A stage is not a formality; it is a <strong>kill-point</strong>. An idea that fails the hypothesis does not proceed; a strategy whose paper trading diverges from its backtest does not go live; a live system that stops tracking is retired. The stages exist to <strong>kill bad ideas cheaply</strong> — the earlier, the cheaper. The single most common failure is <em>skipping a stage</em> — going from idea straight to money, or trusting an unattacked backtest.</p>
+<h3 id="the-loop-closes">The loop closes</h3>
+<p>The final stage feeds back into the first. Every retired system teaches something — a regime where momentum fails, a cost you under-estimated, a data error — and that lesson becomes the seed of the <em>next</em> idea. A framework is not a pipeline that ends; it is a loop that <em>compounds</em> learning.</p>
+<h2 id="a-mental-model-to-carry">A mental model to carry</h2>
+<p>Think of the framework as a <strong>quality filter</strong>: it takes in raw ideas and, at each stage, lets through only the fraction that survive honest scrutiny. The fraction that reaches live is small — and that is the point. The framework's value is not in <em>finding</em> ideas; it is in <strong>not letting bad ideas through.</strong></p>
+<h2 id="summary_1">Summary</h2>
+<ul>
+<li>The loop: idea → hypothesis → data → signal → backtest → paper → live → review/retire → back to idea.</li>
+<li>Each stage is a gate; the loop kills bad ideas cheaply, early.</li>
+<li>The loop closes: every retirement feeds the next idea.</li>
+<li>The framework is a quality filter, not an idea-generator.</li>
+</ul>
+<p>Next: the first real stage — turning an idea into a testable hypothesis.</p>
+<h1 id="3-from-idea-to-testable-hypothesis">3. From Idea to Testable Hypothesis</h1>
+<h2 id="the-difference-between-a-hunch-and-a-claim">The difference between a hunch and a claim</h2>
+<p>Most "trading ideas" are actually <strong>hunches</strong> — vague, untestable, and unfalsifiable. The first job of a framework is to convert a hunch into a <strong>hypothesis</strong>: a specific, falsifiable claim that can be tested and, crucially, <em>shown to be wrong.</em></p>
+<p>This chapter covers that conversion.</p>
+<h2 id="what-makes-a-claim-testable">What makes a claim testable</h2>
+<p>A testable hypothesis has four properties. It states:</p>
+<ol>
+<li><strong>The mechanism</strong> — <em>why</em> the pattern should exist (not just <em>that</em> it appeared in a backtest).</li>
+<li><strong>The exact rule</strong> — the precise, unambiguous signal.</li>
+<li><strong>The measurable claim</strong> — what "working" would look like (a metric, a threshold, a benchmark).</li>
+<li><strong>The falsification</strong> — what would prove it <em>wrong</em>.</li>
+</ol>
+<h3 id="a-weak-idea-a-hunch">A weak idea (a hunch)</h3>
+<p><em>"Momentum seems to work."</em></p>
+<p>Untestable: no mechanism, no rule, no measure, no falsification. A framework cannot do anything with this.</p>
+<h3 id="a-strong-idea-a-hypothesis">A strong idea (a hypothesis)</h3>
+<p><em>"Because investors under-react to information (mechanism), ranking NIFTY 500 stocks by their 12-month return skipping the last month and holding the top decile, rebalanced monthly (rule), produces a positive annualised return after costs (measure) that is higher than the NIFTY 50 benchmark over the same period (falsification target)."</em></p>
+<p>Every word can be checked. This is what a framework consumes.</p>
+<h2 id="the-mechanism-test">The mechanism test</h2>
+<p>The single most important part is the <strong>mechanism</strong> — the "why". A hypothesis with a mechanism is <em>robust</em>: if the mechanism is a real, persistent feature of markets, the edge is likely to persist. A hypothesis without a mechanism is just a pattern — and a pattern with no explanation is the classic signature of overfitting.</p>
+<p>The test is simple: <strong>can you explain the edge in a sentence, in terms of human behaviour or market structure?</strong></p>
+<ul>
+<li><em>"Investors under-react to news"</em> → a mechanism (behavioural).</li>
+<li><em>"Funds rebalance at month-end"</em> → a mechanism (structural).</li>
+<li><em>"It worked in my backtest"</em> → <strong>not</strong> a mechanism.</li>
+</ul>
+<p>If you cannot articulate the mechanism, the idea is not ready.</p>
+<h2 id="stating-the-rule-precisely">Stating the rule precisely</h2>
+<p>The rule must be <strong>unambiguous</strong> — so precise that two different people would implement it identically:</p>
+<ul>
+<li><em>Universe:</em> exactly which instruments, with what liquidity filter.</li>
+<li><em>Signal:</em> the exact condition, in the exact words.</li>
+<li><em>Sizing:</em> how much, and by what rule.</li>
+<li><em>Exit/rebalance:</em> when, and on what trigger.</li>
+</ul>
+<p>Ambiguity is where look-ahead bias and hindsight creep in. Every vague phrase ("strong momentum", "cheap", "recently") must be replaced with a number and a window.</p>
+<h2 id="pre-registering-the-test">Pre-registering the test</h2>
+<p>The most powerful discipline in systematic trading is <strong>pre-registration</strong>: write down the hypothesis, the rule, and the success/failure criteria <em>before</em> you run the backtest. This matters because after you see the backtest, you will be tempted to tweak — and every post-hoc tweak is a step toward overfitting.</p>
+<p>Pre-registration forces the clean sequence: <strong>claim → test → verdict.</strong> Not: test → claim → tweak → test → claim.</p>
+<h2 id="a-hypothesis-template">A hypothesis template</h2>
+<pre><code>Mechanism: [why the edge should exist]
+Universe:   [exactly what is traded, and the liquidity filter]
+Signal:     [the exact entry/exit rule]
+Sizing:     [how much, by what rule]
+Claim:      [the measurable outcome: metric + benchmark + horizon]
+Falsify:    [what result would prove it wrong]
+</code></pre>
+<p>Fill this in — honestly, before testing — and you have converted a hunch into something a framework can actually work with.</p>
+<h2 id="summary_2">Summary</h2>
+<ul>
+<li>A testable hypothesis has a mechanism, an exact rule, a measurable claim, and a falsification condition.</li>
+<li>The mechanism ("why") is the most important part; no mechanism → likely overfit.</li>
+<li>State the rule unambiguously; vagueness invites hindsight bias.</li>
+<li>Pre-register the test before running it, to avoid post-hoc tweaking.</li>
+<li>Use the template: mechanism, universe, signal, sizing, claim, falsify.</li>
+</ul>
+<p>Next: data — where most systems silently fail.</p>
+<h1 id="4-data-sourcing-cleaning-and-integrity">4. Data: Sourcing, Cleaning, and Integrity</h1>
+<h2 id="where-most-systems-silently-fail">Where most systems silently fail</h2>
+<p>A systematic framework is only as honest as its data. Every stage downstream — signal, backtest, live — inherits whatever is wrong upstream. This chapter covers the three data disciplines: <strong>sourcing</strong>, <strong>cleaning</strong>, and <strong>integrity</strong>.</p>
+<h2 id="the-three-data-requirements">The three data requirements</h2>
+<p>Before any analysis, your data must be:</p>
+<ol>
+<li><strong>Clean</strong> — free of errors, gaps, and bad ticks.</li>
+<li><strong>Aligned</strong> — prices adjusted correctly for corporate actions (splits, bonuses, rights, dividends).</li>
+<li><strong>Point-in-time</strong> — containing only the information that was <em>actually available</em> on each historical date.</li>
+</ol>
+<p>The first two are about correctness; the third is about <strong>not cheating</strong> (look-ahead bias).</p>
+<h2 id="sourcing">Sourcing</h2>
+<p>For Indian equities, the data landscape is roughly:</p>
+<ul>
+<li><strong>Price/volume data</strong> — daily OHLCV for NSE/BSE equities and indices, from your broker's API, a commercial data vendor, or exchange-derived sources.</li>
+<li><strong>Fundamental data</strong> — financial statements and ratios; <em>point-in-time</em> fundamentals are much harder to obtain than current snapshots, and this gap matters.</li>
+<li><strong>Corporate actions</strong> — splits, bonuses, rights issues, dividends; essential for correct adjustment.</li>
+</ul>
+<p>The sourcing rule: <strong>prefer data that is documented, auditable, and point-in-time</strong> over data that is convenient but opaque. A beautiful backtest on bad data is worthless.</p>
+<h2 id="cleaning">Cleaning</h2>
+<p>Cleaning catches the errors that corrupt results:</p>
+<ul>
+<li><strong>Duplicate or missing bars</strong> — a stock with a 10-day gap in its history will produce garbage momentum signals there.</li>
+<li><strong>Bad ticks</strong> — a spurious price of ₹0.01 or ₹99,999 that is a data error, not a trade.</li>
+<li><strong>Zero or negative prices</strong> — nonsense values that must be removed (and their cause understood).</li>
+</ul>
+<p>The rule: <strong>never silently drop data.</strong> When you clean, record <em>what</em> you dropped and <em>why</em> — a data-removal log is an audit trail, and it is the only defence against the accusation (including your own) that you deleted data to make the backtest look better.</p>
+<h2 id="alignment-corporate-actions">Alignment (corporate actions)</h2>
+<p>This is the subtle one. A stock that did a 1:1 bonus (a 2-for-1 split) shows a price that <em>halved overnight</em> — but nothing about the company changed. If your data is not adjusted:</p>
+<ul>
+<li>A momentum signal will see a phantom −50% move and mis-rank the stock.</li>
+<li>A backtest will record a phantom −50% loss (or gain) that never happened to the holder.</li>
+</ul>
+<p>The rule: <strong>use adjusted prices</strong> (adjusted for splits, bonuses, and rights) for <em>all</em> return calculations — and understand exactly what your vendor's "adjusted" means (some adjust for dividends too, which changes total return).</p>
+<h2 id="point-in-time-integrity">Point-in-time integrity</h2>
+<p>This is where look-ahead bias lives. Three classic violations:</p>
+<ol>
+<li><strong>Survivorship bias</strong> — using today's universe (the companies that <em>survived</em>) to backtest the past. The delisted, merged, and bankrupt names are missing — and their absence flatters every result. Use a <strong>point-in-time universe</strong>: the actual tradeable list on each date.</li>
+<li><strong>Restated fundamentals</strong> — using today's <em>restated</em> earnings to rank stocks <em>last year</em>. Last year, the market only knew last year's (pre-restatement) numbers. Using restated data is look-ahead.</li>
+<li><strong>Future corporate actions</strong> — using a split-adjusted price on a date <em>before</em> the split happened.</li>
+</ol>
+<p>The universal test: <strong>for every data point, ask "did the market actually know this on this date?"</strong> If not, it must not enter the signal.</p>
+<h2 id="the-discipline">The discipline</h2>
+<p>Data integrity is a <em>process</em>, not a one-time task:</p>
+<ul>
+<li><strong>Document the source</strong> and its known biases (every vendor has some).</li>
+<li><strong>Log every cleaning step</strong> — what was dropped and why.</li>
+<li><strong>Use point-in-time universes and un-restated fundamentals</strong> for anything historical.</li>
+<li><strong>Reconcile live vs. historical data</strong> (Chapter 8) — if they disagree on the same day, find out why before trusting either.</li>
+</ul>
+<h2 id="summary_3">Summary</h2>
+<ul>
+<li>Data must be clean, aligned, and point-in-time.</li>
+<li>Prefer documented, auditable, point-in-time sources.</li>
+<li>Clean with a log — never silently drop data.</li>
+<li>Use corporate-action-adjusted prices for all returns.</li>
+<li>The universal test: "did the market know this on this date?"</li>
+</ul>
+<p>Next: signal generation — turning data into decisions.</p>
+<h1 id="5-signal-generation">5. Signal Generation</h1>
+<h2 id="turning-data-into-decisions">Turning data into decisions</h2>
+<p>The <strong>signal</strong> is the heart of the system: the rule that turns clean data into a <em>decision</em> — what to hold, when to enter, when to exit. This chapter covers how to design a signal that is precise, robust, and honest.</p>
+<h2 id="the-anatomy-of-a-signal">The anatomy of a signal</h2>
+<p>Every signal, however complex, answers three questions in a specific order:</p>
+<ol>
+<li><strong>What</strong> — which instruments are eligible? (a <em>filter</em>, not a timing decision.)</li>
+<li><strong>When</strong> — under what condition do we act? (the <em>entry</em> trigger.)</li>
+<li><strong>When to leave</strong> — under what condition do we exit? (the <em>exit</em> rule.)</li>
+</ol>
+<p>A complete signal specifies all three. A signal that only says <em>what</em> to buy, with no exit, is half a system.</p>
+<h2 id="the-three-families-of-signals">The three families of signals</h2>
+<p>Signals fall into a small number of families, and knowing the family tells you how it will behave:</p>
+<ul>
+<li><strong>Momentum / trend</strong> — buy strength, ride the trend, exit on weakness. Low win rate, large winners, suffers in ranges.</li>
+<li><strong>Mean reversion</strong> — fade extremes, buy dips, exit on the snap-back. High win rate, occasional large loss, suffers in trends.</li>
+<li><strong>Cross-sectional / relative</strong> — rank a universe and hold the best <em>relative</em> to the others. Always invested in something.</li>
+</ul>
+<p>Most systems are one of these, or a combination (e.g., a trend filter gating a mean-reversion entry). The companion books in this series explore the specific strategies in each family.</p>
+<h2 id="designing-for-robustness">Designing for robustness</h2>
+<p>A good signal is <strong>robust</strong> — its edge survives small changes to its parameters. The design principles:</p>
+<h3 id="1-few-parameters">1. Few parameters</h3>
+<p>Every parameter is an opportunity to overfit. A signal with three parameters is testable; one with thirty is curve-fit. The discipline: <strong>explain, in words, why each parameter is there</strong> — and if you cannot, cut it.</p>
+<h3 id="2-economically-sensible-values">2. Economically sensible values</h3>
+<p>Parameters should be <em>sensible</em>, not <em>optimised</em>. A 200-day trend filter has a reason (it approximates the long-term trend); a 137-day filter was almost certainly mined from the data. Prefer round, meaningful values (12 months, 200 days) over odd ones that only exist because they backtested well.</p>
+<h3 id="3-insensitivity-to-small-changes">3. Insensitivity to small changes</h3>
+<p>The test of robustness: <strong>does the edge survive if you change each parameter slightly</strong> (10 vs. 12 months, 200 vs. 190 days)? A robust edge has a <em>flat-topped</em> performance surface — performance is similar across a neighbourhood of parameter values. A fragile edge is a single sharp spike at one lucky value.</p>
+<h3 id="4-a-stated-mechanism">4. A stated mechanism</h3>
+<p>The signal must have a <em>why</em> (Chapter 3's mechanism test). A signal with no economic rationale, however good its backtest, is a coin-flip wearing a spreadsheet.</p>
+<h2 id="the-exit-deserves-equal-design-effort">The exit deserves equal design effort</h2>
+<p>Most people over-design the entry and under-design the exit. That is backwards, because <strong>the exit is where most of the risk lives.</strong> A complete exit specifies:</p>
+<ul>
+<li><strong>The stop</strong> — the level at which the thesis is wrong (structural) or the risk is exceeded (volatility-based).</li>
+<li><strong>The take-profit / target</strong> — where the swing is exhausted (for bounded strategies).</li>
+<li><strong>The trail</strong> — how open profit is protected (for trend strategies).</li>
+<li><strong>The time stop</strong> — exiting dead-money trades after a fixed holding period.</li>
+</ul>
+<p>An entry without a defined exit is not a strategy; it is a hope.</p>
+<h2 id="pseudocode-for-a-complete-signal">Pseudocode for a complete signal</h2>
+<pre><code>for each instrument in universe:                    # WHAT (filter)
+    eligible = liquidity_filter(instrument)         #    tradable?
+
+    if eligible:
+        state = signal_state(instrument)            # momentum / reversion / relative
+
+        if state == &quot;enter&quot; and no position:        # WHEN (entry)
+            open_position(instrument)
+            set_stop(instrument)                    #   exit rule defined AT entry
+            set_target_or_trail(instrument)
+
+        if position and exit_condition(instrument): # WHEN TO LEAVE
+            close_position(instrument)
+</code></pre>
+<p>Note what the pseudocode makes explicit: <strong>the exit is set at the moment of entry</strong>, and the signal is <em>complete</em> — every decision point is covered.</p>
+<h2 id="the-honest-test">The honest test</h2>
+<p>A signal is finished when you can hand it to someone else — someone who has never seen the backtest — and they can run it and get the <em>same</em> decisions. If you have to explain "well, here I'd override it because…", the signal is not finished; it is discretionary trading wearing a rules costume.</p>
+<h2 id="summary_4">Summary</h2>
+<ul>
+<li>A signal answers what, when, and when-to-leave — all three.</li>
+<li>Three families: momentum/trend, mean reversion, cross-sectional/relative.</li>
+<li>Design for robustness: few parameters, sensible values, insensitivity, a mechanism.</li>
+<li>The exit deserves equal design effort — and is set at entry.</li>
+<li>A finished signal is one someone else can run identically, with no overrides.</li>
+</ul>
+<p>Next: portfolio construction and position sizing — the "how much" layer.</p>
+<h1 id="6-portfolio-construction-and-position-sizing">6. Portfolio Construction and Position Sizing</h1>
+<h2 id="the-how-much-layer">The "how much" layer</h2>
+<p>A signal tells you <em>what</em> and <em>when</em>; portfolio construction tells you <strong>how much</strong> — and <em>how much</em> is where a good signal becomes a good (or a ruined) system. This chapter covers the construction and sizing layer, in close partnership with the Risk Management book in this series.</p>
+<h2 id="the-two-decisions">The two decisions</h2>
+<p>Portfolio construction is two decisions:</p>
+<ol>
+<li><strong>How much per position</strong> — the sizing rule (fixed-fraction, volatility, Kelly — see the Risk Management book).</li>
+<li><strong>How much in total</strong> — the aggregate exposure, and how it is spread across positions.</li>
+</ol>
+<p>Both matter, and they are governed by different logics.</p>
+<h2 id="sizing-per-position">Sizing per position</h2>
+<p>The universal foundation: <strong>risk a fixed, small fraction of capital per trade</strong> (the 1–2% rule), with size <em>derived</em> from the stop:</p>
+<p>Position size = (Equity × Risk%) ÷ (Entry − Stop)</p>
+<p>This equalises risk across trades regardless of stop distance, and — because it scales with equity — it self-stabilises: it compounds in wins and de-risks in losses. Every sizing method (fixed-fraction, fixed-ratio, ATR/volatility, Kelly, fractional-Kelly) is a variation on this one idea; the Risk Management book covers them in depth.</p>
+<p>For a <em>systematic</em> framework, the key requirement is that <strong>the sizing rule is as explicit as the signal</strong> — written down, computed from the stop, and applied identically every time.</p>
+<h2 id="portfolio-construction-how-the-positions-combine">Portfolio construction: how the positions combine</h2>
+<p>A portfolio is not just a list of sized positions; it is a <em>structure</em>, and the structure carries risk of its own:</p>
+<h3 id="equal-weight-vs-signal-weight">Equal-weight vs. signal-weight</h3>
+<ul>
+<li><strong>Equal-weight</strong> — every position gets the same allocation. Simple, robust, and the default for most factor and momentum systems.</li>
+<li><strong>Signal-weight</strong> — positions are sized by the <em>strength</em> of the signal (e.g., stronger momentum = larger position). Captures more of the signal, but concentrates risk in the strongest (and often most crowded) names.</li>
+</ul>
+<p>For most retail systems, <strong>equal-weight</strong> is the right starting point: it is robust and avoids the hidden concentration of signal-weighting.</p>
+<h3 id="diversification-across-drivers">Diversification across drivers</h3>
+<p>Ten positions that are all large-cap banks are one bet, not ten (the Risk Management book's correlation point). Construction must <strong>diversify across drivers</strong> — sectors, sizes, styles, or asset classes — not just across tickers.</p>
+<h3 id="the-exposure-cap">The exposure cap</h3>
+<p>A systematic framework needs a <strong>maximum total exposure</strong> — a cap on how much of the account is deployed, and how much is at-risk in aggregate. The signal may say "buy 15 names"; the construction layer says "but never more than X% of equity in the market, and never more than Y% total at-risk."</p>
+<h2 id="volatility-targeting-as-the-portfolio-level-control">Volatility targeting as the portfolio-level control</h2>
+<p>A particularly useful portfolio-level tool is <strong>volatility targeting</strong>: scale the <em>entire</em> portfolio's size so that its expected volatility is roughly constant (see the Quant Trading book). This automatically de-risks the whole book when the market gets wild and re-risks it when it calms — a systemic, rather than per-trade, risk control.</p>
+<h2 id="pseudocode-for-the-construction-layer">Pseudocode for the construction layer</h2>
+<pre><code>capital = account_equity
+risk_per_trade = 1% of capital
+
+for each signal position:
+    size = (capital * risk_per_trade) / (entry - stop)
+    # cap: single-position size &lt;= max_position_pct * capital
+
+total_at_risk = sum(size_i * (entry_i - stop_i))
+if total_at_risk &gt; max_total_risk:
+    scale_down_all_positions_to_fit(max_total_risk)
+
+if net_exposure &gt; max_exposure:
+    reduce_to_fit(max_exposure)
+</code></pre>
+<p>The pseudocode makes the layers visible: per-trade sizing, a per-position cap, an aggregate at-risk cap, and an exposure cap. Each is a <em>rule</em>, checked every rebalance.</p>
+<h2 id="the-discipline_1">The discipline</h2>
+<p>The construction and sizing layer is where <strong>most systems are actually won or lost</strong> — not because sizing is clever, but because sizing is where over-betting happens, and over-betting is how positive-expectancy systems get ruined (the Risk Management book's core argument). The framework's job here is to make over-betting <em>impossible</em> by writing the caps into the rules.</p>
+<h2 id="summary_5">Summary</h2>
+<ul>
+<li>Two decisions: how much per position, and how much in total.</li>
+<li>Size per position from the stop (1–2% risk); the rule must be as explicit as the signal.</li>
+<li>Prefer equal-weight for robustness; diversify across drivers, not just tickers.</li>
+<li>Cap total at-risk and total exposure; consider volatility targeting at the portfolio level.</li>
+<li>Sizing is where over-betting happens — write the caps into the rules.</li>
+</ul>
+<p>Next: backtesting done right — the discipline that keeps the framework honest.</p>
+<h1 id="7-backtesting-done-right">7. Backtesting Done Right</h1>
+<h2 id="the-discipline-of-trying-to-disprove">The discipline of trying to disprove</h2>
+<p>A backtest is the moment of truth — but only if it is run <em>honestly</em>. The default posture of a systematic framework must be: <strong>my backtest is lying; my job is to find out how.</strong> This chapter covers the discipline that turns a backtest from a sales pitch into an experiment.</p>
+<h2 id="the-mindset-test-to-disprove-not-prove">The mindset: test to disprove, not prove</h2>
+<p>Most people backtest to <em>confirm</em> their idea — they want the backtest to say "yes." The result is that they unconsciously tune, filter, and cherry-pick until it does. A framework inverts this: it backtests to <strong>try to kill the idea</strong>, and only ideas that survive honest attack are worth proceeding with.</p>
+<p>The practical form of this inversion:</p>
+<ul>
+<li><strong>Add the costs you wish you could ignore</strong> (they are real live).</li>
+<li><strong>Remove the survivorship bias</strong> you would rather not see.</li>
+<li><strong>Stress the parameters</strong> rather than showing only the best one.</li>
+<li><strong>Test out-of-sample</strong> rather than reporting in-sample.</li>
+</ul>
+<h2 id="the-attacks-in-order">The attacks, in order</h2>
+<h3 id="1-add-realistic-costs">1. Add realistic costs</h3>
+<p>Brokerage, STT, stamp duty, and — above all — the <strong>bid-ask spread and slippage</strong>. In India, the spread and STT on churning strategies are frequently enough to turn a "profitable" backtest negative. Rule: <strong>run the backtest with pessimistic costs.</strong> If the edge needs optimistic costs to survive, it is fragile.</p>
+<h3 id="2-remove-survivorship-bias">2. Remove survivorship bias</h3>
+<p>Backtest on the <strong>point-in-time universe</strong> — the names that actually existed on each date, including those that later delisted or failed (Chapter 4). Today's survivor list flatters every result.</p>
+<h3 id="3-hunt-look-ahead-bias">3. Hunt look-ahead bias</h3>
+<p>For every input, verify it was <em>known at decision time</em> (Chapter 4's universal test). Restated fundamentals, adjusted prices used pre-action, and any use of the future are all look-ahead.</p>
+<h3 id="4-stress-the-parameters">4. Stress the parameters</h3>
+<p>Show performance <em>across a range</em> of each parameter, not just the best value. A robust edge has a flat-topped surface; a single sharp spike is the fingerprint of overfitting.</p>
+<h3 id="5-test-out-of-sample">5. Test out-of-sample</h3>
+<p>The gold standard: fit nothing, or fit on one period and test on a <em>later, unseen</em> period. A strategy whose edge persists out-of-sample — without further tweaking — is worth something. One that collapses out-of-sample was overfit.</p>
+<h3 id="6-demand-a-large-sample-and-regime-coverage">6. Demand a large sample and regime coverage</h3>
+<p>A backtest with 20 trades proves little; one with 2,000 is far more credible. And a strategy tested only in a bull market has learned nothing about bear markets. Prefer long histories spanning <strong>multiple regimes</strong>.</p>
+<h2 id="reading-the-output-honestly">Reading the output honestly</h2>
+<p>When the backtest prints its numbers, read them in the order that matters (from the Quant Trading book's metrics chapter):</p>
+<ol>
+<li><strong>Trade count</strong> — is the sample big enough?</li>
+<li><strong>Max drawdown</strong> — could I survive it?</li>
+<li><strong>Profit factor / expectancy</strong> — is there actually an edge?</li>
+<li><strong>Sharpe / Sortino</strong> — is the edge worth the risk?</li>
+<li><strong>Robustness</strong> — does it survive the attacks above?</li>
+</ol>
+<p>CAGR — the number everyone reads first — is the one most easily inflated by a lucky, overfit, costless backtest. Read it last.</p>
+<h2 id="the-pre-registration-discipline">The pre-registration discipline</h2>
+<p>The single strongest defence against self-deception is <strong>pre-registration</strong> (Chapter 3): commit to the hypothesis, the rule, and the success/failure criteria <em>before</em> running the backtest. After you have seen the result, every change you make is a step toward overfitting — and pre-registration is the record that keeps you honest about that.</p>
+<h2 id="the-honest-bottom-line">The honest bottom line</h2>
+<p>A backtest is not a <em>prediction</em> of future returns; it is a <strong>stress test of an idea's robustness</strong>. Its value is negative: it cannot tell you the strategy <em>will</em> work, but it can tell you — if you let it — that the strategy <em>probably won't</em>. The framework's entire backtesting discipline is built to extract that negative value honestly.</p>
+<h2 id="summary_6">Summary</h2>
+<ul>
+<li>Test to disprove, not prove; default to "my backtest is lying."</li>
+<li>Attacks: add costs, remove survivorship, hunt look-ahead, stress parameters, test out-of-sample, demand sample size and regime coverage.</li>
+<li>Read trade count and drawdown before CAGR.</li>
+<li>Pre-register before testing to resist post-hoc tweaking.</li>
+<li>A backtest is a stress test, not a prediction.</li>
+</ul>
+<p>Next: execution, costs, and monitoring — the gap between backtest and live.</p>
+<h1 id="8-execution-costs-and-monitoring">8. Execution, Costs, and Monitoring</h1>
+<h2 id="the-gap-between-backtest-and-live">The gap between backtest and live</h2>
+<p>A strategy that survives an honest backtest can still lose money live — because live differs from the backtest in ways that are easy to forget. This chapter covers the three differences: <strong>execution</strong>, <strong>costs</strong>, and <strong>monitoring</strong>.</p>
+<h2 id="execution-the-price-you-actually-get">Execution: the price you actually get</h2>
+<p>The backtest assumed you traded at the signal price, instantly. Live, you trade at <strong>the market's price</strong>:</p>
+<ul>
+<li><strong>Slippage</strong> — the gap between expected and actual fill, especially in fast markets or illiquid names.</li>
+<li><strong>Latency</strong> — the delay between the signal firing and the order reaching the market.</li>
+<li><strong>Partial fills</strong> — not getting the whole order at one price.</li>
+</ul>
+<p>The discipline: <strong>pad the backtest with realistic slippage</strong>, trade liquid instruments, and — critically — <strong>measure live fills against the backtest's assumption</strong>. If you consistently fill worse than modelled, the edge is smaller than you thought, and the model must be updated to reflect reality.</p>
+<h2 id="costs-larger-than-you-estimated">Costs: larger than you estimated</h2>
+<p>The backtest estimated costs; live costs are usually <strong>larger</strong>, and they appear in places the backtest ignored:</p>
+<ul>
+<li>A strategy that rebalances at the close pays the <strong>close-auction spread</strong>.</li>
+<li>A strategy that trades illiquid small-caps pays <strong>market impact</strong> — your own order moves the price.</li>
+<li><strong>Taxes</strong> (STT, capital gains) on realised turnover reduce the net return in ways a costless backtest cannot show.</li>
+</ul>
+<p>The discipline: <strong>over-estimate costs in the backtest</strong> (Chapter 7), and reconcile live costs against the estimate. A strategy whose live costs are persistently above the estimate is a strategy with a smaller (or no) edge.</p>
+<h2 id="monitoring-is-the-system-still-itself">Monitoring: is the system still itself?</h2>
+<p>A live system must be <strong>monitored</strong>, not just run. The monitoring has three jobs:</p>
+<h3 id="1-track-live-against-backtest">1. Track live against backtest</h3>
+<p>Compare live performance to what the backtest <em>predicted</em> for the same period. A persistent gap is a <strong>modelling error</strong> (a cost, a data difference, a look-ahead you missed), not bad luck. Find it.</p>
+<h3 id="2-watch-for-edge-decay">2. Watch for edge decay</h3>
+<p>Edges decay — markets adapt, competitors arrive, the anomaly gets arbitraged. The signature is live performance <em>drifting away</em> from the backtest's behaviour over time. Monitoring's job is to notice the drift <strong>early</strong>, before it costs real money.</p>
+<h3 id="3-watch-for-operational-failures">3. Watch for operational failures</h3>
+<p>The unglamorous but critical work: did the data arrive on time? Did the orders fill? Did the position sizes match the rules? An operational error — a missed rebalance, a duplicated order, a stale price — can cost more than a bad signal. Monitoring is the safety net.</p>
+<h2 id="the-operational-discipline">The operational discipline</h2>
+<p>Running a system is an <em>operating</em> job, and it deserves operating discipline:</p>
+<ul>
+<li><strong>A runbook</strong> — a written procedure for each daily/weekly task (pull data, generate signals, place orders, reconcile).</li>
+<li><strong>Reconciliation</strong> — every day, compare what <em>should</em> have happened (per the rules) against what <em>did</em> happen (per the fills and positions). Any difference is investigated, not ignored.</li>
+<li><strong>A kill switch</strong> — pre-defined conditions under which you stop the system (a drawdown threshold, a tracking-error threshold, a data failure). Decided in advance, not in the panic of the moment.</li>
+</ul>
+<h2 id="summary_7">Summary</h2>
+<ul>
+<li>Execution: pad for slippage, trade liquid, and reconcile live fills against the model.</li>
+<li>Costs: over-estimate in the backtest; reconcile live costs against the estimate.</li>
+<li>Monitoring: track live vs. backtest, watch for edge decay, catch operational failures.</li>
+<li>Run with operating discipline: a runbook, daily reconciliation, and a pre-defined kill switch.</li>
+</ul>
+<p>Next: risk management and governance — the layer that keeps the system alive.</p>
+<h1 id="9-risk-management-and-governance">9. Risk Management and Governance</h1>
+<h2 id="the-layer-that-keeps-the-system-alive">The layer that keeps the system alive</h2>
+<p>A systematic framework is a machine, and machines need <strong>governance</strong> — rules about the rules. This chapter covers the risk and governance layer: the discipline that protects the system from its two greatest enemies — <strong>its own over-betting</strong> and <strong>its own operator.</strong></p>
+<h2 id="risk-management-wired-into-the-rules">Risk management: wired into the rules</h2>
+<p>Risk management is not a separate step; it is <strong>baked into the framework</strong> at every layer (and explored in depth in the Risk Management book). In the framework's terms, risk shows up as:</p>
+<ul>
+<li><strong>Per-trade risk</strong> — the 1–2% rule, with size derived from the stop (Chapter 6).</li>
+<li><strong>Portfolio risk</strong> — the cap on total at-risk and total exposure, and diversification across drivers.</li>
+<li><strong>Leverage/margin discipline</strong> — risk computed on notional, a margin buffer, and a preference for defined-risk structures.</li>
+<li><strong>Tail risk</strong> — sizing for the gap, avoiding oversized positions through binary events, capping aggregate short-vol exposure.</li>
+</ul>
+<p>The framework's contribution is to make these <strong>rules, not intentions</strong> — written down, checked every rebalance, and impossible to override in the heat of the moment.</p>
+<h2 id="governance-rules-about-the-rules">Governance: rules about the rules</h2>
+<p>Governance answers a different question: <strong>who decides when to change the system, and under what conditions?</strong> Without governance, the operator <em>is</em> the system's weakest link — they will tweak it mid-drawdown, abandon it at the bottom, and over-bet it when it is working.</p>
+<p>Three governance rules matter most:</p>
+<h3 id="1-the-pre-commitment-rule">1. The pre-commitment rule</h3>
+<p>Decide — <em>in advance</em> — the conditions under which you will change or stop the system. For example:</p>
+<ul>
+<li>"If the drawdown exceeds X, I reduce size by half."</li>
+<li>"If live diverges from backtest by Y% for Z months, I stop and investigate."</li>
+<li>"Parameter changes happen only at a scheduled quarterly review, never mid-trade."</li>
+</ul>
+<p>The point of pre-commitment is that these decisions are made in a <strong>calm state</strong>, before the drawdown or the euphoria arrives — because in the emotional state, the decision will be wrong.</p>
+<h3 id="2-the-no-override-rule">2. The no-override rule</h3>
+<p>The system's outputs are followed <strong>unless</strong> a pre-committed condition (above) triggers. "I overrode it because it felt wrong" is the death of systematic trading — it is the moment the framework stops being systematic. Overrides are allowed only through the governance process, never in the moment.</p>
+<h3 id="3-the-separation-of-roles">3. The separation of roles</h3>
+<p>Where possible, separate the roles that conflict:</p>
+<ul>
+<li>The person who <strong>generates</strong> the signal should not be the one who <strong>decides whether to follow it</strong>.</li>
+<li>The person who <strong>writes</strong> the backtest should not be the only one who <strong>reviews</strong> it.</li>
+</ul>
+<p>Even for a solo trader, <em>writing the rules down and treating them as binding</em> creates a crude separation between "designer me" (calm) and "operator me" (emotional) — which is the point.</p>
+<h2 id="the-governance-document">The governance document</h2>
+<p>Governance lives in a written <strong>governance document</strong> — a short set of rules covering:</p>
+<ul>
+<li><strong>Change control</strong> — when and how the system's rules may be changed.</li>
+<li><strong>Drawdown policy</strong> — what happens at each drawdown level.</li>
+<li><strong>Stop conditions</strong> — the kill switch (Chapter 8).</li>
+<li><strong>Review cadence</strong> — how often the system is reviewed, and against what.</li>
+</ul>
+<p>A system with a governance document is a <em>system</em>. Without one, it is a discretionary trader who occasionally uses a spreadsheet.</p>
+<h2 id="the-honest-bottom-line_1">The honest bottom line</h2>
+<p>The framework's entire risk-and-governance apparatus exists for one reason: <strong>to keep the operator from destroying the system.</strong> The market will not destroy a well-sized, well-governed system quickly; the operator will — by over-betting in euphoria, abandoning in drawdown, or tweaking in panic. Governance is the firewall between the system and its own creator.</p>
+<h2 id="summary_8">Summary</h2>
+<ul>
+<li>Risk is baked into every layer as <em>rules</em>, not intentions.</li>
+<li>Governance is rules about the rules: who changes the system, and when.</li>
+<li>Pre-commit, no-override, and separation of roles are the three key governance rules.</li>
+<li>A written governance document is what makes a system a <em>system</em>.</li>
+<li>The framework's biggest risk is its own operator; governance is the firewall.</li>
+</ul>
+<p>Next: the final chapter — a working framework template.</p>
+<h1 id="10-a-working-framework-template">10. A Working Framework Template</h1>
+<h2 id="everything-on-one-page">Everything, on one page</h2>
+<p>The previous nine chapters built the framework piece by piece. This chapter assembles it into a <strong>single working template</strong> — the one-page document that turns the framework from an idea into a tool you can actually run.</p>
+<h2 id="the-framework-template">The framework template</h2>
+<pre><code>============================================================
+SYSTEMATIC TRADING FRAMEWORK
+============================================================
+
+1. HYPOTHESIS
+   Mechanism:  [why the edge exists — behaviour/structure, in a sentence]
+   Universe:   [exactly what is traded + liquidity filter]
+   Signal:     [entry rule, in precise words]
+   Exit:       [stop / target / trail / time rule]
+   Claim:      [metric + benchmark + horizon]
+   Falsify:    [result that would prove it wrong]
+
+2. DATA
+   Source:        [vendor / API, documented]
+   Adjustment:    [splits/bonuses/rights — how adjusted]
+   Point-in-time: [yes — historical universe, un-restated fundamentals]
+   Cleaning log:  [what was dropped and why]
+
+3. SIZING &amp; PORTFOLIO
+   Risk per trade:    [1-2%]
+   Size rule:         [(Equity × Risk%) ÷ (Entry − Stop)]
+   Weighting:         [equal-weight / signal-weight]
+   Max per position:  [%]
+   Max total at-risk: [%]
+   Max exposure:      [%]
+   Diversification:   [across what drivers]
+
+4. BACKTEST DISCIPLINE
+   Costs included:    [brokerage, STT, spread, slippage — pessimistic]
+   Survivorship:      [removed — point-in-time universe]
+   Look-ahead:        [hunted — &quot;known on this date?&quot; test]
+   Parameter stress:  [edge shown across a range, flat-topped]
+   Out-of-sample:     [tested on unseen period]
+   Sample:            [trade count, regime coverage]
+
+5. EXECUTION &amp; MONITORING
+   Runbook:         [daily/weekly procedure]
+   Reconciliation:  [daily, planned vs. actual]
+   Slippage pad:    [%]
+   Live-vs-backtest: [tracked, deviation threshold]
+
+6. GOVERNANCE
+   Change control:     [how/when rules change — scheduled review only]
+   Drawdown policy:    [action at each drawdown level]
+   Kill switch:        [conditions that stop the system]
+   Review cadence:     [how often, against what]
+============================================================
+</code></pre>
+<h2 id="how-to-use-the-template">How to use the template</h2>
+<ol>
+<li><strong>Fill it in before you build.</strong> The template <em>forces</em> the thinking (mechanism, falsification, exit) that most people skip.</li>
+<li><strong>Fill it in before you backtest.</strong> Pre-registration — the hypothesis and the success/failure criteria are committed <em>before</em> the numbers arrive.</li>
+<li><strong>Use it as the live runbook.</strong> The execution, monitoring, and governance sections are your operating manual, not a formality.</li>
+<li><strong>Review it on schedule.</strong> The governance section defines <em>when</em> — and the discipline is to review then, and only then, not reactively.</li>
+</ol>
+<h2 id="the-test-of-a-working-framework">The test of a working framework</h2>
+<p>A framework is "working" when it passes a single test: <strong>you can hand the whole thing — the template, the data, the rules — to someone else, and they can run it and get the same decisions you would, without asking you a single question.</strong></p>
+<p>If you have to explain, override, or interpret, the framework is not finished — it is discretionary trading wearing a spreadsheet. The entire discipline of this book reduces to that one test.</p>
+<h2 id="the-honest-closing">The honest closing</h2>
+<p>A framework does not guarantee profit. What it guarantees is something more valuable: <strong>that your decisions are explicit, your testing is honest, and your failures are small enough to learn from.</strong> That is the entire game — survive long enough, with a process clean enough, that a real edge (if you find one) can actually compound. Everything in this book, and in the whole series, serves that single goal.</p>
+<h2 id="summary_9">Summary</h2>
+<ul>
+<li>The template assembles hypothesis, data, sizing, backtest, execution, and governance on one page.</li>
+<li>Fill it in before building and before backtesting (pre-registration).</li>
+<li>It doubles as the live runbook and the governance document.</li>
+<li>The test: someone else can run it and get the same decisions, with no questions.</li>
+<li>The framework guarantees honesty and survival, not profit.</li>
+</ul>
+<p>This completes the main text. The appendix is the lifecycle checklist.</p>
+<h1 id="appendix-lifecycle-checklist">Appendix — Lifecycle Checklist</h1>
+<h2 id="run-this-against-any-system-you-build">Run this against any system you build</h2>
+<p>This checklist is the framework's lifecycle, condensed to a series of yes/no gates. A system is ready to proceed to the next stage <strong>only when every item in the current stage is honestly "yes".</strong></p>
+<h2 id="stage-1-hypothesis">Stage 1 — Hypothesis</h2>
+<ul>
+<li>[ ] I can state the <em>mechanism</em> (why the edge exists) in one sentence.</li>
+<li>[ ] The universe is specified exactly, with a liquidity filter.</li>
+<li>[ ] The signal (entry <strong>and</strong> exit) is written unambiguously.</li>
+<li>[ ] The success/failure criteria (metric, benchmark, horizon) are committed <em>before</em> testing.</li>
+</ul>
+<h2 id="stage-2-data">Stage 2 — Data</h2>
+<ul>
+<li>[ ] The data source is documented and auditable.</li>
+<li>[ ] Prices are adjusted for corporate actions (splits/bonuses/rights).</li>
+<li>[ ] The universe is point-in-time (includes delisted/failed names).</li>
+<li>[ ] Fundamentals (if used) are un-restated / point-in-time.</li>
+<li>[ ] A cleaning log records what was dropped and why.</li>
+</ul>
+<h2 id="stage-3-backtest">Stage 3 — Backtest</h2>
+<ul>
+<li>[ ] Costs are included, pessimistically (brokerage, STT, spread, slippage).</li>
+<li>[ ] Survivorship bias is removed.</li>
+<li>[ ] Look-ahead bias has been hunted ("known on this date?").</li>
+<li>[ ] Parameters are stressed (edge shown across a range, flat-topped).</li>
+<li>[ ] The edge survives an out-of-sample test.</li>
+<li>[ ] The sample is large enough, and spans multiple regimes.</li>
+</ul>
+<h2 id="stage-4-paper-trade">Stage 4 — Paper trade</h2>
+<ul>
+<li>[ ] The system runs live in real time with no (or tiny) money.</li>
+<li>[ ] Execution (fills, slippage) is reconciled against the model.</li>
+<li>[ ] Live costs match (or exceed) the backtest's estimate.</li>
+<li>[ ] The runbook and reconciliation process work without errors.</li>
+</ul>
+<h2 id="stage-5-live">Stage 5 — Live</h2>
+<ul>
+<li>[ ] Going live at small size first.</li>
+<li>[ ] Live performance is tracked against the backtest's prediction.</li>
+<li>[ ] Edge decay is monitored against a threshold.</li>
+<li>[ ] The kill switch and drawdown policy are in place and pre-committed.</li>
+</ul>
+<h2 id="stage-6-review-retire">Stage 6 — Review / retire</h2>
+<ul>
+<li>[ ] The system is reviewed on the scheduled cadence (not reactively).</li>
+<li>[ ] Parameter/rule changes happen only through change control.</li>
+<li>[ ] The system is retired when it stops behaving as it should.</li>
+<li>[ ] The lessons are fed back into the next hypothesis.</li>
+</ul>
+<h2 id="the-one-line-test">The one-line test</h2>
+<p><strong>Can someone else run the whole system — template, data, rules — and get the same decisions you would, without asking you a single question?</strong></p>
+<p>If the answer is yes, you have a framework. If not, you have a discretionary trader with a spreadsheet.</p></body></html>

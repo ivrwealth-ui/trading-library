@@ -1,0 +1,718 @@
+<!DOCTYPE html><html><head><meta charset='utf-8'><style>
+* { box-sizing: border-box; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 11pt; line-height: 1.62; color: #1a1d21; margin: 0;
+}
+.cover {
+  height: 100vh; page-break-after: always;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 3cm 2.5cm; background: #0d1715; color: #e8f0ee;
+}
+.cover .rule { width: 64px; height: 4px; background: #2dd4bf; margin-bottom: 2.2rem; }
+.cover h1 { font-size: 38pt; line-height: 1.08; font-weight: 600; color: #fff; margin: 0 0 1.4rem; letter-spacing: -0.5px; }
+.cover .subtitle { font-size: 15pt; color: #9fb5ae; line-height: 1.5; max-width: 34em; }
+.cover .pub { margin-top: 3rem; font-size: 11pt; letter-spacing: 0.14em; text-transform: uppercase; color: #2dd4bf; }
+.cover .ednote { margin-top: 0.6rem; font-size: 9pt; color: #6c817b; }
+h1 { font-size: 23pt; font-weight: 600; color: #0f172a; page-break-before: always; margin: 0 0 1.1rem; padding-bottom: 0.4rem; border-bottom: 2px solid #2dd4bf; }
+h2 { font-size: 15.5pt; font-weight: 600; color: #0f766e; margin: 1.6rem 0 0.6rem; }
+h3 { font-size: 12.5pt; font-weight: 600; color: #1a1d21; margin: 1.2rem 0 0.4rem; }
+p { margin: 0.5rem 0; }
+strong { color: #0f172a; }
+em { color: #334155; }
+a { color: #0f766e; text-decoration: none; }
+hr { border: none; border-top: 1px solid #e2e8f0; margin: 2rem 0; }
+ul, ol { margin: 0.5rem 0 0.8rem; padding-left: 1.5rem; }
+li { margin: 0.25rem 0; }
+code { font-family: 'SF Mono', Menlo, Consolas, monospace; font-size: 9pt; background: #f1f5f9; padding: 1px 5px; border-radius: 3px; color: #0f766e; }
+pre { background: #0f172a; color: #e2e8f0; padding: 0.9rem 1.1rem; border-radius: 6px; font-size: 9pt; line-height: 1.5; white-space: pre-wrap; word-wrap: break-word; }
+pre code { background: none; color: inherit; padding: 0; }
+blockquote { border-left: 3px solid #2dd4bf; background: #f0fdfa; margin: 0.8rem 0; padding: 0.7rem 1rem; color: #0f3d37; font-style: italic; border-radius: 0 4px 4px 0; }
+blockquote p { margin: 0.3rem 0; }
+table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: 9.5pt; page-break-inside: avoid; }
+th, td { border: 1px solid #dbe3e8; padding: 5px 8px; text-align: left; vertical-align: top; }
+th { background: #0f766e; color: #fff; font-weight: 600; }
+tr:nth-child(even) td { background: #f8fafc; }
+h1:first-of-type { page-break-before: auto; }
+h2#important-disclaimer, h2#how-to-read-this-book, h2#table-of-contents { page-break-before: always; }
+</style></head><body><section class="cover"><div class="rule"></div><h1>Techno-Funda: Strategy Ideas That Combine Fundamental Quality with Technical Timing</h1><div class="subtitle">Five fused approaches for NIFTY and Indian stocks — fundamental strength for "what", technical timing for "when" — with an education-only disclaimer.</div><div class="pub">Published by StratLab</div><div class="ednote">Educational content only — not investment advice. StratLab is not SEBI-registered.</div></section><h1 id="techno-funda-strategy-ideas-that-combine-fundamental-quality-with-technical-timing">Techno-Funda: Strategy Ideas That Combine Fundamental Quality with Technical Timing</h1>
+<h2 id="five-fused-approaches-for-nifty-and-indian-stocks-fundamental-strength-for-what-technical-timing-for-when-with-an-education-only-disclaimer">Five fused approaches for NIFTY and Indian stocks — fundamental strength for "what", technical timing for "when" — with an education-only disclaimer.</h2>
+<hr />
+<p><strong>Published by StratLab</strong></p>
+<hr />
+<h2 id="important-disclaimer">Important Disclaimer</h2>
+<p>This book is provided for <strong>educational purposes only</strong>. It is not investment advice, a recommendation, or a solicitation to buy or sell any security.</p>
+<ul>
+<li><strong>StratLab is not registered with SEBI</strong> as an investment adviser, research analyst, or portfolio manager, and does not provide investment advisory services.</li>
+<li>Investing and trading involve risk of loss, including the possible loss of principal. Past performance never guarantees future results.</li>
+<li>All examples, figures, and historical observations are illustrative. Strategies described here have worked <em>historically</em> in certain conditions; that does not mean they will work in the future or for your specific situation, timeline, or risk tolerance.</li>
+<li>Financial ratios, screen criteria, and regulatory details change over time. Always verify current figures and consult a qualified adviser before acting.</li>
+<li>Nothing in this book should be read as a promise of return or a guarantee that any strategy will be profitable.</li>
+</ul>
+<p>By reading this book, you agree that you are solely responsible for your own investment decisions and that you will consult a SEBI-registered adviser where appropriate.</p>
+<hr />
+<h2 id="how-to-read-this-book">How to Read This Book</h2>
+<p>This book teaches <strong>techno-funda</strong> investing — the deliberate fusion of <em>fundamental</em> analysis (what to buy: quality, growth, value) with <em>technical</em> analysis (when to buy and when to exit). It presents five strategy ideas, each pairing a fundamental screen with a technical trigger.</p>
+<ul>
+<li><strong>Chapters 1–2</strong> explain what techno-funda is and why the combination works.</li>
+<li><strong>Chapters 3–4</strong> lay out the two halves: the fundamental screen and the technical timing layer.</li>
+<li><strong>Chapters 5–9</strong> are the five strategy ideas — the heart of the book. Each is self-contained: the idea, the fundamental criteria, the technical trigger, an Indian-market example, and its risks.</li>
+<li><strong>Chapter 10</strong> turns the ideas into a repeatable screening workflow.</li>
+<li>The <strong>appendix</strong> condenses all five ideas into a quick-reference table.</li>
+</ul>
+<p>A note on language: this book describes what a strategy <em>is</em> and what conditions it historically aligns with — never what you "should" do. Where results are discussed, they are framed as historical observations, not promises. You are responsible for your own decisions.</p>
+<hr />
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li>What Is Techno-Funda?</li>
+<li>Why Combine Fundamentals and Technicals?</li>
+<li>The Fundamental Screen</li>
+<li>The Technical Timing Layer</li>
+<li>Idea 1 — Quality + Uptrend</li>
+<li>Idea 2 — Growth + Breakout</li>
+<li>Idea 3 — Value + Reversal Timing</li>
+<li>Idea 4 — Dividend + Trend</li>
+<li>Idea 5 — Earnings Momentum + Relative Strength</li>
+<li>Building the Screening Workflow</li>
+</ol>
+<p>Appendix — Strategy Quick-Reference Table</p>
+<hr />
+<h1 id="1-what-is-techno-funda">1. What Is Techno-Funda?</h1>
+<h2 id="one-answer-to-two-different-questions">One answer to two different questions</h2>
+<p>Every investment decision actually contains two separate questions:</p>
+<ol>
+<li><strong>What to buy</strong> — is this a <em>good business</em> at a <em>reasonable price</em>?</li>
+<li><strong>When to buy</strong> — is <em>now</em> a good time, or am I paying for strength that is about to fade?</li>
+</ol>
+<p>Two great traditions of analysis each answer one of these questions well — and only one:</p>
+<ul>
+<li><strong>Fundamental analysis</strong> answers <em>what</em>. It studies the business: earnings, growth, debt, margins, valuation, and the quality of the balance sheet. It is excellent at identifying <em>good companies</em> — and famously poor at telling you <em>when</em> to enter, because a good company can be a bad investment for a long time if the price keeps falling.</li>
+<li><strong>Technical analysis</strong> answers <em>when</em>. It studies price, trend, and volume to judge <em>timing</em>. It is excellent at telling you <em>when</em> strength is present — and famously indifferent to <em>whether the company is any good</em>, because a broken business can rally on a chart.</li>
+</ul>
+<p><strong>Techno-funda</strong> (technical + fundamental) is simply the practice of answering <em>both</em> questions, with the right tool for each:</p>
+<blockquote>
+<p><strong>Fundamentals decide the universe. Technicals decide the timing.</strong></p>
+</blockquote>
+<h2 id="the-core-principle-what-before-when">The core principle: "what" before "when"</h2>
+<p>Techno-funda inverts the way many people think. Rather than asking "what is moving and can I buy it?", it asks "which <em>good</em> businesses are worth owning, and is the <em>timing</em> right for any of them now?"</p>
+<p>The sequence is disciplined:</p>
+<ol>
+<li><strong>Fundamental screen</strong> — reduce the entire market to a shortlist of businesses that meet a quality, growth, or value standard. This is the "what".</li>
+<li><strong>Technical trigger</strong> — from that shortlist, act only when price action confirms that strength has arrived (an uptrend, a breakout, a reversal off support). This is the "when".</li>
+<li><strong>Risk discipline</strong> — a stop or exit rule, because even a good business bought at the wrong moment can hurt.</li>
+</ol>
+<p>The result is a filter that is <em>narrow at both ends</em>: you do not buy bad businesses, and you do not buy good businesses at bad times. What remains is a small, high-conviction set of ideas.</p>
+<h2 id="why-this-fusion-is-powerful">Why this fusion is powerful</h2>
+<p>Each discipline on its own has a known failure mode:</p>
+<ul>
+<li><strong>Pure fundamental</strong> investors can buy a wonderful company and watch it fall for months ("value trap", "falling knife") because they ignored timing.</li>
+<li><strong>Pure technical</strong> traders can ride a rally in a fundamentally broken company and be destroyed when the truth emerges, because they ignored <em>what</em> they held.</li>
+</ul>
+<p>Techno-funda is an attempt to <em>cancel these two failure modes against each other</em>: the fundamental screen protects against holding junk; the technical trigger protects against buying quality too early. Neither layer is perfect, but together they cover more of the risk surface than either alone.</p>
+<h2 id="what-techno-funda-is-not">What techno-funda is not</h2>
+<ul>
+<li>It is <strong>not</strong> a guarantee — good businesses bought at good times can still decline; markets are probabilistic.</li>
+<li>It is <strong>not</strong> "buy any stock whose chart looks good" — the fundamental screen is non-negotiable.</li>
+<li>It is <strong>not</strong> a single rigid formula — it is a <em>framework</em> with many valid implementations, which is why this book presents five <em>ideas</em>, not one rule.</li>
+</ul>
+<h2 id="the-two-layers-in-one-sentence-each">The two layers, in one sentence each</h2>
+<ul>
+<li><strong>The fundamental layer</strong> asks: <em>is this a business I would be comfortable owning for years?</em></li>
+<li><strong>The technical layer</strong> asks: <em>is the market currently confirming that thesis in the price?</em></li>
+</ul>
+<p>When the answer to both is yes, you have a techno-funda idea.</p>
+<h2 id="summary">Summary</h2>
+<ul>
+<li>Techno-funda fuses fundamental analysis (what) with technical analysis (when).</li>
+<li>Fundamentals decide the universe; technicals decide the timing.</li>
+<li>It cancels the two classic failure modes: value traps (fundamental-only) and junk rallies (technical-only).</li>
+<li>It is a framework with many implementations, not a single formula.</li>
+</ul>
+<p>Next: why the combination works — the logic of each layer and their complementary strengths.</p>
+<h1 id="2-why-combine-fundamentals-and-technicals">2. Why Combine Fundamentals and Technicals?</h1>
+<h2 id="two-lenses-one-market">Two lenses, one market</h2>
+<p>The strongest argument for techno-funda is not that either discipline is weak — it is that they are <strong>complementary</strong>. Fundamentals and technicals measure <em>different things on different time horizons</em>, and combining them covers a risk surface that neither covers alone.</p>
+<h2 id="what-fundamentals-give-you">What fundamentals give you</h2>
+<p>Fundamental analysis answers a long-horizon question: <strong>is this business creating value?</strong></p>
+<ul>
+<li><strong>Quality</strong> — high returns on capital, low debt, consistent margins: the traits of a compounding business.</li>
+<li><strong>Growth</strong> — rising earnings and revenue: the engine of long-term price appreciation.</li>
+<li><strong>Valuation</strong> — a reasonable price relative to earnings, book, and cash flow: the margin of safety.</li>
+</ul>
+<p>These are <em>slow-moving</em> truths. A quality business stays quality for years; its earnings grow over quarters and years, not days. Fundamentals give you <strong>confidence in what you own</strong> and a reason to hold through noise.</p>
+<p>But fundamentals have a known weakness: <strong>they are silent on timing.</strong> A great business can be a terrible purchase if the price is falling — the "value trap" problem. The fundamental investor knows <em>what</em> is good but not <em>when</em> it is good to buy.</p>
+<h2 id="what-technicals-give-you">What technicals give you</h2>
+<p>Technical analysis answers a short-horizon question: <strong>is the market currently rewarding this asset?</strong></p>
+<ul>
+<li><strong>Trend</strong> — is price making higher highs and higher lows (uptrend) or the reverse?</li>
+<li><strong>Momentum</strong> — is strength accelerating or fading?</li>
+<li><strong>Support/resistance</strong> — where do buyers and sellers step in?</li>
+</ul>
+<p>These are <em>fast-moving</em> truths. A trend is visible in days, and it changes in days. Technicals give you <strong>timing</strong> — a signal that strength has arrived, and a mechanism for <em>exit</em> when it fails.</p>
+<p>Technicals' weakness is the mirror image: <strong>they are silent on quality.</strong> A broken company can chart beautifully for a while, and the technical trader, riding the chart, can be left holding nothing when reality catches up.</p>
+<h2 id="the-complementary-argument-precisely">The complementary argument, precisely</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Fundamentals</th>
+<th>Technicals</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Answers</td>
+<td><em>What</em> to own</td>
+<td><em>When</em> to act</td>
+</tr>
+<tr>
+<td>Time horizon</td>
+<td>Years</td>
+<td>Days to months</td>
+</tr>
+<tr>
+<td>Protects against</td>
+<td>Junk businesses</td>
+<td>Bad timing</td>
+</tr>
+<tr>
+<td>Fails against</td>
+<td>Value traps / falling knives</td>
+<td>Junk rallies</td>
+</tr>
+</tbody>
+</table>
+<p>Each layer's strength is <em>exactly</em> the other's weakness. This is the whole case for combining them:</p>
+<ul>
+<li>The <strong>fundamental screen</strong> removes the companies whose charts are only temporarily strong — you never ride a junk rally.</li>
+<li>The <strong>technical trigger</strong> removes the good companies whose prices are still falling — you never catch a falling knife.</li>
+</ul>
+<h2 id="the-behavioural-edge">The behavioural edge</h2>
+<p>There is a second, subtler reason the combination works: <strong>it disciplines both types of investor at once.</strong></p>
+<ul>
+<li>A fundamental investor who must also see a technical trigger is forced to <em>wait</em> — they cannot buy "because it's cheap" and watch it fall. The trigger imposes patience.</li>
+<li>A technical trader who must also pass a fundamental screen is forced to <em>know what they hold</em> — they cannot buy a random rallying chart. The screen imposes quality.</li>
+</ul>
+<p>The result is a process that is <em>slower, narrower, and more deliberate</em> than either discipline alone — and in markets, deliberate narrowness is usually an advantage, because it reduces the number of ways to be wrong.</p>
+<h2 id="an-honest-limit">An honest limit</h2>
+<p>The combination is powerful but not magic. Two honest caveats:</p>
+<ol>
+<li><strong>It can keep you out of good trades.</strong> A wonderful company in a powerful uptrend that <em>fails your specific fundamental threshold</em> will be excluded — you trade away some upside for the discipline.</li>
+<li><strong>It does not remove risk.</strong> A good business, bought at a confirmed good time, can still decline; the framework only shifts the odds, it does not guarantee outcomes.</li>
+</ol>
+<p>Framed as this book always frames such things: <em>historically, buying quality businesses at technically well-timed entries has tended to produce better risk-adjusted outcomes than either a fundamentals-only or a technicals-only approach — but that tendency is probabilistic, not certain.</em></p>
+<h2 id="summary_1">Summary</h2>
+<ul>
+<li>Fundamentals and technicals measure different things on different horizons.</li>
+<li>Each layer's strength is the other's weakness: quality vs. timing.</li>
+<li>Combining them cancels both classic failure modes and disciplines both kinds of investor.</li>
+<li>The trade-off is narrower selection and the possibility of missing some winners.</li>
+<li>The edge is probabilistic, not a guarantee.</li>
+</ul>
+<p>Next: the fundamental screen — the "what" half of the framework.</p>
+<h1 id="3-the-fundamental-screen">3. The Fundamental Screen</h1>
+<h2 id="separating-good-businesses-from-the-rest">Separating good businesses from the rest</h2>
+<p>The fundamental screen is the "what" half of techno-funda. Its job is to reduce the entire market to a shortlist of businesses worth owning. This chapter covers the four pillars of the screen — <strong>quality, growth, valuation, and balance-sheet health</strong> — and how to apply them in the Indian context.</p>
+<h2 id="pillar-1-quality">Pillar 1: Quality</h2>
+<p>A quality business earns a <strong>high return on the capital it employs</strong>, because that is the definition of a compounding machine.</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>What it measures</th>
+<th>Common screen</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ROE (Return on Equity)</td>
+<td>Profit per unit of shareholder capital</td>
+<td>ROE &gt; 15% (sustained)</td>
+</tr>
+<tr>
+<td>ROCE</td>
+<td>Profit per unit of total capital employed</td>
+<td>ROCE &gt; 15%</td>
+</tr>
+<tr>
+<td>Operating margin</td>
+<td>Pricing power / efficiency</td>
+<td>Stable or rising, &gt; 10–15%</td>
+</tr>
+<tr>
+<td>Consistent earnings</td>
+<td>Reliability of the business</td>
+<td>Positive EPS in most of the last 5–10 years</td>
+</tr>
+</tbody>
+</table>
+<p>The key word is <strong>sustained</strong>. A single year of high ROE is meaningless; five to ten years of it signals a durable advantage. A screen should look at the <em>average</em> over several years, not one quarter.</p>
+<h2 id="pillar-2-growth">Pillar 2: Growth</h2>
+<p>Quality tells you the business is good <em>now</em>; growth tells you it is getting better. Growth is what turns a good business into a rising stock over time.</p>
+<ul>
+<li><strong>Revenue growth</strong> — is the top line expanding? (Look at 3–5 year CAGR.)</li>
+<li><strong>Earnings growth</strong> — is profit growing at least as fast? (EPS CAGR.)</li>
+<li><strong>Consistency of growth</strong> — is growth steady, or lumpy and unreliable?</li>
+</ul>
+<p>A common screen: <strong>revenue and EPS growing at 10–15%+ annually over 3–5 years</strong>, with no major negative year. Growth quality matters more than raw speed — a 40% grower that crashes every other year is riskier than a steady 15% grower.</p>
+<h2 id="pillar-3-valuation">Pillar 3: Valuation</h2>
+<p>A wonderful business can be a poor purchase at a silly price. Valuation is the <strong>margin of safety</strong>.</p>
+<ul>
+<li><strong>P/E (Price-to-Earnings)</strong> — price relative to profit. Lower is cheaper, but compare <em>within</em> an industry, not across.</li>
+<li><strong>P/B (Price-to-Book)</strong> — price relative to net assets; more relevant for asset-heavy businesses (banks, financials).</li>
+<li><strong>PEG (P/E ÷ growth rate)</strong> — a rough value-for-growth measure; PEG near or below 1 is often considered reasonable.</li>
+</ul>
+<p>The honest caveat: <strong>valuation is not a timing tool.</strong> A cheap stock can stay cheap, and an expensive quality stock can keep rising. In techno-funda, valuation is a <em>filter</em> (avoid paying absurd prices), while the <em>technical layer</em> handles timing. Valuation should be used to <em>exclude the clearly overpriced</em>, not to <em>pick the exact entry</em>.</p>
+<h2 id="pillar-4-balance-sheet-health">Pillar 4: Balance-sheet health</h2>
+<p>Growth and earnings mean little if the business is drowning in debt. Balance-sheet health is the survivability test.</p>
+<ul>
+<li><strong>Debt-to-equity</strong> — leverage; a high ratio is a red flag (banks/financials are the exception, where leverage is the business model).</li>
+<li><strong>Interest coverage</strong> — operating profit ÷ interest; must comfortably cover obligations.</li>
+<li><strong>Current ratio / working capital</strong> — short-term liquidity.</li>
+</ul>
+<p>A simple screen: <strong>debt-to-equity below a threshold</strong> (often 0.5–1.0 for non-financials), <strong>interest coverage comfortably above 2×</strong>, and a <strong>positive operating cash flow</strong> trend.</p>
+<h2 id="applying-the-screen-in-india">Applying the screen in India</h2>
+<p>In the Indian market, a practical fundamental screen over the <strong>NIFTY 500</strong> (or a larger liquid universe) might look like:</p>
+<ol>
+<li><strong>Quality:</strong> ROE &gt; 15% (5-year average), operating margin stable/rising.</li>
+<li><strong>Growth:</strong> revenue and EPS CAGR &gt; 12% over 5 years.</li>
+<li><strong>Valuation:</strong> P/E below the stock's own 5-year median (or below a sector-relative ceiling).</li>
+<li><strong>Health:</strong> debt-to-equity &lt; 1.0 (non-financials), interest coverage &gt; 3×.</li>
+</ol>
+<p>This is a <em>starting point</em>, not gospel — every threshold is adjustable to taste and sector. The point is not the specific numbers; it is that the screen is <strong>explicit, written, and repeatable</strong>, so the "what" decision is made systematically rather than by feel.</p>
+<h2 id="the-output-a-universe-not-a-buy-list">The output: a universe, not a buy list</h2>
+<p>Crucially, the fundamental screen produces a <strong>shortlist of candidates</strong>, not a trade. Passing the screen means "worth owning at the right time." It does <strong>not</strong> mean "buy now." That decision belongs to the technical layer — the next chapter.</p>
+<h2 id="summary_2">Summary</h2>
+<ul>
+<li>The fundamental screen has four pillars: quality, growth, valuation, and balance-sheet health.</li>
+<li>Quality = sustained high returns on capital (ROE/ROCE over years).</li>
+<li>Growth = steady revenue and EPS expansion (CAGR over 3–5 years).</li>
+<li>Valuation = margin of safety; a filter against overpaying, not a timing tool.</li>
+<li>Health = survivability (low leverage, high coverage, positive cash flow).</li>
+<li>The screen produces a candidate universe, not a buy signal.</li>
+</ul>
+<p>Next: the technical timing layer — the "when" half.</p>
+<h1 id="4-the-technical-timing-layer">4. The Technical Timing Layer</h1>
+<h2 id="deciding-when-not-if">Deciding "when", not "if"</h2>
+<p>The fundamental screen told you <em>what</em> is worth owning. The technical layer tells you <em>when</em> to actually act — and, just as importantly, <em>when to leave</em>. Its job is to answer one question: <strong>is the market currently confirming the thesis in the price?</strong></p>
+<p>This chapter covers the four timing tools the strategy ideas use: trend, momentum, entry triggers, and exits.</p>
+<h2 id="trend-the-regime-filter">Trend: the regime filter</h2>
+<p>The first and most important technical question is: <strong>is this stock in an uptrend?</strong> An uptrend is a sequence of <strong>higher highs (HH) and higher lows (HL)</strong>, and it is most simply confirmed by price trading <strong>above a rising long-term moving average</strong> — the 200-day MA is the standard.</p>
+<p>The trend filter does two jobs in techno-funda:</p>
+<ol>
+<li>It <strong>keeps you out of falling knives</strong> — a fundamentally good stock that is still trending <em>down</em> is not yet a candidate, no matter how cheap.</li>
+<li>It <strong>tells you the tide is with you</strong> — an uptrend means the broader market is already rewarding this business.</li>
+</ol>
+<p>A clean rule: <strong>only act on stocks above their 200-day MA (and ideally with the 50-day MA also rising).</strong> This single filter eliminates most bad entries.</p>
+<h2 id="momentum-is-strength-building-or-fading">Momentum: is strength building or fading?</h2>
+<p>Trend tells you the <em>direction</em>; momentum tells you the <em>vigour</em>. Two useful momentum measures:</p>
+<ul>
+<li><strong>Rate of change (ROC)</strong> — the trailing N-month return; rising ROC means strength is accelerating.</li>
+<li><strong>Relative strength (RS)</strong> — the stock's return <em>relative to</em> the benchmark (NIFTY). A stock that is outperforming the index has positive relative strength — the market is favouring it.</li>
+</ul>
+<p>For timing, what matters is the <em>recent</em> direction of momentum: a stock in an uptrend whose relative strength is <em>rising</em> is a stronger candidate than one merely drifting up.</p>
+<h2 id="entry-triggers-the-moment-to-act">Entry triggers: the moment to act</h2>
+<p>Trend and momentum tell you the stock is in the right <em>state</em>. The <strong>entry trigger</strong> is the specific price action that says "act now." The five strategy ideas use three common triggers:</p>
+<ol>
+<li><strong>Breakout</strong> — price closes at/above a new high (52-week high, or a defined resistance). Strength is being <em>confirmed</em>.</li>
+<li><strong>Pullback reversal</strong> — price pulls back to a rising moving average and prints a reversal candle, <em>then</em> resumes. A lower-risk entry <em>within</em> an uptrend.</li>
+<li><strong>Reversal off a base</strong> — after a period of consolidation or decline, price shows the first signs of a turn (higher low, close above a short MA).</li>
+</ol>
+<p>Each trigger is a <em>specific, observable event</em> — not a feeling. The discipline is to wait for it.</p>
+<h2 id="exits-the-other-half-of-timing">Exits: the other half of timing</h2>
+<p>Timing is not just entry; it is also <strong>exit</strong>. A techno-funda position needs a defined way out:</p>
+<ul>
+<li><strong>Trend exit</strong> — close when price breaks the trend (e.g., closes below the 200-day MA, or makes a lower low). The <em>fundamental</em> thesis may be intact, but the <em>technical</em> timing has failed — and timing is what you entered on.</li>
+<li><strong>Stop-loss</strong> — a fixed level below the entry (below the breakout level or pullback low) that caps the loss if the setup fails immediately.</li>
+<li><strong>Thesis break</strong> — exit if the <em>fundamental</em> story itself deteriorates (a major earnings miss, a debt shock), regardless of the chart.</li>
+</ul>
+<p>The elegant part of techno-funda is that you can hold a position as long as <strong>both</strong> layers agree, and exit when <strong>either</strong> fails — the fundamental screen or the technical trend. That is a clean, two-sided exit rule.</p>
+<h2 id="the-division-of-labour-restated">The division of labour, restated</h2>
+<p>To keep the framework crisp:</p>
+<ul>
+<li><strong>Fundamentals</strong> tell you the business is worth owning.</li>
+<li><strong>Technicals</strong> tell you the market agrees <em>now</em> — and will warn you when it stops agreeing.</li>
+</ul>
+<p>The strategy ideas in the next five chapters are simply different <em>pairings</em> of a fundamental screen with a technical trigger. Learn the two layers here, and each idea becomes a matter of "which screen, which trigger, which exit."</p>
+<h2 id="summary_3">Summary</h2>
+<ul>
+<li>The technical layer answers "when": is the market confirming the thesis?</li>
+<li>Trend (200-day MA, HH/HL) filters out falling knives.</li>
+<li>Momentum (ROC, relative strength) measures vigour.</li>
+<li>Entry triggers — breakout, pullback reversal, or base reversal — are specific observable events.</li>
+<li>Exits fire when either the technical trend or the fundamental thesis breaks.</li>
+</ul>
+<p>Next: Idea 1 — Quality + Uptrend.</p>
+<h1 id="5-idea-1-quality-uptrend">5. Idea 1 — Quality + Uptrend</h1>
+<h2 id="the-compounding-business-bought-with-the-trend">The compounding business, bought with the trend</h2>
+<p>The most fundamental techno-funda idea: own <strong>high-quality businesses</strong> — the compounding machines — but only while they are in an <strong>uptrend</strong>. This is the classic "great company at a reasonable time" construction.</p>
+<h2 id="the-idea">The idea</h2>
+<p>A quality business (high, sustained returns on capital) tends to compound in value over years. But even a great company goes through long periods where the stock <em>falls</em> or <em>goes nowhere</em> — and buying during those periods is painful, even if the eventual outcome is fine. The Quality + Uptrend idea simply waits: <strong>identify the quality business, then own it only while price is trending up.</strong></p>
+<p>The logic is that an uptrend is the market's own confirmation that the business's compounding is currently being <em>rewarded</em>. You are buying quality <em>and</em> paying attention to when the market agrees with you.</p>
+<h2 id="the-fundamental-screen-what">The fundamental screen (what)</h2>
+<p>Over a liquid universe (the NIFTY 500 is a natural start):</p>
+<ul>
+<li><strong>ROE &gt; 15%</strong>, averaged over the last 5 years (sustained, not a one-year spike).</li>
+<li><strong>ROCE &gt; 15%</strong> (or a stable, high operating margin).</li>
+<li><strong>Low debt</strong> — debt-to-equity &lt; 0.5 for non-financials; interest coverage &gt; 4×.</li>
+<li><strong>Consistent profitability</strong> — positive earnings in nearly all of the last 10 years.</li>
+</ul>
+<p>This produces a shortlist of genuine compounding businesses — often the "franchise" names with durable competitive advantages.</p>
+<h2 id="the-technical-trigger-when">The technical trigger (when)</h2>
+<p>From that shortlist, act only when:</p>
+<ol>
+<li><strong>Price is above the rising 200-day MA</strong> (uptrend confirmed).</li>
+<li><strong>Entry trigger:</strong> one of the timing signals from Chapter 4 — most naturally a <strong>pullback to the 50-day or 20-day MA that holds and reverses</strong>, or a clean <strong>breakout to a new high</strong>.</li>
+<li><strong>Exit:</strong> close below the 200-day MA (trend broken), or a stop below the pullback low.</li>
+</ol>
+<h2 id="a-worked-example-an-nse-franchise">A worked example (an NSE franchise)</h2>
+<ul>
+<li>A consumer staple with a 5-year average ROE of 24%, minimal debt, and consistent earnings passes the quality screen.</li>
+<li>For months it trades sideways, below its 200-day MA — <em>not</em> a candidate yet, despite the quality.</li>
+<li>A recovery begins; the stock <strong>closes above its rising 200-day MA</strong>, then <strong>pulls back to the 50-day MA and reverses upward</strong>. <strong>Entry</strong>.</li>
+<li>The stock trends higher for a year as earnings keep compounding; the investor holds while the 200-day MA keeps rising.</li>
+<li>A market correction drives it <strong>below the 200-day MA</strong>. <strong>Exit</strong> — the trend, and therefore the timing, has failed (the <em>business</em> may still be fine).</li>
+</ul>
+<p>Result: the investor owned a great business <em>only during the periods the market was rewarding it</em>, and stepped aside when it was not.</p>
+<h2 id="risks-and-limitations">Risks and limitations</h2>
+<ul>
+<li><strong>Late entries / late exits.</strong> Waiting for the 200-day MA means giving up the first and last legs of every move. This is the price of confirmation.</li>
+<li><strong>Whipsaw in ranges.</strong> A quality stock can chop around its 200-day MA, generating false entries/exits. The pullback trigger (rather than the raw MA cross) reduces this.</li>
+<li><strong>Quality is backward-looking.</strong> A business that <em>was</em> high-ROE can deteriorate; the screen lags reality. The exit rule partly covers this, but the fundamental thesis must still be monitored.</li>
+<li><strong>Excludes great turnarounds.</strong> The idea deliberately skips companies not yet in an uptrend — including some that will become the next big winners.</li>
+</ul>
+<h2 id="summary_4">Summary</h2>
+<ul>
+<li>Own high-quality businesses (sustained ROE/ROCE, low debt) only in uptrends.</li>
+<li>Enter on a pullback reversal or breakout above the rising 200-day MA; exit on a trend break.</li>
+<li>The uptrend is the market's confirmation that quality is being rewarded.</li>
+<li>Costs: lateness, whipsaw, and excluding turnarounds.</li>
+</ul>
+<p>Next: Idea 2 — Growth + Breakout.</p>
+<h1 id="6-idea-2-growth-breakout">6. Idea 2 — Growth + Breakout</h1>
+<h2 id="fast-growing-businesses-bought-on-strength">Fast-growing businesses, bought on strength</h2>
+<p>If Idea 1 is the patient, compounding approach, Idea 2 is its more aggressive cousin: own <strong>high-growth businesses</strong>, but buy them only on a <strong>breakout</strong> — the moment the market visibly reprices their growth upward.</p>
+<h2 id="the-idea_1">The idea</h2>
+<p>Growth stocks are where the market's biggest re-ratings happen: when a fast-growing company is <em>recognised</em>, its price can rise far more than earnings alone, because the market starts paying for <em>future</em> growth, not just today's. The problem is that growth recognition is <em>lumpy and hard to predict</em> — a great grower can sit flat for months, then gap up on a single earnings report.</p>
+<p>The Growth + Breakout idea therefore waits for the market to do the recognising <em>first</em>. It does not try to predict <em>when</em> a growth stock will be re-rated; it waits for the <strong>breakout</strong> — a new high on volume — and then participates. You give up the first part of the move (the breakout itself) to avoid holding a grower that never gets recognised.</p>
+<h2 id="the-fundamental-screen-what_1">The fundamental screen (what)</h2>
+<ul>
+<li><strong>Revenue growth &gt; 15–20% CAGR</strong> over 3–5 years (the growth engine).</li>
+<li><strong>Earnings growth</strong> in the same range, or accelerating.</li>
+<li><strong>Rising or stable margins</strong> — growth <em>without</em> margin erosion (quality of growth).</li>
+<li><strong>Reasonable balance sheet</strong> — growth companies often carry debt, but it must be serviceable.</li>
+</ul>
+<p>The screen identifies the <em>genuine</em> growers — companies expanding their market and earnings, not merely their share count.</p>
+<h2 id="the-technical-trigger-when_1">The technical trigger (when)</h2>
+<ol>
+<li><strong>Uptrend context</strong> — the stock is above its 200-day MA (ideally already in a longer uptrend).</li>
+<li><strong>The breakout</strong> — price <strong>closes at a new 52-week high (or a multi-month high) on above-average volume</strong>. Volume confirms that this is genuine recognition, not a head-fake.</li>
+<li><strong>Stop</strong> — below the breakout level (or the prior consolidation's upper boundary). If the breakout fails, the trade fails fast.</li>
+<li><strong>Exit</strong> — a trailing stop (e.g., a close below the 20-day or 50-day MA), letting a genuine re-rating run rather than capping it with a target.</li>
+</ol>
+<h2 id="a-worked-example-a-mid-cap-grower">A worked example (a mid-cap grower)</h2>
+<ul>
+<li>A mid-cap company growing revenue at 25% annually, with expanding margins, passes the growth screen.</li>
+<li>It has been consolidating between ₹400 and ₹480 for months.</li>
+<li>After a strong quarterly result, the stock <strong>closes at ₹495 on volume 2× its average</strong> — a breakout to a new high. <strong>Entry</strong> at ₹495.</li>
+<li><strong>Stop</strong> at ₹455 (below the consolidation top).</li>
+<li>The market re-rates the stock; it climbs to ₹650 over the following months as more investors recognise the growth. The investor trails the stop up under the rising 20-day MA, eventually exiting at ₹610.</li>
+</ul>
+<p>Result: the investor caught the <em>recognition</em> phase — the re-rating — without having to predict when it would start, and with a defined stop if the breakout had failed.</p>
+<h2 id="risks-and-limitations_1">Risks and limitations</h2>
+<ul>
+<li><strong>High failure rate.</strong> Growth breakouts fail often — the breakout can reverse quickly (especially on a gap-up that fades). The stop is what keeps these failures small.</li>
+<li><strong>Valuation risk.</strong> The screen says nothing about price; a breakout can be into dangerously expensive territory. (Pairing with a valuation sanity-check — e.g., PEG — is a prudent addition.)</li>
+<li><strong>Gap risk.</strong> Growth re-ratings often happen <em>on the gap</em> (overnight); buying into a large gap is riskier than a clean close above the level.</li>
+<li><strong>Volatility.</strong> Growth stocks are volatile; the trailing exit will be hit by normal swings, so positions must be sized accordingly.</li>
+</ul>
+<h2 id="summary_5">Summary</h2>
+<ul>
+<li>Own high-growth businesses, but buy only on a volume-confirmed breakout to a new high.</li>
+<li>The breakout is the market's recognition of growth; you participate rather than predict.</li>
+<li>Stop below the breakout; trail the winner rather than capping it.</li>
+<li>Risks: failed breakouts, valuation, gap risk, volatility.</li>
+</ul>
+<p>Next: Idea 3 — Value + Reversal Timing.</p>
+<h1 id="7-idea-3-value-reversal-timing">7. Idea 3 — Value + Reversal Timing</h1>
+<h2 id="cheap-businesses-bought-only-when-the-tide-turns">Cheap businesses, bought only when the tide turns</h2>
+<p>The first two ideas buy <em>strength</em>. This one buys <em>cheapness</em> — but with the crucial techno-funda twist: a cheap stock is only bought once the price shows a <strong>reversal</strong>, because cheap alone is a trap.</p>
+<h2 id="the-idea_2">The idea</h2>
+<p>Value investing's great enemy is the <strong>value trap</strong>: a stock that is cheap for a reason, and stays cheap (or gets cheaper) for years. The classic mistake is to buy a low-P/E stock simply <em>because</em> it is low-P/E, and then watch it drift down while the "cheapness" deepens.</p>
+<p>The Value + Reversal Timing idea keeps the value screen but adds a non-negotiable gate: <strong>the technical reversal.</strong> A cheap stock becomes a <em>candidate</em> only when the price stops falling and starts turning up. You are buying value, but you are <em>waiting for the market to stop punishing it</em> first.</p>
+<h2 id="the-fundamental-screen-what_2">The fundamental screen (what)</h2>
+<ul>
+<li><strong>Low valuation</strong> — e.g., P/E below its own 5-year median, P/B below 2 (or sector-relative), a reasonable PEG.</li>
+<li><strong>Still profitable</strong> — positive earnings (a value screen should exclude loss-makers; those are a different bet).</li>
+<li><strong>A reason to recover</strong> — healthy balance sheet (low debt), stable or recovering margins, a catalyst on the horizon (earnings inflection, new management, sector cycle).</li>
+</ul>
+<p>The screen identifies <em>cheap but viable</em> businesses — not distressed ones. Distress is excluded because it is a different (and far riskier) game.</p>
+<h2 id="the-technical-trigger-when_2">The technical trigger (when)</h2>
+<ol>
+<li><strong>A base or bottom is forming</strong> — the decline has slowed, price is no longer making lower lows.</li>
+<li><strong>The reversal</strong> — the first confirmed signs of a turn: a <strong>higher low</strong>, followed by a <strong>close above a short-term MA (e.g., the 20-day or 50-day)</strong> on rising volume. Some versions require a close above the 200-day MA before acting.</li>
+<li><strong>Stop</strong> — below the reversal low (the higher low). If price falls below it, the "reversal" was false and the value trap is still in force.</li>
+<li><strong>Exit</strong> — trend break (below the 50/200-day MA) or the stop; the position is held only as long as the recovery continues.</li>
+</ol>
+<h2 id="a-worked-example-an-nse-cyclicalcheap-name">A worked example (an NSE cyclical/cheap name)</h2>
+<ul>
+<li>A large-cap in a beaten-down sector trades at a P/E well below its 5-year median, with a clean balance sheet and early signs of an earnings inflection. It passes the value screen.</li>
+<li>The stock has been falling for a year but recently <strong>stopped making new lows</strong>, building a base between ₹180 and ₹200.</li>
+<li>It <strong>makes a higher low at ₹195, then closes above its 50-day MA at ₹210 on rising volume</strong>. <strong>Entry</strong> at ₹212.</li>
+<li><strong>Stop</strong> at ₹193 (below the higher low).</li>
+<li>The recovery continues as the sector cycle turns; the stock climbs to ₹280. The investor holds while the uptrend persists, exiting on a trend break at ₹265.</li>
+</ul>
+<p>Result: the investor bought a cheap stock <em>only after</em> the market confirmed the turn — avoiding the years of pain that a pure value investor would have absorbed.</p>
+<h2 id="risks-and-limitations_2">Risks and limitations</h2>
+<ul>
+<li><strong>False reversals.</strong> A reversal signal can fail — the "turn" was just a bounce in a continuing downtrend. The stop below the higher low caps this.</li>
+<li><strong>Late to genuine recoveries.</strong> Waiting for confirmation means missing the very bottom; the first, sharpest leg of a V-shaped recovery is given up.</li>
+<li><strong>The value trap persists.</strong> A stock can look "reversing" and then resume its decline; the screen must also have been right that the business is <em>viable</em>, not just cheap.</li>
+<li><strong>Catalyst dependence.</strong> Many cheap stocks never re-rate without a specific catalyst; the screen's "reason to recover" is doing real work.</li>
+</ul>
+<h2 id="summary_6">Summary</h2>
+<ul>
+<li>Buy cheap-but-viable businesses, but only after a confirmed technical reversal.</li>
+<li>The reversal (higher low + close above a short MA) is the gate that avoids value traps.</li>
+<li>Stop below the reversal low; exit on trend break.</li>
+<li>Costs: false reversals, lateness, and the persistence of value traps.</li>
+</ul>
+<p>Next: Idea 4 — Dividend + Trend.</p>
+<h1 id="8-idea-4-dividend-trend">8. Idea 4 — Dividend + Trend</h1>
+<h2 id="income-businesses-owned-only-in-uptrends">Income businesses, owned only in uptrends</h2>
+<p>This idea targets <strong>dividend-paying businesses</strong> — the steady, income-generating compounders — and applies the same discipline as the others: own them for the income, but time the <em>capital</em> with the trend.</p>
+<h2 id="the-idea_3">The idea</h2>
+<p>A high-quality dividend payer rewards you in two ways: the <strong>dividend yield</strong> (income) and <strong>price appreciation</strong> (capital). The insight behind this idea is that these two rewards are best captured <em>together</em>, and that <em>both</em> are undermined if you buy a dividend stock in a downtrend.</p>
+<p>The logic: a stable dividend payer in an uptrend gives you income <em>plus</em> a rising price. The same stock in a downtrend gives you income <em>minus</em> a falling price — and the falling price can easily overwhelm the yield. So the idea is: <strong>screen for reliable dividends, then own them only while the trend is up.</strong></p>
+<h2 id="the-fundamental-screen-what_3">The fundamental screen (what)</h2>
+<ul>
+<li><strong>Dividend yield</strong> — above a threshold (often &gt; 2–3%, but the <em>reliability</em> matters more than the raw number).</li>
+<li><strong>Dividend sustainability</strong> — the payout is comfortably covered by earnings (payout ratio &lt; ~70%) and has been <em>paid and grown consistently</em> for years. A high yield that is not sustainable is a warning, not an attraction.</li>
+<li><strong>Underlying quality</strong> — stable earnings, low debt, and a business that generates the cash flow to keep paying (a dividend is only as good as the cash flow behind it).</li>
+</ul>
+<p>The screen identifies <em>reliable income</em> — companies whose dividend is a genuine, sustainable return of cash, not a trap.</p>
+<h2 id="the-technical-trigger-when_3">The technical trigger (when)</h2>
+<ol>
+<li><strong>Uptrend</strong> — price above the rising 200-day MA.</li>
+<li><strong>Entry</strong> — a <strong>pullback to a rising MA (50-day or 200-day) that holds</strong>, or a breakout to a new high. The pullback entry is often the natural fit: buying a reliable dividend stock <em>on a dip</em> in an uptrend improves the effective yield.</li>
+<li><strong>Stop</strong> — below the pullback low (or below the 200-day MA).</li>
+<li><strong>Exit</strong> — trend break (close below the 200-day MA), or the fundamental exit if the dividend is cut or the payout becomes unsustainable.</li>
+</ol>
+<h2 id="a-worked-example-an-nse-dividend-stalwart">A worked example (an NSE dividend stalwart)</h2>
+<ul>
+<li>A large utility/consumer name pays a consistent 3% yield with a payout ratio of 55%, a clean balance sheet, and a 15-year record of paying and growing the dividend. It passes the screen.</li>
+<li>The stock is in a steady uptrend, above its rising 200-day MA.</li>
+<li>It <strong>pulls back to the 200-day MA during a broad market dip and holds, reversing upward</strong>. <strong>Entry</strong>.</li>
+<li>The investor holds, collecting the dividend while the price grinds higher over the following year.</li>
+<li>After a long run, the stock <strong>closes below the 200-day MA</strong> in a correction. <strong>Exit</strong> (the income continues to be attractive, but the <em>capital</em> timing has turned).</li>
+</ul>
+<p>Result: the investor captured the yield <em>and</em> the uptrend, and avoided holding through the drawdowns — while always knowing the dividend would still be there if they chose to return.</p>
+<h2 id="risks-and-limitations_3">Risks and limitations</h2>
+<ul>
+<li><strong>Yield is not total return.</strong> A 3% yield is swamped by a 20% price fall; the trend filter exists precisely because the price matters as much as the yield.</li>
+<li><strong>Dividend cuts.</strong> A "reliable" payer can cut the dividend; the fundamental screen's sustainability check reduces, but does not remove, this risk.</li>
+<li><strong>Whipsaw.</strong> Dividend stocks are often low-volatility and can chop around their 200-day MA; the pullback entry (not a raw MA cross) mitigates this.</li>
+<li><strong>Opportunity cost.</strong> Exiting on a trend break means missing the dividend during the periods you are out; that is the price of protecting the capital.</li>
+</ul>
+<h2 id="summary_7">Summary</h2>
+<ul>
+<li>Own reliable dividend payers (sustainable, growing, covered) only in uptrends.</li>
+<li>Enter on pullbacks to a rising MA; exit on trend break or a dividend cut.</li>
+<li>The trend protects the <em>capital</em> half of total return; the yield is the <em>income</em> half.</li>
+<li>Risks: yield ≠ total return, dividend cuts, whipsaw, opportunity cost.</li>
+</ul>
+<p>Next: Idea 5 — Earnings Momentum + Relative Strength.</p>
+<h1 id="9-idea-5-earnings-momentum-relative-strength">9. Idea 5 — Earnings Momentum + Relative Strength</h1>
+<h2 id="the-markets-favourite-stocks-confirmed-by-both-layers">The market's favourite stocks, confirmed by both layers</h2>
+<p>This idea combines the <em>fundamental</em> signal of <strong>earnings momentum</strong> (profits accelerating, estimates rising) with the <em>technical</em> signal of <strong>relative strength</strong> (the stock outperforming the market). It targets the stocks that are improving on paper <em>and</em> being rewarded in price — the sweet spot of the whole framework.</p>
+<h2 id="the-idea_4">The idea</h2>
+<p>Two of the strongest documented tendencies in markets are:</p>
+<ol>
+<li><strong>Earnings momentum</strong> — companies whose earnings are <em>accelerating</em> (or whose estimates are being revised upward) tend to keep outperforming, because the market systematically under-reacts to improving fundamentals.</li>
+<li><strong>Price momentum / relative strength</strong> — stocks that are already <em>outperforming</em> tend to keep outperforming, because strength persists.</li>
+</ol>
+<p>This idea requires <strong>both at once</strong>: the fundamentals must be <em>improving</em> (earnings momentum) and the price must be <em>confirming it</em> (relative strength). Either alone is weaker; together they are a strong, self-reinforcing signal — a stock whose fundamentals are improving <em>and</em> whose price is already leading.</p>
+<h2 id="the-fundamental-screen-what_4">The fundamental screen (what)</h2>
+<ul>
+<li><strong>Earnings momentum</strong> — earnings per share <em>accelerating</em>: recent quarterly EPS growth faster than the trailing trend, or consecutive quarters of positive earnings surprises.</li>
+<li><strong>Estimate revisions</strong> — analysts revising earnings estimates <em>upward</em> (a leading indicator of improving fundamentals).</li>
+<li><strong>Revenue confirmation</strong> — top-line growth supporting the earnings improvement (earnings growth without revenue is lower-quality).</li>
+</ul>
+<p>The screen identifies companies whose <em>fundamentals are on an improving trajectory right now</em> — not merely "good" or "cheap", but <em>getting better</em>.</p>
+<h2 id="the-technical-trigger-when_4">The technical trigger (when)</h2>
+<ol>
+<li><strong>Relative strength</strong> — the stock is <strong>outperforming the benchmark</strong> (e.g., its trailing 3–6 month return exceeds NIFTY's, or its RS line is rising).</li>
+<li><strong>Uptrend</strong> — price above the rising 200-day MA.</li>
+<li><strong>Entry</strong> — a <strong>breakout to a new high</strong> or a <strong>pullback that holds at a rising MA</strong> (either of the standard triggers).</li>
+<li><strong>Stop / exit</strong> — below the breakout or pullback low; or exit when <em>either</em> the earnings momentum stalls (a major negative surprise) <em>or</em> the relative strength breaks down.</li>
+</ol>
+<h2 id="a-worked-example-an-nse-earnings-beater">A worked example (an NSE earnings-beater)</h2>
+<ul>
+<li>A large-cap has posted three consecutive quarters of earnings <em>above</em> expectations, and analysts have revised estimates upward; revenue is growing in the high teens. It passes the earnings-momentum screen.</li>
+<li>Over the last six months, the stock has returned 28% versus NIFTY's 12% — <strong>clear relative strength</strong>, and it is above a rising 200-day MA.</li>
+<li>It <strong>breaks out to a new 52-week high on volume</strong>. <strong>Entry</strong>.</li>
+<li>The stock leads for the next two quarters as estimates keep rising; the investor trails the stop under the rising 20-day MA.</li>
+<li>A subsequent earnings report <strong>misses</strong> and the stock <strong>closes below its 50-day MA</strong>, breaking relative strength. <strong>Exit</strong>.</li>
+</ul>
+<p>Result: the investor rode a stock that was improving <em>fundamentally</em> and <em>leading</em> on the chart — and exited when <em>both</em> signals deteriorated.</p>
+<h2 id="risks-and-limitations_4">Risks and limitations</h2>
+<ul>
+<li><strong>Crowding.</strong> The most obvious earnings-momentum + relative-strength names are also the most crowded; when they reverse, the reversal can be sharp (a crowded unwind).</li>
+<li><strong>Estimate-revision lag.</strong> Estimate data can be stale or thin for smaller names; the signal is stronger for large, well-covered stocks.</li>
+<li><strong>Reversal after good news.</strong> A stock can sell off <em>after</em> a great report ("buy the rumour, sell the news"); the relative-strength exit is what catches this.</li>
+<li><strong>Two-signal failure.</strong> The idea exits when <em>either</em> layer breaks, which means it can exit early on a single bad quarter even if the longer trend is intact.</li>
+</ul>
+<h2 id="summary_8">Summary</h2>
+<ul>
+<li>Combine earnings momentum (accelerating EPS, rising estimates) with relative strength (outperforming the market).</li>
+<li>Enter on breakout or pullback within an uptrend; exit when either the earnings momentum stalls or relative strength breaks.</li>
+<li>A self-reinforcing signal: improving fundamentals confirmed by leading price.</li>
+<li>Risks: crowding, data lag, sell-the-news, and two-signal exits.</li>
+</ul>
+<p>Next: turning the five ideas into a repeatable screening workflow.</p>
+<h1 id="10-building-the-screening-workflow">10. Building the Screening Workflow</h1>
+<h2 id="from-five-ideas-to-one-repeatable-process">From five ideas to one repeatable process</h2>
+<p>The five ideas are variations on a single machine. This chapter assembles them into a <strong>workflow</strong> — a repeatable, written process that turns the whole market into a shortlist, and the shortlist into trades. The workflow is what makes techno-funda <em>systematic</em> rather than <em>occasional</em>.</p>
+<h2 id="the-workflow-step-by-step">The workflow, step by step</h2>
+<h3 id="step-1-define-your-universe">Step 1 — Define your universe</h3>
+<p>Start with a liquid, manageable universe: the <strong>NIFTY 500</strong> (or NIFTY 200 for higher liquidity), plus any sectors you specifically follow. Liquid names matter because you will eventually enter and exit them — and because their fundamental data is reliable.</p>
+<h3 id="step-2-run-the-fundamental-screen">Step 2 — Run the fundamental screen</h3>
+<p>Apply the pillars from Chapter 3 — <strong>quality, growth, valuation, balance-sheet health</strong> — to produce a shortlist. Pick the thresholds that match your chosen idea:</p>
+<table>
+<thead>
+<tr>
+<th>Idea</th>
+<th>Emphasise</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Quality + Uptrend</td>
+<td>ROE/ROCE, low debt</td>
+</tr>
+<tr>
+<td>Growth + Breakout</td>
+<td>Revenue/EPS growth</td>
+</tr>
+<tr>
+<td>Value + Reversal</td>
+<td>Low P/E, P/B, viable</td>
+</tr>
+<tr>
+<td>Dividend + Trend</td>
+<td>Yield, payout, sustainability</td>
+</tr>
+<tr>
+<td>Earnings Momentum + RS</td>
+<td>EPS acceleration, rising estimates</td>
+</tr>
+</tbody>
+</table>
+<p>Record the screen as an explicit list of criteria. A screen you cannot write down is a screen you cannot repeat.</p>
+<h3 id="step-3-apply-the-technical-timing-filter">Step 3 — Apply the technical timing filter</h3>
+<p>From the shortlist, keep only names in the correct technical state — <strong>above the rising 200-day MA</strong>, with the momentum (relative strength or ROC) you want. This is where "what" becomes "when."</p>
+<h3 id="step-4-wait-for-the-entry-trigger">Step 4 — Wait for the entry trigger</h3>
+<p>Do not buy the shortlist. Wait for the <strong>specific trigger</strong> — breakout, pullback reversal, or base reversal (Chapter 4). The trigger is the event that converts a <em>candidate</em> into a <em>position</em>. No trigger, no trade.</p>
+<h3 id="step-5-set-the-exit-before-the-entry">Step 5 — Set the exit before the entry</h3>
+<p>For every position, write down <em>before entering</em>:
+- The <strong>stop</strong> (below the breakout/pullback/reversal low).
+- The <strong>trend exit</strong> (below the 200-day or 50-day MA).
+- The <strong>thesis exit</strong> (the fundamental condition that would invalidate the idea).</p>
+<p>This is the discipline that closes the loop: you entered on timing, so you exit on timing (or on a broken thesis).</p>
+<h3 id="step-6-review-on-a-schedule">Step 6 — Review on a schedule</h3>
+<p>Re-screen on a fixed cadence — monthly or quarterly. Re-running the screen <em>systematically</em> does two things: it refreshes the shortlist as fundamentals change, and it re-checks whether existing positions still pass both layers. The schedule, not the headlines, drives the decisions.</p>
+<h2 id="a-written-template">A written template</h2>
+<p>A one-page template keeps the workflow honest:</p>
+<pre><code>Idea: ____________________________
+Universe: NIFTY 500
+Fundamental screen: [list criteria and thresholds]
+Technical filter: above 200-day MA; RS &gt; 0
+Entry trigger: [breakout / pullback / reversal]
+Stop: [level]
+Trend exit: [below which MA]
+Thesis exit: [fundamental invalidation]
+Review cadence: [monthly / quarterly]
+</code></pre>
+<p>Filling this in — once per idea — is the difference between a strategy you <em>have</em> and one you <em>run</em>.</p>
+<h2 id="the-risks-of-the-workflow-itself">The risks of the workflow itself</h2>
+<p>Three workflow-level risks to manage:</p>
+<ol>
+<li><strong>Over-optimism in the screen.</strong> A screen tuned to look good on recent data may not generalise. Keep criteria simple and economically sensible, not data-mined to perfection.</li>
+<li><strong>The two layers can disagree for a long time.</strong> A quality stock can fail the technical filter for months, and a strong chart can fail the fundamental screen. The workflow's answer is <em>patience</em> — you simply own fewer things, less often.</li>
+<li><strong>Costs and turnover.</strong> Re-screening and re-trading generate costs (brokerage, STT, impact). Prefer lower-turnover triggers (monthly/quarterly reviews, trend exits) over frequent entries.</li>
+</ol>
+<h2 id="the-honest-summary-of-the-whole-book">The honest summary of the whole book</h2>
+<p>Techno-funda is not a trick; it is a <em>discipline</em>. It asks two questions — <strong>is this a good business, and is now a good time?</strong> — and refuses to act until both are answered. The five ideas are five ways of answering them; the workflow is the habit of asking them, every time, in the same order. That habit, more than any single ratio or indicator, is the edge.</p>
+<h2 id="summary_9">Summary</h2>
+<ul>
+<li>The workflow: universe → fundamental screen → technical filter → entry trigger → exit plan → scheduled review.</li>
+<li>Write the screen and the exits down; a strategy you cannot write is one you cannot repeat.</li>
+<li>The schedule (not headlines) drives re-screening.</li>
+<li>Manage workflow risks: over-optimism, layer disagreement, and turnover costs.</li>
+<li>The habit of asking "what" and "when" — in order, every time — is the edge.</li>
+</ul>
+<p>This completes the main text. The appendix condenses all five ideas into one reference table.</p>
+<h1 id="appendix-strategy-quick-reference-table">Appendix — Strategy Quick-Reference Table</h1>
+<p>This table is a summary, not a substitute for the full chapters. Adjust thresholds to your own risk tolerance, universe, and data sources.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Idea</th>
+<th>Fundamental screen (what)</th>
+<th>Technical trigger (when)</th>
+<th>Exit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Quality + Uptrend</td>
+<td>Sustained ROE/ROCE &gt; 15%, low debt</td>
+<td>Pullback reversal or breakout above rising 200-day MA</td>
+<td>Below 200-day MA / stop</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Growth + Breakout</td>
+<td>Revenue/EPS growth &gt; 15–20%, stable margins</td>
+<td>Volume-confirmed breakout to a new high</td>
+<td>Trailing stop (20/50-day MA)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Value + Reversal</td>
+<td>Low P/E/P/B (below own median), viable, profitable</td>
+<td>Higher low + close above 50-day MA on volume</td>
+<td>Below reversal low / trend break</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Dividend + Trend</td>
+<td>Sustainable yield &gt; 2–3%, payout &lt; 70%, growing</td>
+<td>Pullback to rising MA in an uptrend</td>
+<td>Below 200-day MA / dividend cut</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Earnings Momentum + RS</td>
+<td>Accelerating EPS, rising estimates, revenue confirmation</td>
+<td>Outperformance (RS) + breakout/pullback in uptrend</td>
+<td>Negative surprise / RS breakdown</td>
+</tr>
+</tbody>
+</table>
+<h2 id="the-two-questions-every-idea-answers">The two questions every idea answers</h2>
+<ol>
+<li><strong>What</strong> — is this a good business? (the fundamental screen)</li>
+<li><strong>When</strong> — is the market rewarding it now? (the technical trigger)</li>
+</ol>
+<h2 id="the-universal-rules">The universal rules</h2>
+<ul>
+<li>Fundamentals decide the universe; technicals decide the timing.</li>
+<li>Write the screen and the exits down, before any trade.</li>
+<li>Set the stop, trend exit, and thesis exit at entry.</li>
+<li>Re-screen on a schedule (monthly/quarterly), not on headlines.</li>
+<li>Own fewer things, less often — the discipline <em>is</em> the edge.</li>
+</ul></body></html>
