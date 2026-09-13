@@ -1,0 +1,26 @@
+# StratLab Trading Library
+
+> Free, open-source reference books on Indian (NSE) markets: options, momentum trading, momentum investing, and swing trading. Educational only — not investment advice; StratLab is not SEBI-registered. Content is AI-drafted and human-reviewed, not exhaustively fact-checked — verify specific numbers, formulas, and citations before relying on them. See /README.md for the full disclaimer and a log of corrections made during review.
+
+<!-- Links below assume this repo is published as github.com/ivrwealth-ui/trading-library. If it ends up under a different org/username, update every raw.githubusercontent.com/ivrwealth-ui/trading-library path in this file to match. -->
+
+## Options Trading
+
+- [The Complete Options Trader](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Options-Trading/The-Complete-Options-Trader.md): 30 chapters + 3 appendices. Foundations (contract mechanics, moneyness, payoff diagrams) through pricing and the Greeks (delta, gamma, theta, vega, Black-Scholes, IV) to the strategy playbook (spreads, straddles, iron condors, collars) and advanced concepts (volatility trading, gamma scalping, OI/PCR/max pain, Indian market mechanics).
+
+## Momentum Trading
+
+- [Momentum Trading: Ride the Trend](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Momentum-Trading/Momentum-Trading-Ride-the-Trend-Five-Proven-Breakout-and-Trend-Following-Strategies-for-NIFTY-and-Indian-Stocks.md): 10 chapters + appendix. Five price-action strategies for NIFTY and Indian stocks over a weeks-to-months horizon — Donchian breakout, MA trend following, 52-week high breakout, relative strength rotation, pullback to a rising MA — plus risk management and trading psychology.
+
+## Momentum Investing
+
+- [Momentum Investing: Build Long-Term Wealth](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Momentum-Investing/Momentum-Investing-Build-Long-Term-Wealth-with-the-Time-Tested-Momentum-Factor.md): 10 chapters + appendix. The academic momentum factor applied to a long-horizon (months-to-years) Indian portfolio — 12-1 cross-sectional momentum, absolute (200-day) momentum, dual momentum, 52-week high investing, sector rotation — plus portfolio construction, Indian tax/cost mechanics, and the psychology of holding through drawdowns.
+
+## Swing Trading
+
+- [Swing Trading: Capture Multi-Day Moves](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Swing-Trading/Swing-Trading-Capture-Multi-Day-Moves-with-Five-Proven-Continuation-and-Reversion-Strategies.md): 10 chapters + appendix. Five days-to-weeks strategies split across both market regimes — pullback continuation, breakout and retest, new-high momentum (continuation); RSI-2 mean reversion, range fade (reversion) — with explicit guidance on reading which regime you're in, trade plans, and risk arithmetic.
+
+## Optional
+
+- [Individual chapter index](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/llms-full.txt): every chapter of every book as its own linked file, for loading a single chapter into context instead of a whole book.
+- [Repository README](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/README.md): full disclaimer, license, and the editorial-corrections log.

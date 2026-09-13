@@ -1,0 +1,664 @@
+<!DOCTYPE html><html><head><meta charset='utf-8'><style>
+* { box-sizing: border-box; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 11pt; line-height: 1.62; color: #1a1d21; margin: 0;
+}
+.cover {
+  height: 100vh; page-break-after: always;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 3cm 2.5cm; background: #0d1715; color: #e8f0ee;
+}
+.cover .rule { width: 64px; height: 4px; background: #2dd4bf; margin-bottom: 2.2rem; }
+.cover h1 { font-size: 38pt; line-height: 1.08; font-weight: 600; color: #fff; margin: 0 0 1.4rem; letter-spacing: -0.5px; }
+.cover .subtitle { font-size: 15pt; color: #9fb5ae; line-height: 1.5; max-width: 34em; }
+.cover .pub { margin-top: 3rem; font-size: 11pt; letter-spacing: 0.14em; text-transform: uppercase; color: #2dd4bf; }
+.cover .ednote { margin-top: 0.6rem; font-size: 9pt; color: #6c817b; }
+h1 { font-size: 23pt; font-weight: 600; color: #0f172a; page-break-before: always; margin: 0 0 1.1rem; padding-bottom: 0.4rem; border-bottom: 2px solid #2dd4bf; }
+h2 { font-size: 15.5pt; font-weight: 600; color: #0f766e; margin: 1.6rem 0 0.6rem; }
+h3 { font-size: 12.5pt; font-weight: 600; color: #1a1d21; margin: 1.2rem 0 0.4rem; }
+p { margin: 0.5rem 0; }
+strong { color: #0f172a; }
+em { color: #334155; }
+a { color: #0f766e; text-decoration: none; }
+hr { border: none; border-top: 1px solid #e2e8f0; margin: 2rem 0; }
+ul, ol { margin: 0.5rem 0 0.8rem; padding-left: 1.5rem; }
+li { margin: 0.25rem 0; }
+code { font-family: 'SF Mono', Menlo, Consolas, monospace; font-size: 9pt; background: #f1f5f9; padding: 1px 5px; border-radius: 3px; color: #0f766e; }
+pre { background: #0f172a; color: #e2e8f0; padding: 0.9rem 1.1rem; border-radius: 6px; font-size: 9pt; line-height: 1.5; white-space: pre-wrap; word-wrap: break-word; }
+pre code { background: none; color: inherit; padding: 0; }
+blockquote { border-left: 3px solid #2dd4bf; background: #f0fdfa; margin: 0.8rem 0; padding: 0.7rem 1rem; color: #0f3d37; font-style: italic; border-radius: 0 4px 4px 0; }
+blockquote p { margin: 0.3rem 0; }
+table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: 9.5pt; page-break-inside: avoid; }
+th, td { border: 1px solid #dbe3e8; padding: 5px 8px; text-align: left; vertical-align: top; }
+th { background: #0f766e; color: #fff; font-weight: 600; }
+tr:nth-child(even) td { background: #f8fafc; }
+h1:first-of-type { page-break-before: auto; }
+h2#important-disclaimer, h2#how-to-read-this-book, h2#table-of-contents { page-break-before: always; }
+</style></head><body><section class="cover"><div class="rule"></div><h1>Swing Trading: Capture Multi-Day Moves with Five Proven Continuation and Reversion Strategies</h1><div class="subtitle">A complete swing-trading playbook for NIFTY and Indian stocks — five historically grounded strategies with clear entries, exits, and risk rules, plus an education-only disclaimer.</div><div class="pub">Published by StratLab</div><div class="ednote">Educational content only — not investment advice. StratLab is not SEBI-registered.</div></section><h1 id="swing-trading-capture-multi-day-moves-with-five-proven-continuation-and-reversion-strategies">Swing Trading: Capture Multi-Day Moves with Five Proven Continuation and Reversion Strategies</h1>
+<h2 id="a-complete-swing-trading-playbook-for-nifty-and-indian-stocks-five-historically-grounded-strategies-with-clear-entries-exits-and-risk-rules-plus-an-education-only-disclaimer">A complete swing-trading playbook for NIFTY and Indian stocks — five historically grounded strategies with clear entries, exits, and risk rules, plus an education-only disclaimer.</h2>
+<hr />
+<p><strong>Published by StratLab</strong></p>
+<hr />
+<h2 id="important-disclaimer">Important Disclaimer</h2>
+<p>This book is provided for <strong>educational purposes only</strong>. It is not investment advice, a recommendation, or a solicitation to buy or sell any security.</p>
+<ul>
+<li><strong>StratLab is not registered with SEBI</strong> as an investment adviser, research analyst, or portfolio manager, and does not provide investment advisory services.</li>
+<li>Trading involves substantial risk of loss and is not suitable for everyone. You can lose part or all of your trading capital.</li>
+<li>All examples, figures, and historical observations are illustrative. Historical performance never guarantees future results. Strategies described here have worked <em>historically</em> in certain conditions; that does not mean they will work in the future or in your specific situation.</li>
+<li>Margin, taxes (STT, stamp duty), brokerage, and other regulatory details change over time. Always verify current rules and costs before trading.</li>
+<li>Nothing in this book should be read as a promise of profit or a guarantee that any strategy will be profitable.</li>
+</ul>
+<p>By reading this book, you agree that you are solely responsible for your own trading decisions and that you will consult a SEBI-registered adviser where appropriate.</p>
+<hr />
+<h2 id="how-to-read-this-book">How to Read This Book</h2>
+<p>This book teaches <strong>swing trading</strong> — capturing multi-day price moves over a holding period of a few days to a few weeks — through five historically grounded strategies. Swing trading sits between day trading (too fast) and investing (too slow), and it draws on <em>both</em> of the two great market tendencies: <strong>momentum</strong> (trends continue) and <strong>mean reversion</strong> (extremes snap back).</p>
+<ul>
+<li><strong>Chapters 1–3</strong> build the foundation: what swing trading is, the toolkit (support/resistance, moving averages, RSI, volume, trend structure), and how to read whether a market is trending or ranging.</li>
+<li><strong>Chapters 4–8</strong> are the five strategies — the heart of the book. Three are <em>continuation</em> (trend-following) and two are <em>reversion</em> (fade-the-extreme). Each is self-contained, with rules, historical context, an Indian-market example, and its risks.</li>
+<li><strong>Chapters 9–10</strong> cover trade plans, risk management, and the psychology of holding multi-day positions.</li>
+<li>The <strong>appendix</strong> condenses all five strategies into a quick-reference table.</li>
+</ul>
+<p>A note on language: this book describes what a strategy <em>is</em> and what conditions it historically aligns with — never what you "should" do. Where results are discussed, they are framed as historical observations, not promises. You are responsible for your own decisions.</p>
+<hr />
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li>What Is Swing Trading?</li>
+<li>The Swing Trader's Toolkit</li>
+<li>Reading Trend Structure: Trending or Ranging?</li>
+<li>Strategy 1 — The Pullback Continuation</li>
+<li>Strategy 2 — The Breakout and Retest</li>
+<li>Strategy 3 — The New-High Momentum Trade</li>
+<li>Strategy 4 — RSI-2 Mean Reversion</li>
+<li>Strategy 5 — The Range Fade</li>
+<li>Trade Plans and Risk Management</li>
+<li>Psychology and Common Mistakes</li>
+</ol>
+<p>Appendix — Strategy Quick-Reference Table</p>
+<hr />
+<h1 id="1-what-is-swing-trading">1. What Is Swing Trading?</h1>
+<h2 id="the-middle-timeframe">The middle timeframe</h2>
+<p><strong>Swing trading</strong> captures moves that unfold over <strong>a few days to a few weeks</strong> — longer than a day trade, shorter than an investment. The "swing" is a single leg of price movement: an upswing, a downswing, or a reversal between the two. The swing trader's job is to enter near the start of a swing and exit near its end.</p>
+<p>It occupies a deliberate middle ground:</p>
+<table>
+<thead>
+<tr>
+<th>Style</th>
+<th>Holding period</th>
+<th>Trades per month (rough)</th>
+<th>Core skill</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Day trading</td>
+<td>Minutes to hours</td>
+<td>Many</td>
+<td>Speed, execution</td>
+</tr>
+<tr>
+<td><strong>Swing trading</strong></td>
+<td><strong>Days to weeks</strong></td>
+<td><strong>A handful</strong></td>
+<td><strong>Trade selection, patience</strong></td>
+</tr>
+<tr>
+<td>Momentum trading</td>
+<td>Weeks to months</td>
+<td>Few</td>
+<td>Trend following</td>
+</tr>
+<tr>
+<td>Investing</td>
+<td>Months to years</td>
+<td>Very few</td>
+<td>Patience, factor discipline</td>
+</tr>
+</tbody>
+</table>
+<h2 id="the-two-engines-of-swing-trading">The two engines of swing trading</h2>
+<p>Swing trading is unique in that it deliberately harnesses <strong>both</strong> of the market's two great tendencies:</p>
+<ol>
+<li><strong>Momentum / continuation.</strong> In a trending market, a pullback is usually a <em>pause</em>, not a reversal — and the trend resumes. Swing strategies that buy pullbacks (Chapter 4) and breakouts (Chapters 5–6) exploit this.</li>
+<li><strong>Mean reversion.</strong> At extremes, prices tend to snap back toward the average. In a <em>ranging</em> market, or after a sharp overextension, swing strategies that fade the move (Chapters 7–8) exploit this.</li>
+</ol>
+<p>The single most important skill in swing trading is therefore <strong>knowing which regime you are in</strong> — trending or ranging — and choosing the matching strategy. A continuation strategy traded in a range whipsaws; a reversion strategy traded in a trend gets run over. Chapter 3 is devoted to making this call.</p>
+<h2 id="the-anatomy-of-a-swing-trade">The anatomy of a swing trade</h2>
+<p>Every swing trade, whatever its engine, has the same four parts:</p>
+<ol>
+<li><strong>Setup</strong> — a defined condition that says "a swing may start here" (a pullback to support, a breakout, an oversold extreme).</li>
+<li><strong>Entry</strong> — a trigger that confirms the swing has begun (a reversal candle, a close above a level).</li>
+<li><strong>Stop</strong> — a price that, if reached, proves the setup wrong (below the pullback low, below the breakout level, beyond the extreme).</li>
+<li><strong>Target</strong> — a price where the swing is likely to exhaust (a prior high, the opposite end of the range, a measured move).</li>
+</ol>
+<p>Unlike pure momentum trading — which lets winners run without a target — swing trading <em>usually</em> takes a profit at a target, because a swing is by definition a <em>bounded</em> move. This "defined risk, defined target" structure is what makes swing trading approachable and repeatable.</p>
+<h2 id="why-swing-trading-suits-many-people">Why swing trading suits many people</h2>
+<ul>
+<li><strong>It is not a second job.</strong> A handful of trades a month, with entries and exits set on the daily timeframe, fits around a normal life. You are not glued to the screen.</li>
+<li><strong>It uses defined risk.</strong> Every trade has a stop, so the worst case is known <em>before</em> entry.</li>
+<li><strong>It works on daily charts.</strong> Daily candles are less noisy than intraday, so the setups are more reliable and the decisions less frantic.</li>
+<li><strong>It is versatile.</strong> It can be applied to indices (NIFTY, BankNIFTY), large-cap stocks, and even sectors — anything liquid with clean daily swings.</li>
+</ul>
+<h2 id="what-swing-trading-is-not">What swing trading is not</h2>
+<ul>
+<li>It is <strong>not</strong> day trading — you hold overnight, so you must be comfortable with <em>gap risk</em> (price opening far from where it closed).</li>
+<li>It is <strong>not</strong> a guarantee — swing setups fail often; the edge is in the <em>risk-reward ratio</em> (cutting losses fast, taking profits at targets), not in being right most of the time.</li>
+<li>It is <strong>not</strong> prediction — a swing trader reacts to <em>structure</em> (levels, trend, extremes), not to forecasts about where the market "should" go.</li>
+</ul>
+<h2 id="summary">Summary</h2>
+<ul>
+<li>Swing trading captures multi-day to multi-week moves — the middle timeframe.</li>
+<li>It harnesses both momentum (continuation) and mean reversion, matched to the market's regime.</li>
+<li>Every trade has four parts: setup, entry, stop, target — defined risk, defined reward.</li>
+<li>It suits people who want active trading without being glued to the screen.</li>
+<li>It carries gap risk and requires discipline, not prediction.</li>
+</ul>
+<p>Next: the toolkit — the few tools every strategy in this book uses.</p>
+<h1 id="2-the-swing-traders-toolkit">2. The Swing Trader's Toolkit</h1>
+<h2 id="a-small-sharp-toolset">A small, sharp toolset</h2>
+<p>Swing trading rewards a <em>few</em> tools used well over a <em>wall</em> of indicators. Every strategy in this book uses only the following. Learn these once, and each strategy chapter becomes a matter of <em>combination</em>, not <em>definition</em>.</p>
+<h2 id="price-levels-support-and-resistance">Price levels: support and resistance</h2>
+<p><strong>Support</strong> is a price level where buying has historically overwhelmed selling — a floor. <strong>Resistance</strong> is a level where selling has overwhelmed buying — a ceiling. They are the most fundamental concept in swing trading, because they define <em>where swings start and end</em>:</p>
+<ul>
+<li>A swing <strong>up</strong> often starts at support and ends at resistance.</li>
+<li>A swing <strong>down</strong> often starts at resistance and ends at support.</li>
+</ul>
+<p>Key facts about levels:</p>
+<ul>
+<li><strong>Levels flip roles.</strong> Broken resistance often becomes support (and vice versa) — the basis of the "breakout and retest" trade (Chapter 5).</li>
+<li><strong>Levels are zones, not lines.</strong> A "level" is really a <em>zone</em> of a few points/percent, because the market rarely respects a single exact price.</li>
+<li><strong>The more times a level is tested, the more meaningful it is</strong> — but also the more likely it is to eventually break.</li>
+</ul>
+<h2 id="moving-averages-dynamic-support-and-trend">Moving averages: dynamic support and trend</h2>
+<p>A <strong>moving average</strong> (the average of the last N closes) acts as <em>dynamic</em> support or resistance, rising and falling with the trend. In swing trading the common uses are:</p>
+<ul>
+<li>The <strong>20-period EMA</strong> as dynamic support in an uptrend (the pullback magnet in Chapter 4).</li>
+<li>The <strong>50- and 200-day MAs</strong> as the trend context — above = uptrend, below = downtrend.</li>
+</ul>
+<p>An average that is <strong>sloping</strong> is meaningful (it shows trend); a flat average is just noise.</p>
+<h2 id="oscillators-measuring-the-extreme">Oscillators: measuring the extreme</h2>
+<p><strong>Oscillators</strong> measure whether price is stretched to one side, and are the engine of mean-reversion swings:</p>
+<ul>
+<li><strong>RSI (Relative Strength Index)</strong> — bounded 0–100; values above ~70 are "overbought," below ~30 "oversold." Crucially, <em>overbought/oversold only means "likely to pause" in a range</em> — in a strong trend, RSI can stay extreme for a long time.</li>
+<li><strong>RSI-2</strong> — a short, 2-period RSI used in the specific mean-reversion strategy in Chapter 7 (documented by Connors &amp; Alvarez).</li>
+</ul>
+<p>The discipline with oscillators: <strong>use them in ranges and at extremes, not blindly in trends.</strong> An overbought reading in an uptrend is often just <em>strength</em>, not a sell signal.</p>
+<h2 id="volume-confirmation">Volume: confirmation</h2>
+<p><strong>Volume</strong> confirms a move. A breakout on rising volume is more trustworthy than one on thin volume; a reversal off support is more meaningful when buyers step in with size. Volume is rarely a standalone signal in swing trading, but it is a useful <em>filter</em>: the best setups are confirmed by participation.</p>
+<h2 id="candlesticks-the-entry-trigger">Candlesticks: the entry trigger</h2>
+<p><strong>Candlesticks</strong> (open, high, low, close per period) provide the <em>trigger</em> — the moment a setup becomes a trade. The patterns a swing trader cares about are few:</p>
+<ul>
+<li><strong>Reversal candles</strong> — a candle that shows the prior move losing momentum: a long lower shadow off support (buyers rejected the lows), an engulfing candle, a hammer/doji.</li>
+<li><strong>Continuation confirmation</strong> — a strong-bodied candle closing through a level.</li>
+</ul>
+<p>The candlestick is the <em>finger on the trigger</em>; the level, trend, or extreme is what makes it <em>mean something</em>.</p>
+<h2 id="trend-structure-higher-highs-and-higher-lows">Trend structure: higher highs and higher lows</h2>
+<p>Finally, the conceptual glue: an uptrend is a sequence of <strong>higher highs (HH) and higher lows (HL)</strong>; a downtrend is <strong>lower lows (LL) and lower highs (LH)</strong>. This simple structure underlies everything:</p>
+<ul>
+<li>An uptrend is "alive" as long as it keeps making higher lows.</li>
+<li>A trend is "broken" when price makes a <strong>lower low</strong> (in an uptrend) — the point at which continuation strategies stand aside and reversion traders take over.</li>
+</ul>
+<p>Reading HH/HL/LL/LH structure is the single most valuable skill in swing trading, and it is the entire subject of the next chapter.</p>
+<h2 id="summary_1">Summary</h2>
+<ul>
+<li>Support/resistance are the levels where swings begin and end; they flip roles and are zones, not lines.</li>
+<li>Moving averages (20 EMA, 50/200) are dynamic support and the trend context.</li>
+<li>Oscillators (RSI, RSI-2) measure extremes — use them in ranges, not blindly in trends.</li>
+<li>Volume confirms; candlesticks trigger.</li>
+<li>Trend structure (HH/HL/LL/LH) is the underlying read that ties it all together.</li>
+</ul>
+<p>Next: the crucial question — is the market trending or ranging?</p>
+<h1 id="3-reading-trend-structure-trending-or-ranging">3. Reading Trend Structure: Trending or Ranging?</h1>
+<h2 id="the-decision-that-precedes-every-trade">The decision that precedes every trade</h2>
+<p>Before any strategy, the swing trader must answer one question: <strong>is this market trending or ranging?</strong> The answer chooses <em>which</em> strategy to use — because the two families (continuation and reversion) are optimised for opposite conditions, and using the wrong one is the fastest way to lose money.</p>
+<h2 id="the-two-regimes">The two regimes</h2>
+<ul>
+<li><strong>Trending:</strong> price moves persistently in one direction, making higher highs and higher lows (uptrend) or lower lows and lower highs (downtrend). <strong>Continuation strategies win</strong> (Chapters 4–6); reversion strategies get run over.</li>
+<li><strong>Ranging (consolidation):</strong> price oscillates between a support floor and a resistance ceiling, making roughly equal highs and lows. <strong>Reversion strategies win</strong> (Chapters 7–8); continuation strategies whipsaw.</li>
+</ul>
+<p>The catch: <strong>markets spend a great deal of time ranging.</strong> Trend-followers know this — that is why they expect many small losses and a few big winners. Swing traders, by contrast, have the luxury of <em>choosing the right tool for the regime</em> — but only if they can read the regime.</p>
+<h2 id="how-to-read-the-regime">How to read the regime</h2>
+<p>Three simple, visual checks:</p>
+<h3 id="1-the-structure-test">1. The structure test</h3>
+<p>Look at the last several swing highs and swing lows:</p>
+<ul>
+<li><strong>Uptrend:</strong> higher highs <em>and</em> higher lows.</li>
+<li><strong>Downtrend:</strong> lower lows <em>and</em> lower highs.</li>
+<li><strong>Range:</strong> horizontal highs and horizontal lows, price bouncing between two levels.</li>
+</ul>
+<p>If the highs and lows are <em>stair-stepping</em> in one direction, it is a trend. If they are <em>sideways</em>, it is a range.</p>
+<h3 id="2-the-moving-average-test">2. The moving-average test</h3>
+<ul>
+<li>Price <strong>above a rising 50-day MA</strong> = uptrend.</li>
+<li>Price <strong>below a falling 50-day MA</strong> = downtrend.</li>
+<li>Price <strong>chopping around a flat 50-day MA</strong> = range.</li>
+</ul>
+<p>A <em>sloping</em> average is the tell: a flat average means no trend.</p>
+<h3 id="3-the-time-test">3. The time test</h3>
+<ul>
+<li>If price has been stuck between two visible levels for <strong>many weeks</strong>, it is a range.</li>
+<li>If price has been making progress in one direction for weeks, it is a trend.</li>
+</ul>
+<p>The longer and tighter the range, the more energetic the eventual breakout — and the more dangerous it is to fade the edges blindly.</p>
+<h2 id="matching-the-strategy-to-the-regime">Matching the strategy to the regime</h2>
+<table>
+<thead>
+<tr>
+<th>Regime</th>
+<th>Use</th>
+<th>Avoid</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Uptrend</td>
+<td>Pullback continuation (Ch 4), breakout &amp; retest (Ch 5), new-high momentum (Ch 6)</td>
+<td>Range fade (Ch 8), blind RSI-2 shorts</td>
+</tr>
+<tr>
+<td>Downtrend</td>
+<td>Short-side continuation (mirror of Ch 4–6), or stand aside</td>
+<td>Range fade longs, dip-buying</td>
+</tr>
+<tr>
+<td>Range</td>
+<td>RSI-2 mean reversion (Ch 7), range fade (Ch 8)</td>
+<td>Breakout/continuation (whipsaw)</td>
+</tr>
+</tbody>
+</table>
+<p>Two honest notes:</p>
+<ol>
+<li><strong>Downtrends are asymmetric in India.</strong> Retail investors can <em>sell</em> what they own or use index shorts/puts, but the clean, liquid short-side is harder to access than the long side. Many Indian swing traders therefore simply <strong>stand aside in downtrends</strong> — which is itself a valid and profitable decision.</li>
+<li><strong>Regimes change.</strong> The single most dangerous moment is the <em>transition</em> — a range that is about to break out, or a trend that is about to reverse. At transitions, both strategy families look wrong at first. The discipline is to recognise the transition and <em>trade smaller or not at all</em> until the new regime confirms.</li>
+</ol>
+<h2 id="a-practical-routine">A practical routine</h2>
+<p>Before every trade, in 30 seconds:</p>
+<ol>
+<li>Pull up a daily chart.</li>
+<li>Ask: are the highs and lows stair-stepping or sideways?</li>
+<li>Glance at the 50-day MA: sloping or flat?</li>
+<li>Label the regime: <strong>uptrend, downtrend, or range.</strong></li>
+<li>Choose the strategy family that matches — or stand aside if uncertain.</li>
+</ol>
+<p>This routine, repeated thousands of times, is the difference between a trader who <em>adapts</em> and one who <em>hopes</em>.</p>
+<h2 id="summary_2">Summary</h2>
+<ul>
+<li>Trending = HH/HL or LL/LH; ranging = sideways between two levels.</li>
+<li>Read it via structure, the slope of the 50-day MA, and the time test.</li>
+<li>Continuation strategies suit trends; reversion strategies suit ranges.</li>
+<li>Downtrends are asymmetric in India — standing aside is valid.</li>
+<li>The transition between regimes is the most dangerous moment; trade smaller or not at all.</li>
+</ul>
+<p>Next: Strategy 1 — the pullback continuation.</p>
+<h1 id="4-strategy-1-the-pullback-continuation">4. Strategy 1 — The Pullback Continuation</h1>
+<h2 id="buying-the-dip-in-an-uptrend">Buying the dip in an uptrend</h2>
+<p>The pullback continuation is the workhorse of trend-following swing trading. In an established uptrend, price routinely pulls back toward a rising moving average before resuming — and that pullback is a <em>pause</em>, not a reversal. This strategy buys the pause, in the direction of the trend.</p>
+<h2 id="the-idea">The idea</h2>
+<p>Trends advance in waves: up, small retreat, up again. The retreat (the <strong>pullback</strong>) is healthy — it shakes out weak holders and gives new buyers a lower entry. The pullback strategy formalises the oldest rule in trend trading: <strong>in an uptrend, buy the dip; do not fight the trend.</strong></p>
+<p>Because the strategy only trades <em>with</em> the trend, it enjoys a relatively high win rate — at the cost of occasionally missing a move (in a strong trend, price may not pull back to the entry level at all).</p>
+<h2 id="the-rules">The rules</h2>
+<p><strong>Universe and timeframe:</strong> liquid stocks or index instruments. Daily timeframe.</p>
+<p><strong>Step 1 — Confirm the uptrend.</strong> Price must be <strong>above a rising longer-term MA</strong> (the 50-day is standard), and ideally making higher highs and higher lows.</p>
+<p><strong>Step 2 — Wait for the pullback.</strong> Price pulls back <strong>toward the 20-day EMA</strong> (the classic magnet) — a shallow, orderly retracement, <em>not</em> a collapse. The uptrend (50-day MA) must remain intact throughout.</p>
+<p><strong>Step 3 — Enter on the resume.</strong> Enter when the pullback shows a <strong>reversal back up</strong> — a bullish reversal candle off the 20-day EMA, or a close back above a short-term level. The candlestick is the trigger; the moving average is the context.</p>
+<p><strong>Step 4 — Stop.</strong> Place the stop <strong>below the pullback low</strong> (the lowest point of the retracement). If price falls below that low, the pullback was the start of a reversal, not a pause — exit.</p>
+<p><strong>Step 5 — Target.</strong> The natural target is the <strong>prior swing high</strong> (the high before the pullback), or a measured move beyond it. Take profit there; the strategy is about capturing one swing, not riding a trend forever.</p>
+<h2 id="historical-context">Historical context</h2>
+<p>"Buy the pullback in an uptrend" is one of the most durable and widely practised techniques in trading, and it is the practical expression of <em>trend continuation</em> — the documented tendency of intact trends to resume after pauses. Its logic is the same momentum persistence that underlies the momentum factor, applied to the multi-day timeframe. (It is the mirror image of fading a move: the same pullback that a continuation trader <em>buys</em> is what a reversion trader <em>fades</em> — the regime call from Chapter 3 decides who is right.)</p>
+<h2 id="a-worked-example-a-liquid-nse-stock">A worked example (a liquid NSE stock)</h2>
+<ul>
+<li>A stock is in a clear uptrend, above a rising 50-day MA, having climbed from ₹400 to ₹500. The 20-day EMA is at ₹475 and rising.</li>
+<li>The stock <strong>pulls back over a week to ₹478</strong>, touching the rising 20-day EMA. The 50-day MA is still sloping up — uptrend intact.</li>
+<li>A <strong>bullish reversal candle</strong> prints at the 20-day EMA (a long lower shadow — buyers rejected the dip). <strong>Entry</strong> at ₹485.</li>
+<li><strong>Stop</strong> at ₹468 (just below the pullback low of ₹472). Risk ≈ ₹17.</li>
+<li>The trend resumes and the stock rallies toward the prior high. <strong>Target</strong> at ₹500 (the prior swing high) — a modest reward-to-risk of roughly 0.9:1 by that measure alone (₹15 reward against ₹17 risk).</li>
+</ul>
+<p>Result: a defined-risk trade in the direction of the trend, entered at a low-risk point near support. The reward-to-risk here is unremarkable if the trade stops exactly at the prior high — pullback trades are often taken specifically because a strong trend runs <em>past</em> the prior swing high before the next stall, which is what improves the realised ratio in practice. A trader who requires a better <em>stated</em> R:R before entry should look for a pullback with more room to the prior high, or trail the stop past the first target instead of taking it mechanically.</p>
+<h2 id="risks-and-limitations">Risks and limitations</h2>
+<ul>
+<li><strong>Trend failure.</strong> The defining risk: the "pullback" is actually the start of a reversal. The stop below the pullback low converts this into a small, defined loss — but in a genuine reversal, the loss is taken, not avoided.</li>
+<li><strong>Missing entries.</strong> In strong trends, price may not reach the 20-day EMA, and the trader waits (or misses the move). This is the cost of demanding a better price.</li>
+<li><strong>Judgement required.</strong> "Uptrend intact" and "reversal candle" are partly discretionary; the strategy needs written rules to stay consistent.</li>
+<li><strong>False reversals.</strong> A reversal candle can fail; the stop is the final arbiter, and some failed entries are inevitable.</li>
+</ul>
+<h2 id="summary_3">Summary</h2>
+<ul>
+<li>Buy pullbacks to the rising 20-day EMA within an uptrend (above the rising 50-day MA).</li>
+<li>Enter on a reversal candle; stop below the pullback low; target the prior swing high.</li>
+<li>High win rate, low-risk entry — but requires an existing trend and discipline.</li>
+<li>The mirror of fading; the trend-vs-range call decides which side you are on.</li>
+</ul>
+<p>Next: Strategy 2 — the breakout and retest.</p>
+<h1 id="5-strategy-2-the-breakout-and-retest">5. Strategy 2 — The Breakout and Retest</h1>
+<h2 id="the-second-safer-chance-to-enter-a-breakout">The second, safer chance to enter a breakout</h2>
+<p>A breakout — price moving decisively through a resistance level — is a classic momentum signal, but buying the breakout itself is risky: breakouts often fail, and entering <em>into</em> the move means buying at the worst possible price. The <strong>breakout and retest</strong> strategy waits for a second, safer chance: after the breakout, price often <strong>pulls back to retest the broken level</strong> (now turned support) before continuing. That retest is the entry.</p>
+<h2 id="the-idea_1">The idea</h2>
+<p>The key concept is <strong>role reversal</strong>: when a resistance level is broken, it flips to become <em>support</em>. The logic is that the buyers who were trapped <em>above</em> the old resistance, and the sellers who sold <em>at</em> it, both now have reason to act at that level — creating a natural floor. A clean retest of the flipped level that <em>holds</em> is powerful confirmation that the breakout is genuine.</p>
+<p>The strategy's appeal is a better entry: you buy <strong>at the broken level</strong> (near support), not at the breakout high — so the stop is tight and the reward-to-risk is favourable. The trade-off is that not every breakout <em>retests</em>; some just run away, and the trade is missed.</p>
+<h2 id="the-rules_1">The rules</h2>
+<p><strong>Universe and timeframe:</strong> liquid stocks or index instruments, daily timeframe.</p>
+<p><strong>Step 1 — Identify a resistance level.</strong> A clearly defined horizontal level that has been tested at least twice (the more touches, the more meaningful).</p>
+<p><strong>Step 2 — Wait for the breakout.</strong> Price <strong>closes above the resistance</strong> on rising volume (volume confirms genuine participation, not a head-fake).</p>
+<p><strong>Step 3 — Wait for the retest.</strong> Price pulls back <strong>toward the broken level</strong> (the new support). This retest often comes over a few days.</p>
+<p><strong>Step 4 — Enter on the hold.</strong> Enter when the retest <strong>holds</strong> — a bullish reversal candle at the flipped level, or a close back above it. The level that was once resistance now supports.</p>
+<p><strong>Step 5 — Stop.</strong> Place the stop <strong>below the retest low</strong> (below the broken level). If price falls back <em>through</em> the level, the breakout has failed — exit.</p>
+<p><strong>Step 6 — Target.</strong> A <strong>measured move</strong>: project the height of the prior range (resistance − support) <em>upward</em> from the breakout level. Alternatively, the next resistance above.</p>
+<h2 id="historical-context_1">Historical context</h2>
+<p>The "breakout, then retest, then resume" sequence is one of the most widely documented patterns in technical trading, and it is fundamentally the same momentum-persistence idea as the other continuation strategies: a genuine breakout (new strength) is more likely to continue than to fail, and the retest is simply a <em>better entry</em> into that continuation. The technique's roots trace to classic price-action writing (the "springboard" / "retest of the breakout level" is a staple of the Wyckoff-style and chart-pattern literature), and it remains a standard swing entry today.</p>
+<h2 id="a-worked-example-an-nse-stock">A worked example (an NSE stock)</h2>
+<ul>
+<li>A stock has been ranging between <strong>₹200 (support) and ₹250 (resistance)</strong> for months; the ₹250 level has been tested three times.</li>
+<li>On strong volume, the stock <strong>closes at ₹258</strong> — a breakout through ₹250.</li>
+<li>Over the next four days, price <strong>pulls back to ₹251</strong>, retesting the broken ₹250 level.</li>
+<li>At ₹251, a <strong>bullish reversal candle</strong> prints (buyers step in at the old resistance). <strong>Entry</strong> at ₹255.</li>
+<li><strong>Stop</strong> at ₹244 (below the retest low and the ₹250 level).</li>
+<li><strong>Target:</strong> the range height is ₹50 (250 − 200), so the measured target is 250 + 50 = <strong>₹300</strong>.</li>
+</ul>
+<p>Result: the trader entered <em>near support</em> at ₹255 (not at the ₹258 breakout high), with a tight stop, targeting a measured move to ₹300.</p>
+<h2 id="risks-and-limitations_1">Risks and limitations</h2>
+<ul>
+<li><strong>Failed retest.</strong> The retest sometimes <em>does not hold</em> — price falls back through the level, and the trade stops out. This is the strategy's cost: some "breakouts" are false, and the retest is what reveals it.</li>
+<li><strong>No retest happens.</strong> In strong breakouts, price may never pull back, and the trade is missed. The strategy sacrifices some winners for better entries on the ones it takes.</li>
+<li><strong>Loose levels.</strong> A "level" is a zone; entering too precisely can lead to getting stopped by normal noise. Use a zone and a buffer.</li>
+<li><strong>Market dependence.</strong> Breakouts (and their retests) succeed far more often in an uptrend than a downtrend; the broad-trend context still matters.</li>
+</ul>
+<h2 id="summary_4">Summary</h2>
+<ul>
+<li>Wait for a breakout, then buy the retest of the broken level (now support).</li>
+<li>Enter on a reversal candle at the flipped level; stop below the retest low; target a measured move.</li>
+<li>A safer entry than buying the breakout itself, at the cost of missing breakouts that never retest.</li>
+<li>Role reversal — broken resistance becomes support — is the core concept.</li>
+</ul>
+<p>Next: Strategy 3 — the new-high momentum trade.</p>
+<h1 id="6-strategy-3-the-new-high-momentum-trade">6. Strategy 3 — The New-High Momentum Trade</h1>
+<h2 id="buying-strength-itself">Buying strength itself</h2>
+<p>The new-high momentum trade is the most aggressive of the continuation strategies: it buys a stock making a <strong>new high</strong> (a 52-week high, or a multi-month high) and rides the subsequent momentum, rather than waiting for a pullback. It is the swing-trading application of the documented 52-week-high momentum effect.</p>
+<h2 id="the-idea_2">The idea</h2>
+<p>Conventional wisdom says a stock at a new high is "too high." The evidence says the opposite: stocks at or near their 52-week highs have historically been <em>strong</em>, not overpriced — because the forces that pushed them to new highs (earnings, news, institutional accumulation) tend to persist. The new-high trade buys that persistence directly.</p>
+<p>The psychological foundation is <strong>anchoring and under-reaction</strong>: investors are slow to update their view of a stock that has broken above everything they remember, so the move is not fully priced and has room to continue.</p>
+<h2 id="the-rules_2">The rules</h2>
+<p><strong>Universe and timeframe:</strong> liquid stocks (or indices) with a genuine catalyst — the strategy works best on names showing real strength, not sleepy ones. Daily timeframe.</p>
+<p><strong>Step 1 — Identify the high.</strong> A stock is at or near its <strong>52-week high</strong> (or a clearly significant multi-month high).</p>
+<p><strong>Step 2 — Wait for the breakout.</strong> Enter when the stock <strong>closes at a new high</strong> — ideally on <strong>rising volume</strong> (participation confirms the move). Some traders add a small confirmation margin (close a little <em>above</em> the prior high) to avoid intraday head-fakes.</p>
+<p><strong>Step 3 — Stop.</strong> Place the stop a defined distance below entry — e.g., a close below the <strong>prior high</strong> (the breakout level), or a fixed 6–10% stop, or below a short-term MA (the 10-day low). The stop's job is to exit fast if the breakout fails.</p>
+<p><strong>Step 4 — Target.</strong> New-high momentum has no obvious resistance above (that is the point), so the exit is usually <strong>trailing</strong> — e.g., a close below the 10-day or 20-day low, or a fixed time stop (exit after N days if the move has not continued). Letting the winner run is the source of the edge.</p>
+<p><strong>Position sizing:</strong> because this is a breakout with no support beneath, keep the risk per trade small (the standard 1–2%).</p>
+<h2 id="historical-context_2">Historical context</h2>
+<p>The empirical basis is the same George &amp; Hwang (2004) finding used in the momentum-investing book: nearness to the 52-week high is one of the most robust momentum signals in the literature. Applied at the swing timeframe, it becomes a "buy strength and trail" trade. The honest caveat is the same: <em>historically, stocks breaking to new highs have tended to continue outperforming — but individual breakouts fail often, so the stop and diversification are what make it survivable.</em></p>
+<h2 id="a-worked-example-an-nse-stock_1">A worked example (an NSE stock)</h2>
+<ul>
+<li>A large-cap stock, after a long base, <strong>closes at ₹1,120 — a new 52-week high</strong> — on volume 1.5× its average. <strong>Entry</strong> at ₹1,120.</li>
+<li><strong>Stop</strong> placed at ₹1,045 (a close below the prior-high/breakout zone, ~7% risk).</li>
+<li>The stock trends for five weeks, reaching ₹1,380, making higher highs throughout.</li>
+<li>A pullback then closes the stock <strong>below its 20-day low at ₹1,290</strong> — the trailing exit fires. <strong>Exit</strong> at ₹1,290.</li>
+</ul>
+<p>Result: entry ₹1,120 → exit ₹1,290 = <strong>+15%</strong>, captured by buying strength and trailing the stop — with a defined risk of ~7% if the breakout had failed.</p>
+<h2 id="risks-and-limitations_2">Risks and limitations</h2>
+<ul>
+<li><strong>High failure rate.</strong> Many new-high breakouts reverse immediately. The win rate is low; the edge comes from the occasional big winner <em>outweighing</em> the many small losses. This demands strict stops and small position sizing.</li>
+<li><strong>Gap risk.</strong> A stock gapping up to a new high on news can reverse the same day; buying <em>into</em> the gap is riskier than a clean close above the level.</li>
+<li><strong>Trailing-exit discipline.</strong> The strategy only works if winners are <em>not</em> cut early; a trailing exit (not a fixed profit) is essential, and it is psychologically hard (Chapter 10).</li>
+<li><strong>Market dependence.</strong> New highs succeed far more often in a rising market; a broad-market filter improves the odds materially.</li>
+</ul>
+<h2 id="summary_5">Summary</h2>
+<ul>
+<li>Buy closes at new 52-week (or significant) highs on rising volume.</li>
+<li>Stop below the breakout level or a fixed %; exit on a trailing stop, not a target.</li>
+<li>Grounded in the George &amp; Hwang (2004) 52-week-high momentum effect.</li>
+<li>Low win rate, large winners — strict stops and small size are non-negotiable.</li>
+</ul>
+<p>Next: Strategy 4 — RSI-2 mean reversion, the first of the two <em>reversion</em> strategies.</p>
+<h1 id="7-strategy-4-rsi-2-mean-reversion">7. Strategy 4 — RSI-2 Mean Reversion</h1>
+<h2 id="fading-the-short-term-extreme">Fading the short-term extreme</h2>
+<p>The first three strategies were <em>continuation</em> — they buy strength and follow the trend. This chapter switches to the second engine of swing trading: <strong>mean reversion</strong>. The RSI-2 strategy buys when a stock is <em>short-term oversold</em> and expects a snap-back. It is the most famous documented short-term mean-reversion system.</p>
+<h2 id="the-idea_3">The idea</h2>
+<p>Markets overshoot. In the short run, a sharp sell-off often pushes a stock <em>too far, too fast</em> — and prices tend to <strong>snap back</strong> toward the average, even if the longer-term trend is down. The RSI-2 strategy captures these bounces.</p>
+<p>The key instrument is the <strong>2-period RSI (RSI-2)</strong> — an <em>extremely</em> short-term oscillator that flips to deeply oversold (near 0) very quickly on a sharp drop. The strategy, documented by Larry Connors and Cesar Alvarez in their book <em>Short Term Trading Strategies That Work</em>, buys those deeply oversold moments and exits a few days later on the bounce.</p>
+<h2 id="the-rules_3">The rules</h2>
+<p><strong>Universe and timeframe:</strong> liquid stocks (or liquid index instruments). Daily timeframe.</p>
+<p><strong>Step 1 — The long-term trend filter (critical).</strong> Only trade in the direction of the longer trend. The classic version: take <strong>longs only when the stock is above its 200-day MA</strong> (an uptrend). In a downtrend, the same setup is used for shorts (or the trade is simply skipped). This filter is <em>why the strategy works</em> — buying oversold bounces in an uptrend is high-probability; buying them in a downtrend is catching falling knives.</p>
+<p><strong>Step 2 — The trigger.</strong> Enter a <strong>long when RSI-2 closes below 5</strong> (some use below 10), signalling a deeply oversold short-term extreme.</p>
+<p><strong>Step 3 — Exit.</strong> Exit when price <strong>closes above the 5-day MA</strong> (the classic rule), or after a fixed number of days (e.g., 2–5), or at a fixed small profit target. The trade is a <em>short</em> bounce, held only days.</p>
+<p><strong>Step 4 — Stop.</strong> A stop below the entry day's low (or a fixed small percentage), for the times the bounce does not come.</p>
+<p><strong>Position sizing:</strong> standard small risk per trade; the strategy trades frequently, so costs matter.</p>
+<h2 id="historical-context_3">Historical context</h2>
+<p>Connors and Alvarez published extensive historical results for RSI-2 mean reversion across US equities, showing that a simple "buy RSI-2 &lt; 5, exit above the 5-day MA" rule — <em>crucially, filtered by the 200-day trend</em> — produced a high win rate over many years. The mechanism is well understood: short-term liquidity-driven overshoots revert, and the trend filter keeps the trader from fighting a genuine downtrend. The pattern generalises: <em>short-term extremes tend to revert, especially with the longer-term trend.</em></p>
+<p>Framed honestly: <em>historically, buying deeply short-term-oversold conditions in assets above their long-term trend has tended to produce frequent small wins — with occasional larger losses when the "bounce" turns out to be a breakdown, which the stop is there to cap.</em></p>
+<h2 id="a-worked-example-a-liquid-nse-stock_1">A worked example (a liquid NSE stock)</h2>
+<ul>
+<li>A large-cap stock is in an uptrend, trading <strong>above its 200-day MA</strong> at ₹800.</li>
+<li>Over three days it <strong>drops sharply to ₹740</strong> on broad market weakness. Its <strong>RSI-2 closes at 3</strong> — deeply oversold. <strong>Entry</strong> at ₹742.</li>
+<li>The 200-day MA is still well below — the longer trend is intact; this is a dip, not a reversal.</li>
+<li>Over the next three days the stock <strong>bounces and closes above its 5-day MA at ₹775</strong>. <strong>Exit</strong> at ₹775.</li>
+</ul>
+<p>Result: entry ₹742 → exit ₹775 = <strong>+4.4% in a few days</strong>, a short, high-probability bounce captured with a defined stop and a mechanical exit.</p>
+<h2 id="risks-and-limitations_3">Risks and limitations</h2>
+<ul>
+<li><strong>Catching falling knives.</strong> Without the 200-day filter, this strategy buys every crash and loses badly. <strong>The trend filter is not optional — it is the strategy.</strong></li>
+<li><strong>Frequent small losses.</strong> Bounces sometimes fail; the stop caps each loss, but the strategy can string together several small losers. It relies on a high win rate <em>with the filter</em> to stay net positive.</li>
+<li><strong>Transaction costs.</strong> RSI-2 trades frequently (often holding only days), so brokerage and STT on each round trip matter more than for slower strategies. Run it on liquid names.</li>
+<li><strong>False confidence in high win rates.</strong> A high win rate can hide a few larger losses; risk per trade must remain small and disciplined.</li>
+</ul>
+<h2 id="summary_6">Summary</h2>
+<ul>
+<li>Buy RSI-2 closes below 5 (or 10), exit above the 5-day MA — held only days.</li>
+<li>The 200-day trend filter is what makes it work; without it, you are catching knives.</li>
+<li>Documented by Connors &amp; Alvarez; short-term extremes revert.</li>
+<li>High win rate, frequent small trades — costs and stop discipline matter.</li>
+</ul>
+<p>Next: Strategy 5 — the range fade.</p>
+<h1 id="8-strategy-5-the-range-fade">8. Strategy 5 — The Range Fade</h1>
+<h2 id="selling-the-edges-of-the-box">Selling the edges of the box</h2>
+<p>The range fade is the purest mean-reversion strategy: in a market that is clearly <strong>range-bound</strong>, it buys at support and sells at resistance — <em>fading</em> (trading against) each move toward the edges of the range. It is the natural complement to the continuation strategies: it makes money precisely in the conditions where they whipsaw.</p>
+<h2 id="the-idea_4">The idea</h2>
+<p>A ranging market oscillates between two well-defined levels. Near the <strong>top</strong> of the range, buyers have exhausted themselves and price is likely to fall back; near the <strong>bottom</strong>, sellers have exhausted themselves and price is likely to bounce. The range fade simply <strong>buys the bottom edge and sells the top edge</strong>, repeatedly, as long as the range holds.</p>
+<p>The logic is mean reversion at its cleanest: <em>extremes within a bounded structure tend to revert to the middle.</em> The entire risk is that the range <strong>breaks</strong> — and one large loss from a breakout must not be allowed to erase many small wins.</p>
+<h2 id="the-rules_4">The rules</h2>
+<p><strong>Universe and timeframe:</strong> liquid stocks or index instruments, daily timeframe.</p>
+<p><strong>Step 1 — Identify a clear range.</strong> Price must be <strong>visibly range-bound</strong>: a horizontal support floor and resistance ceiling, each tested at least twice, price bouncing between them for several weeks. A flat 50-day MA confirms "no trend."</p>
+<p><strong>Step 2 — Enter at the edge.</strong>
+- <strong>Long:</strong> near the <strong>support</strong> floor, ideally with a reversal candle (buyers stepping in).
+- <strong>Short / exit long:</strong> near the <strong>resistance</strong> ceiling, ideally with a reversal candle (sellers stepping in).</p>
+<p><strong>Step 3 — Stop.</strong> Just <strong>outside the range</strong>: for a long, below support; for a short, above resistance. The stop's job is to exit the moment the range <em>breaks</em> — because a broken range becomes a trend, and the fade must not fight it.</p>
+<p><strong>Step 4 — Target.</strong> The <strong>opposite edge</strong> of the range (or its middle). Take profit there; the strategy is harvesting the oscillation, not predicting a breakout.</p>
+<p><strong>Position sizing:</strong> small per trade, because the win rate is decent but the <em>occasional breakout loss</em> is the risk that dominates.</p>
+<h2 id="historical-context_4">Historical context</h2>
+<p>Range fading is the oldest mean-reversion trade there is — the practical expression of the observation that, in the absence of a trend, prices oscillate around a mean and revert at the edges. It is the mirror image of breakout trading: the same level that a breakout trader <em>buys through</em> is the level a range fader <em>sells into</em>. Neither is right or wrong in the abstract; the market's <strong>regime</strong> (Chapter 3) decides which one pays. The strategy is as old as support-and-resistance itself, and it remains a staple precisely because markets spend so much time ranging.</p>
+<p>Framed honestly: <em>historically, in clearly range-bound conditions, fading the edges of the range has tended to produce frequent small wins — punctuated by occasional large losses when the range breaks, which the stop is there to cap.</em></p>
+<h2 id="a-worked-example-banknifty-or-a-liquid-stock">A worked example (BankNIFTY or a liquid stock)</h2>
+<ul>
+<li>A stock has been ranging between <strong>₹500 (support)</strong> and <strong>₹560 (resistance)</strong> for two months, each level tested three times. The 50-day MA is flat.</li>
+<li>Price falls to <strong>₹505</strong> and prints a <strong>bullish reversal candle</strong> (a hammer — buyers rejected the dip). <strong>Entry</strong> at ₹510 (long).</li>
+<li><strong>Stop</strong> at ₹492 (just below the ₹500 support floor).</li>
+<li>Price rallies toward the top of the range. At <strong>₹555</strong>, near resistance, a <strong>bearish reversal candle</strong> prints. <strong>Exit</strong> at ₹552.</li>
+</ul>
+<p>Result: entry ₹510 → exit ₹552 = <strong>+8.2%</strong>, harvesting one full oscillation of the range with a stop that capped the risk if support had broken.</p>
+<h2 id="risks-and-limitations_4">Risks and limitations</h2>
+<ul>
+<li><strong>The breakout loss.</strong> The defining risk: the range breaks, the fade is wrong, and the stop exits at a loss. The <em>many small wins</em> must outweigh the <em>occasional breakout loss</em> — which requires strict stops and small size, not cleverness.</li>
+<li><strong>False range reads.</strong> A market that <em>looks</em> like a range may actually be a trend consolidating before continuation. Fading it then means fighting the trend. The flat-50-day-MA check and clear double-tested levels are the guards.</li>
+<li><strong>Erosion at the edges.</strong> Repeated fades at the same edge become increasingly risky — the more a level is tested, the more likely it is to break. Some traders reduce size on later tests.</li>
+<li><strong>Costs and patience.</strong> The strategy trades repeatedly for small gains; costs and the discipline to take the small win matter.</li>
+</ul>
+<h2 id="summary_7">Summary</h2>
+<ul>
+<li>In a clear range, buy support and sell resistance, fading the edges.</li>
+<li>Stop just outside the range; target the opposite edge.</li>
+<li>The mirror of breakout trading; the regime call decides which pays.</li>
+<li>Many small wins, occasional breakout loss — strict stops and small size are essential.</li>
+</ul>
+<p>Next: trade plans and risk management — turning any strategy into a repeatable process.</p>
+<h1 id="9-trade-plans-and-risk-management">9. Trade Plans and Risk Management</h1>
+<h2 id="turning-a-setup-into-a-repeatable-process">Turning a setup into a repeatable process</h2>
+<p>A strategy is a set of ideas; a <strong>trade plan</strong> turns it into a repeatable, checkable process. This chapter covers the two things that separate profitable swing traders from everyone else: the <strong>written plan</strong>, and the <strong>risk arithmetic</strong> that keeps them alive.</p>
+<h2 id="the-written-trade-plan">The written trade plan</h2>
+<p>Every trade, before it exists, should be written down with these six fields. The act of writing is what forces the thinking.</p>
+<ol>
+<li><strong>Setup</strong> — which strategy, and the specific condition (pullback to the 20 EMA, breakout of ₹250, RSI-2 below 5, etc.).</li>
+<li><strong>Entry</strong> — the exact trigger (close above the level, reversal candle at the MA).</li>
+<li><strong>Stop</strong> — the price that proves the setup wrong (below the pullback low, below the retest low, below the range floor).</li>
+<li><strong>Target</strong> — where the swing is likely to exhaust (prior high, measured move, opposite range edge, or the trailing rule).</li>
+<li><strong>Size</strong> — the position size, computed from the stop distance (below).</li>
+<li><strong>Invalidation</strong> — the conditions under which the plan is abandoned <em>before</em> the stop (e.g., the trade becomes invalid if a major event intervenes).</li>
+</ol>
+<p>A plan this explicit does three jobs: it removes emotion from the decision, it makes the risk <em>known in advance</em>, and it makes the trade <em>reviewable</em> afterward — which is how a trader improves.</p>
+<h2 id="the-risk-arithmetic-reward-to-risk">The risk arithmetic: reward-to-risk</h2>
+<p>The central number in swing trading is the <strong>reward-to-risk ratio (R:R)</strong>:</p>
+<p>R:R = (Target − Entry) ÷ (Entry − Stop)</p>
+<p>It measures how much you stand to gain for every unit you risk. The discipline of swing trading is built on it:</p>
+<ul>
+<li>A trade risking ₹10 to make ₹30 is a <strong>3:1</strong> trade.</li>
+<li>A <strong>3:1</strong> trade needs to win only <strong>~25%</strong> of the time to break even.</li>
+<li>A <strong>1:1</strong> trade needs to win <strong>~50%</strong> of the time.</li>
+</ul>
+<p>This is why swing trading works with a <em>modest</em> win rate: <strong>you do not need to be right most of the time — you need to win enough on the winners to pay for the losers.</strong> The pullback, retest, and range-fade strategies all aim for favourable R:R precisely so that the maths works in your favour.</p>
+<p>The corollary is unforgiving: <strong>if you cut winners early and let losers run, you invert the R:R — and no strategy can save you.</strong> Protecting the ratio (cut losers fast, hold to targets) is the whole game.</p>
+<h2 id="position-sizing-risk-12-per-trade">Position sizing: risk 1–2% per trade</h2>
+<p>The formula from the other books applies unchanged:</p>
+<p>Position size = (Account × Risk %) ÷ (Entry − Stop)</p>
+<p>Risking <strong>1–2%</strong> of the account per trade means <strong>no single loss — and no losing streak — can meaningfully damage the account.</strong> For swing trading, where a string of stopped-out trades is normal, this is not a suggestion; it is the load-bearing rule. A trader who risks 1% can survive ten consecutive losses (down ~10%) and keep trading; a trader who risks 10% is ruined by the same streak.</p>
+<h2 id="the-risks-specific-to-swing-trading">The risks specific to swing trading</h2>
+<h3 id="gap-risk-the-overnight-risk">Gap risk (the overnight risk)</h3>
+<p>Swing traders hold overnight, so positions are exposed to <strong>gaps</strong> — price opening far from the previous close on news or a global shock. A gap can jump <em>past</em> the stop, producing a larger-than-planned loss. Defences:</p>
+<ul>
+<li><strong>Size for the worst plausible gap</strong>, not just the stop distance.</li>
+<li><strong>Avoid oversized positions through binary events</strong> (earnings, budgets, policy decisions) on the underlying.</li>
+<li>Accept that the stop is a <em>limit</em>, not a <em>guarantee</em>.</li>
+</ul>
+<h3 id="the-losing-streak">The losing streak</h3>
+<p>Every strategy has streaks of consecutive losses — continuation strategies whipsaw in ranges; reversion strategies get run over at breakouts. The defence is <strong>survival</strong>: a 1% risk per trade turns a 10-loss streak into a survivable 10% drawdown, after which the winners can resume.</p>
+<h3 id="the-transition-risk">The transition risk</h3>
+<p>The most dangerous moment is a <strong>regime change</strong> — a range breaking into a trend, or a trend reversing. Both families of strategy look wrong at the transition. The defence is the regime discipline of Chapter 3: when the regime is ambiguous, <strong>trade smaller or not at all.</strong></p>
+<h2 id="portfolio-level-discipline">Portfolio-level discipline</h2>
+<p>Beyond the individual trade:</p>
+<ul>
+<li><strong>Limit total open risk.</strong> A handful of open positions each risking 1% is fine; ten correlated positions all long the same market is one oversized bet.</li>
+<li><strong>Know your net exposure.</strong> If every position is long and the market is below its 200-day MA, the whole book is a single bet against the trend — reduce it.</li>
+<li><strong>Review, don't rationalise.</strong> After each closed trade, check the plan against what you actually did. The gap between them is where improvement lives.</li>
+</ul>
+<h2 id="summary_8">Summary</h2>
+<ul>
+<li>Write a six-field plan (setup, entry, stop, target, size, invalidation) before every trade.</li>
+<li>Reward-to-risk is the core arithmetic: a 3:1 trade breaks even at 25% wins.</li>
+<li>Risk 1–2% per trade; size from the stop distance.</li>
+<li>Gap risk, losing streaks, and regime transitions are the specific dangers — survive them with small size and regime discipline.</li>
+<li>Review every trade against its plan.</li>
+</ul>
+<p>Next: the final chapter — the psychology of holding multi-day positions.</p>
+<h1 id="10-psychology-and-common-mistakes">10. Psychology and Common Mistakes</h1>
+<h2 id="the-discipline-between-the-entries-and-the-exits">The discipline between the entries and the exits</h2>
+<p>The strategies in this book are public knowledge, and the risk arithmetic is simple. What decides whether a swing trader profits is what happens <strong>between</strong> the entry and the exit — the hours and days of holding, during which every position tests the trader's nerve. This chapter names the traps and the defences.</p>
+<h2 id="why-holding-is-the-hard-part">Why holding is the hard part</h2>
+<p>Swing trading is psychologically difficult for a specific reason: <strong>it demands patience and inaction at the exact moments the emotions are loudest.</strong></p>
+<ul>
+<li>A position in <strong>profit</strong> begs to be closed ("take it before it disappears") — but the plan says hold to the target.</li>
+<li>A position in <strong>drawdown</strong> (but not at the stop) begs to be closed ("cut it now") — but the plan says the stop, not the noise, is the exit.</li>
+<li>A stopped-out position begs to be <strong>re-entered</strong> immediately ("get it back") — but the plan says the next trade comes from the next setup.</li>
+</ul>
+<p>In every case, the correct action is <em>nothing</em> — and the temptation is to <em>do something</em>. The trader who can hold through the noise, honour the stop, and wait for the next setup has the edge.</p>
+<h2 id="the-five-classic-mistakes">The five classic mistakes</h2>
+<h3 id="1-cutting-winners-early">1. Cutting winners early</h3>
+<p>The whole edge of swing trading is the reward-to-risk ratio — the winners must be allowed to reach their targets. Closing a winner early ("locking in a small profit") takes exactly the trades that pay for the losers. <strong>Defence:</strong> the target (or the trailing rule) ends the trade, not the profit.</p>
+<h3 id="2-moving-the-stop">2. Moving the stop</h3>
+<p>A position near its stop gets "just a little more room" — and a small, planned loss becomes a large, unplanned one. <strong>Defence:</strong> the stop is a commitment made in a calm state; it is honoured in the emotional state. The stop <em>is</em> the plan.</p>
+<h3 id="3-revenge-trading-after-a-stop-out">3. Revenge trading after a stop-out</h3>
+<p>A stopped-out trade is almost always followed by the urge to re-enter immediately, bigger, "to win it back." This converts one defined loss into an undefined, oversized one — the single most destructive habit in trading. <strong>Defence:</strong> after a stop, the correct next trade is <strong>no trade</strong>, until a fresh setup presents itself on its own merits.</p>
+<h3 id="4-overtrading-the-wrong-regime">4. Overtrading the wrong regime</h3>
+<p>When the market is ranging, continuation strategies whipsaw; when it is trending, reversion strategies get run over. The trader who ignores the regime and trades <em>more</em> to "fix" a losing streak is doing the worst thing at the worst time. <strong>Defence:</strong> the regime discipline of Chapter 3 — trade the matching strategy, and trade less (or not at all) when the regime is ambiguous.</p>
+<h3 id="5-confusing-one-trades-outcome-with-skill">5. Confusing one trade's outcome with skill</h3>
+<p>A single winning trade feels like talent; a single losing trade feels like failure. Both are mostly noise. <strong>Defence:</strong> judge yourself over 30–50 trades, on the <em>process</em> (did I follow the plan?) rather than the outcome. A losing trade that followed the plan is a process win.</p>
+<h2 id="the-practices-that-work">The practices that work</h2>
+<ol>
+<li><strong>Write the plan, then follow it.</strong> The written plan (Chapter 9) is a contract with your future, more emotional self.</li>
+<li><strong>Set exits at entry.</strong> The stop and target are decided <em>before</em> the position exists, when judgment is clean — never adjusted mid-trade.</li>
+<li><strong>Trade a defined routine.</strong> Same chart review, same checklist, same time of day. Routine reduces the scope for impulsive decisions.</li>
+<li><strong>Accept the losing streak as the cost.</strong> Streaks of stopped-out trades are normal and expected. A trader who accepts them can hold through them; one who fights them will abandon the system at the bottom.</li>
+<li><strong>Review, don't rationalise.</strong> After each trade, compare what you did against the plan. The gap is where you improve — and rationalising it away is where you don't.</li>
+</ol>
+<h2 id="the-honest-truth">The honest truth</h2>
+<p>Every failure mode in this chapter is a way of <em>abandoning your own plan at the moment it matters most</em>. Swing trading's edge is real but modest, and it is expressed only across many disciplined trades. The trader who can simply <strong>do what they said they would do</strong> — take the setup, honour the stop, hold to the target, wait for the next one — has an edge that no amount of strategy sophistication can replace. Everything else is detail.</p>
+<h2 id="summary_9">Summary</h2>
+<ul>
+<li>The hard part is the <em>holding</em> — doing nothing when the emotions are loudest.</li>
+<li>The traps: cutting winners, moving stops, revenge trading, overtrading the wrong regime, confusing luck with skill.</li>
+<li>The defences: a written plan, exits set at entry, a defined routine, accepting losing streaks, reviewing honestly.</li>
+<li>Discipline — not a better strategy — is the actual edge.</li>
+</ul>
+<p>This completes the main text. The appendix condenses all five strategies into one reference table.</p>
+<h1 id="appendix-strategy-quick-reference-table">Appendix — Strategy Quick-Reference Table</h1>
+<p>This table is a summary, not a substitute for the full chapters. Adjust levels, lookbacks, and stops to your own risk tolerance and universe.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Strategy</th>
+<th>Family</th>
+<th>Setup / entry</th>
+<th>Stop</th>
+<th>Target / exit</th>
+<th>Best regime</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Pullback continuation</td>
+<td>Continuation</td>
+<td>Reversal off rising 20-day EMA in an uptrend</td>
+<td>Below the pullback low</td>
+<td>Prior swing high</td>
+<td>Uptrend</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Breakout &amp; retest</td>
+<td>Continuation</td>
+<td>Buy the retest of a broken resistance (now support)</td>
+<td>Below the retest low</td>
+<td>Measured move</td>
+<td>Uptrend / new trend</td>
+</tr>
+<tr>
+<td>3</td>
+<td>New-high momentum</td>
+<td>Continuation</td>
+<td>Close at a new 52-week high on volume</td>
+<td>Below the breakout level / fixed %</td>
+<td>Trailing (10/20-day low)</td>
+<td>Uptrend</td>
+</tr>
+<tr>
+<td>4</td>
+<td>RSI-2 mean reversion</td>
+<td>Reversion</td>
+<td>RSI-2 closes below 5, above 200-day MA</td>
+<td>Below the entry-day low</td>
+<td>Close above the 5-day MA</td>
+<td>Uptrend (dip)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Range fade</td>
+<td>Reversion</td>
+<td>Reversal at support (long) / resistance (short)</td>
+<td>Just outside the range edge</td>
+<td>Opposite edge of the range</td>
+<td>Range</td>
+</tr>
+</tbody>
+</table>
+<h2 id="the-two-families">The two families</h2>
+<ul>
+<li><strong>Continuation (1–3):</strong> trade <em>with</em> the trend — buy strength, buy pauses, buy new highs. Win rate often lower; winners are larger.</li>
+<li><strong>Reversion (4–5):</strong> fade <em>extremes</em> — buy oversold, fade the range edge. Win rate often higher; winners are smaller.</li>
+</ul>
+<h2 id="the-universal-rules">The universal rules</h2>
+<ul>
+<li><strong>Read the regime first</strong> (trending or ranging) — it chooses the family.</li>
+<li><strong>Risk 1–2%</strong> per trade; size from the stop distance.</li>
+<li><strong>Aim for favourable reward-to-risk</strong> (2:1 or better); a 3:1 trade breaks even at 25% wins.</li>
+<li><strong>Honour the stop; hold to the target</strong> — never invert the ratio.</li>
+<li><strong>Account for gap risk</strong> — size for the worst plausible open, avoid oversized positions through binary events.</li>
+</ul></body></html>

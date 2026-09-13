@@ -1,0 +1,81 @@
+# StratLab Trading Library — Full Chapter Index
+
+> Every chapter of every book, individually linked, for loading one chapter into an LLM's context instead of a whole book. See /llms.txt for the book-level index and /README.md for the disclaimer and license.
+
+## Options Trading
+
+- [1. The Option: A Right, Not an Obligation](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Options-Trading/chapters/01-the-option-a-right-not-an-obligation.md)
+- [2. Anatomy of an NSE Option Contract](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Options-Trading/chapters/02-anatomy-of-an-nse-option-contract.md)
+- [3. Calls, Puts, Buyers, and Sellers](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Options-Trading/chapters/03-calls-puts-buyers-sellers.md)
+- [4. Moneyness: In-the-Money, At-the-Money, Out-of-the-Money](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Options-Trading/chapters/04-moneyness.md)
+- [5. Intrinsic Value and Time Value](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Options-Trading/chapters/05-intrinsic-and-time-value.md)
+- [6. How Options Trade on the NSE](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Options-Trading/chapters/06-how-options-trade-on-nse.md)
+- [7. Reading an Option Chain](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Options-Trading/chapters/07-reading-an-option-chain.md)
+- [8. The Payoff Diagram](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Options-Trading/chapters/08-the-payoff-diagram.md)
+- [9. Why Trade Options: Hedging, Income, and Speculation](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Options-Trading/chapters/09-why-trade-options.md)
+- [10. The Six Factors That Move an Option's Price](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Options-Trading/chapters/10-six-factors.md)
+- [11. Delta and Gamma](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Options-Trading/chapters/11-delta-and-gamma.md)
+- [12. Theta: The Price of Time](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Options-Trading/chapters/12-theta.md)
+- [13. Vega: The Price of Volatility](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Options-Trading/chapters/13-vega.md)
+- [14. Rho and the Higher-Order Greeks](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Options-Trading/chapters/14-rho-and-higher-order-greeks.md)
+- [15. The Black-Scholes Model](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Options-Trading/chapters/15-black-scholes.md)
+- [16. Implied Volatility and Historical Volatility](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Options-Trading/chapters/16-implied-and-historical-volatility.md)
+- [17. IV Rank, IV Percentile, Skew, and the Term Structure](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Options-Trading/chapters/17-iv-rank-skew-term-structure.md)
+- [18. The Long Call and the Long Put](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Options-Trading/chapters/18-long-call-long-put.md)
+- [19. The Covered Call and the Cash-Secured Put](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Options-Trading/chapters/19-covered-call-cash-secured-put.md)
+- [20. Vertical Spreads](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Options-Trading/chapters/20-vertical-spreads.md)
+- [21. Straddles and Strangles](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Options-Trading/chapters/21-straddles-strangles.md)
+- [22. Iron Condors and Butterflies](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Options-Trading/chapters/22-iron-condors-butterflies.md)
+- [23. Ratio, Calendar, and Diagonal Spreads](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Options-Trading/chapters/23-ratio-calendar-diagonal.md)
+- [24. Protective Puts and Collars](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Options-Trading/chapters/24-protective-puts-collars.md)
+- [25. Volatility Trading and Vega Management](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Options-Trading/chapters/25-volatility-trading-vega-management.md)
+- [26. Gamma Scalping](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Options-Trading/chapters/26-gamma-scalping.md)
+- [27. Open Interest, Put-Call Ratio, and Max Pain](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Options-Trading/chapters/27-oi-pcr-max-pain.md)
+- [28. Position Sizing, Margin, and Risk Management](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Options-Trading/chapters/28-sizing-margin-risk.md)
+- [29. The Psychology of Options Trading](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Options-Trading/chapters/29-psychology.md)
+- [30. Indian Market Mechanics](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Options-Trading/chapters/30-indian-market-mechanics.md)
+- [Appendix A. Glossary](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Options-Trading/chapters/appendix-a-glossary.md)
+- [Appendix B. Strategy Quick-Reference Table](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Options-Trading/chapters/appendix-b-strategy-table.md)
+- [Appendix C. Formula & Cheat Sheet](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Options-Trading/chapters/appendix-c-formula-cheat-sheet.md)
+
+## Momentum Trading
+
+- [1. What Is Momentum Trading?](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Momentum-Trading/chapters/01-what-is-momentum-trading.md)
+- [2. Why Momentum Works](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Momentum-Trading/chapters/02-why-momentum-works.md)
+- [3. The Momentum Trader's Toolkit](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Momentum-Trading/chapters/03-toolkit.md)
+- [4. Strategy 1 — The Donchian Channel Breakout](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Momentum-Trading/chapters/04-strategy-donchian-breakout.md)
+- [5. Strategy 2 — Moving-Average Trend Following](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Momentum-Trading/chapters/05-strategy-moving-average-trend.md)
+- [6. Strategy 3 — The 52-Week High Breakout](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Momentum-Trading/chapters/06-strategy-52-week-high.md)
+- [7. Strategy 4 — Relative Strength Rotation](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Momentum-Trading/chapters/07-strategy-relative-strength-rotation.md)
+- [8. Strategy 5 — The Pullback to the Rising Moving Average](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Momentum-Trading/chapters/08-strategy-pullback.md)
+- [9. Risk Management and Position Sizing](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Momentum-Trading/chapters/09-risk-management.md)
+- [10. Psychology and Common Mistakes](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Momentum-Trading/chapters/10-psychology.md)
+- [Appendix — Strategy Quick-Reference Table](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Momentum-Trading/chapters/appendix-strategy-table.md)
+
+## Momentum Investing
+
+- [1. What Is Momentum Investing?](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Momentum-Investing/chapters/01-what-is-momentum-investing.md)
+- [2. The Evidence: Why the Momentum Factor Persists](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Momentum-Investing/chapters/02-the-evidence.md)
+- [3. The Momentum Investor's Toolkit](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Momentum-Investing/chapters/03-toolkit.md)
+- [4. Strategy 1 — 12-1 Cross-Sectional Momentum](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Momentum-Investing/chapters/04-strategy-12-1-momentum.md)
+- [5. Strategy 2 — Absolute Momentum (the 200-Day Filter)](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Momentum-Investing/chapters/05-strategy-absolute-momentum.md)
+- [6. Strategy 3 — Dual Momentum](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Momentum-Investing/chapters/06-strategy-dual-momentum.md)
+- [7. Strategy 4 — 52-Week High Investing](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Momentum-Investing/chapters/07-strategy-52-week-high-investing.md)
+- [8. Strategy 5 — Sector and Index Momentum Rotation](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Momentum-Investing/chapters/08-strategy-sector-rotation.md)
+- [9. Portfolio Construction, Costs, and Taxes](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Momentum-Investing/chapters/09-portfolio-costs-taxes.md)
+- [10. Risk and Psychology for the Long-Term Investor](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Momentum-Investing/chapters/10-risk-psychology.md)
+- [Appendix — Strategy Quick-Reference Table](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Momentum-Investing/chapters/appendix-strategy-table.md)
+
+## Swing Trading
+
+- [1. What Is Swing Trading?](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Swing-Trading/chapters/01-what-is-swing-trading.md)
+- [2. The Swing Trader's Toolkit](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Swing-Trading/chapters/02-toolkit.md)
+- [3. Reading Trend Structure: Trending or Ranging?](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Swing-Trading/chapters/03-trend-structure.md)
+- [4. Strategy 1 — The Pullback Continuation](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Swing-Trading/chapters/04-strategy-pullback-continuation.md)
+- [5. Strategy 2 — The Breakout and Retest](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Swing-Trading/chapters/05-strategy-breakout-retest.md)
+- [6. Strategy 3 — The New-High Momentum Trade](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Swing-Trading/chapters/06-strategy-new-high-momentum.md)
+- [7. Strategy 4 — RSI-2 Mean Reversion](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Swing-Trading/chapters/07-strategy-rsi2-mean-reversion.md)
+- [8. Strategy 5 — The Range Fade](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Swing-Trading/chapters/08-strategy-range-fade.md)
+- [9. Trade Plans and Risk Management](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Swing-Trading/chapters/09-trade-plans-risk.md)
+- [10. Psychology and Common Mistakes](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Swing-Trading/chapters/10-psychology.md)
+- [Appendix — Strategy Quick-Reference Table](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Swing-Trading/chapters/appendix-strategy-table.md)
