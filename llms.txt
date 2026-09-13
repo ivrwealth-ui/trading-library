@@ -1,6 +1,6 @@
 # StratLab Trading Library
 
-> Free, open-source reference books on Indian (NSE) markets: options, momentum, swing trading, techno-funda investing, quant trading, risk management, and systematic trading frameworks. Educational only — not investment advice; StratLab is not SEBI-registered. Content is AI-drafted and human-reviewed, not exhaustively fact-checked — verify specific numbers, formulas, and citations before relying on them. See /README.md for the full disclaimer and a log of corrections made during review.
+> Free, open-source reference books on Indian (NSE) markets: options, momentum, swing trading, techno-funda investing, quant trading, risk management, chart types, TradingView, and systematic trading frameworks. Educational only — not investment advice; StratLab is not SEBI-registered. Content is AI-drafted and human-reviewed, not exhaustively fact-checked — verify specific numbers, formulas, and citations before relying on them. See /README.md for the full disclaimer and a log of corrections made during review.
 
 <!-- Links below assume this repo is published as github.com/ivrwealth-ui/trading-library. If it ends up under a different org/username, update every raw.githubusercontent.com/ivrwealth-ui/trading-library path in this file to match. -->
 
@@ -35,6 +35,14 @@
 ## Systematic Trading Framework
 
 - [How to Build a Framework for Systematic Trading](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Systematic-Trading-Framework/How-to-Build-a-Framework-for-Systematic-Trading.md): 10 chapters + appendix. The eight-stage lifecycle (idea → hypothesis → data → signal → backtest → paper → live → review/retire), data integrity, signal design, portfolio construction, honest backtesting, execution/monitoring, and governance — the infrastructure the other books' strategies plug into.
+
+## Charts and Chart Types
+
+- [Charts and Chart Types](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Charts-and-Chart-Types/Charts-and-Chart-Types-The-Complete-Guide-to-Reading-Price.md): 11 chapters + appendix. Line, area, bar, candlestick, and Heikin-Ashi through the noise-reducing reversal-based charts (Renko, Point & Figure, line break, Kagi) to the logarithmic scale — what each chart type keeps, discards, and is good for.
+
+## TradingView Masterclass
+
+- [TradingView Masterclass](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/TradingView-Masterclass/TradingView-Masterclass-Tips-Tricks-and-How-to-Use-It-Most-Effectively.md): 10 chapters + appendix. Workspace and chart setup, templates, drawing tools, indicators/strategies, watchlists and multi-chart layouts, alerts, bar replay, compare/multi-timeframe, and paper trading — how to use the platform as a workflow, not just a viewer.
 
 ## Optional
 

@@ -134,3 +134,32 @@
 - [9. Risk Management and Governance](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Systematic-Trading-Framework/chapters/09-risk-governance.md)
 - [10. A Working Framework Template](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Systematic-Trading-Framework/chapters/10-working-template.md)
 - [Appendix — Lifecycle Checklist](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Systematic-Trading-Framework/chapters/appendix-lifecycle-checklist.md)
+
+## Charts and Chart Types
+
+- [1. Why Charts Matter](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Charts-and-Chart-Types/chapters/01-why-charts-matter.md)
+- [2. Price, Time, and Scale: The Foundations](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Charts-and-Chart-Types/chapters/02-price-time-scale.md)
+- [3. Line and Area Charts](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Charts-and-Chart-Types/chapters/03-line-area.md)
+- [4. Bar (OHLC) Charts](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Charts-and-Chart-Types/chapters/04-bar-ohlc.md)
+- [5. Candlestick Charts](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Charts-and-Chart-Types/chapters/05-candlestick.md)
+- [6. Heikin-Ashi Charts](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Charts-and-Chart-Types/chapters/06-heikin-ashi.md)
+- [7. Renko Charts](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Charts-and-Chart-Types/chapters/07-renko.md)
+- [8. Point & Figure (P&F) Charts](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Charts-and-Chart-Types/chapters/08-point-and-figure.md)
+- [9. Line Break and Kagi Charts](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Charts-and-Chart-Types/chapters/09-line-break-kagi.md)
+- [10. Log Scale and the One-Dimensional Insight](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Charts-and-Chart-Types/chapters/10-log-scale.md)
+- [11. Choosing the Right Chart for the Job](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Charts-and-Chart-Types/chapters/11-choosing.md)
+- [Appendix — Chart-Type Quick Reference](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Charts-and-Chart-Types/chapters/appendix-chart-reference.md)
+
+## TradingView Masterclass
+
+- [1. What Is TradingView?](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/TradingView-Masterclass/chapters/01-what-is-tradingview.md)
+- [2. The Workspace and the Chart](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/TradingView-Masterclass/chapters/02-workspace-chart.md)
+- [3. Chart Setup and Templates](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/TradingView-Masterclass/chapters/03-templates.md)
+- [4. Drawing Tools](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/TradingView-Masterclass/chapters/04-drawing-tools.md)
+- [5. Indicators and Strategies](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/TradingView-Masterclass/chapters/05-indicators-strategies.md)
+- [6. Watchlists and Multi-Chart Layouts](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/TradingView-Masterclass/chapters/06-watchlists-layouts.md)
+- [7. Alerts](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/TradingView-Masterclass/chapters/07-alerts.md)
+- [8. Bar Replay](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/TradingView-Masterclass/chapters/08-bar-replay.md)
+- [9. Compare, Multi-Timeframe, and Keyboard Shortcuts](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/TradingView-Masterclass/chapters/09-compare-shortcuts.md)
+- [10. Paper Trading and Going Deeper](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/TradingView-Masterclass/chapters/10-paper-trading-deeper.md)
+- [Appendix — Shortcut and Tips Cheat-Sheet](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/TradingView-Masterclass/chapters/appendix-shortcuts-tips.md)
