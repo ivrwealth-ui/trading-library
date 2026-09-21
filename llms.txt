@@ -1,6 +1,6 @@
 # StratLab Trading Library
 
-> Free, open-source reference books on Indian (NSE) markets: options, momentum, swing trading, techno-funda investing, quant trading, risk management, chart types, TradingView, and systematic trading frameworks. Educational only — not investment advice; StratLab is not SEBI-registered. Content is AI-drafted and human-reviewed, not exhaustively fact-checked — verify specific numbers, formulas, and citations before relying on them. See /README.md for the full disclaimer and a log of corrections made during review.
+> Free, open-source reference books on Indian (NSE) markets: options, momentum, swing trading, techno-funda investing, quant trading, risk management, chart types, TradingView, systematic trading frameworks, and an industry-wise fundamentals KPI handbook. Educational only — not investment advice; StratLab is not SEBI-registered. Content is AI-drafted and human-reviewed, not exhaustively fact-checked — verify specific numbers, formulas, and citations before relying on them. See /README.md for the full disclaimer and a log of corrections made during review.
 
 <!-- Links below assume this repo is published as github.com/ivrwealth-ui/trading-library. If it ends up under a different org/username, update every raw.githubusercontent.com/ivrwealth-ui/trading-library path in this file to match. -->
 
@@ -43,6 +43,10 @@
 ## TradingView Masterclass
 
 - [TradingView Masterclass](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/TradingView-Masterclass/TradingView-Masterclass-Tips-Tricks-and-How-to-Use-It-Most-Effectively.md): 10 chapters + appendix. Workspace and chart setup, templates, drawing tools, indicators/strategies, watchlists and multi-chart layouts, alerts, bar replay, compare/multi-timeframe, and paper trading — how to use the platform as a workflow, not just a viewer.
+
+## KPI Handbook
+
+- [The Indian Stock Market KPI Handbook](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/KPI-Handbook/The-Indian-Stock-Market-KPI-Handbook.md): 32 chapters + appendix. Industry-wise operational KPIs for 29 Indian sectors (banks, NBFCs, insurance, IT, pharma, FMCG, autos, metals, cement, oil & gas, power, telecom, realty and more) — what each KPI means, how it is commonly read, indicative benchmarks, a healthy-profile-vs-red-flags checklist per industry, and where to source each number — plus a data-source directory, a master KPI table and a glossary. Describes how businesses operate; says nothing about valuation or what to buy.
 
 ## Optional
 
