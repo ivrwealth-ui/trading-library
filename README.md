@@ -1,6 +1,6 @@
 # StratLab Trading Library
 
-Free, open reference books on Indian (NSE) markets — options, momentum, swing trading, techno-funda investing, quant trading, risk management, chart types, how to use TradingView, build a systematic trading framework, and an industry-wise fundamentals KPI handbook. Built by [StratLab](https://stratlab.in).
+Free-to-read reference books on Indian (NSE) markets — options, option-chain analysis and option adjustments, event and earnings trading, momentum, swing trading, price action, relative strength and breadth, stock selection, techno-funda investing, quant trading, risk management, chart types, how to use TradingView, Screener.in and Pine Script screeners, a beginner's Python swing screener, building a systematic trading framework, and an industry-wise fundamentals KPI handbook. Built by [StratLab](https://stratlab.in).
 
 Every book ships in three formats: a styled **PDF** to read, a styled **HTML** for the web, and clean, chapter-addressable **Markdown** with none of the other two formats' styling or markup — built specifically to be pasted or loaded into an LLM's context window (ChatGPT, Claude, Cursor, a local RAG pipeline, whatever you're using to help you design or backtest a strategy), not just to be read by a person. See [`llms.txt`](./llms.txt) for a machine-readable index of every book and chapter.
 
@@ -29,6 +29,15 @@ Every book ships in three formats: a styled **PDF** to read, a styled **HTML** f
 | [Charts and Chart Types](./Charts-and-Chart-Types/) | 11 + appendix | md · html · pdf | Line to Renko, P&F, Kagi, and the log scale — what each chart shows and hides |
 | [TradingView Masterclass](./TradingView-Masterclass/) | 10 + appendix | md · html · pdf | Workspace, templates, alerts, bar replay, and the platform's actual workflow |
 | [The Indian Stock Market KPI Handbook](./KPI-Handbook/) | 32 + appendix | md · html · pdf | Industry-wise operational KPIs (banks to sugar), how to read them, and where to source them |
+| [Option Chain Analysis: Reading Positioning and Building Quant Models from the Chain](./Option-Chain-Analysis/) | 14 + appendix | md · html · pdf | Reading positioning and building quantitative models from the chain |
+| [Options Trading Adjustments](./Options-Trading-Adjustments/) | 12 + appendix | md · html · pdf | How five option structures behave and how they are adjusted |
+| [Event & Earnings Trading on the NSE](./Event-and-Earnings-Trading/) | 9 + appendix | md · html · pdf | Results season, IV crush, gaps — and when not to play |
+| [Price Action Playbook for Nifty & Stocks](./Price-Action-Playbook/) | 12 + appendix | md · html · pdf | Structure, auctions and failed breakouts in the Indian session |
+| [Relative Strength & Breadth for the NSE Market](./Relative-Strength-and-Breadth/) | 12 + appendix | md · html · pdf | Ranking stocks, rotating sectors and reading market breadth |
+| [The Indian Stock Selector's Playbook](./Stock-Selection-Methods/) | 10 + 4 appendices | md · html · pdf | Value, momentum and multi-factor selection, months to years |
+| [Screener.in Masterclass: The Complete Guide to India's Fundamental Research Tool](./Screener-in-Masterclass/) | 10 + appendix | md · html · pdf | India's fundamental research tool, page by page |
+| [TradingView Screeners with Pine Script v6: Recognised-Strategy Scanners, Fully Coded](./TradingView-Screeners/) | 12 + appendix | md · html · pdf | Eight strategy scanners in Pine Script v6, with code |
+| [Build Your Own Swing Trading Screener](./Swing-Screener-Guide/) | 10 + appendix | md · html · pdf | A beginner's Python project for a daily swing scan |
 
 Each book's folder also has a `chapters/` directory with every chapter as its own file — useful if you only want to load one chapter (say, just the Greeks, or just RSI-2 mean reversion) into a model's context instead of the whole book.
 
@@ -38,7 +47,9 @@ Most trading education online is written to be read by a human, on a web page, w
 
 ## License
 
-The text of these books is licensed under **[CC BY 4.0](./LICENSE.md)** — free to read, share, adapt, translate, or build on (including commercially), as long as you credit StratLab. Fork it, fine-tune on it, embed it in your own tool — just say where it came from.
+**The four original books** — *The Complete Options Trader*, *Momentum Trading*, *Momentum Investing* and *Swing Trading* — are licensed under **[CC BY 4.0](./LICENSE.md)**: free to read, share, adapt, translate, or build on (including commercially), as long as you credit StratLab.
+
+**Every other book in this repository** is © StratLab, all rights reserved. You are welcome to read it here and on the [StratLab Academy](https://stratlab.in/academy), and to load it into your own AI tools for your personal study, but you may not republish, redistribute or sell it, in whole or in part, without written permission. Details in [LICENSE.md](./LICENSE.md).
 
 ## Editorial notes (fixes made during review)
 
@@ -52,11 +63,13 @@ Being transparent about mistakes we've already caught is part of the point of sa
 
 - **2026-09-21** — *The Indian Stock Market KPI Handbook*, pre-publication review. Corrected: Chapter 16 called refining & marketing "midstream" (it is downstream) and defined GRM as net of operating costs (GRM is before them); Chapter 29 said gold prices drive diamond processing (they drive jewellery retail; diamond processing follows rough/polished prices); Chapter 31 said the developer funds 40% equity under the Hybrid Annuity Model (the government funds ~40% during construction and repays the rest as annuities); Chapter 6 gave the APE formula with the wrong first term (annualised *regular* premium + 10% of single premium). Updated stale references: HDFC Ltd (merged into HDFC Bank, 2023), Motherson Sumi and Sona BLW (renamed), the Tata Motors demerger, ReNew (US-listed), the RBI DBIE link (moved to data.rbi.org.in), and the E20 ethanol target. Removed advice-like wording ("prefer…", "bull signal", "re-rating trigger"), added a full disclaimer, a "what KPIs cannot tell you" section, and glossary entries for terms used but not defined.
 
+- **2026-10-21** — Nine new books added (*Option Chain Analysis*, *Options Trading Adjustments*, *Event & Earnings Trading on the NSE*, *Price Action Playbook*, *Relative Strength & Breadth*, *The Indian Stock Selector's Playbook*, *Screener.in Masterclass*, *TradingView Screeners with Pine Script v6*, *Build Your Own Swing Trading Screener*), each after a full pre-publication read. Corrected before release: three options payoff diagrams (iron condor put legs reversed; two adjustment charts); a Stage 2 screen that tested its moving averages the wrong way round; the Pine Screener `request.*()` limit (40, not 5); the GEX formula's units and the gamma-flip direction; the ATM straddle as ≈ 0.8 of a 1σ move, not a full 1σ; the momentum-crash mechanism (it is losers rebounding, not winners collapsing); ROCE and interest coverage on Screener.in (EBIT, not "operating profit"); capital-gains rates (Finance (No. 2) Act 2024); weekly-expiry facts (Nifty on Tuesday; Bank Nifty monthly only since SEBI's Nov 2024 rules); NSE's Closing Auction Session (live 3 Aug 2026); the NIFTY 50 list in the swing screener (refreshed from niftyindices.com, Oct 2026); and Screener.in ratio names checked against the site's own ratio list.
+
 All four original books have been read in full and checked for arithmetic (breakevens, payoffs, position sizing, reward-to-risk), formula correctness (Greeks, Black-Scholes, IV rank/percentile), and citation accuracy against known sources (Jegadeesh & Titman 1993, George & Hwang 2004, Moskowitz/Ooi/Pedersen 2012, Antonacci 2014, Connors & Alvarez). *Techno-Funda*, *Risk Management*, *Quant Trading*, *Systematic Trading Framework*, *Charts and Chart Types*, and *TradingView Masterclass* have since had the same full read-and-check pass — recovery-table arithmetic, Kelly-criterion algebra, Sharpe/Sortino/profit-factor/expectancy formulas, pairs-trading z-score logic, and real charting-methodology conventions (Heikin-Ashi's averaging formula, Renko/P&F reversal rules, P&F's price-target formula) all checked out, with only the two fixes above. That review found and fixed the five issues logged here and nothing else that failed a check — which is a statement about what was checked, not a guarantee nothing was missed.
 
 ## Found an error?
 
-Please open an [Issue](../../issues) — a wrong formula, an outdated number, a citation that doesn't check out, anything. This library gets more trustworthy the more people who use it also help verify it, which is the actual reason it's open source and not just a PDF on a landing page.
+Please open an [Issue](../../issues) — a wrong formula, an outdated number, a citation that doesn't check out, anything. This library gets more trustworthy the more people who use it also help verify it, which is the actual reason it's public on GitHub and not just a PDF on a landing page.
 
 ## About StratLab
 

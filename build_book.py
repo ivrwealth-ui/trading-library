@@ -68,6 +68,7 @@ table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: 9.5pt
 th, td { border: 1px solid #dbe3e8; padding: 5px 8px; text-align: left; vertical-align: top; }
 th { background: #0f766e; color: #fff; font-weight: 600; }
 tr:nth-child(even) td { background: #f8fafc; }
+img { max-width: 100%; height: auto; display: block; margin: 1rem auto; page-break-inside: avoid; }
 h1:first-of-type { page-break-before: auto; }
 h2#important-disclaimer, h2#how-to-read-this-book, h2#table-of-contents { page-break-before: always; }
 """
@@ -81,7 +82,8 @@ def build(book_dir: Path):
     parts = [front.read_text(encoding="utf-8")]
     for f in sorted(chapters_dir.glob("*.md")):
         parts.append(f.read_text(encoding="utf-8"))
-    md_text = "\n\n".join(parts)
+    # chapter files link images as ../diagrams/x.png; the combined book sits one level up
+    md_text = "\n\n".join(parts).replace("](../", "](")
 
     body = markdown.markdown(md_text, extensions=["extra", "sane_lists", "toc"])
     cover = (

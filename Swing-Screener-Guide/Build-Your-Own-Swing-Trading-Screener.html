@@ -1,0 +1,1365 @@
+<!DOCTYPE html><html><head><meta charset='utf-8'><style>
+* { box-sizing: border-box; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 11pt; line-height: 1.62; color: #1a1d21; margin: 0;
+}
+.cover {
+  height: 100vh; page-break-after: always;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 3cm 2.5cm; background: #0d1715; color: #e8f0ee;
+}
+.cover .rule { width: 64px; height: 4px; background: #2dd4bf; margin-bottom: 2.2rem; }
+.cover h1 { font-size: 38pt; line-height: 1.08; font-weight: 600; color: #fff; margin: 0 0 1.4rem; letter-spacing: -0.5px; }
+.cover .subtitle { font-size: 15pt; color: #9fb5ae; line-height: 1.5; max-width: 34em; }
+.cover .pub { margin-top: 3rem; font-size: 11pt; letter-spacing: 0.14em; text-transform: uppercase; color: #2dd4bf; }
+.cover .ednote { margin-top: 0.6rem; font-size: 9pt; color: #6c817b; }
+h1 { font-size: 23pt; font-weight: 600; color: #0f172a; page-break-before: always; margin: 0 0 1.1rem; padding-bottom: 0.4rem; border-bottom: 2px solid #2dd4bf; }
+h2 { font-size: 15.5pt; font-weight: 600; color: #0f766e; margin: 1.6rem 0 0.6rem; }
+h3 { font-size: 12.5pt; font-weight: 600; color: #1a1d21; margin: 1.2rem 0 0.4rem; }
+p { margin: 0.5rem 0; }
+strong { color: #0f172a; }
+em { color: #334155; }
+a { color: #0f766e; text-decoration: none; }
+hr { border: none; border-top: 1px solid #e2e8f0; margin: 2rem 0; }
+ul, ol { margin: 0.5rem 0 0.8rem; padding-left: 1.5rem; }
+li { margin: 0.25rem 0; }
+code { font-family: 'SF Mono', Menlo, Consolas, monospace; font-size: 9pt; background: #f1f5f9; padding: 1px 5px; border-radius: 3px; color: #0f766e; }
+pre { background: #0f172a; color: #e2e8f0; padding: 0.9rem 1.1rem; border-radius: 6px; font-size: 9pt; line-height: 1.5; white-space: pre-wrap; word-wrap: break-word; }
+pre code { background: none; color: inherit; padding: 0; }
+blockquote { border-left: 3px solid #2dd4bf; background: #f0fdfa; margin: 0.8rem 0; padding: 0.7rem 1rem; color: #0f3d37; font-style: italic; border-radius: 0 4px 4px 0; }
+blockquote p { margin: 0.3rem 0; }
+table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: 9.5pt; page-break-inside: avoid; }
+th, td { border: 1px solid #dbe3e8; padding: 5px 8px; text-align: left; vertical-align: top; }
+th { background: #0f766e; color: #fff; font-weight: 600; }
+tr:nth-child(even) td { background: #f8fafc; }
+h1:first-of-type { page-break-before: auto; }
+h2#important-disclaimer, h2#how-to-read-this-book, h2#table-of-contents { page-break-before: always; }
+</style></head><body><section class="cover"><div class="rule"></div><h1>Build Your Own Swing Trading Screener</h1><div class="subtitle">A step-by-step guide to turning the StratLab Swing Trading framework into a working yfinance stock screener and HTML dashboard — with no prior coding experience assumed.</div><div class="pub">Published by StratLab</div><div class="ednote">Educational content only — not investment advice. StratLab is not SEBI-registered.</div></section><h1 id="build-your-own-swing-trading-screener">Build Your Own Swing Trading Screener</h1>
+<h2 id="a-step-by-step-guide-to-turning-the-stratlab-swing-trading-framework-into-a-working-yfinance-stock-screener-and-html-dashboard-with-no-prior-coding-experience-assumed">A step-by-step guide to turning the StratLab Swing Trading framework into a working yfinance stock screener and HTML dashboard — with no prior coding experience assumed.</h2>
+<hr />
+<p><strong>Published by StratLab</strong></p>
+<hr />
+<h2 id="important-disclaimer">Important Disclaimer</h2>
+<p>This book is provided for <strong>educational purposes only</strong>. It is not investment advice, a recommendation, or a solicitation to buy or sell any security.</p>
+<ul>
+<li><strong>StratLab is not registered with SEBI</strong> as an investment adviser, research analyst, or portfolio manager, and does not provide investment advisory services.</li>
+<li>Trading involves substantial risk of loss and is not suitable for everyone. You can lose part or all of your trading capital.</li>
+<li>All examples, figures, and historical observations are illustrative. Historical performance never guarantees future results. A screener that flags a setup does <strong>not</strong> mean that setup will be profitable, now or in the future.</li>
+<li>Data from free sources such as Yahoo Finance can be delayed, missing, or wrong — including tickers that change after corporate actions. Always verify before relying on any number.</li>
+<li>Margin, taxes (STT, stamp duty), brokerage, and other regulatory details change over time. Always verify current rules and costs before trading.</li>
+<li>Nothing in this book should be read as a promise of profit or a guarantee that any strategy will be profitable.</li>
+</ul>
+<p>By reading this book, you agree that you are solely responsible for your own decisions — including any code you write or run — and that you will consult a SEBI-registered adviser where appropriate.</p>
+<hr />
+<h2 id="how-to-read-this-book">How to Read This Book</h2>
+<p>This book teaches you to <strong>build a stock screener</strong> — a small program that downloads price data for a list of stocks and checks each one against a set of rules — and then turns the result into a <strong>dashboard</strong> you can open in a browser. It is a companion to <em>Swing Trading: Capture Multi-Day Moves with Five Proven Continuation and Reversion Strategies</em>: where that book teaches the <em>ideas</em>, this one teaches you to <em>compute</em> a core slice of them yourself.</p>
+<p>Two things to know up front:</p>
+<ul>
+<li><strong>You do not need to know how to code.</strong> Every chapter builds on the last one line by line, and every chapter ends with a program you can actually run. If you can copy, paste, and read one line at a time, you can finish this book.</li>
+<li><strong>You are building a <em>screener</em>, not a trading robot.</strong> The program flags conditions that a swing-trading framework <em>describes</em>. It does not trade for you, and it does not tell you what to do. What you do with its output — including deciding to do nothing — is entirely yours.</li>
+</ul>
+<p><strong>How the chapters fit together:</strong></p>
+<ul>
+<li><strong>Chapters 1–3</strong> get you set up: what you're building, installing the tools, and downloading your first price data.</li>
+<li><strong>Chapters 4–5</strong> build the indicator toolbox — moving averages and RSI — the same tools defined in <em>Swing Trading</em> Chapter 2.</li>
+<li><strong>Chapter 6</strong> implements the single most important idea in the book: reading whether a stock is <em>trending</em> or <em>ranging</em> (from <em>Swing Trading</em> Chapter 3).</li>
+<li><strong>Chapters 7–8</strong> implement two setups — one from each strategy family: the <strong>pullback continuation</strong> (Chapter 4 of <em>Swing Trading</em>) and the <strong>RSI-2 mean reversion</strong> (Chapter 7 of <em>Swing Trading</em>).</li>
+<li><strong>Chapters 9–10</strong> turn the results into a styled HTML dashboard, and export them as Markdown and PDF.</li>
+<li>The <strong>appendix</strong> contains the complete, finished program in one place, plus a troubleshooting table.</li>
+</ul>
+<p>A note on language: this book describes what a strategy <em>is</em> and what conditions it historically aligns with — never what you "should" trade. The dashboard's labels are deliberately neutral ("Pullback setup", "Oversold (RSI-2)") rather than "buy" or "sell". Where results are discussed, they are framed as historical observations, not promises.</p>
+<hr />
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li>What You're Building</li>
+<li>Setup: Install Python, <code>yfinance</code>, and <code>pandas</code></li>
+<li>Download the NIFTY 50 Universe</li>
+<li>Indicators I — Moving Averages</li>
+<li>Indicators II — RSI and RSI-2</li>
+<li>Reading the Regime: Trending or Ranging?</li>
+<li>Screen 1 — The Pullback Continuation</li>
+<li>Screen 2 — RSI-2 Mean Reversion</li>
+<li>Assemble the Results into an HTML Dashboard</li>
+<li>Export Markdown and PDF, and Read It Like a Swing Trader</li>
+</ol>
+<p>Appendix — The Complete Program and Troubleshooting</p>
+<hr />
+<h1 id="1-what-youre-building">1. What You're Building</h1>
+<h2 id="a-screener-in-one-sentence">A screener, in one sentence</h2>
+<p>A <strong>screener</strong> is a program that takes a list of stocks, checks each one against a set of rules, and shows you which stocks currently <em>match</em> those rules. By the end of this book you will have written one that:</p>
+<ol>
+<li>Downloads a year of daily price history for the <strong>NIFTY 50</strong> using a free Python library called <strong>yfinance</strong>,</li>
+<li>Computes a small set of indicators — moving averages and RSI — for every stock,</li>
+<li>Reads whether each stock is <strong>trending</strong> or <strong>ranging</strong>,</li>
+<li>Flags stocks that match two swing-trading setups (one trend-following, one mean-reversion),</li>
+<li>Writes everything to an <strong>HTML dashboard</strong> you open in a browser, plus a <strong>Markdown report</strong> and a <strong>PDF</strong>.</li>
+</ol>
+<p>That final dashboard looks like a table of 50 stocks, with each one labelled by its regime and any setup it matches, and a row of summary numbers along the top.</p>
+<h2 id="where-the-rules-come-from">Where the rules come from</h2>
+<p>The rules this program encodes are not invented here. They come from the StratLab <em>Swing Trading</em> book — specifically:</p>
+<ul>
+<li><strong>Chapter 2 ("The Swing Trader's Toolkit")</strong> — defines the moving averages and RSI we use.</li>
+<li><strong>Chapter 3 ("Reading Trend Structure")</strong> — defines how to tell a trend from a range.</li>
+<li><strong>Chapter 4 ("Strategy 1 — The Pullback Continuation")</strong> — the first setup we screen for.</li>
+<li><strong>Chapter 7 ("Strategy 4 — RSI-2 Mean Reversion")</strong> — the second setup we screen for.</li>
+</ul>
+<p>Each of those chapters was written to be read by a person — and, because the book ships as clean Markdown, it can also be read by a program. This guide sits on top of that book: you will take a handful of its rules and turn them from prose into runnable code, one line at a time.</p>
+<h2 id="what-you-will-need">What you will need</h2>
+<ul>
+<li>A computer (Windows, macOS, or Linux — all three work the same here).</li>
+<li>An internet connection, because the price data is downloaded live.</li>
+<li>About half an hour, if you follow along without skipping ahead.</li>
+<li>Nothing else. You will install the two free tools in the next chapter.</li>
+</ul>
+<h2 id="what-you-are-not-building">What you are <em>not</em> building</h2>
+<p>It is worth being precise, because the word "screener" gets used loosely:</p>
+<ul>
+<li><strong>Not a trading bot.</strong> The program does not place orders, and it never tells you what to do.</li>
+<li><strong>Not a backtest.</strong> It looks at <em>today's</em> data and flags <em>today's</em> conditions; it makes no claim about what would have happened historically.</li>
+<li><strong>Not financial advice.</strong> A stock that "matches a setup" is not a stock you are being told to trade. The setup is a <em>description of a condition</em>, and conditions describe tendencies — they do not promise outcomes.</li>
+</ul>
+<p>Keep those three lines in mind and the whole project stays honest. The next chapter gets you started.</p>
+<h2 id="summary">Summary</h2>
+<ul>
+<li>A screener = a list of stocks + a set of rules + a display of what matches.</li>
+<li>Ours reads NIFTY 50 daily data, computes indicators, reads the regime, flags two setups, and writes an HTML dashboard.</li>
+<li>The rules come from the <em>Swing Trading</em> book's Chapters 2, 3, 4, and 7.</li>
+<li>You need only a computer and an internet connection. You will install the tools next.</li>
+</ul>
+<p>Next: install Python, <code>yfinance</code>, and <code>pandas</code>, and download your first price data.</p>
+<h1 id="2-setup-install-python-yfinance-and-pandas">2. Setup: Install Python, <code>yfinance</code>, and <code>pandas</code></h1>
+<h2 id="the-three-tools">The three tools</h2>
+<p>Everything in this book uses just three pieces of software:</p>
+<ol>
+<li><strong>Python</strong> — the programming language itself. It is almost certainly already on your computer if you use macOS or Linux; on Windows you install it once.</li>
+<li><strong><code>pandas</code></strong> — a Python library for working with tables of numbers. It does the moving-average and RSI arithmetic.</li>
+<li><strong><code>yfinance</code></strong> — a Python library that downloads stock price history from Yahoo Finance. This is where the data comes from.</li>
+</ol>
+<p>A "library" is just a bundle of code someone else wrote, that you can call from your own program. You install both libraries with one command.</p>
+<h2 id="step-1-check-that-python-is-installed">Step 1 — Check that Python is installed</h2>
+<p>Open a <strong>terminal</strong> (on macOS: the "Terminal" app; on Windows: "PowerShell" or "Command Prompt"; on Linux: any terminal). Type this and press Enter:</p>
+<pre><code class="language-bash">python3 --version
+</code></pre>
+<p>You should see something like <code>Python 3.12.4</code>. Any version <code>3.10</code> or newer is fine.</p>
+<ul>
+<li>If you get <code>command not found</code> (macOS/Linux) or <code>'python3' is not recognized</code> (Windows), install Python from <a href="https://www.python.org/downloads/">python.org</a> — during installation on Windows, tick the box that says <strong>"Add Python to PATH"</strong>. Then open a <em>new</em> terminal and try again.</li>
+<li>If <code>python3 --version</code> works, move on.</li>
+</ul>
+<h2 id="step-2-install-the-two-libraries">Step 2 — Install the two libraries</h2>
+<p>In the same terminal, run:</p>
+<pre><code class="language-bash">python3 -m pip install yfinance pandas
+</code></pre>
+<p>You will see a lot of text scroll past as it downloads the libraries and everything they depend on. The last line should include something like <code>Successfully installed</code>. (If you already have them installed, it will say <code>Requirement already satisfied</code> — that is also fine.)</p>
+<blockquote>
+<p>If <code>pip</code> refuses with an "externally-managed-environment" or permissions error (common on macOS and Linux), create a <em>virtual environment</em> — a private copy of Python just for this project — in the folder where you will keep this book's files, and install into that instead:</p>
+<p><code>bash
+python3 -m venv .venv
+source .venv/bin/activate
+python3 -m pip install yfinance pandas</code></p>
+<p>On Windows, the middle line is <code>.venv\Scripts\activate</code>. Run the activate line again each time you open a new terminal for this project.</p>
+</blockquote>
+<h2 id="step-3-download-your-first-price-history">Step 3 — Download your first price history</h2>
+<p>Now write your very first program. Create a new file called <code>hello.py</code> in a folder of your choice, using any plain-text editor (Notepad, TextEdit, or VS Code — anything that saves plain text, <em>not</em> a word processor). Put this inside:</p>
+<pre><code class="language-python">import yfinance as yf
+
+ticker = yf.Ticker(&quot;RELIANCE.NS&quot;)
+history = ticker.history(period=&quot;1y&quot;, interval=&quot;1d&quot;, auto_adjust=False)
+
+print(history.tail())
+</code></pre>
+<p>Four things to read, line by line:</p>
+<ul>
+<li><code>import yfinance as yf</code> loads the library and gives it the short nickname <code>yf</code>, so the rest of the program can write <code>yf.Ticker(...)</code> instead of <code>yfinance.Ticker(...)</code>.</li>
+<li><code>yf.Ticker("RELIANCE.NS")</code> creates an object that represents one stock. The <code>.NS</code> suffix means "National Stock Exchange" — it tells Yahoo Finance that "RELIANCE" is the Indian listing, not some other company with the same ticker elsewhere.</li>
+<li><code>.history(period="1y", interval="1d", auto_adjust=False)</code> downloads one year of <strong>daily</strong> bars and hands back a table. <code>auto_adjust=False</code> keeps the <code>Close</code> column free of dividend adjustments (the dividend-adjusted series goes in a separate <code>Adj Close</code> column), which is what we want for this kind of screen. Yahoo still adjusts <code>Close</code> for splits and bonus issues, so a bonus does not show up as a false crash in the averages.</li>
+<li><code>print(history.tail())</code> shows the last five rows of that table.</li>
+</ul>
+<h2 id="step-4-run-it">Step 4 — Run it</h2>
+<p>In the terminal, navigate to the folder where you saved <code>hello.py</code>, then run:</p>
+<pre><code class="language-bash">python3 hello.py
+</code></pre>
+<p>You should see a table ending in something like this (numbers will differ by the day you run it):</p>
+<pre><code>                                  Open         High  ...        Close    Volume
+Date                                                 ...
+2026-09-16 00:00:00+05:30  1243.000000  1255.000000  ...  1240.000000  10023997
+2026-09-17 00:00:00+05:30  1244.800049  1253.400024  ...  1243.900024   7752895
+2026-09-18 00:00:00+05:30  1245.000000  1247.300049  ...  1226.400024  15122715
+</code></pre>
+<p>Each row is one trading day; the <code>Close</code> column is the official closing price that day. That single number — the <strong>daily close</strong> — is the foundation of everything else in this book. Moving averages and RSI are all computed from a series of closes.</p>
+<p>If you see that table, you have Python, <code>yfinance</code>, and <code>pandas</code> all working. That is the entire setup.</p>
+<h2 id="a-word-about-free-data">A word about free data</h2>
+<p>Yahoo Finance's free data is genuinely free, but it is not perfect. Occasionally a single ticker will fail to download (you will see how the program handles that in the next chapter), and after corporate actions a ticker can change — for example, when Tata Motors demerged in late 2025 its NSE symbol changed from <code>TATAMOTORS</code> to <code>TMPV</code>. This is exactly why a screener must be written to <em>skip gracefully</em> rather than crash, and why the watchlist is one editable list rather than something buried in the middle of the program.</p>
+<h2 id="summary_1">Summary</h2>
+<ul>
+<li>Python runs your program; <code>pandas</code> does the arithmetic; <code>yfinance</code> downloads the data.</li>
+<li>Install with <code>python3 -m pip install yfinance pandas</code>.</li>
+<li><code>yf.Ticker("RELIANCE.NS").history(...)</code> returns a table of daily prices; <code>.NS</code> means the NSE listing.</li>
+<li>The daily <strong>close</strong> is the number every indicator in this book is built from.</li>
+</ul>
+<p>Next: turn one ticker into fifty, and teach the program to handle a stock that fails to download.</p>
+<h1 id="3-download-the-nifty-50-universe">3. Download the NIFTY 50 Universe</h1>
+<h2 id="from-one-stock-to-fifty">From one stock to fifty</h2>
+<p>Last chapter you downloaded one stock. A screener is only useful when it looks at a <em>list</em>. This chapter replaces the single ticker with a list of fifty — the <strong>NIFTY 50</strong>, the fifty largest and most liquid names on the National Stock Exchange — and teaches the program to keep going when one of them fails.</p>
+<h2 id="the-watchlist">The watchlist</h2>
+<p>Create a new file called <code>screener.py</code> (you will keep growing this same file for the rest of the book). Start with the list and a small bit of setup:</p>
+<pre><code class="language-python">import time
+
+import yfinance as yf
+
+WATCHLIST = [
+    &quot;ADANIENT&quot;, &quot;ADANIPORTS&quot;, &quot;APOLLOHOSP&quot;, &quot;ASIANPAINT&quot;, &quot;AXISBANK&quot;,
+    &quot;BSE&quot;, &quot;BAJAJ-AUTO&quot;, &quot;BAJFINANCE&quot;, &quot;BAJAJFINSV&quot;, &quot;BEL&quot;,
+    &quot;BHARTIARTL&quot;, &quot;CIPLA&quot;, &quot;COALINDIA&quot;, &quot;DRREDDY&quot;, &quot;EICHERMOT&quot;,
+    &quot;ETERNAL&quot;, &quot;GRASIM&quot;, &quot;HCLTECH&quot;, &quot;HDFCBANK&quot;, &quot;HDFCLIFE&quot;,
+    &quot;HINDALCO&quot;, &quot;HINDUNILVR&quot;, &quot;ICICIBANK&quot;, &quot;ITC&quot;, &quot;INFY&quot;,
+    &quot;INDIGO&quot;, &quot;JSWSTEEL&quot;, &quot;JIOFIN&quot;, &quot;KOTAKBANK&quot;, &quot;LT&quot;,
+    &quot;M&amp;M&quot;, &quot;MARUTI&quot;, &quot;MAXHEALTH&quot;, &quot;NTPC&quot;, &quot;NESTLEIND&quot;,
+    &quot;ONGC&quot;, &quot;POWERGRID&quot;, &quot;RELIANCE&quot;, &quot;SBILIFE&quot;, &quot;SHRIRAMFIN&quot;,
+    &quot;SBIN&quot;, &quot;SUNPHARMA&quot;, &quot;TCS&quot;, &quot;TATACONSUM&quot;, &quot;TMPV&quot;,
+    &quot;TATASTEEL&quot;, &quot;TECHM&quot;, &quot;TITAN&quot;, &quot;TRENT&quot;, &quot;ULTRACEMCO&quot;,
+]
+
+PERIOD = &quot;1y&quot;
+INTERVAL = &quot;1d&quot;
+</code></pre>
+<p>This is the NIFTY 50 as of October 2026. NSE rebalances the index twice a year, so before you rely on it, refresh the list from the index constituents file on niftyindices.com.</p>
+<p>Three things worth noticing:</p>
+<ul>
+<li>The list is <strong>one place</strong>, at the very top. If you want to screen your own ten stocks instead of fifty, you edit this list and nothing else in the program changes.</li>
+<li><code>TMPV</code> is there, not <code>TATAMOTORS</code> — because Tata Motors was renamed Tata Motors Passenger Vehicles in late 2025 and the exchange changed its symbol. Tickers are not set in stone, which is the whole reason the next section exists.</li>
+<li><code>import time</code> gives us <code>time.sleep</code>, which we use below.</li>
+</ul>
+<h2 id="download-in-a-loop">Download in a loop</h2>
+<p>Add a loop that walks down the list and prints each stock's last close:</p>
+<pre><code class="language-python">def fetch(symbol):
+    &quot;&quot;&quot;Download one year of daily history for a symbol. Returns None on failure.&quot;&quot;&quot;
+    ticker = symbol + &quot;.NS&quot;
+    try:
+        df = yf.Ticker(ticker).history(
+            period=PERIOD, interval=INTERVAL, auto_adjust=False
+        )
+    except Exception:
+        return None
+    if df is None or len(df) &lt; 201:
+        return None
+    return df[[&quot;Close&quot;]]
+
+
+for symbol in WATCHLIST:
+    df = fetch(symbol)
+    if df is None:
+        print(f&quot;{symbol}: no data, skipped&quot;)
+        continue
+    last_close = df[&quot;Close&quot;].iloc[-1]
+    print(f&quot;{symbol}: {last_close:.2f}&quot;)
+    time.sleep(0.4)
+</code></pre>
+<p>Read the new pieces:</p>
+<ul>
+<li><strong><code>def fetch(symbol):</code></strong> defines a <em>function</em> — a named block of code we can call again and again. Anything indented under it belongs to that function.</li>
+<li><strong><code>try:</code> / <code>except:</code></strong> is error handling. If anything inside <code>try</code> raises an error (say the network drops, or the ticker no longer exists), the program runs the <code>except</code> block instead of crashing, and returns <code>None</code>.</li>
+<li><strong><code>if df is None or len(df) &lt; 201:</code></strong> guards against two things at once: a totally failed download, and a download so short it could not even compute a 200-day moving average later. <code>len(df)</code> counts the rows. We require at least 201 rows because Chapter 8 needs a 200-day average <em>plus</em> the current day.</li>
+<li><strong><code>continue</code></strong> jumps to the next item in the loop, so a bad stock is skipped rather than breaking everything.</li>
+<li><strong><code>df["Close"].iloc[-1]</code></strong> picks the <code>Close</code> column and takes its last row — the most recent close.</li>
+<li><strong><code>f"{symbol}: {last_close:.2f}"</code></strong> is a formatted string: it inserts the symbol, then the price rounded to two decimals.</li>
+<li><strong><code>time.sleep(0.4)</code></strong> pauses for four-tenths of a second between downloads. It makes the whole run a few seconds slower, but it is polite to the free data source and makes failures less likely.</li>
+</ul>
+<h2 id="run-it">Run it</h2>
+<pre><code class="language-bash">python3 screener.py
+</code></pre>
+<p>You should see fifty lines, one per stock, something like this (illustrative — your prices will differ):</p>
+<pre><code>ADANIENT: 3020.00
+ADANIPORTS: 1824.00
+APOLLOHOSP: 8944.50
+...
+ULTRACEMCO: 10826.00
+</code></pre>
+<p>Occasionally one line will instead read <code>SYMBOL: no data, skipped</code>. That is the program working as intended — a free data feed hiccup, handled quietly rather than crashing the whole run. (If <em>most</em> of the list says "no data", your internet connection is the likely culprit, not the program.)</p>
+<h2 id="summary_2">Summary</h2>
+<ul>
+<li>A watchlist is one editable list at the top of the file.</li>
+<li><code>def</code> defines a reusable function; <code>try</code>/<code>except</code> stops one bad download from crashing the run; <code>continue</code> skips it.</li>
+<li><code>df["Close"].iloc[-1]</code> is "the most recent close".</li>
+<li><code>time.sleep(0.4)</code> is politeness to the free data source.</li>
+</ul>
+<p>Next: compute moving averages from that series of closes — the first real indicator.</p>
+<h1 id="4-indicators-i-moving-averages">4. Indicators I — Moving Averages</h1>
+<h2 id="why-moving-averages">Why moving averages</h2>
+<p>From <em>Swing Trading</em>, Chapter 2: a <strong>moving average</strong> is the average of the last <em>N</em> closes, and it acts as <em>dynamic</em> support and resistance. In this framework we use three, and each has one specific job:</p>
+<table>
+<thead>
+<tr>
+<th>Average</th>
+<th>Window</th>
+<th>Job</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EMA-20</td>
+<td>20 days</td>
+<td>dynamic support in an uptrend (the "pullback magnet")</td>
+</tr>
+<tr>
+<td>MA-50</td>
+<td>50 days</td>
+<td>the trend context — its <em>slope</em> is the regime tell</td>
+</tr>
+<tr>
+<td>MA-200</td>
+<td>200 days</td>
+<td>the long-term trend context</td>
+</tr>
+</tbody>
+</table>
+<p>Two of these are <strong>simple</strong> moving averages (the plain average of the last N closes) and one is an <strong>exponential</strong> moving average (which weights recent days more heavily). Both are two lines of code with <code>pandas</code>.</p>
+<h2 id="the-two-functions">The two functions</h2>
+<p>Add these to <code>screener.py</code>, right after the <code>WATCHLIST</code> and <code>PERIOD</code>/<code>INTERVAL</code> lines:</p>
+<pre><code class="language-python">import pandas as pd
+
+
+def sma(series, window):
+    &quot;&quot;&quot;Simple moving average: the plain average of the last `window` closes.&quot;&quot;&quot;
+    return series.rolling(window).mean()
+
+
+def ema(series, span):
+    &quot;&quot;&quot;Exponential moving average. `adjust=False` matches most charting tools.&quot;&quot;&quot;
+    return series.ewm(span=span, adjust=False).mean()
+</code></pre>
+<ul>
+<li><code>series.rolling(50).mean()</code> takes the close series and, at every point, averages the previous 50 closes. That is an MA-50.</li>
+<li><code>series.ewm(span=20, adjust=False).mean()</code> does the exponential version — same idea, but each day is weighted so the most recent day matters most. The <code>adjust=False</code> detail is what makes the number match TradingView and most charting platforms.</li>
+</ul>
+<h2 id="compute-them-for-one-stock">Compute them for one stock</h2>
+<p>Replace the loop at the bottom of <code>screener.py</code> with a version that fetches <strong>one</strong> stock and prints its three averages. This is easier to check by eye before we scale back up to fifty:</p>
+<pre><code class="language-python">df = fetch(&quot;RELIANCE&quot;)
+close = df[&quot;Close&quot;]
+
+ema20 = ema(close, 20)
+ma50 = sma(close, 50)
+ma200 = sma(close, 200)
+
+price = close.iloc[-1]
+print(f&quot;last close:    {price:.2f}&quot;)
+print(f&quot;20-day EMA:    {ema20.iloc[-1]:.2f}&quot;)
+print(f&quot;50-day MA:     {ma50.iloc[-1]:.2f}&quot;)
+print(f&quot;200-day MA:    {ma200.iloc[-1]:.2f}&quot;)
+</code></pre>
+<p>Run it:</p>
+<pre><code class="language-bash">python3 screener.py
+</code></pre>
+<p>You should see four numbers, like:</p>
+<pre><code>last close:    1226.40
+20-day EMA:    1249.10
+50-day MA:     1251.30
+200-day MA:    1300.50
+</code></pre>
+<p>These are the raw ingredients. Notice what you can <em>already</em> read from them, using nothing but the book: the price is below all three averages, which in <em>Swing Trading</em> Chapter 3 is the textbook signature of a downtrend. Two chapters from now you will teach the program to read that automatically.</p>
+<h2 id="a-first-look-at-the-arithmetic">A first look at the arithmetic</h2>
+<p>To trust the tool, it helps to see that a moving average really is "the average of the last N closes". For a 3-day simple average of the closes <code>101, 103, 105</code>, the value is <code>(101 + 103 + 105) / 3 = 103</code>. <code>rolling(3).mean()</code> does exactly that, sliding the window forward one day at a time. The EMA is the same sliding idea, but with the newest close weighted most heavily — which is why the 20-day EMA sits <em>closer</em> to today's price than a 20-day SMA would after a sharp move.</p>
+<p>You do not need to memorise the weighting formula. What matters is the <em>behaviour</em>: a rising average means the recent trend is up, a flat average means no trend, a falling average means down. That slope — not the level — is the whole basis of the next two chapters.</p>
+<h2 id="summary_3">Summary</h2>
+<ul>
+<li><code>rolling(window).mean()</code> = simple moving average; <code>ewm(span, adjust=False).mean()</code> = exponential moving average.</li>
+<li>We use EMA-20 (dynamic support), MA-50 (trend context), MA-200 (long-term context).</li>
+<li>Price above/below these averages is a first, rough regime read.</li>
+<li>The <em>slope</em> of an average — rising, flat, falling — matters more than its level.</li>
+</ul>
+<p>Next: the second half of the toolkit — RSI and the short RSI-2 oscillator.</p>
+<h1 id="5-indicators-ii-rsi-and-rsi-2">5. Indicators II — RSI and RSI-2</h1>
+<h2 id="oscillators-measure-the-extreme">Oscillators measure the extreme</h2>
+<p>From <em>Swing Trading</em>, Chapter 2: an <strong>oscillator</strong> measures whether price is stretched too far to one side. The one this framework uses is the <strong>Relative Strength Index (RSI)</strong>, which is bounded between 0 and 100. Readings near the top are "overbought", near the bottom "oversold".</p>
+<p>Crucially — and the book is blunt about this — overbought/oversold only reliably means "likely to pause" <strong>in a range</strong>. In a strong trend, RSI can stay extreme for a long time. That is why RSI is the engine of the <em>reversion</em> family, not the trend family, and why our reversion screen (Chapter 8) adds a second filter to keep it out of downtrends.</p>
+<h2 id="the-one-function">The one function</h2>
+<p>Add this function to <code>screener.py</code>:</p>
+<pre><code class="language-python">def rsi(series, period):
+    &quot;&quot;&quot;
+    Relative Strength Index over `period` bars, using simple averages.
+    RSI-2 (period=2) is the Connors &amp; Alvarez short-reversion oscillator.
+    &quot;&quot;&quot;
+    delta = series.diff()
+    gain = delta.clip(lower=0.0)
+    loss = -delta.clip(upper=0.0)
+    avg_gain = gain.rolling(period).mean()
+    avg_loss = loss.rolling(period).mean()
+    rs = avg_gain / avg_loss
+    rsi_vals = 100.0 - (100.0 / (1.0 + rs))
+    return rsi_vals.replace([float(&quot;inf&quot;)], 100.0).fillna(50.0)
+</code></pre>
+<p>Read it line by line — this is the most "mathematical" block in the whole book, and it is only eight lines:</p>
+<ul>
+<li><strong><code>series.diff()</code></strong> is the day-over-day change: today's close minus yesterday's. A list of moves.</li>
+<li><strong><code>delta.clip(lower=0.0)</code></strong> keeps only the <em>up</em> moves (any negative change is set to zero) — these are the "gains". <strong><code>-delta.clip(upper=0.0)</code></strong> keeps only the <em>down</em> moves, made positive — the "losses".</li>
+<li><strong><code>gain.rolling(period).mean()</code></strong> and its loss twin are the average gain and average loss over the last <code>period</code> days.</li>
+<li><strong><code>rs = avg_gain / avg_loss</code></strong> is the "relative strength": how much the stock rose, on average, versus how much it fell.</li>
+<li><strong><code>100 - (100 / (1 + rs))</code></strong> squeezes that ratio onto the 0–100 scale. If gains and losses are equal (<code>rs = 1</code>), RSI is 50. If there are no losses at all, RSI is 100.</li>
+<li>The last line handles two edge cases: no losses at all gives <code>rs</code> of infinity (RSI should read 100), and a completely flat two days gives 0 ÷ 0 (we call that neutral 50).</li>
+</ul>
+<p>For <strong>RSI-2</strong> you call the same function with <code>period=2</code>. A two-day window makes it jump to its extremes fast, which is exactly what makes it useful for spotting short-term stretch — and exactly why the reversion screen uses it. A conventional RSI-14 is the same function with <code>period=14</code>, and we compute it too, as a gentler reference value. (Because this function uses simple averages rather than Wilder's smoothing, its readings will not exactly match the RSI on TradingView or your broker's charts.)</p>
+<h2 id="compute-them-for-one-stock_1">Compute them for one stock</h2>
+<p>Replace the bottom of <code>screener.py</code> again, this time to print both RSIs alongside the close:</p>
+<pre><code class="language-python">df = fetch(&quot;RELIANCE&quot;)
+close = df[&quot;Close&quot;]
+
+rsi2 = rsi(close, 2)
+rsi14 = rsi(close, 14)
+
+print(f&quot;last close:   {close.iloc[-1]:.2f}&quot;)
+print(f&quot;RSI-2:        {rsi2.iloc[-1]:.1f}&quot;)
+print(f&quot;RSI-14:       {rsi14.iloc[-1]:.1f}&quot;)
+</code></pre>
+<p>Run it:</p>
+<pre><code class="language-bash">python3 screener.py
+</code></pre>
+<p>You should see something like:</p>
+<pre><code>last close:   1226.40
+RSI-2:        18.2
+RSI-14:       42.0
+</code></pre>
+<p>Notice the difference in <em>behaviour</em> between the two windows: RSI-2 moves far more than RSI-14. A stock down three days in a row can push RSI-2 into the single digits while RSI-14 stays near the middle. That volatility is a feature for the reversion setup and a nuisance elsewhere — which is why the book's discipline is to use RSI at <em>extremes in ranges</em>, not as a free-floating signal.</p>
+<h2 id="summary_4">Summary</h2>
+<ul>
+<li>RSI maps recent gains versus losses onto a 0–100 scale; 50 is neutral, high is overbought, low is oversold.</li>
+<li>RSI-2 is the same formula with a 2-day window — a fast, sensitive short-term oscillator.</li>
+<li>Overbought/oversold is meaningful in ranges; in trends it can simply mean "strong".</li>
+<li>The function is one general formula called with different <code>period</code> values.</li>
+</ul>
+<p>Next: the concept that ties the whole framework together — is the stock trending or ranging?</p>
+<h1 id="6-reading-the-regime-trending-or-ranging">6. Reading the Regime: Trending or Ranging?</h1>
+<h2 id="the-decision-that-precedes-every-trade">The decision that precedes every trade</h2>
+<p>From <em>Swing Trading</em>, Chapter 3: before any setup, the swing trader answers one question — <strong>is this market trending or ranging?</strong> The answer chooses the strategy family, because the two families are optimised for opposite conditions and using the wrong one is the fastest way to lose money.</p>
+<p>This chapter teaches the program to answer that question automatically, stock by stock, using the <strong>50-day MA slope</strong> — one of the three tests the book names.</p>
+<h2 id="the-rule-in-plain-english">The rule, in plain English</h2>
+<p>The book gives three ways to read the regime (structure, moving-average slope, and time). We implement the moving-average test because it is the one that translates cleanly into a few lines of code:</p>
+<ul>
+<li><strong>Uptrend</strong> — price is <em>above</em> a <em>rising</em> 50-day MA.</li>
+<li><strong>Downtrend</strong> — price is <em>below</em> a <em>falling</em> 50-day MA.</li>
+<li><strong>Range</strong> — everything else: a flat MA, or price and slope disagreeing.</li>
+</ul>
+<p>"Sloping" means the MA has moved by more than a tiny amount over the last few days. We measure that as a percentage: if the 50-day MA is <strong>more than 0.5% higher</strong> today than it was 10 days ago, it is rising; <strong>more than 0.5% lower</strong>, falling; anything in between, flat.</p>
+<h2 id="the-code">The code</h2>
+<p>Add these two constants up with the other config (next to <code>PERIOD</code> and <code>INTERVAL</code>), and the function below:</p>
+<pre><code class="language-python">SLOPE_LOOKBACK = 10        # compare the 50-day MA to itself 10 days ago
+SLOPE_THRESHOLD = 0.005    # a 0.5% move over that window = &quot;sloping&quot;
+
+
+def detect_regime(close, ma50):
+    &quot;&quot;&quot;Label a stock UPTREND, DOWNTREND, or RANGE from its 50-day MA.&quot;&quot;&quot;
+    price = close.iloc[-1]
+    ma50_now = ma50.iloc[-1]
+    ma50_then = ma50.iloc[-1 - SLOPE_LOOKBACK]
+
+    slope = ma50_now / ma50_then - 1.0
+    rising = slope &gt; SLOPE_THRESHOLD
+    falling = slope &lt; -SLOPE_THRESHOLD
+    above = price &gt; ma50_now
+
+    if above and rising:
+        return &quot;UPTREND&quot;
+    if (not above) and falling:
+        return &quot;DOWNTREND&quot;
+    return &quot;RANGE&quot;
+</code></pre>
+<p>Read it:</p>
+<ul>
+<li><strong><code>ma50.iloc[-1 - SLOPE_LOOKBACK]</code></strong> is the 50-day MA <em>ten days ago</em>. Comparing today's MA to that one tells us its slope.</li>
+<li><strong><code>slope = ma50_now / ma50_then - 1.0</code></strong> turns that into a fraction: <code>+0.01</code> means "1% higher", <code>-0.01</code> means "1% lower".</li>
+<li><strong><code>rising</code> / <code>falling</code></strong> are <code>True</code>/<code>False</code> flags against the 0.5% threshold.</li>
+<li>The three-way <code>if</code> is the plain-English rule above, written as code. The final <code>return "RANGE"</code> is the catch-all — when price and slope disagree, or the MA is flat, we refuse to call it a trend.</li>
+</ul>
+<h2 id="wire-it-into-the-run">Wire it into the run</h2>
+<p>Replace the bottom of <code>screener.py</code> with a version that computes the regime for every stock in the list:</p>
+<pre><code class="language-python">for symbol in WATCHLIST:
+    df = fetch(symbol)
+    if df is None:
+        print(f&quot;{symbol}: no data, skipped&quot;)
+        continue
+
+    close = df[&quot;Close&quot;]
+    ma50 = sma(close, 50)
+    regime = detect_regime(close, ma50)
+
+    print(f&quot;{symbol}: {regime}&quot;)
+    time.sleep(0.4)
+</code></pre>
+<p>Run it:</p>
+<pre><code class="language-bash">python3 screener.py
+</code></pre>
+<p>You should see fifty lines like these (illustrative — the labels change from day to day):</p>
+<pre><code>ADANIENT: DOWNTREND
+ADANIPORTS: RANGE
+APOLLOHOSP: RANGE
+ASIANPAINT: UPTREND
+...
+</code></pre>
+<h2 id="two-honest-notes-from-the-book">Two honest notes from the book</h2>
+<p>The book makes two points worth keeping in view before you start <em>acting</em> on these labels:</p>
+<ol>
+<li><strong>Downtrends are asymmetric in India.</strong> Retail investors can <em>sell</em> what they own or use index instruments, but a clean, liquid short side is harder to access than the long side. Many Indian swing traders therefore simply stand aside in downtrends — which is itself a valid decision. A "DOWNTREND" label is information, not an instruction to do anything.</li>
+<li><strong>Regimes change.</strong> The single most dangerous moment is the <em>transition</em> — a range about to break out, or a trend about to reverse. A stock that has sat in RANGE for weeks is exactly the one to watch for a breakout, not the one to assume will stay quiet.</li>
+</ol>
+<p>Our screener reports the label; it does not act on it. The next two chapters add the setups that <em>interpret</em> the label — and note how each setup only fires inside the regime it was designed for.</p>
+<h2 id="summary_5">Summary</h2>
+<ul>
+<li>The regime test is price-vs-50-day-MA <em>plus</em> the slope of that MA.</li>
+<li>Uptrend = above a rising MA; downtrend = below a falling MA; range = anything else.</li>
+<li>Slope is measured as the MA's % change over 10 days, against a 0.5% threshold.</li>
+<li>The label is information, not an instruction — the book itself says standing aside is valid.</li>
+</ul>
+<p>Next: the first setup — the pullback continuation, which only ever fires in an uptrend.</p>
+<h1 id="7-screen-1-the-pullback-continuation">7. Screen 1 — The Pullback Continuation</h1>
+<h2 id="trade-with-the-trend">Trade <em>with</em> the trend</h2>
+<p>From <em>Swing Trading</em>, Chapter 4: the <strong>pullback continuation</strong> is the classic trend-following entry. In an uptrend, price occasionally dips back toward its rising 20-day EMA before resuming higher. The setup is "reversal off the rising 20-day EMA in an uptrend" — the pause, not the top.</p>
+<p>Screens are mechanical versions of that idea. We want to flag a stock when three things are true at once:</p>
+<ol>
+<li>The stock is in an <strong>uptrend</strong> (from Chapter 6).</li>
+<li>Its <strong>20-day EMA is rising</strong> (the trend is still alive).</li>
+<li>Price has pulled back <strong>close to</strong> that EMA (the "pause" moment), rather than running far above it.</li>
+</ol>
+<h2 id="the-code_1">The code</h2>
+<p>Add the tolerance constant up with the config, and the screen below:</p>
+<pre><code class="language-python">PULLBACK_TOLERANCE = 0.02   # &quot;close to&quot; the EMA = within +/-2% of it
+
+
+def pullback_setup(close, ema20, regime):
+    &quot;&quot;&quot;True when an uptrending stock has pulled back to its rising 20-day EMA.&quot;&quot;&quot;
+    if regime != &quot;UPTREND&quot;:
+        return False
+
+    ema20_rising = ema20.iloc[-1] &gt; ema20.iloc[-6]
+    dist = close.iloc[-1] / ema20.iloc[-1] - 1.0
+
+    return ema20_rising and abs(dist) &lt;= PULLBACK_TOLERANCE
+</code></pre>
+<p>Read it:</p>
+<ul>
+<li><strong><code>if regime != "UPTREND": return False</code></strong> is the regime gate — the whole point of Chapter 6. The pullback setup only exists in an uptrend, so anything else is an immediate "no".</li>
+<li><strong><code>ema20.iloc[-1] &gt; ema20.iloc[-6]</code></strong> asks whether the 20-day EMA is higher today than it was five days ago — i.e. <em>rising</em>. A flat or falling EMA is not a valid pullback magnet.</li>
+<li><strong><code>dist = close / ema20 - 1</code></strong> is how far price sits from the EMA, as a fraction. <code>dist = 0</code> means price is exactly on the EMA; <code>dist = +0.05</code> means 5% above it.</li>
+<li><strong><code>abs(dist) &lt;= PULLBACK_TOLERANCE</code></strong> is "within ±2%". We use <code>abs</code> (absolute value) because a stock can pull back slightly <em>through</em> the EMA and still count — the book treats levels as zones, not exact lines.</li>
+</ul>
+<h2 id="wire-it-into-the-run_1">Wire it into the run</h2>
+<p>Extend the loop so it computes the EMA and calls the screen for every stock:</p>
+<pre><code class="language-python">for symbol in WATCHLIST:
+    df = fetch(symbol)
+    if df is None:
+        continue
+
+    close = df[&quot;Close&quot;]
+    ema20 = ema(close, 20)
+    ma50 = sma(close, 50)
+
+    regime = detect_regime(close, ma50)
+    match = pullback_setup(close, ema20, regime)
+
+    flag = &quot;Pullback setup&quot; if match else &quot;—&quot;
+    print(f&quot;{symbol}: {regime:10s} {flag}&quot;)
+    time.sleep(0.4)
+</code></pre>
+<p>Run it:</p>
+<pre><code class="language-bash">python3 screener.py
+</code></pre>
+<p>Most lines will read <code>—</code>; a few (usually only a handful) will read <code>Pullback setup</code>. That scarcity is the point — a screen is only useful because it <em>filters</em>. If every stock matched, the list would be the whole market again.</p>
+<h2 id="why-so-few-and-why-that-is-good">Why so few, and why that is good</h2>
+<p>On the single day this book's example was generated (an anecdote, not a statistic), exactly one NIFTY 50 stock matched the pullback setup. That is normal, not a bug. For a stock to qualify it must be in a genuine uptrend <em>and</em> currently sitting within 2% of a rising 20-day EMA — a narrow window in time. Most of the time a stock is either not trending up, or already extended well above the EMA (in which case the "pause" already happened and chasing it is late).</p>
+<p>Notice what the screen has <em>not</em> said: it has not said anything is cheap, or good, or going up. It has only reported a <em>condition</em> — an uptrending stock currently near its dynamic support. That is a description, and it is yours to interpret or ignore.</p>
+<h2 id="summary_6">Summary</h2>
+<ul>
+<li>The pullback setup = uptrend + rising 20-day EMA + price within a tolerance band of that EMA.</li>
+<li>The <code>regime</code> gate means the screen can only ever fire in an uptrend.</li>
+<li>The band uses <code>abs()</code> so a small dip through the EMA still counts — levels are zones, not lines.</li>
+<li>Scarcity of matches is a feature: a screen that filters nothing has no value.</li>
+</ul>
+<p>Next: the mirror image from the other family — RSI-2 mean reversion.</p>
+<h1 id="8-screen-2-rsi-2-mean-reversion">8. Screen 2 — RSI-2 Mean Reversion</h1>
+<h2 id="fade-the-extreme-but-only-in-a-healthy-stock">Fade the extreme, but only in a healthy stock</h2>
+<p>From <em>Swing Trading</em>, Chapter 7: the <strong>RSI-2 mean reversion</strong> is the opposite of the pullback. Instead of favouring strength, it looks for a stock that has been <em>punished</em> — pushed down so hard, so fast, that the short-term move is stretched — but which is still healthy over the long term. The book's two rules are:</p>
+<ol>
+<li><strong>RSI-2 closes below 5</strong> — the short-term stretch, measured with the fast oscillator from Chapter 5.</li>
+<li><strong>Price above the 200-day MA</strong> — the long-term filter that keeps the setup out of broken, downtrending stocks.</li>
+</ol>
+<p>The second rule is the one beginners miss, and the one that matters. An oversold reading on a stock that is also <em>below</em> its 200-day MA is not a dip — it is a downtrend. The 200-day filter is what separates "stretched within a long-term uptrend" (the setup) from "falling knife" (not the setup).</p>
+<h2 id="the-code_2">The code</h2>
+<p>Add the threshold constant up with the config, and the screen below:</p>
+<pre><code class="language-python">RSI2_OVERSOLD = 5           # RSI-2 below this = the reversion setup
+
+
+def rsi2_setup(close, rsi2, ma200):
+    &quot;&quot;&quot;True when a stock is short-term oversold but still above its 200-day MA.&quot;&quot;&quot;
+    price = close.iloc[-1]
+    oversold = rsi2.iloc[-1] &lt; RSI2_OVERSOLD
+    above_long_term = price &gt; ma200.iloc[-1]
+    return oversold and above_long_term
+</code></pre>
+<p>Read it — it is deliberately short, because the idea is two filters and nothing else:</p>
+<ul>
+<li><strong><code>rsi2.iloc[-1] &lt; RSI2_OVERSOLD</code></strong> is the stretch test: today's RSI-2 is below 5.</li>
+<li><strong><code>price &gt; ma200.iloc[-1]</code></strong> is the health test: price is still above its 200-day moving average.</li>
+<li>Both must be true (<code>and</code>), or the screen returns <code>False</code>.</li>
+</ul>
+<p>Notice there is <strong>no regime check here</strong>, unlike the pullback. That is faithful to the book: RSI-2 reversion is a <em>range and healthy-uptrend</em> play, not a trend play. The 200-day MA filter does the same job the regime gate did for the pullback — it keeps the setup out of the wrong conditions — just expressed differently.</p>
+<h2 id="wire-it-into-the-run_2">Wire it into the run</h2>
+<p>Extend the loop to compute RSI-2, the 200-day MA, and this second screen:</p>
+<pre><code class="language-python">for symbol in WATCHLIST:
+    df = fetch(symbol)
+    if df is None:
+        continue
+
+    close = df[&quot;Close&quot;]
+    ema20 = ema(close, 20)
+    ma50 = sma(close, 50)
+    ma200 = sma(close, 200)
+    rsi2 = rsi(close, 2)
+
+    regime = detect_regime(close, ma50)
+    pullback = pullback_setup(close, ema20, regime)
+    oversold = rsi2_setup(close, rsi2, ma200)
+
+    flags = []
+    if pullback:
+        flags.append(&quot;Pullback setup&quot;)
+    if oversold:
+        flags.append(&quot;Oversold (RSI-2)&quot;)
+    flag = &quot; · &quot;.join(flags) if flags else &quot;—&quot;
+
+    print(f&quot;{symbol}: {regime:10s} {flag}&quot;)
+    time.sleep(0.4)
+</code></pre>
+<p>Run it:</p>
+<pre><code class="language-bash">python3 screener.py
+</code></pre>
+<p>Now each stock can show one of three outcomes: a single flag, <em>both</em> flags (a stock can, in principle, be both in a pullback <em>and</em> short-term oversold), or <code>—</code>. A stock flagged "Oversold (RSI-2)" is one the book's reversion family would describe as stretched-but-healthy — nothing more.</p>
+<h2 id="what-the-two-screens-together-mean">What the two screens together mean</h2>
+<p>You now have one screen from each family, which is the whole point of the framework:</p>
+<ul>
+<li><strong>Pullback continuation</strong> fires in <strong>uptrends</strong> — it trades <em>with</em> the trend.</li>
+<li><strong>RSI-2 reversion</strong> fires on <strong>stretched, healthy dips</strong> — it fades the <em>extreme</em>.</li>
+</ul>
+<p>Both are gated so they can only fire in the conditions the book says they belong in. The regime read from Chapter 6 is what keeps them apart: the pullback needs an uptrend; the reversion needs long-term health regardless of the short-term label. That one-two structure — read the regime, then pick the matching setup — <em>is</em> the framework, and it is now running.</p>
+<h2 id="summary_7">Summary</h2>
+<ul>
+<li>RSI-2 reversion = RSI-2 below 5 <strong>and</strong> price above the 200-day MA.</li>
+<li>The 200-day filter is what stops an oversold reading from being mistaken for a "dip" inside a downtrend.</li>
+<li>No regime gate here — the 200-day MA does the equivalent filtering job.</li>
+<li>The two screens are one from each family: trend-following and mean-reversion.</li>
+</ul>
+<p>Next: stop printing to the terminal and build the actual dashboard.</p>
+<h1 id="9-assemble-the-results-into-an-html-dashboard">9. Assemble the Results into an HTML Dashboard</h1>
+<h2 id="from-printed-lines-to-a-page">From printed lines to a page</h2>
+<p>So far the program prints one line per stock to the terminal. That works, but a dashboard should <em>look</em> like one. This chapter changes two things:</p>
+<ol>
+<li>Instead of printing as we go, we <strong>collect each stock's results</strong> into a list of dictionaries — one tidy record per stock.</li>
+<li>We <strong>render</strong> that list into a single self-contained HTML page, with styling and a results table, and write it to a file.</li>
+</ol>
+<p>Nothing in the <em>analysis</em> changes — the indicators, the regime, and the two screens are exactly the code you already wrote. This chapter is about <em>presentation</em>.</p>
+<h2 id="step-1-collect-the-results">Step 1 — Collect the results</h2>
+<p>Replace the loop's <code>print(...)</code> with a list you append to:</p>
+<pre><code class="language-python">def analyze(symbol, df):
+    &quot;&quot;&quot;Run every step for one stock and return a dict of results.&quot;&quot;&quot;
+    close = df[&quot;Close&quot;]
+    ema20 = ema(close, 20)
+    ma50 = sma(close, 50)
+    ma200 = sma(close, 200)
+    rsi2 = rsi(close, 2)
+
+    regime = detect_regime(close, ma50)
+    pullback = pullback_setup(close, ema20, regime)
+    oversold = rsi2_setup(close, rsi2, ma200)
+
+    price = close.iloc[-1]
+    change_pct = (price / close.iloc[-2] - 1.0) * 100.0
+    dist_ema_pct = (price / ema20.iloc[-1] - 1.0) * 100.0
+
+    return {
+        &quot;symbol&quot;: symbol,
+        &quot;close&quot;: price,
+        &quot;change_pct&quot;: change_pct,
+        &quot;regime&quot;: regime,
+        &quot;dist_ema_pct&quot;: dist_ema_pct,
+        &quot;rsi2&quot;: rsi2.iloc[-1],
+        &quot;pullback&quot;: pullback,
+        &quot;oversold&quot;: oversold,
+    }
+
+
+results = []
+for symbol in WATCHLIST:
+    df = fetch(symbol)
+    if df is None:
+        continue
+    results.append(analyze(symbol, df))
+    time.sleep(0.4)
+
+results.sort(key=lambda r: r[&quot;symbol&quot;])
+</code></pre>
+<p>Two new ideas:</p>
+<ul>
+<li>A <strong>dictionary</strong> (the <code>{...}</code> blocks) is a labelled bag of values — <code>results[0]["symbol"]</code> is the first stock's name. A list of dictionaries is the natural shape for "fifty records, each with the same fields".</li>
+<li><code>results.sort(key=lambda r: r["symbol"])</code> sorts the list alphabetically by symbol. The <code>lambda</code> is just a tiny throwaway function that says "the thing to sort by is this field".</li>
+</ul>
+<h2 id="step-2-write-a-render-function">Step 2 — Write a render function</h2>
+<p>Now add a function that takes that list and returns a complete HTML page as a string. There are two parts: the <strong>styling</strong> (a block of CSS) and the <strong>body</strong> (a table built row by row).</p>
+<p>First the CSS — this is presentation, not logic, so you can copy it as-is rather than memorise it:</p>
+<pre><code class="language-python">CSS = &quot;&quot;&quot;
+:root { --bg:#0a0b0d; --surface:#12161a; --border:#1f2624;
+  --text:#e8f0ee; --text-muted:#9fb5ae; --text-faint:#6c817b;
+  --accent:#2dd4bf; --pos:#2dd4bf; --neg:#f87171; --warn:#fbbf24; }
+* { box-sizing: border-box; }
+html { color-scheme: dark; }
+body { margin:0; background:var(--bg); color:var(--text);
+  font-family:&quot;Instrument Sans&quot;,-apple-system,&quot;Segoe UI&quot;,sans-serif;
+  line-height:1.55; -webkit-font-smoothing:antialiased; }
+.wrap { max-width:1080px; margin:0 auto; padding:32px 20px 48px; }
+h1 { font-family:Georgia,serif; font-size:30px; margin:0 0 4px; }
+.sub { color:var(--text-muted); margin:0 0 24px; }
+.stats { display:grid; grid-template-columns:repeat(2,1fr); gap:1px;
+  background:var(--border); border:1px solid var(--border); border-radius:10px;
+  overflow:hidden; margin-bottom:28px; }
+@media (min-width:640px) { .stats { grid-template-columns:repeat(5,1fr); } }
+.stat { background:var(--surface); padding:16px; }
+.stat .num { display:block; font-size:24px; font-variant-numeric:tabular-nums; }
+.stat .lbl { display:block; font-size:12px; color:var(--text-muted); margin-top:2px; }
+h2 { font-size:18px; margin:28px 0 12px; font-family:Georgia,serif; }
+table { width:100%; border-collapse:collapse; font-size:14px; }
+th, td { padding:9px 12px; text-align:right; border-bottom:1px solid var(--border); }
+th { color:var(--text-muted); font-weight:600; }
+th:first-child, td:first-child { text-align:left; }
+tbody tr:hover { background:var(--surface); }
+.tag { display:inline-block; padding:2px 8px; border-radius:5px;
+  font-size:12px; border:1px solid var(--border); color:var(--text-muted); }
+.tag.ut { color:var(--pos); border-color:var(--pos); }
+.tag.rng { color:var(--warn); border-color:var(--warn); }
+.tag.dn { color:var(--neg); border-color:var(--neg); }
+.flag { color:var(--accent); font-weight:600; }
+.setup-list { list-style:none; padding:0; margin:0; }
+.setup-list li { padding:8px 0; border-bottom:1px solid var(--border); }
+.disclaimer { margin-top:40px; padding-top:20px; border-top:1px solid var(--border);
+  color:var(--text-faint); font-size:12.5px; }
+@media print { body { background:#fff; color:#111; } }
+&quot;&quot;&quot;
+</code></pre>
+<p>A quick tour of what matters, so it is not just a wall of text:</p>
+<ul>
+<li>The <code>:root { --bg: … }</code> block defines <strong>variables</strong> — named colours used everywhere else. The palette is StratLab's dark theme (near-black background, teal accent <code>#2dd4bf</code>).</li>
+<li><code>.tag.ut / .tag.rng / .tag.dn</code> colour the regime label — teal for uptrend, amber for range, red for downtrend. Colour is <em>reinforcing</em> a written word here, never the only signal.</li>
+<li><code>.stats</code> turns the summary numbers into a strip of boxes.</li>
+<li>The <code>@media print { … }</code> rule at the end makes the page print cleanly, which Chapter 10 relies on for the PDF.</li>
+</ul>
+<p>Now the body. This function builds the rows and returns the full page:</p>
+<pre><code class="language-python">def render_html(results):
+    n = len(results)
+    n_up = sum(1 for r in results if r[&quot;regime&quot;] == &quot;UPTREND&quot;)
+    n_rng = sum(1 for r in results if r[&quot;regime&quot;] == &quot;RANGE&quot;)
+    n_dn = sum(1 for r in results if r[&quot;regime&quot;] == &quot;DOWNTREND&quot;)
+    n_pull = sum(1 for r in results if r[&quot;pullback&quot;])
+    n_os = sum(1 for r in results if r[&quot;oversold&quot;])
+
+    rows = []
+    for r in results:
+        flags = []
+        if r[&quot;pullback&quot;]:
+            flags.append(&quot;Pullback setup&quot;)
+        if r[&quot;oversold&quot;]:
+            flags.append(&quot;Oversold (RSI-2)&quot;)
+        flag_txt = &quot; · &quot;.join(flags) if flags else &quot;—&quot;
+        tag = {&quot;UPTREND&quot;: &quot;ut&quot;, &quot;RANGE&quot;: &quot;rng&quot;, &quot;DOWNTREND&quot;: &quot;dn&quot;}[r[&quot;regime&quot;]]
+        rows.append(
+            &quot;&lt;tr&gt;&quot;
+            f'&lt;td&gt;{r[&quot;symbol&quot;]}&lt;/td&gt;'
+            f'&lt;td&gt;{r[&quot;close&quot;]:.2f}&lt;/td&gt;'
+            f'&lt;td&gt;{r[&quot;change_pct&quot;]:+.2f}%&lt;/td&gt;'
+            f'&lt;td&gt;&lt;span class=&quot;tag {tag}&quot;&gt;{r[&quot;regime&quot;]}&lt;/span&gt;&lt;/td&gt;'
+            f'&lt;td&gt;{r[&quot;dist_ema_pct&quot;]:+.2f}%&lt;/td&gt;'
+            f'&lt;td&gt;{r[&quot;rsi2&quot;]:.1f}&lt;/td&gt;'
+            f'&lt;td class=&quot;flag&quot;&gt;{flag_txt}&lt;/td&gt;'
+            &quot;&lt;/tr&gt;&quot;
+        )
+
+    return f&quot;&quot;&quot;&lt;!DOCTYPE html&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;title&gt;Swing Trading Screener&lt;/title&gt;
+&lt;style&gt;{CSS}&lt;/style&gt;&lt;/head&gt;
+&lt;body&gt;&lt;div class=&quot;wrap&quot;&gt;
+&lt;h1&gt;Swing Trading Screener&lt;/h1&gt;
+&lt;p class=&quot;sub&quot;&gt;Regime + two setups from the StratLab Swing Trading guide · {n} symbols scanned&lt;/p&gt;
+&lt;div class=&quot;stats&quot;&gt;
+  &lt;div class=&quot;stat&quot;&gt;&lt;span class=&quot;num&quot;&gt;{n_up}&lt;/span&gt;&lt;span class=&quot;lbl&quot;&gt;uptrend&lt;/span&gt;&lt;/div&gt;
+  &lt;div class=&quot;stat&quot;&gt;&lt;span class=&quot;num&quot;&gt;{n_rng}&lt;/span&gt;&lt;span class=&quot;lbl&quot;&gt;range&lt;/span&gt;&lt;/div&gt;
+  &lt;div class=&quot;stat&quot;&gt;&lt;span class=&quot;num&quot;&gt;{n_dn}&lt;/span&gt;&lt;span class=&quot;lbl&quot;&gt;downtrend&lt;/span&gt;&lt;/div&gt;
+  &lt;div class=&quot;stat&quot;&gt;&lt;span class=&quot;num&quot;&gt;{n_pull}&lt;/span&gt;&lt;span class=&quot;lbl&quot;&gt;pullback setups&lt;/span&gt;&lt;/div&gt;
+  &lt;div class=&quot;stat&quot;&gt;&lt;span class=&quot;num&quot;&gt;{n_os}&lt;/span&gt;&lt;span class=&quot;lbl&quot;&gt;oversold (RSI-2)&lt;/span&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2&gt;All results&lt;/h2&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;
+  &lt;th&gt;Symbol&lt;/th&gt;&lt;th&gt;Close&lt;/th&gt;&lt;th&gt;Change&lt;/th&gt;&lt;th&gt;Regime&lt;/th&gt;
+  &lt;th&gt;vs 20 EMA&lt;/th&gt;&lt;th&gt;RSI-2&lt;/th&gt;&lt;th&gt;Setup&lt;/th&gt;
+&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;{''.join(rows)}&lt;/tbody&gt;&lt;/table&gt;
+&lt;p class=&quot;disclaimer&quot;&gt;Educational content only — not investment advice. StratLab is not
+registered with SEBI as an investment adviser, research analyst, or portfolio manager.
+This screener surfaces setups that a swing-trading framework describes; it does not
+recommend buying or selling any security. Consult a SEBI-registered adviser where appropriate.&lt;/p&gt;
+&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;&quot;&quot;&quot;
+</code></pre>
+<p>The interesting line is the <strong>f-string</strong> (the <code>f"""..."""</code> block): anything in <code>{braces}</code> gets replaced with its value. So <code>{n}</code> becomes the number of stocks, and <code>{''.join(rows)}</code> splices in all fifty table rows. The <code>f'…'</code> strings inside the row loop work the same way, one row at a time.</p>
+<h2 id="step-3-write-the-file">Step 3 — Write the file</h2>
+<p>Finally, write the string to disk and tell the user where it went:</p>
+<pre><code class="language-python">from pathlib import Path
+
+OUTPUT_DIR = Path(__file__).parent   # the folder this script lives in
+
+html_path = OUTPUT_DIR / &quot;swing_dashboard.html&quot;
+html_path.write_text(render_html(results), encoding=&quot;utf-8&quot;)
+print(f&quot;Wrote {html_path.name} — open it in a browser&quot;)
+</code></pre>
+<p>Run it:</p>
+<pre><code class="language-bash">python3 screener.py
+</code></pre>
+<p>Then open <code>swing_dashboard.html</code> (double-click it, or drag it into a browser). You should see the full dashboard: the title, a strip of summary numbers, and a table of all fifty stocks with each one's regime and setup flags coloured in.</p>
+<h2 id="summary_8">Summary</h2>
+<ul>
+<li>Collect results into a list of dictionaries — one record per stock — instead of printing as you go.</li>
+<li>A CSS block with <code>:root</code> variables gives the page the StratLab dark theme; the <code>@media print</code> rule prepares it for PDF.</li>
+<li>F-strings (<code>f"…"</code> / <code>f"""…"""</code>) splice values into the HTML template.</li>
+<li><code>Path.write_text(...)</code> saves the finished page next to the script.</li>
+</ul>
+<p>Next: add the Markdown report and the PDF, and learn to read the result the way the book teaches.</p>
+<h1 id="10-export-markdown-and-pdf-and-read-it-like-a-swing-trader">10. Export Markdown and PDF, and Read It Like a Swing Trader</h1>
+<h2 id="one-dashboard-three-formats">One dashboard, three formats</h2>
+<p>You have a dashboard. This final chapter adds the two other output formats you were promised — a <strong>Markdown report</strong> and a <strong>PDF</strong> — and then, more importantly, teaches you how to <em>read</em> the result the way <em>Swing Trading</em> teaches, rather than treating it as a list of instructions.</p>
+<h2 id="step-1-the-markdown-report">Step 1 — The Markdown report</h2>
+<p>Markdown is plain text with light formatting (the same language this book is written in). Add a function that writes a summary file:</p>
+<pre><code class="language-python">from datetime import date
+
+
+def render_md(results):
+    n_up = sum(1 for r in results if r[&quot;regime&quot;] == &quot;UPTREND&quot;)
+    n_rng = sum(1 for r in results if r[&quot;regime&quot;] == &quot;RANGE&quot;)
+    n_dn = sum(1 for r in results if r[&quot;regime&quot;] == &quot;DOWNTREND&quot;)
+    pull = [r[&quot;symbol&quot;] for r in results if r[&quot;pullback&quot;]]
+    os = [r[&quot;symbol&quot;] for r in results if r[&quot;oversold&quot;]]
+
+    lines = [
+        &quot;# Swing Trading Screener — Report&quot;,
+        &quot;&quot;,
+        f&quot;Date: {date.today().isoformat()} · Universe: {len(results)} symbols&quot;,
+        &quot;&quot;,
+        f&quot;- **Uptrend:** {n_up}&quot;,
+        f&quot;- **Range:** {n_rng}&quot;,
+        f&quot;- **Downtrend:** {n_dn}&quot;,
+        &quot;&quot;,
+        &quot;## Pullback setup matches&quot;,
+        &quot;&quot;,
+        &quot;- &quot; + (&quot;, &quot;.join(pull) if pull else &quot;None today&quot;),
+        &quot;&quot;,
+        &quot;## Oversold (RSI-2) matches&quot;,
+        &quot;&quot;,
+        &quot;- &quot; + (&quot;, &quot;.join(os) if os else &quot;None today&quot;),
+        &quot;&quot;,
+        &quot;---&quot;,
+        &quot;&quot;,
+        &quot;Educational content only — not investment advice. StratLab is not SEBI-registered.&quot;,
+        &quot;&quot;,
+    ]
+    return &quot;\n&quot;.join(lines)
+</code></pre>
+<p>Then write it in the same place you write the HTML:</p>
+<pre><code class="language-python">md_path = OUTPUT_DIR / &quot;swing_report.md&quot;
+md_path.write_text(render_md(results), encoding=&quot;utf-8&quot;)
+print(f&quot;Wrote {md_path.name}&quot;)
+</code></pre>
+<p>Run the program, and you now get two files: <code>swing_dashboard.html</code> and <code>swing_report.md</code>. The Markdown version is deliberately tiny — just the headline numbers and the two lists of matches — because that is what you might want to paste into an AI tool, or version-control, or read on a phone.</p>
+<h2 id="step-2-the-pdf-via-the-browser">Step 2 — The PDF (via the browser)</h2>
+<p>The dashboard was written to be print-ready, so the PDF needs no extra library. Open <code>swing_dashboard.html</code> in your browser, then:</p>
+<ol>
+<li>Choose <strong>File → Print</strong> (or press <code>Ctrl+P</code> / <code>Cmd+P</code>).</li>
+<li>Set the destination to <strong>"Save as PDF"</strong> instead of a printer.</li>
+<li>Optionally set margins to "Default", and leave "Background graphics" off for a light printout.</li>
+<li>Click <strong>Save</strong>.</li>
+</ol>
+<p>That is it — a styled PDF of the same dashboard. The <code>@media print</code> rule from Chapter 9 is what switches the page to a white background with dark text, so it reads cleanly on paper.</p>
+<blockquote>
+<p>If you want the program to produce the PDF <em>automatically</em> (no browser step), you can later add a <code>playwright</code>-based step — the same tool StratLab uses to generate these books' PDFs. For a first screener, the browser's "Save as PDF" is simpler and has zero extra dependencies.</p>
+</blockquote>
+<h2 id="step-3-read-it-like-the-book-teaches">Step 3 — Read it like the book teaches</h2>
+<p>Now the important part, which has nothing to do with code. The dashboard gives you three layers of information, and <em>Swing Trading</em> tells you how to weigh each one.</p>
+<p><strong>First, read the regime, not the flags.</strong> The strip at the top — how many stocks are uptrending, ranging, downtrending — is the market-level read. If most of the list is <code>DOWNTREND</code>, the book's Chapter 3 guidance applies: downtrends are asymmetric in India, and standing aside is itself a valid decision. The setups are only meaningful inside the regime they were built for.</p>
+<p><strong>Second, treat a flag as a <em>condition</em>, never an instruction.</strong> "Pullback setup" means an uptrending stock is sitting near its rising 20-day EMA — the condition the continuation family describes. "Oversold (RSI-2)" means short-term stretch inside a long-term healthy stock — the condition the reversion family describes. Neither is a recommendation to do anything. The book is explicit: overbought/oversold only means "likely to pause" in a range, and a flag is a starting point for your own analysis, not a conclusion.</p>
+<p><strong>Third, apply the book's universal rules <em>before</em> any flag means anything to you.</strong> From the appendix of <em>Swing Trading</em>, the book's rules are:</p>
+<ul>
+<li>Risk 1–2% per trade; size from the stop distance.</li>
+<li>Aim for a favourable reward-to-risk; a 3:1 trade breaks even at 25% wins.</li>
+<li>Honour the stop; hold to the target.</li>
+<li>Account for gap risk; never size for the best case.</li>
+</ul>
+<p>A screener that surfaces ten setups has given you ten <em>candidates to study</em>, not ten things to do. The framework's job is to shrink the whole market into a short list of conditions worth a second look — which is precisely what you have built.</p>
+<h2 id="where-you-are-now">Where you are now</h2>
+<p>You started with a single price download and finished with a tool that, every time you run it, reads fifty stocks, labels their regimes, flags the setups your framework describes, and writes a browser-ready dashboard plus a Markdown report and a PDF. The complete program is in the appendix, in one piece, if you want to read it top to bottom.</p>
+<h2 id="summary_9">Summary</h2>
+<ul>
+<li><code>render_md</code> writes a plain-text summary; the PDF is just the dashboard printed via the browser.</li>
+<li>Read the <em>regime</em> first, then the flags — a flag is a condition, not an instruction.</li>
+<li>The book's universal rules (1–2% risk, favourable reward-to-risk, honour the stop) apply before any flag means anything.</li>
+<li>A screener's job is to shrink the market into a short list worth a second look — nothing more.</li>
+</ul>
+<p>Next: the complete program, in one place, plus a troubleshooting table.</p>
+<h1 id="appendix-the-complete-program-and-troubleshooting">Appendix — The Complete Program and Troubleshooting</h1>
+<h2 id="the-finished-program-in-one-piece">The finished program, in one piece</h2>
+<p>The chapters built this program up piece by piece. This appendix is the finished, polished version in a single listing — the same file shipped alongside this book as <code>screener.py</code>. It does everything the chapters built, with a little consolidation — the regime and the two screens are folded into a single <code>analyze()</code> function, the RSI-2 flag is stored as <code>rsi2_setup</code>, RSI-14 is computed alongside RSI-2, and symbols that fail to download are listed at the end of the run — plus a few extras: a <strong>sortable table</strong> (click a column header to sort), <strong>per-setup match lists</strong> above the table, and the <strong><code>data-sort</code></strong> attributes that make numeric columns sort as numbers rather than text.</p>
+<p>Copy it into a file named <code>screener.py</code>, make sure <code>yfinance</code> and <code>pandas</code> are installed (Chapter 2), and run <code>python3 screener.py</code>.</p>
+<pre><code class="language-python">#!/usr/bin/env python3
+&quot;&quot;&quot;
+Swing Trading Screener (educational).
+
+Fetches daily price history for a watchlist (NIFTY 50 by default) using
+yfinance, computes the indicators and the two setups from the StratLab
+&quot;Build Your Own Swing Trading Screener&quot; guide, and writes two files:
+
+    swing_dashboard.html   -- a self-contained dashboard you open in a browser
+    swing_report.md        -- a plain-text summary of the same results
+
+Educational content only. This is NOT investment advice and StratLab is not
+SEBI-registered. See the disclaimer at the bottom of the generated page.
+
+Run it with:
+
+    python3 screener.py
+&quot;&quot;&quot;
+
+import time
+from pathlib import Path
+
+import pandas as pd
+import yfinance as yf
+
+# ----------------------------------------------------------------------------
+# 1. CONFIG -- the only part you normally edit
+# ----------------------------------------------------------------------------
+
+# The stocks to scan: the NIFTY 50 as of October 2026. NSE rebalances the
+# index twice a year, so refresh this list from niftyindices.com
+# (IndexConstituent/ind_nifty50list.csv). The list is editable -- swap in
+# your own symbols and the rest of the script keeps working.
+WATCHLIST = [
+    &quot;ADANIENT&quot;, &quot;ADANIPORTS&quot;, &quot;APOLLOHOSP&quot;, &quot;ASIANPAINT&quot;, &quot;AXISBANK&quot;,
+    &quot;BSE&quot;, &quot;BAJAJ-AUTO&quot;, &quot;BAJFINANCE&quot;, &quot;BAJAJFINSV&quot;, &quot;BEL&quot;,
+    &quot;BHARTIARTL&quot;, &quot;CIPLA&quot;, &quot;COALINDIA&quot;, &quot;DRREDDY&quot;, &quot;EICHERMOT&quot;,
+    &quot;ETERNAL&quot;, &quot;GRASIM&quot;, &quot;HCLTECH&quot;, &quot;HDFCBANK&quot;, &quot;HDFCLIFE&quot;,
+    &quot;HINDALCO&quot;, &quot;HINDUNILVR&quot;, &quot;ICICIBANK&quot;, &quot;ITC&quot;, &quot;INFY&quot;,
+    &quot;INDIGO&quot;, &quot;JSWSTEEL&quot;, &quot;JIOFIN&quot;, &quot;KOTAKBANK&quot;, &quot;LT&quot;,
+    &quot;M&amp;M&quot;, &quot;MARUTI&quot;, &quot;MAXHEALTH&quot;, &quot;NTPC&quot;, &quot;NESTLEIND&quot;,
+    &quot;ONGC&quot;, &quot;POWERGRID&quot;, &quot;RELIANCE&quot;, &quot;SBILIFE&quot;, &quot;SHRIRAMFIN&quot;,
+    &quot;SBIN&quot;, &quot;SUNPHARMA&quot;, &quot;TCS&quot;, &quot;TATACONSUM&quot;, &quot;TMPV&quot;,
+    &quot;TATASTEEL&quot;, &quot;TECHM&quot;, &quot;TITAN&quot;, &quot;TRENT&quot;, &quot;ULTRACEMCO&quot;,
+]
+
+PERIOD = &quot;1y&quot;             # how much history to fetch (enough for the 200-day MA)
+INTERVAL = &quot;1d&quot;           # daily bars -- swing trading is a daily-chart game
+
+# Moving-average windows (the toolkit from the guide's Chapter 2)
+EMA_FAST = 20             # 20-day EMA -- dynamic support in an uptrend
+MA_MEDIUM = 50            # 50-day MA   -- trend context
+MA_SLOW = 200             # 200-day MA  -- long-term trend context
+
+# Regime detection (guide Chapter 3: read the slope of the 50-day MA)
+SLOPE_LOOKBACK = 10       # how many days back to compare the 50-day MA to itself
+SLOPE_THRESHOLD = 0.005   # 0.5% rise/fall over that window = &quot;sloping&quot;
+
+# Screens (guide Chapters 7 and 8)
+PULLBACK_TOLERANCE = 0.02  # pullback = close within +/-2% of the 20-day EMA
+RSI2_OVERSOLD = 5          # RSI-2 below this = the reversion setup
+
+OUTPUT_DIR = Path(__file__).parent  # write the dashboard next to this script
+
+
+# ----------------------------------------------------------------------------
+# 2. INDICATORS
+# ----------------------------------------------------------------------------
+
+def ema(series, span):
+    &quot;&quot;&quot;Exponential moving average. `adjust=False` matches most charting tools.&quot;&quot;&quot;
+    return series.ewm(span=span, adjust=False).mean()
+
+
+def sma(series, window):
+    &quot;&quot;&quot;Simple moving average.&quot;&quot;&quot;
+    return series.rolling(window).mean()
+
+
+def rsi(series, period):
+    &quot;&quot;&quot;
+    Relative Strength Index over `period` bars, using simple averages.
+    RSI-2 (period=2) is the Connors &amp; Alvarez short-reversion oscillator used
+    in the guide's reversion screen.
+    &quot;&quot;&quot;
+    delta = series.diff()
+    gain = delta.clip(lower=0.0)
+    loss = -delta.clip(upper=0.0)
+    avg_gain = gain.rolling(period).mean()
+    avg_loss = loss.rolling(period).mean()
+    rs = avg_gain / avg_loss
+    rsi_vals = 100.0 - (100.0 / (1.0 + rs))
+    # No losses -&gt; RSI is 100 (max strength). No moves at all -&gt; neutral 50.
+    rsi_vals = rsi_vals.replace([float(&quot;inf&quot;)], 100.0).fillna(50.0)
+    return rsi_vals
+
+
+# ----------------------------------------------------------------------------
+# 3. FETCH
+# ----------------------------------------------------------------------------
+
+def fetch(symbol):
+    &quot;&quot;&quot;Download daily history for one symbol. Returns None on any failure.&quot;&quot;&quot;
+    ticker = symbol + &quot;.NS&quot;  # the &quot;.NS&quot; suffix means National Stock Exchange
+    try:
+        df = yf.Ticker(ticker).history(
+            period=PERIOD, interval=INTERVAL, auto_adjust=False
+        )
+    except Exception:
+        return None
+    if df is None or len(df) &lt; MA_SLOW + 1:
+        # Not enough history to compute the 200-day MA.
+        return None
+    return df[[&quot;Close&quot;]]
+
+
+# ----------------------------------------------------------------------------
+# 4. ANALYSIS
+# ----------------------------------------------------------------------------
+
+def analyze(symbol, df):
+    &quot;&quot;&quot;Compute indicators, regime, and setup flags for one stock.&quot;&quot;&quot;
+    close = df[&quot;Close&quot;]
+
+    ema20 = ema(close, EMA_FAST)
+    ma50 = sma(close, MA_MEDIUM)
+    ma200 = sma(close, MA_SLOW)
+    rsi2 = rsi(close, 2)
+    rsi14 = rsi(close, 14)
+
+    price = close.iloc[-1]
+    price_prev = close.iloc[-2]
+    ema20_now = ema20.iloc[-1]
+    ma50_now = ma50.iloc[-1]
+    ma200_now = ma200.iloc[-1]
+    rsi2_now = rsi2.iloc[-1]
+    rsi14_now = rsi14.iloc[-1]
+
+    # Regime: slope of the 50-day MA + price's position against it.
+    ma50_then = ma50.iloc[-1 - SLOPE_LOOKBACK]
+    slope = ma50_now / ma50_then - 1.0
+    rising = slope &gt; SLOPE_THRESHOLD
+    falling = slope &lt; -SLOPE_THRESHOLD
+    above = price &gt; ma50_now
+
+    if above and rising:
+        regime = &quot;UPTREND&quot;
+    elif (not above) and falling:
+        regime = &quot;DOWNTREND&quot;
+    else:
+        regime = &quot;RANGE&quot;
+
+    # Screen 1 -- pullback continuation: uptrend, rising EMA, close near the EMA.
+    ema20_rising = ema20_now &gt; ema20.iloc[-6]
+    dist_ema = price / ema20_now - 1.0
+    pullback = regime == &quot;UPTREND&quot; and ema20_rising and abs(dist_ema) &lt;= PULLBACK_TOLERANCE
+
+    # Screen 2 -- RSI-2 mean reversion: short-term oversold, long-term healthy.
+    rsi2_setup = (rsi2_now &lt; RSI2_OVERSOLD) and (price &gt; ma200_now)
+
+    change_pct = (price / price_prev - 1.0) * 100.0
+
+    return {
+        &quot;symbol&quot;: symbol,
+        &quot;close&quot;: price,
+        &quot;change_pct&quot;: change_pct,
+        &quot;regime&quot;: regime,
+        &quot;dist_ema_pct&quot;: dist_ema * 100.0,
+        &quot;rsi2&quot;: rsi2_now,
+        &quot;rsi14&quot;: rsi14_now,
+        &quot;pullback&quot;: pullback,
+        &quot;rsi2_setup&quot;: rsi2_setup,
+    }
+
+
+# ----------------------------------------------------------------------------
+# 5. RENDER
+# ----------------------------------------------------------------------------
+
+CSS = &quot;&quot;&quot;
+:root { --bg:#0a0b0d; --surface:#12161a; --surface-raised:#171d21;
+  --border:#1f2624; --border-strong:#2a3330; --text:#e8f0ee;
+  --text-muted:#9fb5ae; --text-faint:#6c817b; --accent:#2dd4bf;
+  --pos:#2dd4bf; --neg:#f87171; --warn:#fbbf24; }
+* { box-sizing: border-box; }
+html { color-scheme: dark; }
+body { margin:0; background:var(--bg); color:var(--text);
+  font-family:&quot;Instrument Sans&quot;,-apple-system,&quot;Segoe UI&quot;,sans-serif;
+  line-height:1.55; -webkit-font-smoothing:antialiased; }
+.wrap { max-width:1080px; margin:0 auto; padding:32px 20px 48px; }
+h1 { font-family:Georgia,&quot;Times New Roman&quot;,serif; font-size:30px; margin:0 0 4px; }
+.sub { color:var(--text-muted); margin:0 0 24px; }
+.stats { display:grid; grid-template-columns:repeat(2,1fr); gap:1px;
+  background:var(--border); border:1px solid var(--border); border-radius:10px;
+  overflow:hidden; margin-bottom:28px; }
+@media (min-width:640px) { .stats { grid-template-columns:repeat(5,1fr); } }
+.stat { background:var(--surface); padding:16px; }
+.stat .num { display:block; font-size:24px; font-variant-numeric:tabular-nums; }
+.stat .lbl { display:block; font-size:12px; color:var(--text-muted); margin-top:2px; }
+h2 { font-size:18px; margin:28px 0 12px; font-family:Georgia,serif; }
+table { width:100%; border-collapse:collapse; font-size:14px; }
+th, td { padding:9px 12px; text-align:right; border-bottom:1px solid var(--border); }
+th { cursor:pointer; user-select:none; color:var(--text-muted); font-weight:600; }
+th:hover { color:var(--text); }
+th:first-child, td:first-child { text-align:left; }
+th:nth-child(2), td:nth-child(2) { text-align:left; }
+tbody tr:hover { background:var(--surface); }
+.tag { display:inline-block; padding:2px 8px; border-radius:5px;
+  font-size:12px; border:1px solid var(--border-strong); color:var(--text-muted); }
+.tag.ut { color:var(--pos); border-color:var(--pos); }
+.tag.rng { color:var(--warn); border-color:var(--warn); }
+.tag.dn { color:var(--neg); border-color:var(--neg); }
+.flag { color:var(--accent); font-weight:600; }
+.setup-list { list-style:none; padding:0; margin:0; }
+.setup-list li { padding:8px 0; border-bottom:1px solid var(--border); }
+.disclaimer { margin-top:40px; padding-top:20px; border-top:1px solid var(--border);
+  color:var(--text-faint); font-size:12.5px; }
+@media print { body { background:#fff; color:#111; } th,td { color:#111; } }
+&quot;&quot;&quot;
+
+SORT_JS = &quot;&quot;&quot;
+function sortTable(n) {
+  var table = document.getElementById(&quot;results&quot;);
+  var rows = Array.prototype.slice.call(table.querySelectorAll(&quot;tbody tr&quot;));
+  var th = table.querySelectorAll(&quot;th&quot;)[n];
+  var asc = th.getAttribute(&quot;data-dir&quot;) !== &quot;asc&quot;;
+  table.querySelectorAll(&quot;th&quot;).forEach(function(h){ h.setAttribute(&quot;data-dir&quot;,&quot;&quot;); });
+  th.setAttribute(&quot;data-dir&quot;, asc ? &quot;asc&quot; : &quot;desc&quot;);
+  rows.sort(function(a, b) {
+    var av = a.cells[n].getAttribute(&quot;data-sort&quot;) || a.cells[n].textContent;
+    var bv = b.cells[n].getAttribute(&quot;data-sort&quot;) || b.cells[n].textContent;
+    var an = parseFloat(av), bn = parseFloat(bv);
+    if (!isNaN(an) &amp;&amp; !isNaN(bn)) { return asc ? an - bn : bn - an; }
+    return asc ? av.localeCompare(bv) : bv.localeCompare(av);
+  });
+  rows.forEach(function(r){ table.querySelector(&quot;tbody&quot;).appendChild(r); });
+}
+&quot;&quot;&quot;
+
+
+def render_html(results):
+    &quot;&quot;&quot;Build the full HTML page as a string.&quot;&quot;&quot;
+    n = len(results)
+    n_up = sum(1 for r in results if r[&quot;regime&quot;] == &quot;UPTREND&quot;)
+    n_rng = sum(1 for r in results if r[&quot;regime&quot;] == &quot;RANGE&quot;)
+    n_dn = sum(1 for r in results if r[&quot;regime&quot;] == &quot;DOWNTREND&quot;)
+    n_pull = sum(1 for r in results if r[&quot;pullback&quot;])
+    n_rsi2 = sum(1 for r in results if r[&quot;rsi2_setup&quot;])
+
+    rows = []
+    for r in results:
+        flags = []
+        if r[&quot;pullback&quot;]:
+            flags.append(&quot;Pullback setup&quot;)
+        if r[&quot;rsi2_setup&quot;]:
+            flags.append(&quot;Oversold (RSI-2)&quot;)
+        flag_txt = &quot; · &quot;.join(flags) if flags else &quot;—&quot;
+        regime_tag = {&quot;UPTREND&quot;: &quot;ut&quot;, &quot;RANGE&quot;: &quot;rng&quot;, &quot;DOWNTREND&quot;: &quot;dn&quot;}[r[&quot;regime&quot;]]
+        rows.append(
+            &quot;&lt;tr&gt;&quot;
+            f'&lt;td&gt;{r[&quot;symbol&quot;]}&lt;/td&gt;'
+            f'&lt;td data-sort=&quot;{r[&quot;close&quot;]:.2f}&quot;&gt;{r[&quot;close&quot;]:.2f}&lt;/td&gt;'
+            f'&lt;td data-sort=&quot;{r[&quot;change_pct&quot;]:.2f}&quot;&gt;{r[&quot;change_pct&quot;]:+.2f}%&lt;/td&gt;'
+            f'&lt;td&gt;&lt;span class=&quot;tag {regime_tag}&quot;&gt;{r[&quot;regime&quot;]}&lt;/span&gt;&lt;/td&gt;'
+            f'&lt;td data-sort=&quot;{r[&quot;dist_ema_pct&quot;]:.2f}&quot;&gt;{r[&quot;dist_ema_pct&quot;]:+.2f}%&lt;/td&gt;'
+            f'&lt;td data-sort=&quot;{r[&quot;rsi2&quot;]:.1f}&quot;&gt;{r[&quot;rsi2&quot;]:.1f}&lt;/td&gt;'
+            f'&lt;td class=&quot;flag&quot;&gt;{flag_txt}&lt;/td&gt;'
+            &quot;&lt;/tr&gt;&quot;
+        )
+    rows_html = &quot;\n&quot;.join(rows)
+
+    pull_names = [r[&quot;symbol&quot;] for r in results if r[&quot;pullback&quot;]]
+    rsi2_names = [r[&quot;symbol&quot;] for r in results if r[&quot;rsi2_setup&quot;]]
+
+    pull_items = &quot;&quot;.join(f&quot;&lt;li&gt;{s}&lt;/li&gt;&quot; for s in pull_names) or &quot;&lt;li&gt;None today&lt;/li&gt;&quot;
+    rsi2_items = &quot;&quot;.join(f&quot;&lt;li&gt;{s}&lt;/li&gt;&quot; for s in rsi2_names) or &quot;&lt;li&gt;None today&lt;/li&gt;&quot;
+
+    return f&quot;&quot;&quot;&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;Swing Trading Screener&lt;/title&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600&amp;display=swap&quot;&gt;
+&lt;style&gt;{CSS}&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;wrap&quot;&gt;
+  &lt;h1&gt;Swing Trading Screener&lt;/h1&gt;
+  &lt;p class=&quot;sub&quot;&gt;Regime + two setups from the StratLab Swing Trading guide · {len(results)} of {len(WATCHLIST)} symbols scanned&lt;/p&gt;
+
+  &lt;div class=&quot;stats&quot;&gt;
+    &lt;div class=&quot;stat&quot;&gt;&lt;span class=&quot;num&quot;&gt;{n_up}&lt;/span&gt;&lt;span class=&quot;lbl&quot;&gt;uptrend&lt;/span&gt;&lt;/div&gt;
+    &lt;div class=&quot;stat&quot;&gt;&lt;span class=&quot;num&quot;&gt;{n_rng}&lt;/span&gt;&lt;span class=&quot;lbl&quot;&gt;range&lt;/span&gt;&lt;/div&gt;
+    &lt;div class=&quot;stat&quot;&gt;&lt;span class=&quot;num&quot;&gt;{n_dn}&lt;/span&gt;&lt;span class=&quot;lbl&quot;&gt;downtrend&lt;/span&gt;&lt;/div&gt;
+    &lt;div class=&quot;stat&quot;&gt;&lt;span class=&quot;num&quot;&gt;{n_pull}&lt;/span&gt;&lt;span class=&quot;lbl&quot;&gt;pullback setups&lt;/span&gt;&lt;/div&gt;
+    &lt;div class=&quot;stat&quot;&gt;&lt;span class=&quot;num&quot;&gt;{n_rsi2}&lt;/span&gt;&lt;span class=&quot;lbl&quot;&gt;oversold (RSI-2)&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;h2&gt;Pullback setup matches&lt;/h2&gt;
+  &lt;ul class=&quot;setup-list&quot;&gt;{pull_items}&lt;/ul&gt;
+
+  &lt;h2&gt;Oversold (RSI-2) matches&lt;/h2&gt;
+  &lt;ul class=&quot;setup-list&quot;&gt;{rsi2_items}&lt;/ul&gt;
+
+  &lt;h2&gt;All results (click a column to sort)&lt;/h2&gt;
+  &lt;table id=&quot;results&quot;&gt;
+    &lt;thead&gt;&lt;tr&gt;
+      &lt;th onclick=&quot;sortTable(0)&quot;&gt;Symbol&lt;/th&gt;
+      &lt;th onclick=&quot;sortTable(1)&quot;&gt;Close&lt;/th&gt;
+      &lt;th onclick=&quot;sortTable(2)&quot;&gt;Change&lt;/th&gt;
+      &lt;th onclick=&quot;sortTable(3)&quot;&gt;Regime&lt;/th&gt;
+      &lt;th onclick=&quot;sortTable(4)&quot;&gt;vs 20 EMA&lt;/th&gt;
+      &lt;th onclick=&quot;sortTable(5)&quot;&gt;RSI-2&lt;/th&gt;
+      &lt;th&gt;Setup&lt;/th&gt;
+    &lt;/tr&gt;&lt;/thead&gt;
+    &lt;tbody&gt;{rows_html}&lt;/tbody&gt;
+  &lt;/table&gt;
+
+  &lt;p class=&quot;disclaimer&quot;&gt;Educational content only — not investment advice. StratLab is not
+  registered with SEBI as an investment adviser, research analyst, or portfolio manager.
+  This screener surfaces setups that a swing-trading framework describes; it does not
+  recommend buying or selling any security. Historical observations are illustrative and
+  do not guarantee future results. Consult a SEBI-registered adviser where appropriate.&lt;/p&gt;
+&lt;/div&gt;
+&lt;script&gt;{SORT_JS}&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;&quot;&quot;&quot;
+
+
+def render_md(results):
+    &quot;&quot;&quot;Build the plain-text Markdown report.&quot;&quot;&quot;
+    from datetime import date
+
+    n = len(results)
+    n_up = sum(1 for r in results if r[&quot;regime&quot;] == &quot;UPTREND&quot;)
+    n_rng = sum(1 for r in results if r[&quot;regime&quot;] == &quot;RANGE&quot;)
+    n_dn = sum(1 for r in results if r[&quot;regime&quot;] == &quot;DOWNTREND&quot;)
+
+    pull = [r[&quot;symbol&quot;] for r in results if r[&quot;pullback&quot;]]
+    rsi2 = [r[&quot;symbol&quot;] for r in results if r[&quot;rsi2_setup&quot;]]
+
+    lines = [
+        &quot;# Swing Trading Screener — Report&quot;,
+        &quot;&quot;,
+        f&quot;Date: {date.today().isoformat()} · Universe: {n} symbols&quot;,
+        &quot;&quot;,
+        f&quot;- **Uptrend:** {n_up}&quot;,
+        f&quot;- **Range:** {n_rng}&quot;,
+        f&quot;- **Downtrend:** {n_dn}&quot;,
+        &quot;&quot;,
+        &quot;## Pullback setup matches&quot;,
+        &quot;&quot;,
+        &quot;- &quot; + (&quot;, &quot;.join(pull) if pull else &quot;None today&quot;),
+        &quot;&quot;,
+        &quot;## Oversold (RSI-2) matches&quot;,
+        &quot;&quot;,
+        &quot;- &quot; + (&quot;, &quot;.join(rsi2) if rsi2 else &quot;None today&quot;),
+        &quot;&quot;,
+        &quot;---&quot;,
+        &quot;&quot;,
+        &quot;Educational content only — not investment advice. StratLab is not SEBI-registered.&quot;,
+        &quot;&quot;,
+    ]
+    return &quot;\n&quot;.join(lines)
+
+
+# ----------------------------------------------------------------------------
+# 6. MAIN
+# ----------------------------------------------------------------------------
+
+def main():
+    results = []
+    failed = []
+
+    for symbol in WATCHLIST:
+        df = fetch(symbol)
+        if df is None:
+            failed.append(symbol)
+            continue
+        results.append(analyze(symbol, df))
+        time.sleep(0.4)  # small pause to be polite to the data source
+
+    results.sort(key=lambda r: r[&quot;symbol&quot;])
+
+    html_path = OUTPUT_DIR / &quot;swing_dashboard.html&quot;
+    md_path = OUTPUT_DIR / &quot;swing_report.md&quot;
+    html_path.write_text(render_html(results), encoding=&quot;utf-8&quot;)
+    md_path.write_text(render_md(results), encoding=&quot;utf-8&quot;)
+
+    print(f&quot;Scanned {len(results)} symbols.&quot;)
+    if failed:
+        print(f&quot;Skipped (no data): {', '.join(failed)}&quot;)
+    print(f&quot;Wrote {html_path.name}  (open this in a browser)&quot;)
+    print(f&quot;Wrote {md_path.name}&quot;)
+
+
+if __name__ == &quot;__main__&quot;:
+    main()
+</code></pre>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Likely cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>python3: command not found</code></td>
+<td>Python not installed, or not on PATH</td>
+<td>Install from python.org; on Windows tick "Add Python to PATH", then open a new terminal</td>
+</tr>
+<tr>
+<td><code>ModuleNotFoundError: No module named 'yfinance'</code></td>
+<td>Library not installed</td>
+<td>Run <code>python3 -m pip install yfinance pandas</code></td>
+</tr>
+<tr>
+<td>Most or all symbols print <code>no data, skipped</code></td>
+<td>No internet, or a proxy/VPN blocking Yahoo</td>
+<td>Check your connection; disable VPN and retry</td>
+</tr>
+<tr>
+<td>One specific symbol always skips</td>
+<td>Its ticker changed after a corporate action</td>
+<td>Look up the current NSE symbol and update <code>WATCHLIST</code> (the book's <code>TATAMOTORS</code> → <code>TMPV</code> is a real example)</td>
+</tr>
+<tr>
+<td><code>Wrote swing_dashboard.html</code> never appears</td>
+<td>The script stopped with an error before it reached the last step</td>
+<td>Read the last few lines of the error message (the traceback) — they name the problem, which is often one of the rows in this table</td>
+</tr>
+<tr>
+<td>Dashboard opens but has no styling</td>
+<td>Google Fonts blocked (offline)</td>
+<td>The page still works — it just falls back to system fonts</td>
+</tr>
+<tr>
+<td>The report shows today's date but the prices have not changed since your last run</td>
+<td>Ran on a weekend or NSE holiday</td>
+<td>Markets are closed Sat/Sun and on holidays; the program simply shows the last session's data</td>
+</tr>
+<tr>
+<td>Prices look wrong (no decimals, strange values)</td>
+<td>You changed <code>.NS</code> or <code>auto_adjust</code></td>
+<td>Keep the <code>.NS</code> suffix and <code>auto_adjust=False</code> exactly as shown</td>
+</tr>
+</tbody>
+</table>
+<p>A final reminder that belongs in every appendix of every book in this library: this is education, not advice. The screener is a way to practise turning a framework's rules into code — and the moment it feels like more than that, you are reading it too literally.</p>
+<hr /></body></html>

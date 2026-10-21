@@ -1,0 +1,304 @@
+<!DOCTYPE html><html><head><meta charset='utf-8'><style>
+* { box-sizing: border-box; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 11pt; line-height: 1.62; color: #1a1d21; margin: 0;
+}
+.cover {
+  height: 100vh; page-break-after: always;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 3cm 2.5cm; background: #0d1715; color: #e8f0ee;
+}
+.cover .rule { width: 64px; height: 4px; background: #2dd4bf; margin-bottom: 2.2rem; }
+.cover h1 { font-size: 38pt; line-height: 1.08; font-weight: 600; color: #fff; margin: 0 0 1.4rem; letter-spacing: -0.5px; }
+.cover .subtitle { font-size: 15pt; color: #9fb5ae; line-height: 1.5; max-width: 34em; }
+.cover .pub { margin-top: 3rem; font-size: 11pt; letter-spacing: 0.14em; text-transform: uppercase; color: #2dd4bf; }
+.cover .ednote { margin-top: 0.6rem; font-size: 9pt; color: #6c817b; }
+h1 { font-size: 23pt; font-weight: 600; color: #0f172a; page-break-before: always; margin: 0 0 1.1rem; padding-bottom: 0.4rem; border-bottom: 2px solid #2dd4bf; }
+h2 { font-size: 15.5pt; font-weight: 600; color: #0f766e; margin: 1.6rem 0 0.6rem; }
+h3 { font-size: 12.5pt; font-weight: 600; color: #1a1d21; margin: 1.2rem 0 0.4rem; }
+p { margin: 0.5rem 0; }
+strong { color: #0f172a; }
+em { color: #334155; }
+a { color: #0f766e; text-decoration: none; }
+hr { border: none; border-top: 1px solid #e2e8f0; margin: 2rem 0; }
+ul, ol { margin: 0.5rem 0 0.8rem; padding-left: 1.5rem; }
+li { margin: 0.25rem 0; }
+code { font-family: 'SF Mono', Menlo, Consolas, monospace; font-size: 9pt; background: #f1f5f9; padding: 1px 5px; border-radius: 3px; color: #0f766e; }
+pre { background: #0f172a; color: #e2e8f0; padding: 0.9rem 1.1rem; border-radius: 6px; font-size: 9pt; line-height: 1.5; white-space: pre-wrap; word-wrap: break-word; }
+pre code { background: none; color: inherit; padding: 0; }
+blockquote { border-left: 3px solid #2dd4bf; background: #f0fdfa; margin: 0.8rem 0; padding: 0.7rem 1rem; color: #0f3d37; font-style: italic; border-radius: 0 4px 4px 0; }
+blockquote p { margin: 0.3rem 0; }
+table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: 9.5pt; page-break-inside: avoid; }
+th, td { border: 1px solid #dbe3e8; padding: 5px 8px; text-align: left; vertical-align: top; }
+th { background: #0f766e; color: #fff; font-weight: 600; }
+tr:nth-child(even) td { background: #f8fafc; }
+h1:first-of-type { page-break-before: auto; }
+h2#important-disclaimer, h2#how-to-read-this-book, h2#table-of-contents { page-break-before: always; }
+</style></head><body><section class="cover"><div class="rule"></div><h1>Event & Earnings Trading on the NSE</h1><div class="subtitle">The Results Calendar, IV Crush, Gap Rules — and When Not to Play</div><div class="pub">Published by StratLab</div><div class="ednote">Educational content only — not investment advice. StratLab is not SEBI-registered.</div></section><h1 id="event-earnings-trading-on-the-nse">Event &amp; Earnings Trading on the NSE</h1>
+<h2 id="the-results-calendar-iv-crush-gap-rules-and-when-not-to-play">The Results Calendar, IV Crush, Gap Rules — and When Not to Play</h2>
+<hr />
+<p><strong>Published by StratLab</strong></p>
+<hr />
+<p><strong>A practical reference for trading scheduled catalysts in the Indian market.</strong></p>
+<hr />
+<blockquote>
+<p><strong>Disclaimer.</strong> This book is for <strong>education only</strong>. It is not investment advice, not a recommendation to buy or sell any security, and the author is not a SEBI-registered investment adviser. Trading around events and earnings involves substantial risk — gaps, slippage, and volatility can produce losses far beyond expectations. Historical "gap fill" and volatility patterns are tendencies, not guarantees. Filing deadlines, circuit limits and exchange rules change: confirm current rules with SEBI and the NSE/BSE.</p>
+</blockquote>
+<hr />
+<h2 id="important-disclaimer">Important Disclaimer</h2>
+<p>This book is provided for <strong>educational purposes only</strong>. It is not investment advice, a recommendation, or a solicitation to buy or sell any security.</p>
+<ul>
+<li><strong>StratLab is not registered with SEBI</strong> as an investment adviser, research analyst, or portfolio manager, and does not provide investment advisory services.</li>
+<li>Trading involves substantial risk of loss and is not suitable for everyone. You can lose part or all of your trading capital.</li>
+<li>All examples, figures, and historical observations are illustrative. Historical performance never guarantees future results. Strategies described here have worked <em>historically</em> in certain conditions; that does not mean they will work in the future or in your specific situation.</li>
+<li>Margin, taxes (STT, stamp duty), brokerage, and other regulatory details change over time. Always verify current rules and costs before trading.</li>
+<li>Nothing in this book should be read as a promise of profit or a guarantee that any strategy will be profitable.</li>
+</ul>
+<p>By reading this book, you agree that you are solely responsible for your own trading decisions and that you will consult a SEBI-registered adviser where appropriate.</p>
+<hr />
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li>What Event Trading Is</li>
+<li>The Earnings Calendar</li>
+<li>Other Scheduled Events</li>
+<li>Implied Volatility and the Crush</li>
+<li>Trading the Crush</li>
+<li>What a Gap Is</li>
+<li>Gap Rules and Tendencies</li>
+<li>The Don't-Play List</li>
+<li>The Decision Framework</li>
+</ol>
+<p>Glossary</p>
+<hr />
+<h1 id="1-what-event-trading-is">1. What Event Trading Is</h1>
+<p><em>Part I — Events and the Calendar</em></p>
+<p>Most of the time, a stock's price moves on a mix of flows, sentiment and slow fundamentals. But around <strong>scheduled events</strong> — an earnings release, a budget, a policy decision, an index rebalance — the market is forced to <em>reprice</em> the stock all at once. Event trading is the discipline of positioning (or deliberately <em>not</em> positioning) around those repricing moments.</p>
+<h2 id="the-two-faces-of-an-event">The two faces of an event</h2>
+<ul>
+<li><strong>The known date, unknown outcome.</strong> The event is on the calendar, so everyone knows <em>when</em> it happens — but not <em>what</em> it will say. Uncertainty about the <em>outcome</em> is what inflates the option premiums ahead of it.</li>
+<li><strong>The priced vs the surprise.</strong> The market does not react to the number; it reacts to the number <em>relative to expectations</em>. A "great" result can still fall if it was already priced in; a "bad" one can rally if it beats a low bar. The edge in event trading is almost never the headline — it is the <em>gap between the outcome and the expectation</em>.</li>
+</ul>
+<h2 id="the-core-idea">The core idea</h2>
+<p>Scheduled events are <strong>the one time the market telegraphs its uncertainty in advance</strong> — in the form of elevated implied volatility and wider bid-ask spreads. The entire art of event trading is deciding, before the event, whether that elevated uncertainty is an opportunity (to sell it, to buy it cheaply) or a trap (to be avoided).</p>
+<h1 id="2-the-earnings-calendar">2. The Earnings Calendar</h1>
+<p>Earnings (quarterly results) are the most frequent and most tradeable events on the NSE.</p>
+<h2 id="how-the-indian-results-season-works">How the Indian results season works</h2>
+<ul>
+<li><strong>The rhythm.</strong> Indian companies report on a financial year ending March. The results seasons are roughly: <strong>Apr–May</strong> (Q4 and full-year), <strong>Jul–Aug</strong> (Q1), <strong>Oct–Nov</strong> (Q2), and <strong>Jan–Feb</strong> (Q3). Each season runs about six to eight weeks, with a heavy concentration of large-caps first, then the mid- and small-caps.</li>
+<li><strong>The filing deadline.</strong> Under SEBI's Listing Obligations and Disclosure Requirements (LODR), companies must publish their <strong>quarterly results within 45 days of the quarter-end</strong> (60 days for the fourth-quarter / annual audited results). This deadline is what compresses the season and creates the "results rush."</li>
+<li><strong>Advance intimation.</strong> Listed companies must give <strong>prior notice</strong> of the board meeting where results will be approved. This means the <em>date</em> of most results is known days in advance — you can build a calendar.</li>
+</ul>
+<h2 id="building-your-results-calendar">Building your results calendar</h2>
+<ol>
+<li><strong>Watch the exchange announcements.</strong> NSE and BSE publish board-meeting intimations; these are the primary source of the calendar. (NSE: https://www.nseindia.com; BSE: https://www.bseindia.com.)</li>
+<li><strong>Use an aggregator.</strong> Screener and market-data platforms maintain results calendars:
+   - <strong>Screener.in</strong> — company financials and results history: https://www.screener.in
+   - <strong>Moneycontrol</strong> — results calendar and dates: https://www.moneycontrol.com
+   - <strong>Trendlyne</strong> — results calendar and estimate trackers: https://trendlyne.com</li>
+<li><strong>Note the time.</strong> Results are typically released <strong>after market close or during market hours</strong>. India has no results-related trading halt, so results released intraday reprice the stock the instant the numbers reach the exchange (within its price band, if it has one). Know the convention for the specific stock.</li>
+</ol>
+<h2 id="what-the-market-actually-cares-about">What the market actually cares about</h2>
+<p>The headline profit is not the whole story. Around an Indian earnings print, the market re-prices the stock on:</p>
+<ul>
+<li><strong>Revenue / profit vs expectations</strong> — the top-line and bottom-line <em>surprise</em>.</li>
+<li><strong>Margins</strong> (gross/operating) — the quality of the beat or miss.</li>
+<li><strong>Management commentary and guidance</strong> — often moves the stock more than the numbers themselves.</li>
+<li><strong>Segment and one-off details</strong> — the composition of the number (e.g., a tax write-back inflating profit).</li>
+</ul>
+<p><strong>How to read:</strong> always compare the result to the <em>consensus or prior trend</em>, not to the absolute. A company growing 15% when the market expected 20% is a <em>miss</em>; one growing 5% against a 2% expectation is a <em>beat</em>. The expectation, not the number, is the trade.</p>
+<h1 id="3-other-scheduled-events">3. Other Scheduled Events</h1>
+<p>Earnings are only one kind of catalyst. The Indian calendar has several recurring, market-moving events:</p>
+<table>
+<thead>
+<tr>
+<th>Event</th>
+<th>What it is</th>
+<th>Typical frequency</th>
+<th>Impact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>RBI Monetary Policy</strong></td>
+<td>Repo rate and stance decision</td>
+<td>~bi-monthly</td>
+<td>Broad market, rate-sensitives (banks, NBFCs, autos, realty)</td>
+</tr>
+<tr>
+<td><strong>Union Budget</strong></td>
+<td>Fiscal policy, taxes, sector allocations</td>
+<td>Annual (Feb)</td>
+<td>Broad; sector-specific winners/losers</td>
+</tr>
+<tr>
+<td><strong>Index rebalancing</strong></td>
+<td>Nifty/other index constituent changes (semi-annual)</td>
+<td>Twice yearly</td>
+<td>Heavy flows into/out of the affected names</td>
+</tr>
+<tr>
+<td><strong>Corporate actions</strong></td>
+<td>Dividends, bonuses, splits, buybacks, rights</td>
+<td>Ongoing</td>
+<td>Price adjustments and ex-date effects</td>
+</tr>
+<tr>
+<td><strong>M&amp;A / deals</strong></td>
+<td>Acquisitions, mergers, demergers</td>
+<td>Ongoing</td>
+<td>Large, stock-specific repricing</td>
+</tr>
+<tr>
+<td><strong>Regulatory decisions</strong></td>
+<td>SEBI rules, court rulings, sector policy</td>
+<td>Ongoing</td>
+<td>Sector-specific</td>
+</tr>
+</tbody>
+</table>
+<h2 id="how-to-think-about-them">How to think about them</h2>
+<ul>
+<li><strong>Macro events (budget, RBI)</strong> are <em>index-level</em> catalysts: they move everything and are usually approached via index options or broad positioning, not single-stock bets.</li>
+<li><strong>Stock-specific events (earnings, M&amp;A, actions)</strong> are where single-name event trades live.</li>
+<li><strong>Index rebalancing</strong> is a <em>known, dated, mechanical</em> flow: funds tracking an index must buy the entrants and sell the deletions at the effective date. The market often positions days ahead, so the "obvious" trade is frequently already priced.</li>
+</ul>
+<h1 id="4-implied-volatility-and-the-crush">4. Implied Volatility and the Crush</h1>
+<p><em>Part II — IV Crush</em></p>
+<h2 id="what-implied-volatility-is">What implied volatility is</h2>
+<p><strong>Implied volatility (IV)</strong> is the market's expectation of future price movement, <em>priced into an option's premium</em>. It is not realised volatility (what actually happens); it is what the option market is <em>charging</em> for the risk of what might happen. When an event is approaching, IV rises — the options get more expensive because the market knows a repricing is coming.</p>
+<h2 id="the-crush">The crush</h2>
+<p>After the event, the uncertainty resolves. The result — whatever it is — is now known, and the <em>reason for the elevated premium is gone</em>. <strong>Implied volatility collapses, and option premiums fall even if the underlying price barely moves.</strong> This is the <strong>IV crush</strong>.</p>
+<p><strong>The core asymmetry:</strong></p>
+<ul>
+<li>A trader who <strong>buys</strong> a straddle before earnings is <em>long vega</em>: they paid an inflated premium, and after the event they lose the crush on <em>both</em> legs. The stock must move <em>more</em> than the inflated premium implied, or the trade loses even if the stock moves.</li>
+<li>A trader who <strong>sells</strong> premium before earnings is <em>short vega</em>: they collect the inflated premium, and after the event they <em>profit from the crush</em> — but they carry the risk of a huge move against them.</li>
+</ul>
+<h2 id="why-the-crush-matters-more-than-the-direction">Why the crush matters more than the direction</h2>
+<p>The most common and painful error in event trading is buying a straddle "because earnings is coming and it will move", and then losing on a <em>correct directional call</em> — the stock moved, but not <em>enough</em> to overcome the premium that the crush then destroyed. Before any event trade, you must ask: <strong>"How much does the market already expect this to move?"</strong> The premium tells you. If the market has already priced in a 6% move and you think the stock moves 4%, you are on the wrong side of the crush whether you realise it or not.</p>
+<h2 id="how-to-read-iv-around-events">How to read IV around events</h2>
+<ul>
+<li><strong>IV rises into the event</strong> (the run-up) and <strong>collapses after</strong> (the crush). The shape is the classic "IV ramp."</li>
+<li>The <strong>expected move</strong> is encoded in the at-the-money straddle price: <code>ATM straddle price ÷ underlying</code> approximates the market's implied move. As a rule of thumb, the straddle is about 0.8× the one-standard-deviation (1σ) move, so 1σ ≈ 1.25 × the straddle. Compare that to your own estimate of the likely move.</li>
+<li><strong>Compare IV to its own history</strong> (IV rank/percentile): an event with IV already at a multi-year high is a different proposition from one with IV near its lows.</li>
+</ul>
+<h1 id="5-trading-the-crush">5. Trading the Crush</h1>
+<h2 id="the-two-sides-and-their-trade-offs">The two sides, and their trade-offs</h2>
+<p><strong>Selling premium (short vega):</strong></p>
+<ul>
+<li><strong>Pros:</strong> you collect inflated premium; the crush works for you; time decay works for you.</li>
+<li><strong>Cons:</strong> a genuine surprise (a 10% gap on a stock priced for 4%) can hurt far more than the premium collected. This is undefined or wide-defined risk.</li>
+<li><strong>Suits:</strong> range-bound expectations and high IV, using only a defined-risk structure — an iron condor (see <em>Options Trading Adjustments</em>), sized small. A short strangle is undefined risk and does not belong here. <em>Options Trading Adjustments</em> cautions against holding short premium through a known event; selling the crush is the deliberate exception — it knowingly accepts the gap risk in exchange for the crush, which is exactly why the risk must be defined and the size small.</li>
+</ul>
+<p><strong>Buying premium (long vega):</strong></p>
+<ul>
+<li><strong>Pros:</strong> defined risk; a big surprise pays disproportionately.</li>
+<li><strong>Cons:</strong> you are fighting the crush — you must be <em>right about magnitude</em>, not just direction.</li>
+<li><strong>Suits:</strong> a specific, under-priced catalyst where you expect a move <em>larger</em> than the implied move.</li>
+</ul>
+<h2 id="the-decision-that-makes-or-breaks-an-event-trade">The decision that makes or breaks an event trade</h2>
+<blockquote>
+<p><strong>Only buy premium when your expected move is <em>larger</em> than the implied move; only sell premium when the implied move is <em>larger</em> than you believe the move will be.</strong></p>
+</blockquote>
+<p>This single comparison — <strong>your move estimate vs the market's implied move</strong> — is the entire edge in IV trading. If you have no view on the <em>size</em> of the move, you have no event trade; the premium is already efficiently priced.</p>
+<h2 id="practical-notes-for-the-nse">Practical notes for the NSE</h2>
+<ul>
+<li><strong>Weekly-expiry options concentrate the crush</strong> into a short window: the event premium is largest in the near-dated options and collapses hardest. Since SEBI's November 2024 rules each exchange has only one weekly index expiry — currently Nifty on the NSE (Tuesday, moved from Thursday in September 2025) and Sensex on the BSE (Thursday); Bank Nifty and the other indices are monthly only, as are all single-stock options. Check the current weekly-expiry convention before trading weeklies (it has been revised by SEBI/NSE).</li>
+<li><strong>Liquidity thins into events</strong> in the far strikes; the bid-ask spread can be wider than the edge you are chasing. Always price the <em>spread</em>, not the mid.</li>
+<li><strong>Index events (budget, RBI)</strong> are often better approached with <strong>index</strong> options (deep and liquid) than with a basket of thin single-stock options.</li>
+</ul>
+<h1 id="6-what-a-gap-is">6. What a Gap Is</h1>
+<p><em>Part III — Gap Rules</em></p>
+<p>A <strong>gap</strong> is a discontinuity in price — the market opens (or trades) at a level away from the prior close, leaving a "hole" on the chart with no trades in between. Gaps are the physical signature of an event: the overnight (or sudden intraday) repricing that could not happen continuously.</p>
+<h2 id="the-four-types-of-gap">The four types of gap</h2>
+<ol>
+<li><strong>Common gap</strong> — small, inside a range, no news behind it; tends to fill quickly and mean little.</li>
+<li><strong>Breakaway gap</strong> — breaks a level on high volume, starting a new move; often the <em>beginning</em> of a trend.</li>
+<li><strong>Runaway (continuation) gap</strong> — occurs mid-trend, confirming momentum; often <em>not</em> filled until much later, if at all.</li>
+<li><strong>Exhaustion gap</strong> — a final, often wide gap near the end of a move; frequently <em>reversed</em> (filled) soon after.</li>
+</ol>
+<p><strong>How to read:</strong> the <em>type</em> of gap matters more than the gap itself. A breakaway gap is a signal to <em>join</em>; an exhaustion gap is a signal to be wary; a common gap is noise.</p>
+<h2 id="earnings-gaps-vs-ordinary-gaps">Earnings gaps vs ordinary gaps</h2>
+<p>Earnings gaps are special: they are driven by <strong>fundamental news</strong>, not just flow. A stock that gaps up 8% on a genuine earnings beat has been <em>re-valued</em>, not just re-flowed. This has two consequences:</p>
+<ul>
+<li>Earnings gaps are <strong>less likely to "fill" quickly</strong> — there is a fundamental reason for the new price.</li>
+<li>But a gap that reflects a <strong>misread</strong> (the market initially overreacts, then corrects) can reverse hard in the following days.</li>
+</ul>
+<h1 id="7-gap-rules-and-tendencies">7. Gap Rules and Tendencies</h1>
+<p>These are <strong>tendencies, not laws</strong> — they describe what has historically happened more often than not, and they fail regularly. Use them as context, not as a system.</p>
+<h2 id="the-gap-fill-tendency">The "gap fill" tendency</h2>
+<p>The most widely known gap rule: <em>many gaps get filled</em> — price returns to the pre-gap level at some point. This is strongest for <strong>common gaps</strong> and for <strong>morning gaps</strong> in liquid index futures that lack a fundamental driver.</p>
+<p><strong>How to read the fill tendency:</strong></p>
+<ul>
+<li><strong>Common/emotion gaps</strong> fill more often than <strong>fundamental (earnings) gaps</strong>.</li>
+<li>A gap <strong>filled on low volume</strong> is a weaker fill than one filled on high volume (which shows conviction behind the return to the old level).</li>
+<li><strong>Do not trade "gap fill" blindly.</strong> A breakaway gap on a real catalyst is exactly the gap that <em>does not</em> fill — chasing a fill there means fighting the new trend.</li>
+</ul>
+<h2 id="the-continuation-tendency">The continuation tendency</h2>
+<p>Gaps in the <strong>direction of the prevailing trend and catalyst</strong> tend to <strong>continue</strong> rather than fill — a bullish breakaway gap in an uptrend is more likely to be followed by further upside than by a fill.</p>
+<h2 id="the-half-gap-retracement-rule">The half-gap / retracement rule</h2>
+<p>A practical middle-ground used by many traders: the <strong>gap's midpoint</strong> (or a 50% retracement into the gap) is a level to watch. If a gap is going to fill, it often stalls or finds reaction around its midpoint first; if that midpoint holds as support/resistance, the gap may be a continuation, not a fill.</p>
+<h2 id="gaps-and-circuits-in-india">Gaps and circuits in India</h2>
+<ul>
+<li><strong>Circuit limits</strong> (price bands) apply to NSE stocks that are not in the F&amp;O segment — 2%, 5%, 10% or 20% either way, depending on the stock. <strong>Stocks with F&amp;O contracts have no fixed circuit</strong>, but they do have a dynamic price band (an operating range, initially 10%) that the exchange flexes as the price approaches it. A stock that opens at its circuit has "gapped" to its limit and may be frozen there if one-sided orders persist.</li>
+<li><strong>F&amp;O stocks</strong> therefore have no fixed cap on an event gap, so their gaps can be larger. Index constituents that are <em>not</em> in the F&amp;O segment still carry ordinary price bands.</li>
+<li><strong>Know the circuit</strong> for the specific stock before an event — it changes how much a gap <em>can</em> happen and how (or whether) you can exit.</li>
+</ul>
+<h2 id="a-gap-checklist">A gap checklist</h2>
+<ul>
+<li><strong>Classify the gap</strong> (common / breakaway / runaway / exhaustion) before acting.</li>
+<li><strong>Is there a fundamental driver?</strong> Earnings and deals gap <em>and revalue</em>; flow gaps <em>and revert</em>.</li>
+<li><strong>Where is the gap in the trend?</strong> Early-breakaway gaps continue; late-exhaustion gaps reverse.</li>
+<li><strong>What did volume do?</strong> High volume supports continuation; low volume supports fill.</li>
+<li><strong>Where is the midpoint?</strong> It is the first level to watch for reaction.</li>
+</ul>
+<h1 id="8-the-dont-play-list">8. The Don't-Play List</h1>
+<p><em>Part IV — When NOT to Play</em></p>
+<p>The most profitable "trade" in event trading is often the one you <strong>do not take</strong>. Events are seductive precisely because they <em>feel</em> like certain opportunities, and the biggest losses come from positions taken for excitement rather than edge.</p>
+<h2 id="when-to-stand-down">When to stand down</h2>
+<ul>
+<li><strong>No edge on the move size.</strong> If you cannot articulate whether the market's implied move is too high or too low <em>relative to your own estimate</em>, you have no edge. The premium is already efficiently priced; sitting out is correct.</li>
+<li><strong>Thin liquidity / wide spreads.</strong> In the run-up to an event, far-strike options and small stocks develop wide bid-ask spreads. If the spread is wider than your expected edge, the house (the market maker) takes your edge before you can.</li>
+<li><strong>Binary, unhedgeable outcomes.</strong> Court rulings, regulatory approvals, and M&amp;A verdicts are <em>binary</em> — the stock either doubles or halves, with no in-between. These are not trades; they are coin flips with a vig. Avoid unless the payoff is genuinely asymmetric and you can size it as a lottery ticket you can afford to lose.</li>
+<li><strong>Oversized risk for the thesis.</strong> A short-volatility position sized so that a normal surprise wipes out ten times the premium collected is not a strategy; it is a gamble. If you cannot survive the <em>worst plausible</em> gap, the position is too big.</li>
+<li><strong>Unclear or changing rules.</strong> If you do not know the exact results time, the circuit limit, the expiry convention, or the margin requirement for the instrument, you do not know the trade. Confirm the mechanics first, or pass.</li>
+<li><strong>Emotional momentum.</strong> "It always moves on results" or "I feel it will gap" is not a reason. If the trade is motivated by excitement rather than a measured move-size opinion, do not take it.</li>
+<li><strong>Trading the number you cannot predict.</strong> The headline P&amp;L is largely unpredictable and already gamed by expectations. If your "edge" is guessing whether the profit is slightly above or below consensus, you are playing a coin flip.</li>
+</ul>
+<h2 id="the-opportunity-cost-rule">The opportunity cost rule</h2>
+<p>Every event trade consumes <strong>capital, margin and attention</strong>. Ask: <em>is this the best use of all three right now?</em> If a boring, high-conviction setup in a liquid instrument is available, it is usually the better trade than a speculative event bet. Event trading should be the <em>exception</em>, sized small, and only when the edge is explicit.</p>
+<h1 id="9-the-decision-framework">9. The Decision Framework</h1>
+<p>For any event you are considering, run this checklist <strong>before</strong> the position:</p>
+<ol>
+<li><strong>What is the event, and when exactly does it hit?</strong> (Date, time, and the mechanics — circuit or price band, expiry.)</li>
+<li><strong>What is the market's implied move?</strong> Read it from the ATM straddle or the IV. Write it down.</li>
+<li><strong>What is <em>my</em> expected move, and why?</strong> If you cannot state a number and a reason, stop — there is no trade.</li>
+<li><strong>Which side of the crush am I on?</strong> Selling (short vega) or buying (long vega)? Is that consistent with my move estimate?</li>
+<li><strong>What is the worst plausible outcome?</strong> Can the position survive it? If not, size down or pass.</li>
+<li><strong>Is the instrument liquid, and do I know its rules?</strong> Spreads, circuit, expiry, margin — all confirmed?</li>
+<li><strong>Is this the best use of my capital right now?</strong> If not, pass.</li>
+</ol>
+<h2 id="the-one-page-summary">The one-page summary</h2>
+<ul>
+<li><strong>Know the calendar:</strong> results (45-day LODR deadline; 60 days for Q4), RBI policy, budget, rebalances.</li>
+<li><strong>Compare moves:</strong> your expected move vs the market's implied move — this is the whole edge.</li>
+<li><strong>Respect the crush:</strong> buyers of premium must beat it; sellers must survive the surprise.</li>
+<li><strong>Read the gap type:</strong> breakaway continues, exhaustion reverses, common fills.</li>
+<li><strong>Stand down when:</strong> no move-size edge, thin liquidity, binary outcomes, oversized risk, unclear rules, or emotional momentum.</li>
+</ul>
+<h1 id="glossary">Glossary</h1>
+<p><strong>Breakaway gap</strong> — a gap that breaks a level on volume and starts a new move.</p>
+<p><strong>Circuit limit</strong> — the maximum price band a stock may trade within a day (F&amp;O stocks have no fixed circuit, only a dynamic price band that the exchange flexes).</p>
+<p><strong>Common gap</strong> — a small gap inside a range with no news driver; tends to fill.</p>
+<p><strong>Expected move</strong> — the market's implied size of a move, encoded in the ATM straddle price.</p>
+<p><strong>Exhaustion gap</strong> — a wide gap near the end of a move, often reversed.</p>
+<p><strong>Gap</strong> — a price discontinuity with no trades in between.</p>
+<p><strong>Gap fill</strong> — price returning to the pre-gap level.</p>
+<p><strong>Implied volatility (IV)</strong> — the market's forward volatility expectation priced into options.</p>
+<p><strong>IV crush</strong> — the collapse in implied volatility (and option premium) after an event resolves.</p>
+<p><strong>IV rank / percentile</strong> — where current IV sits relative to its own history.</p>
+<p><strong>Long / short vega</strong> — profiting from a rise / fall in implied volatility.</p>
+<p><strong>Results season</strong> — the concentrated period when most companies report quarterly results.</p>
+<p><strong>Runaway (continuation) gap</strong> — a gap mid-trend confirming momentum.</p>
+<p><strong>Vega</strong> — an option's sensitivity to changes in implied volatility.</p></body></html>

@@ -1,6 +1,6 @@
 # StratLab Trading Library
 
-> Free, open-source reference books on Indian (NSE) markets: options, momentum, swing trading, techno-funda investing, quant trading, risk management, chart types, TradingView, systematic trading frameworks, and an industry-wise fundamentals KPI handbook. Educational only — not investment advice; StratLab is not SEBI-registered. Content is AI-drafted and human-reviewed, not exhaustively fact-checked — verify specific numbers, formulas, and citations before relying on them. See /README.md for the full disclaimer and a log of corrections made during review.
+> Free-to-read reference books on Indian (NSE) markets: options, option-chain analysis and adjustments, event trading, momentum, swing trading, price action, relative strength and breadth, stock selection, techno-funda investing, quant trading, risk management, chart types, TradingView and Screener.in, systematic trading frameworks, and an industry-wise fundamentals KPI handbook. Educational only — not investment advice; StratLab is not SEBI-registered. Content is AI-drafted and human-reviewed, not exhaustively fact-checked — verify specific numbers, formulas, and citations before relying on them. Four original books are CC BY 4.0; all others are © StratLab, free to read but not to redistribute — see /LICENSE.md. See /README.md for the full disclaimer and a log of corrections made during review.
 
 <!-- Links below assume this repo is published as github.com/ivrwealth-ui/trading-library. If it ends up under a different org/username, update every raw.githubusercontent.com/ivrwealth-ui/trading-library path in this file to match. -->
 
@@ -47,6 +47,42 @@
 ## KPI Handbook
 
 - [The Indian Stock Market KPI Handbook](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/KPI-Handbook/The-Indian-Stock-Market-KPI-Handbook.md): 32 chapters + appendix. Industry-wise operational KPIs for 29 Indian sectors (banks, NBFCs, insurance, IT, pharma, FMCG, autos, metals, cement, oil & gas, power, telecom, realty and more) — what each KPI means, how it is commonly read, indicative benchmarks, a healthy-profile-vs-red-flags checklist per industry, and where to source each number — plus a data-source directory, a master KPI table and a glossary. Describes how businesses operate; says nothing about valuation or what to buy.
+
+## Option Chain Analysis
+
+- [Option Chain Analysis](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Option-Chain-Analysis/Option-Chain-Analysis-Reading-Positioning-and-Building-Quant-Models-from-the-Chain.md): 14 + appendix chapters. Reading the option chain as data: open interest, put-call ratio, IV skew and term structure, max pain, dealer delta and gamma exposure, the implied distribution, the variance risk premium, expected move and implied support/resistance, combined into a composite model — with the pitfalls of each.
+
+## Options Trading Adjustments
+
+- [Options Trading Adjustments](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Options-Trading-Adjustments/Options-Trading-Adjustments.md): 12 + appendix chapters. Five common option structures on the NSE (covered call, bull call spread, iron condor, short strangle, long straddle) — how each behaves as the market moves, the adjustments traders use, and a decision framework, with payoff diagrams.
+
+## Event and Earnings Trading
+
+- [Event & Earnings Trading on the NSE](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Event-and-Earnings-Trading/Event-Earnings-Trading-on-the-NSE.md): 9 + appendix chapters. The Indian results calendar and other scheduled events, implied-volatility crush, gap behaviour, and a list of situations where events are better left alone.
+
+## Price Action
+
+- [Price Action Playbook for Nifty & Stocks](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Price-Action-Playbook/Price-Action-Playbook-for-Nifty-Stocks.md): 12 + appendix chapters. Market structure, auctions and the value area, balance and imbalance, levels, failed breakouts, continuation and reversal setups, and the Indian session clock (including NSE's closing auction).
+
+## Relative Strength and Breadth
+
+- [Relative Strength & Breadth for the NSE Market](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Relative-Strength-and-Breadth/Relative-Strength-Breadth-for-the-NSE-Market.md): 12 + appendix chapters. Computing relative strength against the index and peers, sector rotation, the core breadth indicators (A/D line, % above moving averages, new highs/lows, McClellan) and divergences, and a top-down breadth → sector → stock process.
+
+## Stock Selection
+
+- [The Indian Stock Selector's Playbook](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Stock-Selection-Methods/The-Indian-Stock-Selectors-Playbook.md): 10 + 4 appendices chapters. Three systematic stock-selection methods for the NSE — value, momentum and multi-factor — with portfolio construction, position sizing, backtesting and validation, Indian-market pitfalls, data sources and example screens.
+
+## Screener.in Masterclass
+
+- [Screener.in Masterclass](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Screener-in-Masterclass/Screenerin-Masterclass-The-Complete-Guide-to-Indias-Fundamental-Research-Tool.md): 10 + appendix chapters. Using Screener.in for fundamental research: reading a company page, writing screen queries, the ratios that matter, shareholding and peers, long-term growth and valuation, custom ratios and exports.
+
+## TradingView Screeners
+
+- [TradingView Screeners with Pine Script v6](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/TradingView-Screeners/TradingView-Screeners-with-Pine-Script-v6-Recognised-Strategy-Scanners-Fully-Coded.md): 12 + appendix chapters. Eight scanners written in Pine Script v6 for TradingView's Pine Screener — valuation, earnings power, momentum, stage analysis, outperformance, price contraction, Dow Theory and multi-timeframe trend — plus a consolidated 0–8 score script (`consolidated-8-factor-screener.pine`).
+
+## Swing Screener in Python
+
+- [Build Your Own Swing Trading Screener](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Swing-Screener-Guide/Build-Your-Own-Swing-Trading-Screener.md): 10 + appendix chapters. A beginner's Python project: download NIFTY 50 prices, compute moving averages and RSI, detect the trend regime, flag pullback and RSI-2 setups, and write a daily HTML report — with the full program (`screener.py`).
 
 ## Optional
 

@@ -1,0 +1,803 @@
+<!DOCTYPE html><html><head><meta charset='utf-8'><style>
+* { box-sizing: border-box; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 11pt; line-height: 1.62; color: #1a1d21; margin: 0;
+}
+.cover {
+  height: 100vh; page-break-after: always;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 3cm 2.5cm; background: #0d1715; color: #e8f0ee;
+}
+.cover .rule { width: 64px; height: 4px; background: #2dd4bf; margin-bottom: 2.2rem; }
+.cover h1 { font-size: 38pt; line-height: 1.08; font-weight: 600; color: #fff; margin: 0 0 1.4rem; letter-spacing: -0.5px; }
+.cover .subtitle { font-size: 15pt; color: #9fb5ae; line-height: 1.5; max-width: 34em; }
+.cover .pub { margin-top: 3rem; font-size: 11pt; letter-spacing: 0.14em; text-transform: uppercase; color: #2dd4bf; }
+.cover .ednote { margin-top: 0.6rem; font-size: 9pt; color: #6c817b; }
+h1 { font-size: 23pt; font-weight: 600; color: #0f172a; page-break-before: always; margin: 0 0 1.1rem; padding-bottom: 0.4rem; border-bottom: 2px solid #2dd4bf; }
+h2 { font-size: 15.5pt; font-weight: 600; color: #0f766e; margin: 1.6rem 0 0.6rem; }
+h3 { font-size: 12.5pt; font-weight: 600; color: #1a1d21; margin: 1.2rem 0 0.4rem; }
+p { margin: 0.5rem 0; }
+strong { color: #0f172a; }
+em { color: #334155; }
+a { color: #0f766e; text-decoration: none; }
+hr { border: none; border-top: 1px solid #e2e8f0; margin: 2rem 0; }
+ul, ol { margin: 0.5rem 0 0.8rem; padding-left: 1.5rem; }
+li { margin: 0.25rem 0; }
+code { font-family: 'SF Mono', Menlo, Consolas, monospace; font-size: 9pt; background: #f1f5f9; padding: 1px 5px; border-radius: 3px; color: #0f766e; }
+pre { background: #0f172a; color: #e2e8f0; padding: 0.9rem 1.1rem; border-radius: 6px; font-size: 9pt; line-height: 1.5; white-space: pre-wrap; word-wrap: break-word; }
+pre code { background: none; color: inherit; padding: 0; }
+blockquote { border-left: 3px solid #2dd4bf; background: #f0fdfa; margin: 0.8rem 0; padding: 0.7rem 1rem; color: #0f3d37; font-style: italic; border-radius: 0 4px 4px 0; }
+blockquote p { margin: 0.3rem 0; }
+table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: 9.5pt; page-break-inside: avoid; }
+th, td { border: 1px solid #dbe3e8; padding: 5px 8px; text-align: left; vertical-align: top; }
+th { background: #0f766e; color: #fff; font-weight: 600; }
+tr:nth-child(even) td { background: #f8fafc; }
+h1:first-of-type { page-break-before: auto; }
+h2#important-disclaimer, h2#how-to-read-this-book, h2#table-of-contents { page-break-before: always; }
+</style></head><body><section class="cover"><div class="rule"></div><h1>Screener.in Masterclass: The Complete Guide to India's Fundamental Research Tool</h1><div class="subtitle">A full walkthrough of Screener.in's structure and features — the screener table, the query builder, the company page, ratios, shareholding, peers, and custom screens — with an education-only disclaimer.</div><div class="pub">Published by StratLab</div><div class="ednote">Educational content only — not investment advice. StratLab is not SEBI-registered.</div></section><h1 id="screenerin-masterclass-the-complete-guide-to-indias-fundamental-research-tool">Screener.in Masterclass: The Complete Guide to India's Fundamental Research Tool</h1>
+<h2 id="a-full-walkthrough-of-screenerins-structure-and-features-the-screener-table-the-query-builder-the-company-page-ratios-shareholding-peers-and-custom-screens-with-an-education-only-disclaimer">A full walkthrough of Screener.in's structure and features — the screener table, the query builder, the company page, ratios, shareholding, peers, and custom screens — with an education-only disclaimer.</h2>
+<hr />
+<p><strong>Published by StratLab</strong></p>
+<hr />
+<h2 id="important-disclaimer">Important Disclaimer</h2>
+<p>This book is provided for <strong>educational purposes only</strong>. It is not investment advice, a recommendation, or a solicitation to buy or sell any security.</p>
+<ul>
+<li><strong>StratLab is not registered with SEBI</strong> as an investment adviser, research analyst, or portfolio manager, and does not provide investment advisory services.</li>
+<li>Investing involves risk of loss, including the possible loss of principal. Past performance never guarantees future results.</li>
+<li>All examples, figures, and screen criteria are illustrative. A screen is a <em>filter</em>, not a recommendation — every result must be independently analysed before any decision.</li>
+<li><strong>Screener.in is a third-party website operated by Mittal Analytics Private Limited. This book is not affiliated with, endorsed by, or sponsored by Screener.in.</strong> Its features, interface, subscription tiers, and data may change at any time; verify current behaviour on the site.</li>
+<li>Nothing in this book should be read as a promise of return or a guarantee that any screen will identify profitable investments.</li>
+</ul>
+<p>By reading this book, you agree that you are solely responsible for your own investment decisions and that you will consult a SEBI-registered adviser where appropriate.</p>
+<hr />
+<h2 id="how-to-read-this-book">How to Read This Book</h2>
+<p>This book is a <strong>masterclass on Screener.in</strong>, one of the most widely used fundamental-research tools for Indian equities. It explains the tool's <em>structure</em> (how the pieces fit together) and its <em>features</em> (what each piece lets you do), and it teaches you to use the whole thing systematically.</p>
+<ul>
+<li><strong>Chapters 1–2</strong> orient you: what Screener.in is, and how its main areas are organised.</li>
+<li><strong>Chapters 3–4</strong> cover the two core workflows — the <strong>screener table</strong> and the <strong>query builder</strong> — which is where most of the tool's power lives.</li>
+<li><strong>Chapters 5–8</strong> walk the <strong>company page</strong> end to end: the financials, the ratios, the shareholding pattern, the peer comparison, and the long-term growth and valuation view.</li>
+<li><strong>Chapters 9–10</strong> turn it into a repeatable process: building your own techno-funda screens, custom ratios, and exporting for deeper analysis.</li>
+<li>The <strong>appendix</strong> is a query-syntax reference and a set of example screens.</li>
+</ul>
+<p>A note on language: this book describes what the tool <em>shows</em> and how to use it — never what you "should" buy. Screens shortlist; you decide.</p>
+<hr />
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li>What Is Screener.in?</li>
+<li>Navigating the Structure</li>
+<li>The Screener Table and Columns</li>
+<li>The Query Builder: Syntax and Power</li>
+<li>The Company Page: Overview and Financials</li>
+<li>Ratios and How to Read Them</li>
+<li>Shareholding Pattern, Pledge, and Peers</li>
+<li>Growth, Valuation, and the Long-Term View</li>
+<li>Building Your Own Techno-Funda Screens</li>
+<li>Custom Ratios, Export, and Advanced Tips</li>
+</ol>
+<p>Appendix — Query Reference and Example Screens</p>
+<hr />
+<h1 id="1-what-is-screenerin">1. What Is Screener.in?</h1>
+<h2 id="indias-fundamental-research-workbench">India's fundamental-research workbench</h2>
+<p><strong>Screener.in</strong> is a free (with paid upgrades) website that provides <strong>financial data on listed Indian companies</strong>, designed to answer one question efficiently: <em>"is this a good business, and what is it worth?"</em> It is, for the Indian retail investor, the closest thing to a professional research terminal for <em>fundamentals</em>.</p>
+<p>It matters for a simple reason: <strong>fundamental research is data work, and Screener.in organises that data</strong> so you do not have to dig through exchange filings and annual reports one company at a time.</p>
+<h2 id="what-it-gives-you">What it gives you</h2>
+<p>Screener.in's value can be summarised in five capabilities:</p>
+<ol>
+<li><strong>Screening</strong> — filter the entire listed universe by financial criteria (market cap, P/E, ROE, growth, debt, and hundreds more) to produce a shortlist in seconds.</li>
+<li><strong>Company pages</strong> — for any listed company, a complete, organised view of its financials: profit &amp; loss, balance sheet, cash flow, ratios, quarterly results, shareholding pattern, and peers — for <strong>a decade or more</strong> of annual history, all in one place.</li>
+<li><strong>Query language</strong> — a simple but powerful way to write <em>your own</em> screens (e.g., "companies with ROCE &gt; 15% and debt-to-equity &lt; 0.5"), and to build <em>custom ratios</em>.</li>
+<li><strong>Peer comparison</strong> — side-by-side comparison of a company against its industry competitors.</li>
+<li><strong>Export</strong> — download the data to Excel/CSV to build your own models (DCF, projections, custom analysis).</li>
+</ol>
+<p>The whole tool is built around a single insight: <strong>most of fundamental analysis is <em>filtering</em> — and filtering is what a screen does better and faster than a human can.</strong></p>
+<h2 id="the-two-fundamental-workflows">The two fundamental workflows</h2>
+<p>Everything in Screener.in reduces to one of two movements:</p>
+<ol>
+<li><strong>Top-down (screening):</strong> start from the <em>whole market</em>, and use the screener/query builder to <em>narrow it down</em> to a shortlist of candidates. You go from thousands of companies to a handful that meet your criteria.</li>
+<li><strong>Bottom-up (company page):</strong> start from a <em>single company</em>, and use its page to <em>deep-dive</em> into its financials, ratios, and peers. You go from "what is this company?" to a complete, organised picture.</li>
+</ol>
+<p>The master uses both: screen to <em>find</em> candidates, then the company page to <em>vet</em> each one. This book teaches both movements, in that order.</p>
+<h2 id="what-screenerin-is-not">What Screener.in is not</h2>
+<p>Three honest boundaries, so you use it correctly:</p>
+<ol>
+<li><strong>It is a data tool, not an adviser.</strong> It presents financial data; it does not tell you what to buy, and its machine-generated observations ("Pros" and "Cons") are <em>summaries of the data</em>, not recommendations.</li>
+<li><strong>It is fundamentally oriented.</strong> Screener.in's strength is <em>fundamentals</em> (financial statements, ratios, shareholding). Its charts are basic; if you want deep technical analysis, that is a different tool (and a different book in this series).</li>
+<li><strong>Data has limits.</strong> Financial data is <em>historical</em> and <em>reported</em> — it can be restated, delayed, or (for some companies) incomplete. The tool shows you the data; it does not guarantee the data is the whole truth.</li>
+</ol>
+<h2 id="summary">Summary</h2>
+<ul>
+<li>Screener.in organises fundamental data for listed Indian companies, a decade or more deep.</li>
+<li>Five capabilities: screening, company pages, query language, peer comparison, export.</li>
+<li>Two workflows: top-down (screen to find) and bottom-up (company page to vet).</li>
+<li>It is a data tool, fundamentally oriented — not an adviser.</li>
+</ul>
+<p>Next: navigating the structure — how the tool's pieces fit together.</p>
+<h1 id="2-navigating-the-structure">2. Navigating the Structure</h1>
+<h2 id="the-map-before-the-journey">The map before the journey</h2>
+<p>Screener.in is simple enough that most people <em>skip</em> learning its structure and never discover half of what it can do. This chapter is the map: the four main areas, what each is for, and how they connect.</p>
+<h2 id="the-four-main-areas">The four main areas</h2>
+<ol>
+<li><strong>Home / search</strong> — the search bar where you look up a company by name or ticker.</li>
+<li><strong>Screens</strong> — the screening area, including the <strong>query builder</strong> ("Create a stock screen") and saved screens.</li>
+<li><strong>Company pages</strong> — the deep-dive page for a single company (the biggest and most important area).</li>
+<li><strong>Watchlists / saved screens</strong> — your personal lists of companies and queries (requires a free account).</li>
+</ol>
+<p>The mental model: <strong>search finds a company; screens find a shortlist; the company page analyses one company; watchlists hold what you are tracking.</strong></p>
+<h2 id="home-search">Home / search</h2>
+<p>The homepage is a single search box. Type a company name or ticker (e.g., "Asian Paints" or "RELIANCE") and it drops you onto that company's page. This is the <em>bottom-up</em> entry point: you already know <em>which</em> company, and you want its full picture.</p>
+<p>Below the search, the homepage also surfaces popular pre-made screens and your saved screens — a quick entry into the <em>top-down</em> workflow.</p>
+<h2 id="screens-the-screening-area">Screens (the screening area)</h2>
+<p>This is where the <em>top-down</em> workflow lives. It has two parts:</p>
+<ol>
+<li><strong>Pre-made screens</strong> — thousands of ready-made screens created by other users (and Screener.in itself), categorised by style (high ROE, low debt, small-cap, etc.). You can <em>run</em> any of them, and <em>modify</em> them to suit yourself.</li>
+<li><strong>Create a stock screen (the query builder)</strong> — a text box where you write your <em>own</em> query. This is the tool's most powerful feature, and the subject of Chapter 4.</li>
+</ol>
+<p>The screening area produces a <strong>table of companies</strong> (the "screener table", Chapter 3) matching your criteria, which you can sort, filter, and export.</p>
+<h2 id="the-company-page">The company page</h2>
+<p>The company page is the heart of the tool — a long, organised page for a single company, with these sections (roughly top to bottom):</p>
+<ul>
+<li><strong>Summary numbers</strong> — price, market cap, high/low, P/E, book value, dividend yield, ROCE, ROE — the "first impression" row, next to a short <strong>About</strong> note and curated <strong>Key Points</strong> on the business.</li>
+<li><strong>Charts</strong> — price and ratio charts over time.</li>
+<li><strong>Pros and Cons</strong> — machine-generated observations about the company's finances (e.g., "Company has been maintaining a healthy dividend payout").</li>
+<li><strong>Peer Comparison</strong> — the company side-by-side with its industry peers.</li>
+<li><strong>Financial statements</strong> — <strong>Quarterly Results</strong>, Profit &amp; Loss, Balance Sheet, and Cash Flow; the annual statements carry a decade or more of history, the quarterly results about three years.</li>
+<li><strong>Ratios</strong> — dozens of computed ratios (ROCE, ROE, growth, leverage, valuation), with trends.</li>
+<li><strong>Shareholding Pattern</strong> — promoter, FII, DII, public holdings, plus promoter pledge.</li>
+<li><strong>Documents</strong> — announcements, filings, and regulatory documents.</li>
+</ul>
+<p>The company page is covered in depth across Chapters 5–8.</p>
+<h2 id="watchlists-and-saved-screens">Watchlists and saved screens</h2>
+<p>With a free account, you can:</p>
+<ul>
+<li><strong>Save screens</strong> — so a query you like can be re-run in one click, and you can set <strong>email alerts</strong> when a new company enters the screen (at the time of writing the free plan allows two screen alerts; more need a paid plan).</li>
+<li><strong>Build watchlists</strong> — to track a set of companies you are researching.</li>
+</ul>
+<p>These are the "personal memory" of the tool — they make your research <em>repeatable</em>.</p>
+<h2 id="how-the-areas-connect">How the areas connect</h2>
+<p>The master's loop connects all four:</p>
+<ol>
+<li><strong>Screen</strong> (top-down) → get a shortlist.</li>
+<li><strong>Open each company page</strong> (bottom-up) → vet each candidate's financials, ratios, and peers.</li>
+<li><strong>Add the survivors to a watchlist</strong> → track them.</li>
+<li><strong>Re-run the saved screen periodically</strong> → keep the shortlist fresh.</li>
+</ol>
+<p>Everything else in this book is detail on top of that loop.</p>
+<h2 id="summary_1">Summary</h2>
+<ul>
+<li>Four areas: search, screens (with query builder), company pages, and watchlists/saved screens.</li>
+<li>Search = find one company; screens = find a shortlist; company page = analyse one; watchlists = track.</li>
+<li>The company page is the heart: summary, Pros and Cons, peers, financials, ratios, shareholding, documents.</li>
+<li>The loop: screen → vet → watchlist → re-screen.</li>
+</ul>
+<p>Next: the screener table and its columns.</p>
+<h1 id="3-the-screener-table-and-columns">3. The Screener Table and Columns</h1>
+<h2 id="the-spreadsheet-that-is-the-whole-market">The spreadsheet that is the whole market</h2>
+<p>When you run a screen, Screener.in returns a <strong>table</strong> — one row per company, one column per metric. This table is the entire listed market, viewed through whatever columns you choose. Understanding the table — and the columns — is the first half of mastering the tool.</p>
+<h2 id="reading-the-table">Reading the table</h2>
+<ul>
+<li><strong>Rows</strong> are companies (sorted however you choose).</li>
+<li><strong>Columns</strong> are financial metrics (market cap, P/E, ROCE, growth, debt, and so on).</li>
+<li><strong>Click any column header</strong> to <strong>sort</strong> by it — ascending or descending. This is arguably the single most-used action in the tool: sorting a screen by P/E to find the cheapest, or by ROCE to find the most profitable.</li>
+</ul>
+<p>The table is <em>interactive and instant</em>: change a filter in the query, and the table updates immediately; click a column, and the sort changes instantly. This responsiveness is what makes the tool feel powerful — you can iterate a screen in seconds.</p>
+<h2 id="choosing-columns-edit-columns">Choosing columns: "Edit columns"</h2>
+<p>The default table shows a standard set of columns, but the real power is in choosing <strong>your own</strong>. The "Edit Columns" button lets you add or remove any of hundreds of metrics, so the table shows <em>exactly</em> what your strategy cares about.</p>
+<p>For example, if your strategy is "high-ROCE, low-debt, growing companies", you might build a table with exactly these columns:</p>
+<ul>
+<li>Market Capitalization</li>
+<li>Price to Earning</li>
+<li>Return on Capital Employed (ROCE)</li>
+<li>Return on Equity (ROE)</li>
+<li>Debt to Equity</li>
+<li>Sales Growth 3Years</li>
+<li>Profit Growth 3Years</li>
+</ul>
+<p>Now the table <em>is</em> your strategy, and sorting by each column answers each part of it.</p>
+<h2 id="the-most-important-columns-grouped">The most important columns, grouped</h2>
+<p>The hundreds of columns fall into a few families. Knowing the families is more useful than memorising every column name:</p>
+<table>
+<thead>
+<tr>
+<th>Family</th>
+<th>Examples</th>
+<th>What it tells you</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Size &amp; price</strong></td>
+<td>Market Capitalization, Current Price, Book Value</td>
+<td>How big, how expensive in rupees</td>
+</tr>
+<tr>
+<td><strong>Valuation</strong></td>
+<td>Price to Earning, Price to Book, Dividend Yield, PEG</td>
+<td>Cheap or expensive</td>
+</tr>
+<tr>
+<td><strong>Profitability</strong></td>
+<td>ROCE, ROE, Operating Margin</td>
+<td>How efficiently it uses capital</td>
+</tr>
+<tr>
+<td><strong>Leverage</strong></td>
+<td>Debt to Equity, Interest Coverage, Current Ratio</td>
+<td>How safe the balance sheet is</td>
+</tr>
+<tr>
+<td><strong>Growth</strong></td>
+<td>Sales Growth (3Y/5Y), Profit Growth, EPS Growth</td>
+<td>How fast it is compounding</td>
+</tr>
+<tr>
+<td><strong>Ownership</strong></td>
+<td>Promoter Holding, FII, DII, Pledged %</td>
+<td>Who owns it, and any red flags</td>
+</tr>
+</tbody>
+</table>
+<p>The master's habit: <strong>never read a company as a single number — always read it across these families.</strong> A high ROE <em>with</em> high debt is a different business from a high ROE <em>with</em> low debt; the columns only make sense together.</p>
+<h2 id="custom-columns-custom-ratios">Custom columns (custom ratios)</h2>
+<p>Beyond the built-in columns, you can define <strong>your own columns</strong> — custom ratios computed from the data. Screener.in's plan comparison lists it as available on the free plan at the time of writing, and it is powerful: you can define, say, a "5-year average P/E" column (using the average of five years' earnings) that is not available by default, and then sort and filter on <em>it</em>.</p>
+<p>The syntax for a custom ratio uses simple arithmetic on the available metrics (Chapter 4 covers the operators; Chapter 10 goes deeper). This turns the table from "what the tool gives you" into "exactly what your strategy needs."</p>
+<h2 id="sorting-discipline">Sorting discipline</h2>
+<p>A final note on sorting, because it is where the table is most abused:</p>
+<ul>
+<li><strong>Sorting finds extremes, not truths.</strong> Sorting by P/E shows you the cheapest — and the cheapest are often cheap <em>for a reason</em> (a deteriorating business). Sorting by ROCE shows the most profitable — and the most profitable are often <em>expensive</em>.</li>
+<li><strong>The table answers "what?", not "why?".</strong> It tells you <em>which</em> companies meet a criterion; it does not tell you <em>why</em> a company is cheap or profitable. That answer is on the company page (next chapters).</li>
+</ul>
+<p>The table is for <em>finding candidates</em>; the company page is for <em>understanding them</em>. Keep the two jobs separate, and the tool works as intended.</p>
+<h2 id="summary_2">Summary</h2>
+<ul>
+<li>The screener table is the whole market as a sortable spreadsheet.</li>
+<li>Click columns to sort; use "Edit columns" to build a table that <em>is</em> your strategy.</li>
+<li>Columns fall into families: size, valuation, profitability, leverage, growth, ownership.</li>
+<li>Custom ratios turn the table into exactly what your strategy needs.</li>
+<li>The table finds candidates ("what"); the company page explains them ("why").</li>
+</ul>
+<p>Next: the query builder — the syntax and power of writing your own screens.</p>
+<h1 id="4-the-query-builder-syntax-and-power">4. The Query Builder: Syntax and Power</h1>
+<h2 id="the-tools-most-under-used-feature">The tool's most under-used feature</h2>
+<p>The <strong>query builder</strong> is the single most powerful feature on Screener.in — and the one most people never learn. It is a text box (under "Create a stock screen") where you write <em>your own</em> screening logic in a simple, English-like language. This chapter teaches the syntax, and how to use it to express a real investment philosophy.</p>
+<h2 id="the-basic-form">The basic form</h2>
+<p>A query is one or more conditions, each of the form:</p>
+<pre><code>Metric operator value
+</code></pre>
+<p>Conditions are joined with <code>AND</code> (or <code>OR</code>); putting each condition on its own line keeps a long query readable. For example:</p>
+<pre><code>Return on capital employed &gt; 20 AND
+Price to earning &lt; 15
+</code></pre>
+<p>Run it, and the table shows every company matching all the conditions.</p>
+<h2 id="the-operators">The operators</h2>
+<h3 id="comparison-operators">Comparison operators</h3>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Meaning</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&gt;</code></td>
+<td>greater than</td>
+<td><code>Sales growth &gt; 15</code></td>
+</tr>
+<tr>
+<td><code>&lt;</code></td>
+<td>less than</td>
+<td><code>Debt to equity &lt; 0.5</code></td>
+</tr>
+<tr>
+<td><code>&gt;=</code></td>
+<td>greater than or equal</td>
+<td><code>Return on equity &gt;= 20</code></td>
+</tr>
+<tr>
+<td><code>&lt;=</code></td>
+<td>less than or equal</td>
+<td><code>Price to earning &lt;= 25</code></td>
+</tr>
+<tr>
+<td><code>=</code></td>
+<td>equal to</td>
+<td><code>Promoter holding = 75</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="logical-operators">Logical operators</h3>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Meaning</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AND</code></td>
+<td>all conditions must be true</td>
+<td>Narrow the list</td>
+</tr>
+<tr>
+<td><code>OR</code></td>
+<td>at least one condition true</td>
+<td>Broaden the list</td>
+</tr>
+</tbody>
+</table>
+<p><code>AND</code> is the default way to build a screen — you stack criteria, and each one narrows the list. <code>OR</code> is for "either this or that" (e.g., high sales growth OR high profit growth).</p>
+<h3 id="arithmetic-operators-for-custom-ratios">Arithmetic operators (for custom ratios)</h3>
+<p>You can do arithmetic <em>inside</em> the query, which is how you create ratios that are not built in:</p>
+<ul>
+<li><code>+</code> addition, <code>-</code> subtraction, <code>*</code> multiplication, <code>/</code> division.</li>
+</ul>
+<p>For example:</p>
+<pre><code>Current price &lt; 1.5 * Book value
+</code></pre>
+<p>This finds companies trading below 1.5× book value — a custom condition expressed in one line, using the built-in <code>Current price</code> and <code>Book value</code> metrics.</p>
+<h2 id="the-metric-names">The metric names</h2>
+<p>Screener.in has hundreds of pre-computed metrics, and the query language uses their <strong>exact names</strong> (e.g., <code>Return on capital employed</code>, <code>Debt to equity</code>, <code>Sales growth 3Years</code>). The complete list is available via the "Show all Ratios" link below the query box. Ratio names can change over time, so pick them from that list rather than typing them from memory. The most useful names to know:</p>
+<ul>
+<li><strong>Size/price:</strong> <code>Market capitalization</code>, <code>Current price</code>, <code>Book value</code></li>
+<li><strong>Valuation:</strong> <code>Price to earning</code>, <code>Price to book value</code>, <code>Dividend yield</code>, <code>PEG Ratio</code></li>
+<li><strong>Profitability:</strong> <code>Return on capital employed</code>, <code>Return on equity</code>, <code>OPM</code> (operating profit margin)</li>
+<li><strong>Leverage:</strong> <code>Debt to equity</code>, <code>Interest Coverage Ratio</code>, <code>Current ratio</code></li>
+<li><strong>Growth:</strong> <code>Sales growth</code>, <code>Sales growth 3Years</code>, <code>Sales growth 5Years</code>, <code>Profit growth</code>, <code>Profit growth 3Years</code>, <code>Profit growth 5Years</code></li>
+<li><strong>Averages:</strong> <code>Average return on equity 5Years</code>, <code>Average return on capital employed 5Years</code></li>
+<li><strong>Ownership:</strong> <code>Promoter holding</code>, <code>Pledged percentage</code>, <code>Change in promoter holding</code></li>
+<li><strong>Cash flow:</strong> <code>Cash from operations last year</code>, <code>Free cash flow last year</code>, <code>Net cash flow last year</code></li>
+</ul>
+<p>The <code>5Years</code> / <code>3Years</code> suffixes and <code>Average … 5Years</code> forms are how you ask for <em>multi-year</em> and <em>smoothed</em> figures — which matters, because a single year's ROE is noisy; a 5-year average is a much better signal of a durable business.</p>
+<h2 id="building-a-screen-step-by-step">Building a screen, step by step</h2>
+<p>The master's approach to the query builder is <strong>incremental</strong>: start broad, add criteria one at a time, and watch the list shrink to a meaningful shortlist.</p>
+<p>Start with size (market cap in ₹ crore):</p>
+<pre><code>Market capitalization &gt; 1000 AND Market capitalization &lt; 5000
+</code></pre>
+<p>Add profitability:</p>
+<pre><code>... AND Return on capital employed &gt; 15
+</code></pre>
+<p>Add safety:</p>
+<pre><code>... AND Debt to equity &lt; 0.5
+</code></pre>
+<p>Add growth:</p>
+<pre><code>... AND Sales growth 3Years &gt; 10
+</code></pre>
+<p>The result — "small-caps with ROCE above 15%, low debt, and growing sales" — is a complete, testable investment criterion, written in four lines. Each <code>AND</code> narrows the list, and the table shows exactly which companies pass.</p>
+<h2 id="saving-and-re-running">Saving and re-running</h2>
+<p>Once you have a screen you like, <strong>save it</strong> (Screener.in's own guide calls the button "Save Your Query"; labels may differ). From then on it is one click to re-run, and you can set an <strong>email alert</strong> (free accounts get only a few) to be notified when a new company enters the screen. This is what turns a one-off search into a <em>system</em>: your screen becomes a permanent, self-updating shortlist.</p>
+<h2 id="the-honest-caveats">The honest caveats</h2>
+<ol>
+<li><strong>The screen is a filter, not a verdict.</strong> A screen returns companies that <em>match your criteria</em> — it does not know whether your criteria are good, or whether the matching companies are good investments. The company page (next chapters) is where you find out.</li>
+<li><strong>Garbage in, garbage out.</strong> A screen is only as meaningful as the criteria behind it. A screen tuned to look good on recent data is overfit (the Systematic Trading Framework book's lesson applies to screens too).</li>
+<li><strong>One number rarely tells the story.</strong> "ROCE &gt; 15%" is a fine start, but a company with a 15% ROCE <em>and</em> 3× debt is different from one with 15% ROCE <em>and</em> no debt. Screens set the floor; the company page tells the story.</li>
+</ol>
+<h2 id="summary_3">Summary</h2>
+<ul>
+<li>The query builder uses <code>Metric operator value</code>, with <code>AND</code>/<code>OR</code> and arithmetic (<code>+ - * /</code>).</li>
+<li>Metric names are exact (e.g., <code>Return on capital employed</code>, <code>Sales growth 3Years</code>); <code>Average … 5Years</code> gives smoothed figures.</li>
+<li>Build incrementally: size → profitability → safety → growth, watching the list narrow.</li>
+<li>Save and re-run; set email alerts to make it a self-updating system.</li>
+<li>A screen is a filter, not a verdict — the company page explains the results.</li>
+</ul>
+<p>Next: the company page — the deep-dive.</p>
+<h1 id="5-the-company-page-overview-and-financials">5. The Company Page: Overview and Financials</h1>
+<h2 id="the-deep-dive">The deep-dive</h2>
+<p>The <strong>company page</strong> is where the tool earns its place as a research workbench rather than a data dump. For any single company, it presents — in a clean, organised layout — everything you need to understand the business financially. This chapter covers the top half: the <strong>overview</strong>, the <strong>Pros and Cons</strong>, and the <strong>three financial statements</strong>.</p>
+<h2 id="the-overview-summary-numbers">The overview (summary numbers)</h2>
+<p>At the top of the page is a row of headline numbers — the "first impression":</p>
+<ul>
+<li><strong>Current price</strong>, <strong>market cap</strong>, <strong>high/low</strong> (52-week range), <strong>book value</strong>, <strong>P/E</strong>, <strong>dividend yield</strong>, <strong>ROCE</strong>, <strong>ROE</strong>.</li>
+</ul>
+<p>These are deliberately <em>summary</em> figures: none should be read in isolation, but together they give you a ten-second feel for the company — is it profitable (ROCE/ROE), cheap (P/E, book value), income-yielding (dividend yield), and at what scale (market cap)?</p>
+<h2 id="pros-and-cons">Pros and Cons</h2>
+<p>Just below the price chart is a section of <strong>Pros and Cons</strong> — a list of observations machine-generated from the financial data. (The separate <strong>Key Points</strong> beside the summary numbers are curated notes on the business itself.) Examples of the kind of thing the Pros and Cons surface:</p>
+<ul>
+<li>"Company has been maintaining a healthy dividend payout."</li>
+<li>"Company has consistently increased its sales over the last 5 years."</li>
+<li>"Company has a high debt-to-equity ratio."</li>
+</ul>
+<p>The Pros and Cons are valuable because they <em>direct your attention</em>: they flag the patterns in the data (good and bad) that a human would otherwise have to dig for. But they are a <em>summary of the data</em>, not an opinion — treat it as a pointer to "look here", and verify each point against the underlying numbers yourself.</p>
+<h2 id="the-three-financial-statements">The three financial statements</h2>
+<p>The core of the page is the three statements, each with <strong>a decade or more</strong> of history in a clean table:</p>
+<h3 id="1-profit-loss-income-statement">1. Profit &amp; Loss (Income Statement)</h3>
+<p>The <em>performance</em> story: <strong>sales</strong>, <strong>expenses</strong>, <strong>operating profit</strong>, <strong>net profit</strong>, and the resulting <strong>margins</strong>. What to look for:</p>
+<ul>
+<li><strong>Sales trend</strong> — is the top line growing, and steadily?</li>
+<li><strong>Margins</strong> — are operating and net margins stable, rising (pricing power), or shrinking (competition)?</li>
+<li><strong>Profit trend</strong> — is profit growing <em>with</em> sales, or is growth coming at the cost of profitability?</li>
+</ul>
+<h3 id="2-balance-sheet">2. Balance Sheet</h3>
+<p>The <em>financial health</em> story: <strong>assets</strong>, <strong>liabilities</strong>, <strong>equity</strong>, and — critically — <strong>debt</strong> and <strong>reserves</strong>. What to look for:</p>
+<ul>
+<li><strong>Debt level and trend</strong> — is leverage low and stable, or rising?</li>
+<li><strong>Reserves/equity growth</strong> — is the company <em>retaining and compounding</em> profits (a rising equity base), or eroding it?</li>
+<li><strong>Asset quality</strong> — current assets vs. current liabilities (can it meet short-term obligations?).</li>
+</ul>
+<h3 id="3-cash-flow">3. Cash Flow</h3>
+<p>The <em>truth test</em>: <strong>operating</strong>, <strong>investing</strong>, and <strong>financing cash flows</strong>. Cash flow is the part that catches the companies whose profits are on paper but not in the bank:</p>
+<ul>
+<li><strong>Operating cash flow</strong> — is the company actually <em>generating</em> cash from operations (the most important line: a company whose profits exceed its operating cash flow deserves suspicion)?</li>
+<li><strong>Free cash flow</strong> — operating cash flow minus capital expenditure: the cash genuinely left over for shareholders.</li>
+</ul>
+<p>The master's rule: <strong>profit is an opinion; cash is a fact.</strong> Always cross-check the P&amp;L's "profit" against the cash flow statement's "operating cash flow".</p>
+<h2 id="reading-the-trend-not-the-year">Reading the trend, not the year</h2>
+<p>The single most important habit on the company page: <strong>read the trend across years, not any single year.</strong> A single year's numbers are noisy (an exceptional order, a one-off cost, a tax change). The <em>direction and consistency</em> over 5–10 years is what reveals the character of the business — and the long history is exactly what Screener.in gives you that a casual glance at "this quarter's results" cannot.</p>
+<h2 id="summary_4">Summary</h2>
+<ul>
+<li>The overview gives a ten-second feel (price, cap, P/E, ROCE, ROE, yield).</li>
+<li>Pros and Cons auto-flag patterns — pointers to "look here", not opinions.</li>
+<li>P&amp;L = performance (sales, margins, profit trend); Balance Sheet = health (debt, equity, assets); Cash Flow = truth (operating cash flow is the cross-check).</li>
+<li>Read the multi-year trend, not any single year.</li>
+</ul>
+<p>Next: the ratios — and how to actually read them.</p>
+<h1 id="6-ratios-and-how-to-read-them">6. Ratios and How to Read Them</h1>
+<h2 id="the-numbers-that-summarise-a-business">The numbers that summarise a business</h2>
+<p>The company page's <strong>Ratios</strong> section condenses years of financial data into the handful of numbers that actually characterise a business. This chapter teaches the most important ratios — what each <em>measures</em>, and, critically, how to read them <em>together</em> (a ratio in isolation is misleading).</p>
+<h2 id="profitability-how-good-is-the-business">Profitability: how good is the business?</h2>
+<h3 id="roce-return-on-capital-employed">ROCE (Return on Capital Employed)</h3>
+<p>ROCE = EBIT (profit before interest and tax) ÷ total capital employed (equity + debt). It answers: <em>how efficiently does this business convert its capital into profit?</em></p>
+<ul>
+<li><strong>High and sustained ROCE (as a rule of thumb, &gt;15–20% over many years)</strong> is the hallmark of a <em>quality</em> business — one with a genuine competitive advantage that lets it earn high returns on its capital, year after year.</li>
+<li><strong>Low or falling ROCE</strong> means the business is capital-hungry or competitive-advantage-less.</li>
+</ul>
+<p>The key word is <strong>sustained</strong>: a single year's high ROCE can be luck; ten years of it is a moat. This is why the <code>Average … 5Years</code> form matters.</p>
+<h3 id="roe-return-on-equity">ROE (Return on Equity)</h3>
+<p>ROE = net profit ÷ shareholder equity. It answers: <em>how much profit is generated for the shareholders' capital?</em></p>
+<ul>
+<li><strong>High ROE</strong> is good — but with one critical caveat (below).</li>
+<li>The <strong>DuPont insight</strong>: ROE = (margin) × (asset turnover) × (leverage). A high ROE can come from genuine profitability <em>or</em> from high leverage (debt). <strong>Always read ROE next to debt-to-equity</strong> — a 25% ROE with 3× debt is a leveraged bet, not a quality business; a 20% ROE with no debt is the real thing.</li>
+</ul>
+<h2 id="leverage-how-safe-is-the-balance-sheet">Leverage: how safe is the balance sheet?</h2>
+<h3 id="debt-to-equity">Debt to Equity</h3>
+<p>Debt-to-equity = total debt ÷ shareholder equity. It answers: <em>how much of the business is financed by borrowing?</em></p>
+<ul>
+<li><strong>Low (rule of thumb: &lt;0.5, ideally 0)</strong> means the business is financed by its own capital — it can survive downturns.</li>
+<li><strong>High</strong> means the business carries the risk of interest obligations and refinancing — a danger in a downturn.</li>
+</ul>
+<p>The rule of thumb: <strong>a good business with low debt is a completely different investment from a good business with high debt.</strong> Never judge profitability without checking leverage.</p>
+<h3 id="interest-coverage">Interest Coverage</h3>
+<p>Interest coverage = EBIT (profit before interest and tax) ÷ interest expense. It answers: <em>can the company comfortably pay its interest?</em> As a rule of thumb, a coverage ratio comfortably above 2–3× is safe; below 1.5× is a warning that a downturn in profit could make the debt unserviceable.</p>
+<h2 id="valuation-is-the-price-reasonable">Valuation: is the price reasonable?</h2>
+<h3 id="pe-price-to-earnings">P/E (Price to Earnings)</h3>
+<p>P/E = price ÷ earnings per share. It answers: <em>how many years of earnings am I paying for?</em></p>
+<ul>
+<li><strong>Low P/E</strong> can mean "cheap" — or "the market expects earnings to fall". It is a <em>comparison</em> number, not an absolute one: compare against the company's own history and against peers, never in isolation.</li>
+<li><strong>High P/E</strong> means the market is paying up for expected growth — which may or may not arrive.</li>
+</ul>
+<h3 id="pb-price-to-book">P/B (Price to Book)</h3>
+<p>P/B = price ÷ book value per share. It answers: <em>how much am I paying for the net assets?</em> Useful for asset-heavy businesses (banks, capital-intensive industries), less meaningful for asset-light ones.</p>
+<h3 id="peg-pe-to-growth">PEG (P/E to Growth)</h3>
+<p>PEG = P/E ÷ earnings growth rate. It attempts to answer: <em>is the price justified by the growth?</em> A PEG near or below 1 is often considered "reasonable value for the growth" — a rough, but useful, tie-breaker between a cheap-but-stagnant company and an expensive-but-fast-growing one.</p>
+<h3 id="dividend-yield">Dividend Yield</h3>
+<p>Dividend yield = annual dividend per share ÷ price. It answers: <em>what income does this pay me?</em> High yield is attractive — <em>if</em> the dividend is sustainable (check the payout ratio: the dividend should be comfortably covered by earnings, not paid out of debt).</p>
+<h2 id="reading-ratios-together-the-masters-sequence">Reading ratios together: the master's sequence</h2>
+<p>The single most important lesson of this chapter: <strong>ratios are never read alone; they are read as a <em>sequence</em> that tells a consistent story.</strong> The sequence that separates a good business from a risky one:</p>
+<ol>
+<li><strong>ROCE/ROE (sustained, 5–10 years)</strong> — is it genuinely profitable? → if low, stop; the story is "weak business".</li>
+<li><strong>Debt-to-equity + interest coverage</strong> — is the profitability <em>real</em> (unlevered) or <em>borrowed</em> (levered)? → a high ROE on high debt is a different, riskier story.</li>
+<li><strong>Sales/profit growth</strong> — is the business <em>compounding</em>, or stagnating?</li>
+<li><strong>Valuation (P/E, P/B, PEG)</strong> — is the market <em>already pricing in</em> all that quality? → a wonderful business at a silly price is a poor investment.</li>
+</ol>
+<p>Read in this order, the ratios tell one coherent story: <em>a good business, genuinely profitable, growing, and reasonably priced.</em> Read out of order (or one at a time), they mislead.</p>
+<h2 id="summary_5">Summary</h2>
+<ul>
+<li>Profitability: ROCE (efficiency) and ROE (return to shareholders) — but read ROE next to debt.</li>
+<li>Leverage: debt-to-equity and interest coverage — a good business on high debt is a different investment.</li>
+<li>Valuation: P/E, P/B, PEG, dividend yield — comparison numbers, never absolute.</li>
+<li>The master reads ratios in sequence: profitability → leverage → growth → valuation.</li>
+</ul>
+<p>Next: shareholding pattern, promoter pledge, and peer comparison.</p>
+<h1 id="7-shareholding-pattern-pledge-and-peers">7. Shareholding Pattern, Pledge, and Peers</h1>
+<h2 id="the-parts-most-people-skip">The parts most people skip</h2>
+<p>The financial statements and ratios get all the attention; the <strong>shareholding pattern</strong>, <strong>promoter pledge</strong>, and <strong>peer comparison</strong> get almost none — and they are where some of the most important signals live. This chapter covers all three.</p>
+<h2 id="the-shareholding-pattern">The shareholding pattern</h2>
+<p>Every company page shows the <strong>shareholding pattern</strong>: who owns the company, broken into categories, with <strong>about three years of quarterly history, and year-end figures going back further</strong>:</p>
+<ul>
+<li><strong>Promoter holding</strong> — the stake owned by the founders/promoters and their families.</li>
+<li><strong>FII</strong> — foreign institutional investors.</li>
+<li><strong>DII</strong> — domestic institutional investors (mutual funds, insurance).</li>
+<li><strong>Public</strong> — everyone else.</li>
+</ul>
+<p>The pattern matters for one reason: <strong>the trend in ownership is a vote of confidence, in numbers.</strong> Specifically:</p>
+<ul>
+<li><strong>Rising promoter holding</strong> — the promoters are <em>buying their own company's stock</em> (often a signal of confidence; they know the business best).</li>
+<li><strong>Falling promoter holding</strong> — the promoters are <em>selling</em> (a signal worth understanding; sometimes it is benign — pledging-related or personal — and sometimes it is not).</li>
+<li><strong>Rising FII/DII holding</strong> — institutional money is accumulating (a vote of confidence from professional investors).</li>
+<li><strong>A shift in FII vs. DII</strong> — e.g., DII buying while FII sells — is worth investigating: it tells you <em>which</em> professionals believe in the business.</li>
+</ul>
+<p>The discipline: <strong>read the trend over quarters, not any single quarter's number.</strong> A one-quarter blip is noise; a multi-year direction is a signal.</p>
+<h2 id="promoter-pledge-the-red-flag">Promoter pledge: the red flag</h2>
+<p>The <strong>pledged percentage</strong> — how much of the promoter's holding has been <em>pledged</em> (used as collateral for a loan) — is a specific, important risk signal, and it is easy to miss.</p>
+<ul>
+<li><strong>What it means:</strong> the promoters have borrowed money using their own shares as collateral.</li>
+<li><strong>Why it is dangerous:</strong> if the stock falls sharply, the lenders can <em>sell those pledged shares</em> into the market to recover their loan — adding further downward pressure on the price, and potentially diluting/undermining the promoter's control.</li>
+<li><strong>The threshold worth attention (a rule of thumb, not a regulatory line):</strong> pledge above roughly <strong>50% of the promoter's holding</strong> is a genuine risk flag. Below that, it is usually manageable; above it, the company's fate is partly in the hands of its lenders.</li>
+</ul>
+<p>The rule: <strong>check the pledge percentage on every company page</strong> — it is one of the few <em>binary</em> risk signals the tool gives you for free.</p>
+<h2 id="peer-comparison">Peer comparison</h2>
+<p>Near the top of the page, just after the Pros and Cons, is a <strong>peer comparison</strong> table: the company side-by-side with its industry competitors, showing the same key metrics (revenue, profit, market cap, P/E, ROCE, operating margin) for each.</p>
+<p>This table is where <strong>a ratio stops being an abstract number and becomes a <em>contextual</em> judgement</strong>:</p>
+<ul>
+<li>A company's <strong>ROCE of 12%</strong> is meaningless in isolation — but side-by-side with peers, you can see instantly whether it is <em>above</em> or <em>below</em> its industry, and by how much.</li>
+<li>A company's <strong>P/E of 30</strong> is "expensive" or "cheap" only <em>relative to its peers</em> (and its own history) — the peer table gives you that relative context in one glance.</li>
+<li><strong>Margins</strong> compared to peers reveal <em>competitive position</em>: consistently higher margins than the industry suggests a moat; lower margins suggest a cost disadvantage.</li>
+</ul>
+<p>The master's habit: <strong>never judge a company's ratios in isolation — always put them next to the peers.</strong> The peer table is what makes that possible without opening a second page.</p>
+<h2 id="putting-it-together">Putting it together</h2>
+<p>The shareholding pattern, the pledge, and the peers are the three "context" sections that turn the raw financials into a <em>judgement</em>:</p>
+<ol>
+<li><strong>Financials + ratios</strong> tell you <em>what</em> the business is (profitable, growing, safe?).</li>
+<li><strong>Shareholding</strong> tells you <em>who believes in it</em> (and whether the promoters are buying or selling).</li>
+<li><strong>Pledge</strong> tells you whether there is a <em>hidden risk</em> on the balance sheet of the promoters.</li>
+<li><strong>Peers</strong> tell you whether the business is <em>better or worse than its competition</em>.</li>
+</ol>
+<p>All four together are a complete picture. Miss the last three, and you have judged a business in a vacuum.</p>
+<h2 id="summary_6">Summary</h2>
+<ul>
+<li>Shareholding pattern: promoter/FII/DII/public, quarterly, multi-year — read the <em>trend</em> in ownership.</li>
+<li>Rising promoter holding and rising institutional holding are confidence signals.</li>
+<li>Promoter pledge above ~50% of holding is a genuine risk flag — check it every time.</li>
+<li>Peer comparison turns ratios into <em>relative</em> judgements — never judge a ratio in isolation.</li>
+<li>Financials = what; shareholding = who; pledge = hidden risk; peers = context.</li>
+</ul>
+<p>Next: growth, valuation, and the long-term view.</p>
+<h1 id="8-growth-valuation-and-the-long-term-view">8. Growth, Valuation, and the Long-Term View</h1>
+<h2 id="the-two-questions-that-decide-an-investment">The two questions that decide an investment</h2>
+<p>Strip away the detail, and every fundamental decision reduces to two questions:</p>
+<ol>
+<li><strong>Growth</strong> — is the business <em>compounding</em>, and at what rate?</li>
+<li><strong>Valuation</strong> — is the <em>price</em> reasonable for that compounding?</li>
+</ol>
+<p>This chapter covers how to read both on Screener.in, using its greatest asset: <strong>the long-term view.</strong></p>
+<h2 id="growth-the-engine">Growth: the engine</h2>
+<p>Growth is the driver of long-term returns, and Screener.in shows it clearly:</p>
+<ul>
+<li><strong>Sales growth</strong> — the top line (with <code>3Years</code> and <code>5Years</code> forms for the trend).</li>
+<li><strong>Profit growth</strong> — the bottom line (same multi-year forms).</li>
+<li><strong>EPS growth</strong> — earnings per share, which is what ultimately matters per shareholder.</li>
+</ul>
+<p>The discipline in reading growth:</p>
+<ol>
+<li><strong>Look at the multi-year trend, not one year.</strong> A 40% growth year followed by two flat years is different from a steady 15% a year. The <code>5Years</code> figures (and the charts) reveal the <em>consistency</em>, which matters more than the speed.</li>
+<li><strong>Check profit growth against sales growth.</strong> If sales grow 20% but profit grows only 5%, the growth is coming at the cost of margins — a warning that the growth is <em>low-quality</em> (buying market share by cutting prices).</li>
+<li><strong>Cross-check against cash flow.</strong> Growth in <em>reported</em> profit that does not show up in <em>operating cash flow</em> is growth on paper, not in reality (Chapter 5's rule: profit is an opinion, cash is a fact).</li>
+</ol>
+<h2 id="valuation-the-price-of-the-engine">Valuation: the price of the engine</h2>
+<p>A wonderful, fast-growing business can still be a poor investment if the market has already priced in a decade of growth. Valuation — the "what am I paying for this?" question — is the brake on enthusiasm:</p>
+<ul>
+<li><strong>P/E</strong> — how many years of earnings you are paying for; compare against the company's <em>own</em> history (the ratio charts show the historical P/E range) and against peers.</li>
+<li><strong>P/B</strong> — for asset-heavy businesses.</li>
+<li><strong>PEG</strong> — P/E relative to growth, the tie-breaker between "expensive because fast-growing" and "expensive, period".</li>
+</ul>
+<p>The honest principle: <strong>valuation is a <em>filter</em>, not a <em>timing tool</em>.</strong> It tells you whether the price is in a reasonable range; it does not tell you <em>when</em> to buy (a cheap stock can get cheaper; an expensive one can keep rising). Use valuation to <em>avoid overpaying</em>, and combine it with the technical timing tools elsewhere in this series for the <em>when</em>.</p>
+<h2 id="the-long-term-view-the-tools-superpower">The long-term view: the tool's superpower</h2>
+<p>What makes Screener.in genuinely powerful is that it shows <strong>a decade or more of history for almost everything</strong> — not just price, but sales, profit, margins, debt, and ratios, all on the same multi-year scale (shareholding runs about three years quarter by quarter, with year-end figures going back further). This long view is what separates a <em>judgement</em> from a <em>guess</em>:</p>
+<ul>
+<li><strong>Business cyclicality</strong> — a 10-year chart of sales and profit reveals whether the business is steady or cyclical (and where in the cycle it is).</li>
+<li><strong>Margin trend</strong> — a decade of margins shows whether the business's competitive position is <em>improving</em> or <em>deteriorating</em> — the single most important long-term question.</li>
+<li><strong>Compounding</strong> — a decade of rising sales, profit, and equity <em>is</em> the signature of a compounding machine; a decade of flat or falling figures is the signature of a stagnant one.</li>
+</ul>
+<p>The rule: <strong>the longer the horizon you read, the clearer the character of the business.</strong> Screener.in gives you the long horizon for free — the mistake is reading it with a short-term eye.</p>
+<h2 id="the-two-question-test-made-concrete">The two-question test, made concrete</h2>
+<p>A master's pass over a company page reduces to checking, in order:</p>
+<ol>
+<li><strong>Sales/profit growing over 5–10 years?</strong> (compounding engine)</li>
+<li><strong>Margins stable or rising?</strong> (quality of growth)</li>
+<li><strong>Operating cash flow ≈ profit?</strong> (real, not paper, growth)</li>
+<li><strong>P/E/PEG reasonable vs. history and peers?</strong> (not overpaying)</li>
+</ol>
+<p>Answer all four, and you have a genuine fundamental view — not just a collection of numbers.</p>
+<h2 id="summary_7">Summary</h2>
+<ul>
+<li>Growth (sales/profit/EPS) is the engine; read the multi-year trend and cross-check profit vs. sales and cash flow.</li>
+<li>Valuation (P/E, P/B, PEG) is the brake; a filter against overpaying, not a timing tool.</li>
+<li>The decade-plus view reveals cyclicality, margin trend, and whether the business is truly compounding.</li>
+<li>The four-question test: growth, margins, cash flow, valuation.</li>
+</ul>
+<p>Next: building your own techno-funda screens.</p>
+<h1 id="9-building-your-own-techno-funda-screens">9. Building Your Own Techno-Funda Screens</h1>
+<h2 id="from-criteria-to-a-repeatable-system">From criteria to a repeatable system</h2>
+<p>The whole point of Screener.in's query builder is to turn your <em>investment philosophy</em> into a <em>repeatable screen</em>. This chapter shows how — by building the "fundamental" half of a techno-funda strategy (the "what to own" filter), which you then combine with the "technical" half (the "when" — see the Techno-Funda and Charts books in this series).</p>
+<h2 id="the-principle-screen-for-the-what-time-for-the-when">The principle: screen for the "what", time for the "when"</h2>
+<p>Techno-funda (from the companion book) separates two questions:</p>
+<ol>
+<li><strong>What</strong> to own — a good, growing, safe, reasonably priced business. → <strong>This is what a Screener.in screen does.</strong></li>
+<li><strong>When</strong> to buy — the technical timing (trend, breakout, reversal). → <strong>This is done on a chart, not in Screener.in.</strong></li>
+</ol>
+<p>So your Screener.in screens are the <strong>fundamental filter</strong> — they produce the <em>universe of worth-owning businesses</em> — and your chart work decides <em>when</em> to act on them. Keep the two jobs separate, and each tool does what it is best at.</p>
+<h2 id="five-example-screens-by-philosophy">Five example screens (by philosophy)</h2>
+<p>Each of the following is a complete, runnable query expressing a different fundamental philosophy. Adapt the thresholds to your own taste and the current market.</p>
+<h3 id="1-quality-screen-high-return-low-debt-businesses">1. Quality screen (high-return, low-debt businesses)</h3>
+<pre><code>Average return on capital employed 5Years &gt; 15
+AND Average return on equity 5Years &gt; 15
+AND Debt to equity &lt; 0.5
+</code></pre>
+<p>The compounding machines: sustained high returns on capital, financed conservatively.</p>
+<h3 id="2-growth-screen-fast-consistent-growers">2. Growth screen (fast, consistent growers)</h3>
+<pre><code>Sales growth 5Years &gt; 15
+AND Profit growth 5Years &gt; 15
+AND Debt to equity &lt; 1
+</code></pre>
+<p>Companies compounding the top <em>and</em> bottom line — with a debt ceiling to avoid the growth-by-borrowing trap.</p>
+<h3 id="3-value-screen-cheap-still-profitable">3. Value screen (cheap, still-profitable)</h3>
+<pre><code>Price to earning &lt; 15
+AND Price to book value &lt; 2
+AND Return on equity &gt; 10
+</code></pre>
+<p>Cheap — but with a profitability floor, to avoid the pure "value traps".</p>
+<h3 id="4-income-screen-reliable-dividends">4. Income screen (reliable dividends)</h3>
+<pre><code>Dividend yield &gt; 3
+AND Return on equity &gt; 12
+AND Debt to equity &lt; 0.5
+</code></pre>
+<p>Yield that is <em>sustainable</em> (backed by profitability and a clean balance sheet), not a yield trap.</p>
+<h3 id="5-a-full-techno-funda-screen-quality-growth-safety-ownership">5. A full techno-funda screen (quality + growth + safety + ownership)</h3>
+<pre><code>Market capitalization &gt; 500
+AND Average return on equity 5Years &gt; 12
+AND Sales growth 5Years &gt; 10
+AND Debt to equity &lt; 1
+AND Promoter holding &gt; 30
+AND Pledged percentage &lt; 15
+</code></pre>
+<p>Quality, growth, safety, and management confidence — a five-way screen that produces a genuinely short list. (This is a <em>starting point</em>, not a recommendation.)</p>
+<h2 id="the-workflow-that-turns-screens-into-decisions">The workflow that turns screens into decisions</h2>
+<ol>
+<li><strong>Run the screen</strong> → get a shortlist.</li>
+<li><strong>Open each company page</strong> → run the four-question test (Chapter 8): growth, margins, cash flow, valuation.</li>
+<li><strong>Check the shareholding and pledge</strong> (Chapter 7) → confidence and hidden risk.</li>
+<li><strong>Compare peers</strong> → is it genuinely better than its competition?</li>
+<li><strong>Move to the chart</strong> → the technical "when" (trend, breakout) decides the actual timing.</li>
+</ol>
+<p>The screen is step 1 — the <em>filter</em> — and steps 2–5 are where the <em>judgement</em> lives. The screen narrows thousands to dozens; the rest narrows dozens to the few you actually act on.</p>
+<h2 id="the-discipline">The discipline</h2>
+<p>Three rules keep your screening honest:</p>
+<ol>
+<li><strong>Write your criteria before you look.</strong> Decide the screen <em>first</em> (from your philosophy), then run it — not the reverse (run many screens until you like what you see). The reverse is how screens become rationalisation.</li>
+<li><strong>Keep criteria economically sensible, not data-mined.</strong> A screen that only works on the last two years is overfit (the Systematic Trading Framework lesson). Simple, economically motivated criteria survive.</li>
+<li><strong>Re-run on a schedule.</strong> A saved screen is a <em>system</em>, not a one-off. Re-run it monthly or quarterly, and the shortlist stays fresh — the closest thing a fundamental investor gets to automation.</li>
+</ol>
+<h2 id="summary_8">Summary</h2>
+<ul>
+<li>Screen for the "what"; chart for the "when" — keep the techno-funda halves separate.</li>
+<li>Five example screens: quality, growth, value, income, and a full techno-funda screen.</li>
+<li>The workflow: screen → company page → shareholding → peers → chart.</li>
+<li>Discipline: write criteria before looking, keep them sensible, re-run on a schedule.</li>
+</ul>
+<p>Next: custom ratios, export, and advanced tips.</p>
+<h1 id="10-custom-ratios-export-and-advanced-tips">10. Custom Ratios, Export, and Advanced Tips</h1>
+<h2 id="going-beyond-the-built-in-data">Going beyond the built-in data</h2>
+<p>The previous chapters covered the core workflows. This final chapter covers the <em>advanced</em> features — the ones that turn a data-reading tool into a genuine research and modelling workbench — and the tips that separate the expert from the casual user.</p>
+<h2 id="custom-ratios">Custom ratios</h2>
+<p>Screener.in's <strong>custom ratios</strong> let you define <em>your own</em> metrics from the underlying data — and then <strong>screen and sort on them</strong>. This matters because some of the most useful numbers are <em>not</em> built in.</p>
+<p>A custom ratio is an arithmetic expression of the available metrics (using the <code>+ - * /</code> operators from Chapter 4). Practical examples:</p>
+<ul>
+<li><strong>5-year average P/E</strong> — using a 5-year earnings average instead of the single-year figure:
+  <code>Market Capitalization / Average Earnings 5Year</code> — a smoother valuation that is less distorted by a single exceptional year.</li>
+<li><strong>Free cash flow</strong> — operating cash flow minus capital expenditure. Screener.in already provides it (<code>Free cash flow last year</code>, plus multi-year sums such as <code>Free cash flow 5years</code>), so you can screen on it directly or build ratios on top of it.</li>
+<li><strong>Cash conversion</strong> — how much of profit actually becomes cash:
+  <code>(Cash from operations last year / Net Profit last year) * 100</code></li>
+<li><strong>Debt coverage</strong> — how many years of operating cash flow it would take to repay the debt:
+  <code>Debt / Cash from operations last year</code></li>
+</ul>
+<p>The power is twofold: you can <em>sort</em> the whole market by your custom ratio, and you can <em>filter</em> on it in the query builder — so a "quality of earnings" metric you invented becomes a first-class screening criterion.</p>
+<h2 id="export-to-excel">Export to Excel</h2>
+<p>The <strong>Export to Excel</strong> feature downloads a company's (or a screen's) data as a structured Excel file. This is the bridge to <em>real modelling</em>:</p>
+<ul>
+<li><strong>Build a DCF</strong> — discount the projected cash flows to a fair value.</li>
+<li><strong>Project CAGR</strong> — model what the business might earn and be worth at various growth rates.</li>
+<li><strong>Track margin/ratio trends</strong> — plot your own charts of the data, beyond what the site shows.</li>
+<li><strong>Bulk analysis</strong> — export a whole screen (hundreds of companies) and run statistical analysis across them. (Downloading screen results is a paid-plan feature at the time of writing.)</li>
+</ul>
+<p>The advanced move: <strong>upload your own Excel template</strong> (Screener.in calls this "Excel Automation"), and Screener.in will remember it and fill it in automatically for any company — turning the tool into a <em>model-filling</em> machine, not just a data source.</p>
+<h2 id="the-advanced-tips">The advanced tips</h2>
+<h3 id="1-read-the-trend-not-the-year">1. Read the trend, not the year</h3>
+<p>Already said, but worth repeating: the long history is the tool's superpower. Always read 5–10 year trends, never a single quarter.</p>
+<h3 id="2-click-any-line-item-to-drill-down">2. Click any line item to drill down</h3>
+<p>On the financial statements, several key line items (such as Sales, Expenses, Other Income, Net Profit, Borrowings, and the cash-flow headings) carry a <strong>+</strong> button — click it and the site shows the breakdown behind the number, year by year. This is how you trace <em>where</em> a profit or expense actually came from.</p>
+<h3 id="3-check-the-documents-section">3. Check the "Documents" section</h3>
+<p>The company page's Documents section aggregates announcements, filings, and regulatory documents in one place. For catching <em>what changed recently</em> (a pledge increase, a change in ownership, an audit note), it is the fastest check — and it is where you verify that the financial data has not been overtaken by events.</p>
+<h3 id="4-use-peer-comparison-before-judging-any-ratio">4. Use peer comparison before judging any ratio</h3>
+<p>Never judge a ratio in isolation (Chapter 7). The peer table is one scroll away — use it.</p>
+<h3 id="5-use-the-screens-as-a-starting-universe-not-an-endpoint">5. Use the screens as a starting universe, not an endpoint</h3>
+<p>A screen is a <em>filter</em>. The real work — the company page, the four-question test, the chart timing — happens <em>after</em> the screen. The expert uses the screen to <em>find</em>, then stops screening and starts <em>judging</em>.</p>
+<h3 id="6-be-aware-of-the-datas-limits">6. Be aware of the data's limits</h3>
+<p>Screener.in's data is <em>reported</em> and <em>historical</em>: it can be restated (a company can revise last year's numbers), delayed, and, for some small companies, incomplete or unaudited. The tool shows you the data faithfully; it does not — and cannot — guarantee the data is the whole truth. For anything material, cross-check against the actual filings.</p>
+<h2 id="the-honest-close">The honest close</h2>
+<p>Screener.in is, at its core, a <em>filter and organiser of financial data</em> — and its value is entirely in how you use it. Used casually, it is a convenient way to glance at a company's P/E. Used deliberately — screen to find, company page to vet, custom ratios to deepen, export to model — it is the closest thing an Indian retail investor has to a professional fundamental research terminal. The difference is entirely the <em>discipline</em> this book has been teaching.</p>
+<h2 id="summary_9">Summary</h2>
+<ul>
+<li>Custom ratios let you define your own metrics (cash conversion, debt coverage, 5-year P/E) and screen on them.</li>
+<li>Export to Excel — and upload your own template — turns the tool into a modelling workbench.</li>
+<li>Tips: read trends, click to drill down, check Documents, use peers, screen-then-judge, respect data limits.</li>
+<li>The tool's value is in deliberate use: filter, vet, deepen, model.</li>
+</ul>
+<p>This completes the main text. The appendix is the query reference and example screens.</p>
+<h1 id="appendix-query-reference-and-example-screens">Appendix — Query Reference and Example Screens</h1>
+<h2 id="the-query-syntax-at-a-glance">The query syntax, at a glance</h2>
+<pre><code>Metric operator value [AND|OR Metric operator value ...]
+</code></pre>
+<ul>
+<li><strong>Operators:</strong> <code>&gt;</code> <code>&lt;</code> <code>&gt;=</code> <code>&lt;=</code> <code>=</code></li>
+<li><strong>Logic:</strong> <code>AND</code> (narrow) · <code>OR</code> (broaden) — every condition is joined to the next by one of these</li>
+<li><strong>Arithmetic (custom ratios):</strong> <code>+</code> <code>-</code> <code>*</code> <code>/</code></li>
+</ul>
+<h2 id="the-most-useful-metric-names">The most useful metric names</h2>
+<table>
+<thead>
+<tr>
+<th>Family</th>
+<th>Metrics</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Size / price</td>
+<td><code>Market capitalization</code>, <code>Current price</code>, <code>Book value</code></td>
+</tr>
+<tr>
+<td>Valuation</td>
+<td><code>Price to earning</code>, <code>Price to book value</code>, <code>Dividend yield</code>, <code>PEG Ratio</code></td>
+</tr>
+<tr>
+<td>Profitability</td>
+<td><code>Return on capital employed</code>, <code>Return on equity</code>, <code>OPM</code></td>
+</tr>
+<tr>
+<td>Leverage</td>
+<td><code>Debt to equity</code>, <code>Interest Coverage Ratio</code>, <code>Current ratio</code></td>
+</tr>
+<tr>
+<td>Growth</td>
+<td><code>Sales growth</code>, <code>Sales growth 3Years</code>, <code>Sales growth 5Years</code>, <code>Profit growth</code>, <code>Profit growth 3Years</code>, <code>Profit growth 5Years</code></td>
+</tr>
+<tr>
+<td>Smoothed</td>
+<td><code>Average return on equity 5Years</code>, <code>Average return on capital employed 5Years</code></td>
+</tr>
+<tr>
+<td>Ownership</td>
+<td><code>Promoter holding</code>, <code>Pledged percentage</code>, <code>Change in promoter holding</code></td>
+</tr>
+<tr>
+<td>Cash flow</td>
+<td><code>Cash from operations last year</code>, <code>Free cash flow last year</code>, <code>Net cash flow last year</code></td>
+</tr>
+</tbody>
+</table>
+<p>Ratio names can change over time; pick them from Screener.in's "Show all Ratios" list rather than typing them from memory.</p>
+<h2 id="five-example-screens">Five example screens</h2>
+<p><strong>Quality:</strong></p>
+<pre><code>Average return on capital employed 5Years &gt; 15
+AND Average return on equity 5Years &gt; 15
+AND Debt to equity &lt; 0.5
+</code></pre>
+<p><strong>Growth:</strong></p>
+<pre><code>Sales growth 5Years &gt; 15
+AND Profit growth 5Years &gt; 15
+AND Debt to equity &lt; 1
+</code></pre>
+<p><strong>Value:</strong></p>
+<pre><code>Price to earning &lt; 15
+AND Price to book value &lt; 2
+AND Return on equity &gt; 10
+</code></pre>
+<p><strong>Income:</strong></p>
+<pre><code>Dividend yield &gt; 3
+AND Return on equity &gt; 12
+AND Debt to equity &lt; 0.5
+</code></pre>
+<p><strong>Full techno-funda:</strong></p>
+<pre><code>Market capitalization &gt; 500
+AND Average return on equity 5Years &gt; 12
+AND Sales growth 5Years &gt; 10
+AND Debt to equity &lt; 1
+AND Promoter holding &gt; 30
+AND Pledged percentage &lt; 15
+</code></pre>
+<h2 id="the-reminder">The reminder</h2>
+<p>Every screen is a <strong>filter, not a verdict</strong>. It produces a shortlist of companies that <em>match your criteria</em>; whether those are good investments is for the company page, the peers, the shareholding, and your own judgement to decide. Screens find; you decide.</p></body></html>

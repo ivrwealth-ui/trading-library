@@ -199,3 +199,143 @@
 - [31. Construction & Infrastructure — Addendum (Roads/Highways)](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/KPI-Handbook/chapters/31-construction-and-infrastructure-addendum-roads-highways.md)
 - [32. Quick Guide — How to Read Any Operational KPI](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/KPI-Handbook/chapters/32-quick-guide-how-to-read-any-operational-kpi.md)
 - [Appendix — Master KPI Table and Glossary](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/KPI-Handbook/chapters/appendix-master-kpi-table-and-glossary.md)
+
+## Option Chain Analysis
+
+- [1. The Option Chain as a Data Structure](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Option-Chain-Analysis/chapters/01-chain-as-data.md)
+- [2. Open Interest: The Positioning Map](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Option-Chain-Analysis/chapters/02-open-interest.md)
+- [3. The Put-Call Ratio and Its Two Faces](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Option-Chain-Analysis/chapters/03-put-call-ratio.md)
+- [4. Implied Volatility: Skew and Term Structure](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Option-Chain-Analysis/chapters/04-iv-skew-term.md)
+- [5. Max Pain and Expiry Pinning](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Option-Chain-Analysis/chapters/05-max-pain.md)
+- [6. The Model-Building Discipline](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Option-Chain-Analysis/chapters/06-model-discipline.md)
+- [7. Delta Exposure and Dealer Positioning](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Option-Chain-Analysis/chapters/07-delta-exposure.md)
+- [8. Gamma Exposure (GEX)](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Option-Chain-Analysis/chapters/08-gamma-exposure.md)
+- [9. The Implied Probability Distribution](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Option-Chain-Analysis/chapters/09-implied-distribution.md)
+- [10. Realised vs. Implied: The Variance Risk Premium](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Option-Chain-Analysis/chapters/10-variance-risk-premium.md)
+- [11. The Expected Move and Event Pricing](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Option-Chain-Analysis/chapters/11-expected-move.md)
+- [12. Option-Implied Support and Resistance](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Option-Chain-Analysis/chapters/12-implied-support-resistance.md)
+- [13. Combining Signals into a Composite Model](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Option-Chain-Analysis/chapters/13-composite-model.md)
+- [14. Data Quality, Pitfalls, and Failure Modes](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Option-Chain-Analysis/chapters/14-pitfalls.md)
+- [Appendix — Formula Reference and Signal Table](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Option-Chain-Analysis/chapters/appendix-formulas.md)
+
+## Options Trading Adjustments
+
+- [1. The Option Refresher](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Options-Trading-Adjustments/chapters/01-the-option-refresher.md)
+- [2. The Greeks That Drive Adjustments](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Options-Trading-Adjustments/chapters/02-the-greeks-that-drive-adjustments.md)
+- [3. The Adjustment Mindset](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Options-Trading-Adjustments/chapters/03-the-adjustment-mindset.md)
+- [4. NSE Specifics That Matter](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Options-Trading-Adjustments/chapters/04-nse-specifics-that-matter.md)
+- [5. Strategy 1 — The Covered Call](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Options-Trading-Adjustments/chapters/05-strategy-1-the-covered-call.md)
+- [6. Strategy 2 — The Bull Call Spread](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Options-Trading-Adjustments/chapters/06-strategy-2-the-bull-call-spread.md)
+- [7. Strategy 3 — The Iron Condor](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Options-Trading-Adjustments/chapters/07-strategy-3-the-iron-condor.md)
+- [8. Strategy 4 — The Short Strangle](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Options-Trading-Adjustments/chapters/08-strategy-4-the-short-strangle.md)
+- [9. Strategy 5 — The Long Straddle](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Options-Trading-Adjustments/chapters/09-strategy-5-the-long-straddle.md)
+- [10. The Techniques](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Options-Trading-Adjustments/chapters/10-the-techniques.md)
+- [11. A Decision Framework](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Options-Trading-Adjustments/chapters/11-a-decision-framework.md)
+- [12. The One-Page Reference](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Options-Trading-Adjustments/chapters/12-the-one-page-reference.md)
+- [Glossary](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Options-Trading-Adjustments/chapters/appendix-glossary.md)
+
+## Event and Earnings Trading
+
+- [1. What Event Trading Is](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Event-and-Earnings-Trading/chapters/01-what-event-trading-is.md)
+- [2. The Earnings Calendar](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Event-and-Earnings-Trading/chapters/02-the-earnings-calendar.md)
+- [3. Other Scheduled Events](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Event-and-Earnings-Trading/chapters/03-other-scheduled-events.md)
+- [4. Implied Volatility and the Crush](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Event-and-Earnings-Trading/chapters/04-implied-volatility-and-the-crush.md)
+- [5. Trading the Crush](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Event-and-Earnings-Trading/chapters/05-trading-the-crush.md)
+- [6. What a Gap Is](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Event-and-Earnings-Trading/chapters/06-what-a-gap-is.md)
+- [7. Gap Rules and Tendencies](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Event-and-Earnings-Trading/chapters/07-gap-rules-and-tendencies.md)
+- [8. The Don't-Play List](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Event-and-Earnings-Trading/chapters/08-the-dont-play-list.md)
+- [9. The Decision Framework](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Event-and-Earnings-Trading/chapters/09-the-decision-framework.md)
+- [Glossary](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Event-and-Earnings-Trading/chapters/appendix-glossary.md)
+
+## Price Action
+
+- [1. What Price Action Actually Is](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Price-Action-Playbook/chapters/01-what-price-action-actually-is.md)
+- [2. Market Structure](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Price-Action-Playbook/chapters/02-market-structure.md)
+- [3. The Indian Session](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Price-Action-Playbook/chapters/03-the-indian-session.md)
+- [4. Auctions and the Value Area](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Price-Action-Playbook/chapters/04-auctions-and-the-value-area.md)
+- [5. Balance and Imbalance](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Price-Action-Playbook/chapters/05-balance-and-imbalance.md)
+- [6. Levels: Where the Action Happens](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Price-Action-Playbook/chapters/06-levels-where-the-action-happens.md)
+- [7. Failed Breakouts](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Price-Action-Playbook/chapters/07-failed-breakouts.md)
+- [8. Trend Continuation and Reversal Setups](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Price-Action-Playbook/chapters/08-trend-continuation-and-reversal-setups.md)
+- [9. Candlesticks as Context, Not Signals](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Price-Action-Playbook/chapters/09-candlesticks-as-context-not-signals.md)
+- [10. A Working Daily Process](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Price-Action-Playbook/chapters/10-a-working-daily-process.md)
+- [11. Risk and Trade Management](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Price-Action-Playbook/chapters/11-risk-and-trade-management.md)
+- [12. The One-Page Playbook](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Price-Action-Playbook/chapters/12-the-one-page-playbook.md)
+- [Glossary](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Price-Action-Playbook/chapters/appendix-glossary.md)
+
+## Relative Strength and Breadth
+
+- [1. What Relative Strength Is](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Relative-Strength-and-Breadth/chapters/01-what-relative-strength-is.md)
+- [2. Computing Relative Strength](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Relative-Strength-and-Breadth/chapters/02-computing-relative-strength.md)
+- [3. Relative Strength vs the Market and vs Peers](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Relative-Strength-and-Breadth/chapters/03-relative-strength-vs-the-market-and-vs-peers.md)
+- [4. Sector Relative Strength and Rotation](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Relative-Strength-and-Breadth/chapters/04-sector-relative-strength-and-rotation.md)
+- [5. Where to Source Relative Strength in India](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Relative-Strength-and-Breadth/chapters/05-where-to-source-relative-strength-in-india.md)
+- [6. What Breadth Is and Why It Matters](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Relative-Strength-and-Breadth/chapters/06-what-breadth-is-and-why-it-matters.md)
+- [7. The Core Breadth Indicators](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Relative-Strength-and-Breadth/chapters/07-the-core-breadth-indicators.md)
+- [8. Breadth Divergences](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Relative-Strength-and-Breadth/chapters/08-breadth-divergences.md)
+- [9. Where to Source Breadth in India](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Relative-Strength-and-Breadth/chapters/09-where-to-source-breadth-in-india.md)
+- [10. The Top-Down Process: Breadth → Sector → Stock](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Relative-Strength-and-Breadth/chapters/10-the-top-down-process-breadth-sector-stock.md)
+- [11. Combining RS, Breadth and Price](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Relative-Strength-and-Breadth/chapters/11-combining-rs-breadth-and-price.md)
+- [12. The One-Page Reference](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Relative-Strength-and-Breadth/chapters/12-the-one-page-reference.md)
+- [Glossary](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Relative-Strength-and-Breadth/chapters/appendix-glossary.md)
+
+## Stock Selection
+
+- [1. Foundations](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Stock-Selection-Methods/chapters/01-foundations.md)
+- [2. The Indian Universe & Data](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Stock-Selection-Methods/chapters/02-the-indian-universe-and-data.md)
+- [3. Method 1 — Value Investing](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Stock-Selection-Methods/chapters/03-method-1-value-investing.md)
+- [4. Method 2 — Momentum](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Stock-Selection-Methods/chapters/04-method-2-momentum.md)
+- [5. Method 3 — Multi-Factor](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Stock-Selection-Methods/chapters/05-method-3-multi-factor.md)
+- [6. Portfolio Construction & Position Sizing](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Stock-Selection-Methods/chapters/06-portfolio-construction-and-position-sizing.md)
+- [7. Backtesting & Validation](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Stock-Selection-Methods/chapters/07-backtesting-and-validation.md)
+- [8. Risk & Position Management](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Stock-Selection-Methods/chapters/08-risk-and-position-management.md)
+- [9. Pitfalls in Indian Markets](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Stock-Selection-Methods/chapters/09-pitfalls-in-indian-markets.md)
+- [10. The Master Workflow](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Stock-Selection-Methods/chapters/10-the-master-workflow.md)
+- [Appendix A — Formulas & Metrics Reference](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Stock-Selection-Methods/chapters/appendix-a-formulas-and-metrics-reference.md)
+- [Appendix B — Indian Data Sources & Tools](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Stock-Selection-Methods/chapters/appendix-b-indian-data-sources-and-tools.md)
+- [Appendix C — Example Screens](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Stock-Selection-Methods/chapters/appendix-c-example-screens.md)
+- [Appendix D — Glossary](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Stock-Selection-Methods/chapters/appendix-d-glossary.md)
+
+## Screener.in Masterclass
+
+- [1. What Is Screener.in?](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Screener-in-Masterclass/chapters/01-what-is-screener.md)
+- [2. Navigating the Structure](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Screener-in-Masterclass/chapters/02-structure.md)
+- [3. The Screener Table and Columns](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Screener-in-Masterclass/chapters/03-screener-table.md)
+- [4. The Query Builder: Syntax and Power](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Screener-in-Masterclass/chapters/04-query-builder.md)
+- [5. The Company Page: Overview and Financials](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Screener-in-Masterclass/chapters/05-company-page.md)
+- [6. Ratios and How to Read Them](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Screener-in-Masterclass/chapters/06-ratios.md)
+- [7. Shareholding Pattern, Pledge, and Peers](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Screener-in-Masterclass/chapters/07-shareholding-peers.md)
+- [8. Growth, Valuation, and the Long-Term View](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Screener-in-Masterclass/chapters/08-growth-valuation.md)
+- [9. Building Your Own Techno-Funda Screens](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Screener-in-Masterclass/chapters/09-technofunda-screens.md)
+- [10. Custom Ratios, Export, and Advanced Tips](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Screener-in-Masterclass/chapters/10-advanced.md)
+- [Appendix — Query Reference and Example Screens](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Screener-in-Masterclass/chapters/appendix-query-reference.md)
+
+## TradingView Screeners
+
+- [1. TradingView Screener Types](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/TradingView-Screeners/chapters/01-screener-types.md)
+- [2. Pine Script v6 Essentials](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/TradingView-Screeners/chapters/02-pine-v6-essentials.md)
+- [3. Screener 1 — Valuation (P/E, P/B)](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/TradingView-Screeners/chapters/03-valuation.md)
+- [4. Screener 2 — Earnings Power (EPS & Revenue Growth)](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/TradingView-Screeners/chapters/04-earnings-power.md)
+- [5. Screener 3 — Momentum (12-Month Return, 52-Week High)](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/TradingView-Screeners/chapters/05-momentum.md)
+- [6. Screener 4 — Stage Analysis (Weinstein Stage 2)](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/TradingView-Screeners/chapters/06-stage-analysis.md)
+- [7. Screener 5 — Outperformance (Relative Strength vs. Benchmark)](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/TradingView-Screeners/chapters/07-outperformance.md)
+- [8. Screener 6 — Price Contraction (VCP)](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/TradingView-Screeners/chapters/08-price-contraction.md)
+- [9. Screener 7 — Dow Theory (Trend Structure + Volume)](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/TradingView-Screeners/chapters/09-dow-theory.md)
+- [10. Screener 8 — Multi-Timeframe (Weekly Trend + Daily Trigger)](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/TradingView-Screeners/chapters/10-multi-timeframe.md)
+- [11. Loading and Using Your Screeners](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/TradingView-Screeners/chapters/11-loading-using.md)
+- [12. Code Best Practices and Disclaimers](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/TradingView-Screeners/chapters/12-best-practices-disclaimers.md)
+- [Appendix — Consolidated Scripts](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/TradingView-Screeners/chapters/appendix-consolidated-scripts.md)
+
+## Swing Screener in Python
+
+- [1. What You're Building](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Swing-Screener-Guide/chapters/01-what-youre-building.md)
+- [2. Setup: Install Python, `yfinance`, and `pandas`](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Swing-Screener-Guide/chapters/02-setup-install-python-yfinance-pandas.md)
+- [3. Download the NIFTY 50 Universe](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Swing-Screener-Guide/chapters/03-download-nifty-50-universe.md)
+- [4. Indicators I — Moving Averages](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Swing-Screener-Guide/chapters/04-indicators-i-moving-averages.md)
+- [5. Indicators II — RSI and RSI-2](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Swing-Screener-Guide/chapters/05-indicators-ii-rsi-and-rsi2.md)
+- [6. Reading the Regime: Trending or Ranging?](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Swing-Screener-Guide/chapters/06-reading-the-regime.md)
+- [7. Screen 1 — The Pullback Continuation](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Swing-Screener-Guide/chapters/07-screen-1-pullback-continuation.md)
+- [8. Screen 2 — RSI-2 Mean Reversion](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Swing-Screener-Guide/chapters/08-screen-2-rsi2-mean-reversion.md)
+- [9. Assemble the Results into an HTML Dashboard](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Swing-Screener-Guide/chapters/09-assemble-html-dashboard.md)
+- [10. Export Markdown and PDF, and Read It Like a Swing Trader](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Swing-Screener-Guide/chapters/10-export-md-pdf-and-read.md)
+- [Appendix — The Complete Program and Troubleshooting](https://raw.githubusercontent.com/ivrwealth-ui/trading-library/main/Swing-Screener-Guide/chapters/appendix-complete-program-and-troubleshooting.md)

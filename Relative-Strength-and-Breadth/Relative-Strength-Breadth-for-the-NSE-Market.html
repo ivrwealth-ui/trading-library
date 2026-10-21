@@ -1,0 +1,441 @@
+<!DOCTYPE html><html><head><meta charset='utf-8'><style>
+* { box-sizing: border-box; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 11pt; line-height: 1.62; color: #1a1d21; margin: 0;
+}
+.cover {
+  height: 100vh; page-break-after: always;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 3cm 2.5cm; background: #0d1715; color: #e8f0ee;
+}
+.cover .rule { width: 64px; height: 4px; background: #2dd4bf; margin-bottom: 2.2rem; }
+.cover h1 { font-size: 38pt; line-height: 1.08; font-weight: 600; color: #fff; margin: 0 0 1.4rem; letter-spacing: -0.5px; }
+.cover .subtitle { font-size: 15pt; color: #9fb5ae; line-height: 1.5; max-width: 34em; }
+.cover .pub { margin-top: 3rem; font-size: 11pt; letter-spacing: 0.14em; text-transform: uppercase; color: #2dd4bf; }
+.cover .ednote { margin-top: 0.6rem; font-size: 9pt; color: #6c817b; }
+h1 { font-size: 23pt; font-weight: 600; color: #0f172a; page-break-before: always; margin: 0 0 1.1rem; padding-bottom: 0.4rem; border-bottom: 2px solid #2dd4bf; }
+h2 { font-size: 15.5pt; font-weight: 600; color: #0f766e; margin: 1.6rem 0 0.6rem; }
+h3 { font-size: 12.5pt; font-weight: 600; color: #1a1d21; margin: 1.2rem 0 0.4rem; }
+p { margin: 0.5rem 0; }
+strong { color: #0f172a; }
+em { color: #334155; }
+a { color: #0f766e; text-decoration: none; }
+hr { border: none; border-top: 1px solid #e2e8f0; margin: 2rem 0; }
+ul, ol { margin: 0.5rem 0 0.8rem; padding-left: 1.5rem; }
+li { margin: 0.25rem 0; }
+code { font-family: 'SF Mono', Menlo, Consolas, monospace; font-size: 9pt; background: #f1f5f9; padding: 1px 5px; border-radius: 3px; color: #0f766e; }
+pre { background: #0f172a; color: #e2e8f0; padding: 0.9rem 1.1rem; border-radius: 6px; font-size: 9pt; line-height: 1.5; white-space: pre-wrap; word-wrap: break-word; }
+pre code { background: none; color: inherit; padding: 0; }
+blockquote { border-left: 3px solid #2dd4bf; background: #f0fdfa; margin: 0.8rem 0; padding: 0.7rem 1rem; color: #0f3d37; font-style: italic; border-radius: 0 4px 4px 0; }
+blockquote p { margin: 0.3rem 0; }
+table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: 9.5pt; page-break-inside: avoid; }
+th, td { border: 1px solid #dbe3e8; padding: 5px 8px; text-align: left; vertical-align: top; }
+th { background: #0f766e; color: #fff; font-weight: 600; }
+tr:nth-child(even) td { background: #f8fafc; }
+h1:first-of-type { page-break-before: auto; }
+h2#important-disclaimer, h2#how-to-read-this-book, h2#table-of-contents { page-break-before: always; }
+</style></head><body><section class="cover"><div class="rule"></div><h1>Relative Strength & Breadth for the NSE Market</h1><div class="subtitle">Ranking Stocks, Rotating Sectors and Reading the Health of the Tape</div><div class="pub">Published by StratLab</div><div class="ednote">Educational content only — not investment advice. StratLab is not SEBI-registered.</div></section><h1 id="relative-strength-breadth-for-the-nse-market">Relative Strength &amp; Breadth for the NSE Market</h1>
+<h2 id="ranking-stocks-rotating-sectors-and-reading-the-health-of-the-tape">Ranking Stocks, Rotating Sectors and Reading the Health of the Tape</h2>
+<hr />
+<p><strong>Published by StratLab</strong></p>
+<hr />
+<p><strong>A practical reference for Indian equity-market participants.</strong></p>
+<hr />
+<blockquote>
+<p><strong>Disclaimer.</strong> This book is for <strong>education only</strong>. It is not investment advice, not a recommendation to buy or sell any security, and the author is not a SEBI-registered investment adviser. Historical relative-strength and breadth behaviour does not guarantee future results. All figures, ranks and thresholds are illustrative and must be re-checked against current data.</p>
+</blockquote>
+<hr />
+<h2 id="important-disclaimer">Important Disclaimer</h2>
+<p>This book is provided for <strong>educational purposes only</strong>. It is not investment advice, a recommendation, or a solicitation to buy or sell any security.</p>
+<ul>
+<li><strong>StratLab is not registered with SEBI</strong> as an investment adviser, research analyst, or portfolio manager, and does not provide investment advisory services.</li>
+<li>Trading involves substantial risk of loss and is not suitable for everyone. You can lose part or all of your trading capital.</li>
+<li>All examples, figures, and historical observations are illustrative. Historical performance never guarantees future results. Strategies described here have worked <em>historically</em> in certain conditions; that does not mean they will work in the future or in your specific situation.</li>
+<li>Margin, taxes (STT, stamp duty), brokerage, and other regulatory details change over time. Always verify current rules and costs before trading.</li>
+<li>Nothing in this book should be read as a promise of profit or a guarantee that any strategy will be profitable.</li>
+</ul>
+<p>By reading this book, you agree that you are solely responsible for your own trading decisions and that you will consult a SEBI-registered adviser where appropriate.</p>
+<hr />
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li>What Relative Strength Is</li>
+<li>Computing Relative Strength</li>
+<li>Relative Strength vs the Market and vs Peers</li>
+<li>Sector Relative Strength and Rotation</li>
+<li>Where to Source Relative Strength in India</li>
+<li>What Breadth Is and Why It Matters</li>
+<li>The Core Breadth Indicators</li>
+<li>Breadth Divergences</li>
+<li>Where to Source Breadth in India</li>
+<li>The Top-Down Process: Breadth → Sector → Stock</li>
+<li>Combining RS, Breadth and Price</li>
+<li>The One-Page Reference</li>
+</ol>
+<p>Glossary</p>
+<hr />
+<h1 id="1-what-relative-strength-is">1. What Relative Strength Is</h1>
+<p><em>Part I — Relative Strength</em></p>
+<p>Relative Strength (RS) is a measure of how one instrument is performing <em>relative to another</em> — most often a stock relative to its benchmark (Nifty 50, Nifty 500) or relative to its peers. It is entirely different from the "Relative Strength Index (RSI)", which is a bounded oscillator; the RS in this book is a <strong>ranking of performance</strong>, not a momentum oscillator.</p>
+<p>The core idea is elegant: in a market where most stocks follow the index, the stocks that <em>outperform</em> the index are the ones attracting sustained institutional demand. RS is the objective, numbers-only way to find them.</p>
+<h2 id="why-rs-matters">Why RS matters</h2>
+<ul>
+<li><strong>It isolates leadership.</strong> A stock can be falling while its sector rises, or rising while the index falls. RS cuts through the noise of the market's overall direction and tells you <em>who is leading</em> and <em>who is lagging</em>.</li>
+<li><strong>It is persistent.</strong> Relative strength is one of the more durable anomalies in markets (the momentum effect documented by Jegadeesh &amp; Titman, 1993, <em>Journal of Finance</em>) — stocks that have led tend to keep leading, and stocks that have lagged tend to keep lagging, over intermediate horizons.</li>
+<li><strong>It respects the market's own verdict.</strong> RS is not your opinion or a story; it is what the market has already voted for with real money.</li>
+</ul>
+<h2 id="the-two-ways-to-express-rs">The two ways to express RS</h2>
+<ol>
+<li><strong>RS ratio (price ratio).</strong> Divide the stock's price by the index's level (both normalised to a common start). A rising ratio means the stock is outperforming; a falling ratio means it is lagging. The slope of this ratio line is the visual form of RS.</li>
+<li><strong>RS rank / percentile.</strong> Compute each stock's return over a window (commonly 3, 6 or 12 months) and rank all stocks; express the result as a percentile (0–100). A stock in the 90th percentile beat 90% of the market. This is the ranking form used by most screeners.</li>
+</ol>
+<p><strong>How to read:</strong> the <em>ratio</em> is best for watching a single stock over time; the <em>rank</em> is best for comparing across the whole universe. Use both — the ratio for the story, the rank for the shortlist.</p>
+<h1 id="2-computing-relative-strength">2. Computing Relative Strength</h1>
+<h2 id="the-rs-ratio-step-by-step">The RS ratio, step by step</h2>
+<ol>
+<li>Choose a benchmark (Nifty 50 for large-caps, Nifty 500 for broader).</li>
+<li>Normalise both to a common base: <code>Normalised price = Price ÷ Price at start of window</code>.</li>
+<li>Compute the ratio: <code>RS ratio = Normalised stock ÷ Normalised benchmark</code>.</li>
+<li>Plot the ratio over time.</li>
+</ol>
+<p><strong>How to read the ratio line:</strong></p>
+<ul>
+<li>A <strong>rising</strong> RS line while the index is flat or down = genuine leadership (the stock is doing it on its own, not just drifting up with the tide).</li>
+<li>A <strong>falling</strong> RS line while the index rises = the stock is a laggard in a rising market — it is <em>underperforming</em> even as it goes up in price.</li>
+<li>A <strong>breakout in the RS line</strong> (ratio making a new high) often <em>precedes or coincides with</em> a price breakout — it is a confirmation that the move is leadership, not just beta.</li>
+</ul>
+<h2 id="the-rs-rank-step-by-step">The RS rank, step by step</h2>
+<ol>
+<li>Compute the return of every stock in the universe over the chosen window (e.g. 6 months).</li>
+<li>Sort all returns.</li>
+<li>Assign a percentile to each (0 = worst, 100 = best).</li>
+</ol>
+<p><strong>How to read the rank:</strong></p>
+<ul>
+<li>Above ~80th percentile = strong relative strength (leadership).</li>
+<li>Below ~20th percentile = weak relative strength (laggard).</li>
+<li>The <strong>middle</strong> is where most stocks live and where the signal is weakest.</li>
+</ul>
+<h2 id="choosing-the-window">Choosing the window</h2>
+<p>The window changes what the RS is measuring:</p>
+<table>
+<thead>
+<tr>
+<th>Window</th>
+<th>What it captures</th>
+<th>Use for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1–3 months</td>
+<td>Short-term momentum</td>
+<td>Tactical rotation, trend confirmation</td>
+</tr>
+<tr>
+<td>6 months</td>
+<td>Intermediate trend</td>
+<td>Core ranking, most-used window</td>
+</tr>
+<tr>
+<td>12 months</td>
+<td>Sustained leadership</td>
+<td>Positional / long-horizon selection</td>
+</tr>
+</tbody>
+</table>
+<p><strong>How to read:</strong> long-horizon RS (12-month) is the most stable and least noisy; short-horizon RS flips quickly. Many practitioners rank on 6-month RS and confirm with 3-month and 12-month to avoid whipsaw.</p>
+<h1 id="3-relative-strength-vs-the-market-and-vs-peers">3. Relative Strength vs the Market and vs Peers</h1>
+<h2 id="stock-vs-benchmark">Stock vs benchmark</h2>
+<p>The most common comparison is the stock against the broad index. But this can mislead in one important way: a stock can show high RS simply because its <em>whole sector</em> is strong, not because the stock itself is special.</p>
+<h2 id="stock-vs-sector-the-missing-comparison">Stock vs sector (the missing comparison)</h2>
+<p>To find true leadership, compare the stock to <strong>its own sector or industry</strong> as well. A stock that is the <em>strongest in a strong sector</em> is the true leader; a stock that merely rides a strong sector is a beta bet, not a selection edge.</p>
+<p><strong>How to read the two-layer comparison:</strong></p>
+<ul>
+<li><strong>Strong vs market AND strong vs sector</strong> = the genuine leader. Highest conviction.</li>
+<li><strong>Strong vs market, weak vs sector</strong> = riding the sector's coattails; be sceptical.</li>
+<li><strong>Weak vs market but strong vs sector</strong> = a relative winner within a weak group (a "best house on a bad street" — sometimes the early sign of a sector turn).</li>
+<li><strong>Weak vs both</strong> = a laggard; avoid for strength-based selection.</li>
+</ul>
+<h2 id="building-the-ranking-funnel">Building the ranking funnel</h2>
+<p>A robust top-down funnel ranks in three layers:</p>
+<ol>
+<li><strong>Market</strong> (is the index itself healthy? — use breadth, Part II).</li>
+<li><strong>Sector</strong> (which sectors are outperforming the index? — sector RS).</li>
+<li><strong>Stock</strong> (which stocks lead their sector? — stock RS vs sector).</li>
+</ol>
+<p>This is the core process of the entire book, expanded in Part III.</p>
+<h1 id="4-sector-relative-strength-and-rotation">4. Sector Relative Strength and Rotation</h1>
+<h2 id="sector-rs">Sector RS</h2>
+<p>Sector RS ranks the NSE's sectoral indices (or sector baskets) by their relative performance. The Nifty sectoral indices — Bank, IT, Auto, FMCG, Metal, Pharma, Realty, PSU Bank, Capital Goods, Oil &amp; Gas, and others — together with thematic indices such as Energy and Infrastructure, are the natural building blocks.</p>
+<p><strong>How to read sector RS:</strong></p>
+<ul>
+<li>Rank sectors by RS over the chosen window. The <strong>top 2–3 sectors</strong> are where leadership currently resides; the <strong>bottom 2–3</strong> are the laggards.</li>
+<li><strong>Rotation</strong> is the migration of leadership from one group to another. It is not random — money tends to rotate in a rough economic order: early-cycle leaders (autos, banks, industrials) → mid-cycle (consumption, infra) → late-cycle/defensive (FMCG, pharma, IT in some regimes).</li>
+<li>A sector <strong>rising in the RS ranking</strong> while the market is flat is often the earliest sign of the next leadership group.</li>
+</ul>
+<h2 id="using-sector-rs-in-practice">Using sector RS in practice</h2>
+<ul>
+<li><strong>Overweight leaders, underweight laggards.</strong> The simplest application: concentrate attention (and, for active traders, capital) in the top-ranked sectors and avoid the bottom-ranked ones.</li>
+<li><strong>Watch the RS rank <em>change</em>, not just the level.</strong> A sector moving from 8th to 3rd is a more actionable signal than one that has been 1st for a year. Change is where opportunity lives.</li>
+<li><strong>Confirm with the sector's own price.</strong> A sector's RS means more when the sector's own price is also breaking out or making new highs — RS <em>and</em> price together are the strongest statement.</li>
+</ul>
+<h1 id="5-where-to-source-relative-strength-in-india">5. Where to Source Relative Strength in India</h1>
+<p>Relative strength is a <em>computed</em> metric — few exchanges publish it directly, but the Indian ecosystem offers several tools that calculate it for you.</p>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>RS capability</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Tickertape</strong></td>
+<td>Stock vs sector and vs index performance; relative charts</td>
+<td>https://www.tickertape.in</td>
+</tr>
+<tr>
+<td><strong>Trendlyne</strong></td>
+<td>Relative performance vs Nifty and peers; rankings</td>
+<td>https://trendlyne.com</td>
+</tr>
+<tr>
+<td><strong>TradingView</strong></td>
+<td>Built-in Compare tool (overlay the index on a percentage scale) and spread/ratio charts (enter a ratio symbol such as <code>STOCK/NIFTY</code> to plot the RS line)</td>
+<td>https://www.tradingview.com</td>
+</tr>
+<tr>
+<td><strong>Chartink</strong></td>
+<td>RS-style scan builders over the full NSE universe</td>
+<td>https://chartink.com</td>
+</tr>
+<tr>
+<td><strong>Screener.in</strong></td>
+<td>Raw multi-year returns (which you can rank yourself)</td>
+<td>https://www.screener.in</td>
+</tr>
+<tr>
+<td><strong>NSE India</strong></td>
+<td>Index data and constituents for building your own RS</td>
+<td>https://www.nseindia.com</td>
+</tr>
+</tbody>
+</table>
+<p><strong>How to do it yourself (spreadsheet):</strong> download daily adjusted prices for a stock and for Nifty (from NSE or a data provider), normalise both to 100 at the start of your window, and divide. The slope of that ratio <em>is</em> relative strength. It takes ten minutes in a spreadsheet and teaches you more than any ready-made tool.</p>
+<h1 id="6-what-breadth-is-and-why-it-matters">6. What Breadth Is and Why It Matters</h1>
+<p><em>Part II — Breadth</em></p>
+<p>Breadth measures <strong>how many stocks are participating</strong> in a market move, rather than how far the <em>index</em> has moved. The index is a weighted average of a few large names; breadth is the unweighted vote of the whole market. The two can disagree — and when they do, the disagreement is the signal.</p>
+<p><strong>The core insight:</strong> a rising index driven by many stocks is <em>healthy</em>; a rising index driven by a handful of heavyweights while everything else falls is <em>unhealthy</em>. Breadth is how you tell them apart.</p>
+<h2 id="why-breadth-matters">Why breadth matters</h2>
+<ul>
+<li><strong>It reveals internal strength or weakness</strong> invisible in the index. A new high in Nifty made on <em>fewer</em> new highs than the prior peak is a warning.</li>
+<li><strong>It leads at turning points.</strong> Breadth often peaks or troughs <em>before</em> the index does — the participation starts to fade before the top, or broadens before the bottom.</li>
+<li><strong>It disciplines the trend.</strong> A trend confirmed by breadth is more durable than one running on fumes.</li>
+</ul>
+<h1 id="7-the-core-breadth-indicators">7. The Core Breadth Indicators</h1>
+<h2 id="71-the-advance-decline-ad-line">7.1 The Advance-Decline (A/D) Line</h2>
+<p>The most fundamental breadth measure: each day, count <strong>advancers</strong> (stocks up) and <strong>decliners</strong> (stocks down).</p>
+<ul>
+<li><strong>Advance-Decline ratio</strong> = <code>Advancers ÷ Decliners</code> (or advancers as a % of total).</li>
+<li><strong>A/D Line</strong> = cumulative running total of <code>Advancers − Decliners</code>.</li>
+</ul>
+<p><strong>How to read:</strong> the A/D line should <em>confirm</em> the index — making new highs when the index does. A <strong>divergence</strong> (index new high, A/D line not) is the classic early warning of a top; a positive divergence (index lower low, A/D higher low) is the classic sign of a bottom forming. The A/D line is most meaningful over the <em>broad</em> universe (all of NSE or Nifty 500), not just Nifty 50.</p>
+<h2 id="72-breadth-ratio-advancers">7.2 Breadth ratio / % advancers</h2>
+<p>The percentage of stocks advancing on a day. When this is persistently high (say, consistently above 60%), the market is broadly healthy; persistently low (below 40%) signals broad weakness.</p>
+<p><strong>How to read:</strong> the <em>smoothed</em> version matters more than any single day. A multi-day streak of high breadth is a genuine risk-on signal; a streak of low breadth while the index holds up is distribution.</p>
+<h2 id="73-new-highs-vs-new-lows">7.3 New Highs vs New Lows</h2>
+<p>Each day, count stocks making <strong>52-week highs</strong> and stocks making <strong>52-week lows</strong>.</p>
+<ul>
+<li><strong>High-Low differential</strong> = <code>New highs − New lows</code>.</li>
+<li><strong>High-Low ratio</strong> = <code>New highs ÷ New lows</code>.</li>
+</ul>
+<p><strong>How to read:</strong> a market making many new highs and few new lows is in a confirmed uptrend. A market where new highs shrink on each rally is losing momentum. A widely watched bearish breadth signal is a <em>negative</em> high-low differential while the index is near its highs. (New highs/lows are best counted over the broad NSE or Nifty 500 universe.)</p>
+<h2 id="74-the-mcclellan-oscillator-and-summation-index">7.4 The McClellan Oscillator and Summation Index</h2>
+<p>The McClellan family smooths the raw daily A/D data to give a cleaner signal.</p>
+<ul>
+<li><strong>McClellan Oscillator</strong> = <code>EMA(19) of (A−D) − EMA(39) of (A−D)</code>, where A−D is advances minus declines.</li>
+<li><strong>McClellan Summation Index</strong> = the cumulative total of the oscillator.</li>
+</ul>
+<p><strong>How to read:</strong> the oscillator swings above and below zero and captures the short-term ebb and flow; the summation index is the <em>trend</em> of that oscillator and behaves like a smoothed A/D line. Divergences between the summation index and the price index are watched the same way as A/D divergences, but with less noise.</p>
+<h2 id="75-of-stocks-above-their-moving-average">7.5 % of stocks above their moving average</h2>
+<p>The percentage of the universe trading <strong>above its 50-day</strong> (and <strong>200-day</strong>) moving average.</p>
+<p><strong>How to read:</strong> this is one of the cleanest and most intuitive breadth gauges. Above ~60% on the 200-day = broad uptrend; below ~40% = broad downtrend. Extreme readings (above 80% or below 20%) are often short-term overbought/oversold — but in strong trends they can persist, so treat extremes as context, not automatic reversal signals.</p>
+<h2 id="76-updown-volume">7.6 Up/Down volume</h2>
+<p>Breadth of <em>volume</em>, not just of price: how much volume went into advancing stocks versus declining stocks.</p>
+<p><strong>How to read:</strong> price breadth shows <em>how many</em> stocks; volume breadth shows <em>how much conviction</em> is behind them. A rally on rising up-volume is healthier than one on falling up-volume. This is the breadth measure most closely tied to institutional participation.</p>
+<h2 id="the-breadth-dashboard-what-to-track-daily">The breadth dashboard (what to track daily)</h2>
+<table>
+<thead>
+<tr>
+<th>Indicator</th>
+<th>Bullish reading</th>
+<th>Bearish reading</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A/D line</td>
+<td>New highs with the index</td>
+<td>Diverging (lower highs)</td>
+</tr>
+<tr>
+<td>% advancers (smoothed)</td>
+<td>&gt; 60%</td>
+<td>&lt; 40%</td>
+</tr>
+<tr>
+<td>New highs − new lows</td>
+<td>Positive and expanding</td>
+<td>Negative near index highs</td>
+</tr>
+<tr>
+<td>McClellan summation</td>
+<td>Rising</td>
+<td>Falling, diverging</td>
+</tr>
+<tr>
+<td>% above 200-DMA</td>
+<td>&gt; 60%</td>
+<td>&lt; 40%</td>
+</tr>
+<tr>
+<td>Up/down volume</td>
+<td>Up-volume dominant</td>
+<td>Down-volume dominant</td>
+</tr>
+</tbody>
+</table>
+<h1 id="8-breadth-divergences">8. Breadth Divergences</h1>
+<p>The highest-value use of breadth is spotting <strong>divergences</strong> — cases where the index tells one story and breadth tells another.</p>
+<h2 id="the-two-divergences-that-matter">The two divergences that matter</h2>
+<ul>
+<li><strong>Bearish divergence (the top warning):</strong> the index makes a <em>new high</em>, but breadth (A/D line, new-highs count, % above the 200-DMA) makes a <em>lower high</em>. The rally is narrowing — fewer and fewer stocks are carrying it. This is often cited as one of the most historically reliable warnings of a topping market.</li>
+<li><strong>Bullish divergence (the bottom signal):</strong> the index makes a <em>new low</em>, but breadth makes a <em>higher low</em>. The decline is losing participation — fewer stocks are making new lows even as the index falls. This often precedes a durable bottom.</li>
+</ul>
+<p><strong>How to read divergences correctly:</strong></p>
+<ul>
+<li>One divergence reading is a <em>flag</em>, not a <em>trade signal</em>. Breadth divergences can persist for weeks before the index actually turns.</li>
+<li>Confirm with <strong>price structure</strong> (from Book 1): a breadth divergence plus a price-level break or a failed breakout is the high-confidence combination.</li>
+<li>Divergences are most reliable at <strong>extremes</strong> (after a long advance or decline), and least reliable in the middle of a range.</li>
+</ul>
+<h1 id="9-where-to-source-breadth-in-india">9. Where to Source Breadth in India</h1>
+<p>Breadth data for the NSE is widely available, though the <em>quality of the universe</em> matters (broad NSE or Nifty 500 is better than Nifty 50).</p>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Breadth capability</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Chartink</strong></td>
+<td>Advance/decline, new highs/lows, % above MA scans, custom breadth</td>
+<td>https://chartink.com</td>
+</tr>
+<tr>
+<td><strong>Trendlyne</strong></td>
+<td>Market breadth dashboard (A/D, new highs/lows, % above MA)</td>
+<td>https://trendlyne.com</td>
+</tr>
+<tr>
+<td><strong>NSE India</strong></td>
+<td>Advance/decline, new highs/lows, and bhavcopy for DIY breadth</td>
+<td>https://www.nseindia.com</td>
+</tr>
+<tr>
+<td><strong>Moneycontrol</strong></td>
+<td>Market breadth and advance/decline data</td>
+<td>https://www.moneycontrol.com</td>
+</tr>
+<tr>
+<td><strong>Investing.com India</strong></td>
+<td>Market breadth and % above moving averages</td>
+<td>https://in.investing.com</td>
+</tr>
+<tr>
+<td><strong>BSE India</strong></td>
+<td>Advance/decline and breadth data (BSE universe)</td>
+<td>https://www.bseindia.com</td>
+</tr>
+</tbody>
+</table>
+<p><strong>How to do it yourself:</strong> NSE publishes the daily bhavcopy (OHLC and volume for every listed stock). From it you can compute every breadth indicator in this book in a spreadsheet — advancers/decliners, new highs/lows, and % above any moving average. It is the most reliable, and free, primary source.</p>
+<h1 id="10-the-top-down-process-breadth-sector-stock">10. The Top-Down Process: Breadth → Sector → Stock</h1>
+<p><em>Part III — Putting It Together</em></p>
+<p>The power of RS and breadth is in combining them into one funnel. Each layer filters the one below.</p>
+<h2 id="step-1-read-the-market-with-breadth">Step 1 — Read the market with breadth</h2>
+<p>Start with the broadest question: <em>is the market healthy?</em></p>
+<ul>
+<li>Bullish breadth (A/D confirming, new highs expanding, % above 200-DMA &gt; 60%) → a favourable environment for long-side selection.</li>
+<li>Bearish or divergent breadth → a cautious environment; favour defensives, raise the bar for every long, or stand aside.</li>
+</ul>
+<p><strong>How to read:</strong> this is a <em>regime</em> decision, not a stock decision. It sets the tilt (risk-on vs risk-off) for everything that follows.</p>
+<h2 id="step-2-pick-the-sector-with-sector-rs">Step 2 — Pick the sector with sector RS</h2>
+<p>Within the market regime, rank sectors by RS.</p>
+<ul>
+<li>In a risk-on regime, overweight the <strong>top 2–3 sectors</strong> by RS — the leaders.</li>
+<li>In a risk-off regime, the top-ranked <em>defensive</em> sectors (FMCG, pharma, IT) are where relative safety is.</li>
+</ul>
+<h2 id="step-3-pick-the-stock-with-stock-rs-vs-its-sector">Step 3 — Pick the stock with stock RS vs its sector</h2>
+<p>Within the leading sectors, rank stocks by RS <strong>against their own sector</strong> (not just the index). The genuine leaders are the stocks that are strong <em>within</em> strong sectors.</p>
+<h2 id="the-complete-funnel-in-one-line">The complete funnel, in one line</h2>
+<blockquote>
+<p><strong>Breadth confirms the market → sector RS picks the group → stock-vs-sector RS picks the leader.</strong></p>
+</blockquote>
+<h2 id="a-worked-example-illustrative">A worked example (illustrative)</h2>
+<ol>
+<li><strong>Breadth:</strong> % of Nifty 500 stocks above the 200-DMA is 68% and rising; new highs expanding. → Risk-on.</li>
+<li><strong>Sector RS:</strong> over 6 months, the top-ranked sectoral indices are Auto and Capital Goods. → Overweight Auto, Capital Goods.</li>
+<li><strong>Stock RS:</strong> within Auto, rank by 6-month RS vs the Auto index; shortlist the top-decile names that are also strong vs Nifty. → The shortlist.</li>
+</ol>
+<p>The same funnel, run in reverse, is the <strong>avoid</strong> list: a weak-market regime, a bottom-ranked sector, and a stock weak within that sector.</p>
+<h1 id="11-combining-rs-breadth-and-price">11. Combining RS, Breadth and Price</h1>
+<p>RS and breadth are not a standalone system; they are a <strong>filter</strong> and a <strong>confirmation</strong> layer on top of price action (Book 1). The best results come from using all three together.</p>
+<h2 id="the-rules-of-combination">The rules of combination</h2>
+<ol>
+<li><strong>Breadth sets the regime; price sets the timing.</strong> Breadth tells you <em>whether</em> to be aggressive; price levels and structure (Book 1) tell you <em>when</em>.</li>
+<li><strong>RS picks the candidates; price confirms the entry.</strong> High RS narrows the field to leaders; a price breakout or break-and-retest on a high-RS stock is the entry. High RS alone (without a price trigger) is a watchlist, not a trade.</li>
+<li><strong>Divergences between breadth and price are the exits.</strong> A topping breadth divergence is the reason to lighten exposure even when price looks fine; a bottoming divergence is the reason to stop being bearish.</li>
+</ol>
+<h2 id="the-warning-that-ties-it-all-together">The warning that ties it all together</h2>
+<p>The classic late-stage market is one where <strong>Nifty makes a new high, breadth diverges (narrowing), but a handful of high-RS leaders keep climbing.</strong> Everything looks fine on the index, but under the surface the participation has thinned to a few names. That is precisely when the strength filter is most valuable — and when the breadth filter is screaming caution.</p>
+<h1 id="12-the-one-page-reference">12. The One-Page Reference</h1>
+<p><strong>The funnel (run top-down, every week):</strong></p>
+<ol>
+<li><strong>Breadth</strong> — A/D line, new highs/lows, % above 200-DMA. Risk-on or risk-off?</li>
+<li><strong>Sector RS</strong> — rank sectoral indices by RS. Which 2–3 lead, which lag?</li>
+<li><strong>Stock RS</strong> — rank stocks within leading sectors by RS vs their sector. Shortlist the leaders.</li>
+</ol>
+<p><strong>The signals:</strong></p>
+<ul>
+<li><strong>Leadership</strong> = strong RS vs market <em>and</em> vs sector, confirmed by price.</li>
+<li><strong>Topping warning</strong> = index new high + breadth divergence (narrowing).</li>
+<li><strong>Bottoming signal</strong> = index new low + breadth higher low (broadening).</li>
+</ul>
+<p><strong>The rules:</strong></p>
+<ul>
+<li>Rank on 6-month RS; confirm with 3-month and 12-month.</li>
+<li>Overweight leaders, underweight laggards.</li>
+<li>RS without a price trigger is a watchlist, not a trade.</li>
+<li>Breadth sets the regime; price sets the timing.</li>
+<li>Always re-check with current data — ranks and thresholds drift.</li>
+</ul>
+<h1 id="glossary">Glossary</h1>
+<p><strong>A/D line</strong> — the cumulative advance-decline line; a running total of advancing minus declining stocks.</p>
+<p><strong>Advancer / Decliner</strong> — a stock that closed up / down on the day.</p>
+<p><strong>Breadth</strong> — the participation (count) of stocks in a market move, as opposed to the index level.</p>
+<p><strong>Breadth divergence</strong> — index and breadth moving in opposite directions (a topping or bottoming warning).</p>
+<p><strong>McClellan Oscillator</strong> — the difference between the 19-day and 39-day EMAs of the daily advance-decline number.</p>
+<p><strong>McClellan Summation Index</strong> — the cumulative total of the McClellan Oscillator.</p>
+<p><strong>New high / new low</strong> — a stock making a 52-week high / low.</p>
+<p><strong>Relative Strength (RS)</strong> — one instrument's performance relative to another (a benchmark or a peer), expressed as a ratio or a percentile rank.</p>
+<p><strong>RS ratio</strong> — the normalised price of a stock divided by the normalised price of the benchmark.</p>
+<p><strong>RS rank / percentile</strong> — where a stock's return ranks among the universe (0–100).</p>
+<p><strong>Sector RS</strong> — the relative performance of a sectoral index versus the broad market.</p>
+<p><strong>Sector rotation</strong> — the migration of market leadership from one sector to another over the cycle.</p>
+<p><strong>% above the 200-DMA</strong> — the share of the universe trading above its 200-day moving average.</p></body></html>

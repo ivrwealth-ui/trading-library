@@ -1,0 +1,881 @@
+<!DOCTYPE html><html><head><meta charset='utf-8'><style>
+* { box-sizing: border-box; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 11pt; line-height: 1.62; color: #1a1d21; margin: 0;
+}
+.cover {
+  height: 100vh; page-break-after: always;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 3cm 2.5cm; background: #0d1715; color: #e8f0ee;
+}
+.cover .rule { width: 64px; height: 4px; background: #2dd4bf; margin-bottom: 2.2rem; }
+.cover h1 { font-size: 38pt; line-height: 1.08; font-weight: 600; color: #fff; margin: 0 0 1.4rem; letter-spacing: -0.5px; }
+.cover .subtitle { font-size: 15pt; color: #9fb5ae; line-height: 1.5; max-width: 34em; }
+.cover .pub { margin-top: 3rem; font-size: 11pt; letter-spacing: 0.14em; text-transform: uppercase; color: #2dd4bf; }
+.cover .ednote { margin-top: 0.6rem; font-size: 9pt; color: #6c817b; }
+h1 { font-size: 23pt; font-weight: 600; color: #0f172a; page-break-before: always; margin: 0 0 1.1rem; padding-bottom: 0.4rem; border-bottom: 2px solid #2dd4bf; }
+h2 { font-size: 15.5pt; font-weight: 600; color: #0f766e; margin: 1.6rem 0 0.6rem; }
+h3 { font-size: 12.5pt; font-weight: 600; color: #1a1d21; margin: 1.2rem 0 0.4rem; }
+p { margin: 0.5rem 0; }
+strong { color: #0f172a; }
+em { color: #334155; }
+a { color: #0f766e; text-decoration: none; }
+hr { border: none; border-top: 1px solid #e2e8f0; margin: 2rem 0; }
+ul, ol { margin: 0.5rem 0 0.8rem; padding-left: 1.5rem; }
+li { margin: 0.25rem 0; }
+code { font-family: 'SF Mono', Menlo, Consolas, monospace; font-size: 9pt; background: #f1f5f9; padding: 1px 5px; border-radius: 3px; color: #0f766e; }
+pre { background: #0f172a; color: #e2e8f0; padding: 0.9rem 1.1rem; border-radius: 6px; font-size: 9pt; line-height: 1.5; white-space: pre-wrap; word-wrap: break-word; }
+pre code { background: none; color: inherit; padding: 0; }
+blockquote { border-left: 3px solid #2dd4bf; background: #f0fdfa; margin: 0.8rem 0; padding: 0.7rem 1rem; color: #0f3d37; font-style: italic; border-radius: 0 4px 4px 0; }
+blockquote p { margin: 0.3rem 0; }
+table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: 9.5pt; page-break-inside: avoid; }
+th, td { border: 1px solid #dbe3e8; padding: 5px 8px; text-align: left; vertical-align: top; }
+th { background: #0f766e; color: #fff; font-weight: 600; }
+tr:nth-child(even) td { background: #f8fafc; }
+h1:first-of-type { page-break-before: auto; }
+h2#important-disclaimer, h2#how-to-read-this-book, h2#table-of-contents { page-break-before: always; }
+</style></head><body><section class="cover"><div class="rule"></div><h1>TradingView Screeners with Pine Script v6: Recognised-Strategy Scanners, Fully Coded</h1><div class="subtitle">Valuation, earnings power, momentum, stage analysis, outperformance, price contraction, Dow Theory, and multi-timeframe screeners — each a complete Pine v6 script — with clear disclaimers.</div><div class="pub">Published by StratLab</div><div class="ednote">Educational content only — not investment advice. StratLab is not SEBI-registered.</div></section><h1 id="tradingview-screeners-with-pine-script-v6-recognised-strategy-scanners-fully-coded">TradingView Screeners with Pine Script v6: Recognised-Strategy Scanners, Fully Coded</h1>
+<h2 id="valuation-earnings-power-momentum-stage-analysis-outperformance-price-contraction-dow-theory-and-multi-timeframe-screeners-each-a-complete-pine-v6-script-with-clear-disclaimers">Valuation, earnings power, momentum, stage analysis, outperformance, price contraction, Dow Theory, and multi-timeframe screeners — each a complete Pine v6 script — with clear disclaimers.</h2>
+<hr />
+<p><strong>Published by StratLab</strong></p>
+<hr />
+<h2 id="important-disclaimer">Important Disclaimer</h2>
+<p>This book is provided for <strong>educational purposes only</strong>. It is not investment advice, a recommendation, or a solicitation to buy or sell any security.</p>
+<ul>
+<li><strong>StratLab is not registered with SEBI</strong> as an investment adviser, research analyst, or portfolio manager, and does not provide investment advisory services.</li>
+<li>Trading and investing involve substantial risk of loss, including the possible loss of principal. Past performance never guarantees future results.</li>
+<li>The strategies encoded here are well-known, widely discussed approaches; they are described and coded for <em>education</em>, not as a claim that any of them will be profitable.</li>
+</ul>
+<h2 id="code-disclaimer">Code Disclaimer</h2>
+<p>The Pine Script® code in this book is <strong>illustrative and provided "as is", without warranty of any kind.</strong> Specifically:</p>
+<ul>
+<li>It has <strong>not been guaranteed to compile on every TradingView plan or version</strong>, and TradingView's language, functions, and data availability change over time. Always paste into the Pine Editor and resolve any warnings or errors before relying on it.</li>
+<li><strong>Fundamental-data functions (<code>request.financial()</code>, <code>request.earnings()</code>) require the relevant data subscription/plan</strong> and may return <code>na</code> (no data) for many symbols — especially on NSE/BSE names. Scripts are written to fail <em>silently</em> (no signal) when data is unavailable.</li>
+<li>A <strong>screener is a filter, not a trade signal.</strong> Every result must be reviewed independently; the screen merely shortlists candidates for <em>your own</em> analysis and decision.</li>
+<li><strong>Test on paper or demo before any live use.</strong> Screener output is not a recommendation to buy or sell.</li>
+<li>Pine Screener availability, the one-indicator-per-screen limit, the 40-request-call limit, and the 500-bar lookback limit are TradingView features that may change; verify current behaviour in your account.</li>
+</ul>
+<p>"Pine Script" and "TradingView" are trademarks of TradingView, Inc. This book is not affiliated with, endorsed by, or sponsored by TradingView.</p>
+<p>By reading this book, you agree that you are solely responsible for your own trading decisions and that you will consult a SEBI-registered adviser where appropriate.</p>
+<hr />
+<h2 id="how-to-read-this-book">How to Read This Book</h2>
+<p>This book teaches you to build <strong>TradingView screeners</strong> using <strong>Pine Script v6</strong>, encoding strategies that are widely considered <em>substantive</em> — valuation, earnings power, momentum, stage analysis, outperformance, price contraction, Dow Theory, and multi-timeframe analysis — rather than trivial moving-average crossovers.</p>
+<ul>
+<li><strong>Chapters 1–2</strong> explain the <em>types</em> of TradingView screeners and the Pine v6 essentials (including how to pull fundamental data) that every script uses.</li>
+<li><strong>Chapters 3–10</strong> are eight screener scripts, each a complete, copy-pasteable Pine v6 script. Every chapter follows the same pattern: the strategy's idea, the exact logic, the full code, and how to read its columns.</li>
+<li><strong>Chapters 11–12</strong> cover how to load and use the screeners, and the code best practices and disclaimers that govern them.</li>
+<li>The <strong>appendix</strong> indexes all eight scripts and points to the consolidated eight-factor script.</li>
+</ul>
+<p>A note on language: this book describes what a screen <em>is</em> and what a strategy has historically been understood to do — never what you "should" buy. Screeners are filters; decisions are yours.</p>
+<hr />
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li>TradingView Screener Types</li>
+<li>Pine Script v6 Essentials</li>
+<li>Screener 1 — Valuation (P/E, P/B)</li>
+<li>Screener 2 — Earnings Power (EPS &amp; Revenue Growth)</li>
+<li>Screener 3 — Momentum (12-Month Return, 52-Week High)</li>
+<li>Screener 4 — Stage Analysis (Weinstein Stage 2)</li>
+<li>Screener 5 — Outperformance (Relative Strength vs. Benchmark)</li>
+<li>Screener 6 — Price Contraction (VCP)</li>
+<li>Screener 7 — Dow Theory (Trend Structure + Volume)</li>
+<li>Screener 8 — Multi-Timeframe (Weekly Trend + Daily Trigger)</li>
+<li>Loading and Using Your Screeners</li>
+<li>Code Best Practices and Disclaimers</li>
+</ol>
+<p>Appendix — Consolidated Scripts</p>
+<hr />
+<h1 id="1-tradingview-screener-types">1. TradingView Screener Types</h1>
+<h2 id="three-ways-to-screen">Three ways to screen</h2>
+<p>TradingView offers three distinct ways to filter the market, and they are easily confused. Understanding the difference is the prerequisite to using the scripts in this book.</p>
+<h2 id="type-1-the-built-in-screeners">Type 1 — The built-in screeners</h2>
+<p>TradingView ships <strong>built-in screeners</strong> for stocks, ETFs, crypto, and forex (under <em>Products → Screeners</em>). Each has a large set of <strong>preset filters</strong> — market, sector, market cap, price, volume, performance, valuation ratios, and a library of built-in technical indicators.</p>
+<ul>
+<li><strong>Strengths:</strong> fast, no code, covers a huge universe with ready-made filters.</li>
+<li><strong>Limits:</strong> you are restricted to the <em>preset</em> filters. You cannot express custom, multi-condition logic like "the stock is in Weinstein Stage 2 <em>and</em> its volume is drying up." That is exactly where custom Pine comes in.</li>
+</ul>
+<h2 id="type-2-custom-pine-indicators-as-screener-columns">Type 2 — Custom Pine indicators as screener columns</h2>
+<p>This is the workhorse for this book. Any Pine <code>indicator()</code> you write can be <strong>loaded into the Pine Screener</strong> (Type 3), where its plots become columns and its <code>alertcondition()</code> calls become filters. The built-in screeners (Type 1) do not accept custom scripts, so custom logic runs only in the Pine Screener or on a chart. The screener reads the <strong>value your script plots on the last bar</strong>, for each symbol.</p>
+<p>The pattern is simple:</p>
+<ol>
+<li>Write an <code>indicator()</code> that computes a <strong>boolean condition</strong> ("is this a value candidate?") and <strong>plots it</strong> — typically as <code>1</code> when true and <code>0</code> when false.</li>
+<li>Load the script in the Pine Screener.</li>
+<li>Filter on the plot ("Signal == 1").</li>
+</ol>
+<p>Because every <code>plot()</code> in your script becomes a column, you can also plot the <em>metrics themselves</em> (P/E, momentum %, relative strength) and <strong>sort</strong> the screener by them. A well-written screener script therefore does two jobs at once: it provides a <strong>pass/fail signal</strong> and <strong>sortable metric columns</strong>.</p>
+<h2 id="type-3-pine-screener-the-newer-script-driven-scanner">Type 3 — Pine Screener (the newer, script-driven scanner)</h2>
+<p>TradingView's newer <strong>Pine Screener</strong> (<em>Products → Screeners → Pine</em>) is a dedicated scanner that runs a single Pine script over one of <strong>your watchlists</strong> (or an index's constituents) and produces a table of results, with each plot as a column and each <code>alertcondition()</code> as a filter.</p>
+<p>Its key mechanics (which constrain how you write scripts; these are the limits at the time of writing — check TradingView's current Pine Screener help page):</p>
+<ul>
+<li><strong>One indicator per scan.</strong></li>
+<li>The script must output at least one <strong>plot</strong> or <strong><code>alertcondition()</code></strong>.</li>
+<li><strong>Only plots become columns</strong>; <code>alertcondition()</code> entries become filters.</li>
+<li><strong>At most 40 <code>request.*()</code> calls</strong> per script.</li>
+<li><strong>Lookback limited to ~500 bars.</strong></li>
+<li><strong>Only standard timeframes</strong> are supported (no custom timeframes).</li>
+<li><strong><code>input.symbol()</code>, <code>input.timeframe()</code> and <code>input.time()</code> are not adjustable</strong> — the screener ignores your settings and uses the script's defaults.</li>
+</ul>
+<p>All eight scripts in this book are written to work in the Pine Screener (and as ordinary indicators on a chart) — they use few <code>request.*</code> calls, modest lookbacks, and output both plots and <code>alertcondition()</code>.</p>
+<h2 id="the-mental-model">The mental model</h2>
+<p>A Pine screener script is just an indicator that answers, for the symbol currently being scanned, a <strong>yes/no question</strong> — and optionally reports the <strong>numbers behind the answer</strong>. Everything else (the scanning, the table, the sorting) is TradingView's job. Your job is to encode the question <em>well</em>.</p>
+<h2 id="summary">Summary</h2>
+<ul>
+<li>Three types: built-in screeners (preset filters only), custom Pine indicators whose plots become columns, and the Pine Screener that runs them.</li>
+<li>A screener script computes a boolean condition and plots it (1/0), plus metric columns.</li>
+<li>Pine Screener limits: one indicator, ≤40 request calls, ~500-bar lookback, standard timeframes.</li>
+<li>Every script in this book is written within those limits.</li>
+</ul>
+<p>Next: the Pine v6 essentials every script uses — including how to pull fundamental data.</p>
+<h1 id="2-pine-script-v6-essentials">2. Pine Script v6 Essentials</h1>
+<h2 id="the-subset-you-need-to-read-the-scripts">The subset you need to read the scripts</h2>
+<p>You do not need to learn all of Pine to use this book — only the subset that appears in the eight screeners. This chapter covers that subset, including the two parts that trip people up most: <strong>fundamental data access</strong> and <strong>the screener-specific limits</strong>.</p>
+<h2 id="the-skeleton">The skeleton</h2>
+<p>Every script in this book has the same skeleton:</p>
+<pre><code class="language-pine">//@version=6
+indicator(&quot;Script Title&quot;, overlay = false)
+
+// inputs
+// data
+// condition
+// plots
+// alert
+</code></pre>
+<ul>
+<li><code>//@version=6</code> declares Pine v6 (required as the first line).</li>
+<li><code>indicator(title, overlay = ...)</code> declares an <em>indicator</em> (a study) — this is what screeners use (a <code>strategy()</code> is for backtesting, not screening).</li>
+<li><code>overlay = false</code> puts the script in its own pane; for screeners, the chart is irrelevant — the <em>columns</em> are what matter.</li>
+</ul>
+<h2 id="variables-and-types">Variables and types</h2>
+<p>Pine is a typed language, but types are usually inferred:</p>
+<pre><code class="language-pine">float eps = request.financial(syminfo.tickerid, &quot;EARNINGS_PER_SHARE_BASIC&quot;, &quot;TTM&quot;)
+bool cond = close &gt; ta.sma(close, 200)
+int lookback = 252
+</code></pre>
+<p>The three you will see constantly: <code>float</code> (numbers), <code>bool</code> (true/false), <code>int</code> (whole numbers). Explicit type prefixes (<code>float</code>, <code>bool</code>, <code>int</code>) are good practice.</p>
+<h2 id="the-ta-namespace-built-in-indicators">The <code>ta.</code> namespace (built-in indicators)</h2>
+<p>Most technical calculations live under <code>ta.</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ta.sma(src, len)</code></td>
+<td>Simple moving average</td>
+</tr>
+<tr>
+<td><code>ta.ema(src, len)</code></td>
+<td>Exponential moving average</td>
+</tr>
+<tr>
+<td><code>ta.rsi(src, len)</code></td>
+<td>Relative Strength Index</td>
+</tr>
+<tr>
+<td><code>ta.roc(src, len)</code></td>
+<td>Rate of change (%), over <code>len</code> bars</td>
+</tr>
+<tr>
+<td><code>ta.atr(len)</code></td>
+<td>Average True Range</td>
+</tr>
+<tr>
+<td><code>ta.highest(src, len)</code></td>
+<td>Highest value over <code>len</code> bars</td>
+</tr>
+<tr>
+<td><code>ta.lowest(src, len)</code></td>
+<td>Lowest value over <code>len</code> bars</td>
+</tr>
+</tbody>
+</table>
+<p><code>close</code>, <code>high</code>, <code>low</code>, <code>volume</code>, <code>open</code> are built-in series; <code>close[1]</code> is the <em>previous</em> bar's close.</p>
+<h2 id="the-request-namespace-other-data">The <code>request.</code> namespace (other data)</h2>
+<p>This is the part that enables most of this book's screeners — pulling data from <strong>other symbols, other timeframes, and fundamental statements</strong>:</p>
+<ul>
+<li><code>request.security(symbol, timeframe, expression)</code> — data from another symbol/timeframe (e.g., the weekly close, or NIFTY's close for relative strength).</li>
+<li><code>request.financial(symbol, financial_id, period, ...)</code> — <strong>fundamental data</strong> (from FactSet): balance sheet, income statement, and derived ratios.</li>
+<li><code>request.earnings(ticker, field, ...)</code> — earnings data and estimates.</li>
+</ul>
+<h3 id="requestfinancial-the-fundamental-data"><code>request.financial()</code> — the fundamental data</h3>
+<p>The signature: <code>request.financial(symbol, financial_id, period, gaps, ignore_invalid_symbol, currency)</code>.</p>
+<ul>
+<li><strong><code>symbol</code></strong> — <code>syminfo.tickerid</code> (the symbol being scanned).</li>
+<li><strong><code>financial_id</code></strong> — an uppercase string naming the metric. The ones this book uses:</li>
+<li><code>"EARNINGS_PER_SHARE_BASIC"</code> — basic EPS (supports TTM).</li>
+<li><code>"EARNINGS_PER_SHARE_BASIC_ONE_YEAR_GROWTH"</code> — EPS growth %, year over year.</li>
+<li><code>"EARNINGS_ESTIMATE"</code> — forward EPS estimate.</li>
+<li><code>"REVENUE_ONE_YEAR_GROWTH"</code> — revenue growth %, year over year.</li>
+<li><code>"TOTAL_EQUITY"</code>, <code>"TOTAL_DEBT"</code>, <code>"TOTAL_SHARES_OUTSTANDING"</code>, <code>"TOTAL_REVENUE"</code>, <code>"NET_INCOME"</code>, <code>"EBITDA"</code>.</li>
+<li><code>"DEBT_TO_EQUITY"</code>, <code>"DEBT_TO_EBITDA"</code> — pre-computed leverage ratios.</li>
+<li><strong><code>period</code></strong> — <code>"FY"</code> (annual), <code>"FQ"</code> (quarterly), <code>"TTM"</code> (trailing twelve months), <code>"FH"</code> (semi-annual). Not every metric supports every period.</li>
+<li><strong><code>ignore_invalid_symbol = true</code></strong> — tells Pine to return <code>na</code> instead of throwing an error when a symbol has no data (essential when scanning mixed watchlists).</li>
+</ul>
+<p><strong>Critical caveat:</strong> fundamental data requires the right TradingView plan/subscription, and <strong>many NSE/BSE symbols have sparse or missing fundamental data.</strong> When data is missing, <code>request.financial()</code> returns <code>na</code>, and the scripts in this book are written so <code>na</code> simply means "no signal" — never a crash, and never a false positive.</p>
+<h3 id="requestsecurity-other-symbols-and-timeframes"><code>request.security()</code> — other symbols and timeframes</h3>
+<p><code>request.security(symbol, timeframe, expression)</code> evaluates an expression in another context. This book uses it for two things:</p>
+<ul>
+<li><strong>A benchmark</strong> (relative strength): <code>request.security("NSE:NIFTY", timeframe.period, close, ignore_invalid_symbol = true)</code>.</li>
+<li><strong>A higher timeframe</strong> (multi-timeframe analysis): <code>request.security(syminfo.tickerid, "W", close, ignore_invalid_symbol = true)</code> — the weekly close.</li>
+</ul>
+<h2 id="the-screener-limits-the-rules-that-shape-every-script">The screener limits (the rules that shape every script)</h2>
+<p>Because the scripts must work in the Pine Screener, they all respect these limits (at the time of writing):</p>
+<ol>
+<li><strong>≤40 <code>request.*</code> calls</strong> per script — the scripts here use at most four, well inside this limit.</li>
+<li><strong>~500-bar lookback</strong> — so 252-bar (12-month) momentum and 150-bar (30-week) moving averages are fine, but multi-year lookbacks are not.</li>
+<li><strong>Standard timeframes only</strong> — <code>"W"</code> (weekly) and <code>"D"</code> (daily) are fine; custom timeframes are not.</li>
+</ol>
+<h2 id="plots-and-alerts-the-screeners-output">Plots and alerts: the screener's output</h2>
+<p>Two things turn a calculation into a <em>screener</em>:</p>
+<ul>
+<li><strong><code>plot(series, "Title", ...)</code></strong> — each plot becomes a <strong>column</strong> in the screener. For a pass/fail signal, plot <code>cond ? 1 : 0</code>.</li>
+<li><strong><code>alertcondition(cond, "Title", "Message")</code></strong> — each one becomes a <strong>filter</strong> in the Pine Screener (and a condition you can alert on).</li>
+</ul>
+<p>The scripts plot both: a <strong>signal</strong> (1/0) you can filter on, and the <strong>metrics</strong> (P/E, momentum %, relative strength) you can sort by.</p>
+<h2 id="summary_1">Summary</h2>
+<ul>
+<li>The skeleton: <code>//@version=6</code>, <code>indicator()</code>, then inputs → data → condition → plots → alert.</li>
+<li><code>ta.*</code> for technicals; <code>request.*</code> for other symbols/timeframes/fundamentals.</li>
+<li><code>request.financial()</code> uses uppercase metric IDs and a period (<code>"FY"</code>, <code>"FQ"</code>, <code>"TTM"</code>, <code>"FH"</code>); set <code>ignore_invalid_symbol = true</code>.</li>
+<li>Screener limits: ≤40 request calls, ~500-bar lookback, standard timeframes.</li>
+<li><code>plot()</code> = column; <code>alertcondition()</code> = filter.</li>
+</ul>
+<p>Next: Screener 1 — Valuation.</p>
+<h1 id="3-screener-1-valuation-pe-pb">3. Screener 1 — Valuation (P/E, P/B)</h1>
+<h2 id="the-strategy">The strategy</h2>
+<p><strong>Value investing</strong> holds that stocks trading cheaply relative to their earnings and book value tend to outperform expensive ones over long horizons — a pattern research suggests has held historically, though not in every period. This screener encodes the classic two-ratio value screen: a reasonable <strong>price-to-earnings</strong> and <strong>price-to-book</strong>.</p>
+<p>Note the important boundary: this is a <em>filter for cheapness</em>, not a buy signal. A cheap stock can stay cheap (the "value trap"). In practice, pair this screen with a technical trigger (an uptrend or a reversal — see the <em>Techno-Funda</em> book in this series) before acting.</p>
+<h2 id="the-logic">The logic</h2>
+<p>For the symbol being scanned, pull three fundamentals and compute two ratios:</p>
+<ul>
+<li><strong>P/E (TTM)</strong> = <code>close / EPS (TTM)</code>.</li>
+<li><strong>P/B</strong> = <code>close / book-value-per-share</code>, where book value per share = <code>TOTAL_EQUITY / TOTAL_SHARES_OUTSTANDING</code>.</li>
+</ul>
+<p>The signal fires when <strong>both</strong> P/E and P/B are positive and below their thresholds. Positive EPS is required implicitly: P/E is only ever computed (never <code>na</code>) when EPS is positive, so a loss-making company can never pass this screen. When fundamental data is missing, the ratios are <code>na</code> and the signal simply does not fire.</p>
+<h2 id="the-code">The code</h2>
+<pre><code class="language-pine">//@version=6
+indicator(&quot;Valuation Screen (P/E, P/B)&quot;, overlay = false)
+
+// ---- Inputs ----
+float peMax  = input.float(25.0, &quot;Max P/E (TTM)&quot;)
+float pbMax  = input.float(3.0,  &quot;Max P/B&quot;)
+
+// ---- Fundamentals (ignore_invalid_symbol = true → na when no data) ----
+float epsTtm = request.financial(syminfo.tickerid, &quot;EARNINGS_PER_SHARE_BASIC&quot;, &quot;TTM&quot;, ignore_invalid_symbol = true)
+float totEq  = request.financial(syminfo.tickerid, &quot;TOTAL_EQUITY&quot;, &quot;FY&quot;, ignore_invalid_symbol = true)
+float shares = request.financial(syminfo.tickerid, &quot;TOTAL_SHARES_OUTSTANDING&quot;, &quot;FQ&quot;, ignore_invalid_symbol = true)
+
+// ---- Derived ratios ----
+// Positive EPS is required here, not via a separate toggle: a loss-making
+// company (epsTtm &lt;= 0) makes pe na, which the condition below excludes.
+float pe   = epsTtm &gt; 0 ? close / epsTtm : na
+float bvps = (totEq &gt; 0 and shares &gt; 0) ? totEq / shares : na
+float pb   = bvps &gt; 0 ? close / bvps : na
+
+// ---- Screen condition ----
+bool cond  = not na(pe) and pe &gt; 0 and pe &lt;= peMax and not na(pb) and pb &gt; 0 and pb &lt;= pbMax
+
+// ---- Output: metric columns + signal column ----
+plot(pe, &quot;P/E (TTM)&quot;, color = color.blue)
+plot(pb, &quot;P/B&quot;, color = color.purple)
+plot(cond ? 1 : 0, &quot;Value Signal&quot;, color = cond ? color.green : color.red, style = plot.style_columns)
+
+// ---- Filter ----
+alertcondition(cond, &quot;Value candidate&quot;, &quot;P/E and P/B at or below their thresholds&quot;)
+</code></pre>
+<h2 id="how-to-read-the-columns">How to read the columns</h2>
+<p>When you add this to the screener and scan a watchlist:</p>
+<ul>
+<li><strong>"P/E (TTM)"</strong> and <strong>"P/B"</strong> — sortable numeric columns; sort ascending to surface the cheapest.</li>
+<li><strong>"Value Signal"</strong> — <code>1</code> = passes the screen, <code>0</code> = fails. Filter on "Value Signal == 1".</li>
+</ul>
+<h2 id="honest-limitations">Honest limitations</h2>
+<ul>
+<li><strong>Data availability</strong> — fundamental data is often missing for smaller NSE/BSE names; those simply show no signal.</li>
+<li><strong>Value trap</strong> — cheap ≠ about-to-rise; pair with a technical trigger.</li>
+<li><strong>One ratio is not a thesis</strong> — a low P/E can be a warning (deteriorating business), not an opportunity; review each result.</li>
+</ul>
+<p>Next: Screener 2 — Earnings Power.</p>
+<h1 id="4-screener-2-earnings-power-eps-revenue-growth">4. Screener 2 — Earnings Power (EPS &amp; Revenue Growth)</h1>
+<h2 id="the-strategy_1">The strategy</h2>
+<p><strong>Earnings-power investing</strong> holds that what ultimately drives a stock over time is the <em>growth of its earnings</em> — and research suggests the market often under-reacts to accelerating earnings. This screener flags companies whose <strong>earnings and revenue are growing</strong> at a meaningful rate, and whose <strong>forward estimate</strong> points to continued growth.</p>
+<p>This is a <em>fundamental-momentum</em> screen: it does not care how cheap a stock is, only whether its profit engine is expanding.</p>
+<h2 id="the-logic_1">The logic</h2>
+<p>Pull three growth-related fundamentals and test them against thresholds:</p>
+<ul>
+<li><strong>EPS growth (year-over-year)</strong> — <code>EARNINGS_PER_SHARE_BASIC_ONE_YEAR_GROWTH</code> (TTM).</li>
+<li><strong>Revenue growth (year-over-year)</strong> — <code>REVENUE_ONE_YEAR_GROWTH</code> (TTM).</li>
+<li><strong>Forward estimate above trailing EPS</strong> — <code>EARNINGS_ESTIMATE</code> (FY) greater than trailing EPS (TTM), i.e., the market expects growth to continue.</li>
+</ul>
+<p>The signal fires when EPS and revenue growth exceed their thresholds, and the forward estimate confirms (or estimate data is unavailable, in which case that sub-check is skipped rather than failing).</p>
+<h2 id="the-code_1">The code</h2>
+<pre><code class="language-pine">//@version=6
+indicator(&quot;Earnings Power (EPS &amp; Revenue Growth)&quot;, overlay = false)
+
+// ---- Inputs ----
+float minEpsGrowth = input.float(15.0, &quot;Min EPS growth % YoY&quot;)
+float minRevGrowth = input.float(10.0, &quot;Min revenue growth % YoY&quot;)
+
+// ---- Fundamentals ----
+float epsGrowth = request.financial(syminfo.tickerid, &quot;EARNINGS_PER_SHARE_BASIC_ONE_YEAR_GROWTH&quot;, &quot;TTM&quot;, ignore_invalid_symbol = true)
+float revGrowth = request.financial(syminfo.tickerid, &quot;REVENUE_ONE_YEAR_GROWTH&quot;, &quot;TTM&quot;, ignore_invalid_symbol = true)
+float epsEst    = request.financial(syminfo.tickerid, &quot;EARNINGS_ESTIMATE&quot;, &quot;FY&quot;, ignore_invalid_symbol = true)
+float epsTtm    = request.financial(syminfo.tickerid, &quot;EARNINGS_PER_SHARE_BASIC&quot;, &quot;TTM&quot;, ignore_invalid_symbol = true)
+
+// ---- Screen condition ----
+bool epsOk  = not na(epsGrowth) and epsGrowth &gt;= minEpsGrowth
+bool revOk  = not na(revGrowth) and revGrowth &gt;= minRevGrowth
+// Forward estimate above trailing EPS → expected continued growth (skipped if no estimate data)
+bool estOk  = (na(epsEst) or na(epsTtm) or epsTtm &lt;= 0) ? true : epsEst &gt; epsTtm
+
+bool cond = epsOk and revOk and estOk
+
+// ---- Output ----
+plot(epsGrowth, &quot;EPS Growth YoY %&quot;, color = color.teal)
+plot(revGrowth, &quot;Revenue Growth YoY %&quot;, color = color.olive)
+plot(cond ? 1 : 0, &quot;Earnings Power Signal&quot;, color = cond ? color.green : color.red, style = plot.style_columns)
+
+alertcondition(cond, &quot;Earnings power candidate&quot;, &quot;EPS and revenue growing above thresholds&quot;)
+</code></pre>
+<h2 id="how-to-read-the-columns_1">How to read the columns</h2>
+<ul>
+<li><strong>"EPS Growth YoY %"</strong> and <strong>"Revenue Growth YoY %"</strong> — sortable; sort descending to surface the fastest growers.</li>
+<li><strong>"Earnings Power Signal"</strong> — <code>1</code> = passes, <code>0</code> = fails. Filter on <code>== 1</code>.</li>
+</ul>
+<h2 id="honest-limitations_1">Honest limitations</h2>
+<ul>
+<li><strong>Four <code>request.financial()</code> calls</strong> — well within the Pine Screener's 40-call ceiling, so there is room to add a benchmark for relative strength; just remember that every extra fundamental condition is another chance for missing data to block the signal.</li>
+<li><strong>Growth quality vs. quantity</strong> — a high growth rate can be a one-off (an acquisition, a base effect). The screen flags the number, not the <em>quality</em> of the growth; review each result.</li>
+<li><strong>Data availability</strong> — same caveat as Screener 1: missing data means no signal.</li>
+</ul>
+<p>Next: Screener 3 — Momentum.</p>
+<h1 id="5-screener-3-momentum-12-month-return-52-week-high">5. Screener 3 — Momentum (12-Month Return, 52-Week High)</h1>
+<h2 id="the-strategy_2">The strategy</h2>
+<p><strong>Momentum</strong> is the well-documented tendency of recent winners to keep winning. This screener encodes the two most common momentum measures at once: a <strong>12-month rate of change</strong> (the classic lookback) and <strong>proximity to the 52-week high</strong> (a psychologically salient anchor that research suggests has historically been associated with continued outperformance).</p>
+<p>This is a pure <em>price</em> screen — no fundamental data required, so it works on any symbol with price history.</p>
+<h2 id="the-logic_2">The logic</h2>
+<ul>
+<li><strong>12-month return</strong> = <code>ta.roc(close, 252)</code> — the rate of change over ~252 trading days.</li>
+<li><strong>Distance from the 52-week high</strong> = <code>(close / ta.highest(close, 252)) * 100 - 100</code> — 0% means <em>at</em> the high; −10% means 10% below it.</li>
+</ul>
+<p>The signal fires when the 12-month return exceeds a threshold <strong>and</strong> the stock is within a small distance of its 52-week high (strength confirmed by being near the top of its range).</p>
+<h2 id="the-code_2">The code</h2>
+<pre><code class="language-pine">//@version=6
+indicator(&quot;Momentum Screen (12M Return + 52W High)&quot;, overlay = false)
+
+// ---- Inputs ----
+float minReturn = input.float(15.0, &quot;Min 12-month return %&quot;)
+float maxFromHigh = input.float(-10.0, &quot;Max distance below 52W high (%)&quot;)  // negative number: -10 means &quot;within 10% of the high&quot;; entering a positive value will silently match nothing
+
+// ---- Signals (252 bars ≈ 12 months; within the ~500-bar screener limit) ----
+float roc = ta.roc(close, 252)
+float high52 = ta.highest(close, 252)
+float pctFromHigh = high52 &gt; 0 ? (close / high52) * 100 - 100 : na
+
+// ---- Screen condition ----
+bool momOk     = not na(roc) and roc &gt;= minReturn
+bool nearHigh  = not na(pctFromHigh) and pctFromHigh &gt;= maxFromHigh
+
+bool cond = momOk and nearHigh
+
+// ---- Output ----
+plot(roc, &quot;12M Return %&quot;, color = color.blue)
+plot(pctFromHigh, &quot;Dist from 52W High %&quot;, color = color.purple)
+plot(cond ? 1 : 0, &quot;Momentum Signal&quot;, color = cond ? color.green : color.red, style = plot.style_columns)
+
+alertcondition(cond, &quot;Momentum candidate&quot;, &quot;Strong 12M return and near the 52-week high&quot;)
+</code></pre>
+<h2 id="how-to-read-the-columns_2">How to read the columns</h2>
+<ul>
+<li><strong>"12M Return %"</strong> — sort descending for the strongest momentum.</li>
+<li><strong>"Dist from 52W High %"</strong> — sort descending (closest to 0, i.e., nearest the high).</li>
+<li><strong>"Momentum Signal"</strong> — <code>1</code> = passes both, <code>0</code> = fails.</li>
+</ul>
+<h2 id="honest-limitations_2">Honest limitations</h2>
+<ul>
+<li><strong>Momentum reverses sharply.</strong> After market bottoms, prior winners lag the sharp recovery in prior losers; the momentum premium arrives in lumps.</li>
+<li><strong>No trend filter.</strong> This screen does not check whether the <em>broad market</em> is trending up; a momentum screen in a bear market surfaces the least-bad names, not necessarily good ones.</li>
+<li><strong>No fundamental context.</strong> A momentum screen will happily flag a falling-quality stock that happens to be rallying; pair with a valuation/earnings screen for a techno-funda combination.</li>
+</ul>
+<p>Next: Screener 4 — Stage Analysis.</p>
+<h1 id="6-screener-4-stage-analysis-weinstein-stage-2">6. Screener 4 — Stage Analysis (Weinstein Stage 2)</h1>
+<h2 id="the-strategy_3">The strategy</h2>
+<p><strong>Stage Analysis</strong> (Stan Weinstein's methodology) holds that stocks move through four <em>stages</em> — basing (Stage 1), advancing (Stage 2), topping (Stage 3), and declining (Stage 4) — and that <strong>Stage 2</strong>, the <em>advancing</em> stage, is often cited as the highest-probability period to own a stock: it is where price is above a rising long-term moving average and the trend is up.</p>
+<p>This screener encodes the classic Stage 2 definition on a daily chart, using the 30-week and 10-week moving averages (150 and 50 daily bars).</p>
+<h2 id="the-logic_3">The logic</h2>
+<p>Weinstein's Stage 2, expressed as rules:</p>
+<ol>
+<li><strong>Price is above the 30-week (150-day) MA</strong> — the primary trend is up.</li>
+<li><strong>The 30-week MA is rising</strong> — the trend is <em>advancing</em>, not just flat.</li>
+<li><strong>The 10-week (50-day) MA is above the 30-week MA</strong> — the shorter-term trend is leading the longer-term trend (an orderly uptrend).</li>
+</ol>
+<p>When all three hold, the stock is in the advancing stage.</p>
+<h2 id="the-code_3">The code</h2>
+<pre><code class="language-pine">//@version=6
+indicator(&quot;Stage Analysis (Weinstein Stage 2)&quot;, overlay = false)
+
+// ---- Inputs ----
+int longMa  = input.int(150, &quot;30-week MA (daily bars)&quot;, minval = 1)
+int shortMa = input.int(50,  &quot;10-week MA (daily bars)&quot;, minval = 1)
+
+// ---- Moving averages ----
+float ma30 = ta.sma(close, longMa)
+float ma10 = ta.sma(close, shortMa)
+
+// ---- Stage 2 conditions ----
+bool aboveLong     = close &gt; ma30          // price above 30-week MA
+bool longRising    = ma30 &gt; ma30[1]        // 30-week MA rising
+bool shortAboveLong = ma10 &gt; ma30          // 10-week MA above 30-week MA
+
+bool stage2 = aboveLong and longRising and shortAboveLong
+
+// ---- Output ----
+plot(stage2 ? 1 : 0, &quot;Stage 2 Signal&quot;, color = stage2 ? color.green : color.red, style = plot.style_columns)
+plot(close / ma30 * 100 - 100, &quot;Dist from 30W MA %&quot;, color = color.blue)
+
+alertcondition(stage2, &quot;Stage 2 (Weinstein)&quot;, &quot;Price above a rising 30-week MA, with the 10-week MA above the 30-week MA&quot;)
+</code></pre>
+<h2 id="how-to-read-the-columns_3">How to read the columns</h2>
+<ul>
+<li><strong>"Stage 2 Signal"</strong> — <code>1</code> = in the advancing stage, <code>0</code> = not.</li>
+<li><strong>"Dist from 30W MA %"</strong> — how far price is above the 30-week MA; a very large positive value means the stock is <em>extended</em> (a caveat — see below).</li>
+</ul>
+<h2 id="honest-limitations_3">Honest limitations</h2>
+<ul>
+<li><strong>Lateness by design.</strong> Stage 2 is confirmed only <em>after</em> the advance has begun; the screen never catches the exact bottom of Stage 1.</li>
+<li><strong>Extension risk.</strong> A stock far above its 30-week MA (large "Dist from 30W MA %") has run up fast and is due for a pullback; use the distance column to distinguish <em>early</em> Stage 2 (near the MA) from <em>late</em> Stage 2 (extended).</li>
+<li><strong>No volume check in this version.</strong> Weinstein also emphasised volume on the breakout; that refinement is left out here to keep the script within the screener's simplicity, but can be added.</li>
+</ul>
+<p>Next: Screener 5 — Outperformance (relative strength).</p>
+<h1 id="7-screener-5-outperformance-relative-strength-vs-benchmark">7. Screener 5 — Outperformance (Relative Strength vs. Benchmark)</h1>
+<h2 id="the-strategy_4">The strategy</h2>
+<p><strong>Relative strength</strong> (not the RSI oscillator — here, <em>relative performance</em>) measures whether a stock is <em>outperforming its benchmark</em>. The idea is that <strong>leadership persists</strong>: research suggests a stock that has beaten the index over the last several months has historically tended to keep leading. This screener ranks stocks by their return <em>minus</em> the benchmark's return over a trailing window.</p>
+<p>The classic benchmark for Indian equities is <strong>NIFTY 50</strong> (<code>NSE:NIFTY</code> in TradingView).</p>
+<h2 id="the-logic_4">The logic</h2>
+<p>For the scanned symbol and the benchmark:</p>
+<ul>
+<li><strong>Stock return</strong> = <code>ta.roc(close, lookback)</code>.</li>
+<li><strong>Benchmark return</strong> = <code>ta.roc(benchmark close, lookback)</code>, where the benchmark close is pulled via <code>request.security()</code>.</li>
+<li><strong>Relative strength</strong> = stock return − benchmark return.</li>
+</ul>
+<p>The signal fires when relative strength is positive (or above a threshold) — the stock is beating the benchmark.</p>
+<h2 id="the-code_4">The code</h2>
+<pre><code class="language-pine">//@version=6
+indicator(&quot;Outperformance (Relative Strength vs Benchmark)&quot;, overlay = false)
+
+// ---- Inputs ----
+string benchmark = input.symbol(&quot;NSE:NIFTY&quot;, &quot;Benchmark&quot;)  // input.symbol() returns a string ticker id, not a `symbol` type
+int rsLookback = input.int(126, &quot;RS lookback (bars)&quot;, minval = 1)   // ~6 months
+float minRs = input.float(0.0, &quot;Min relative return %&quot;)
+
+// ---- Benchmark data (1 request.security call) ----
+float benchClose = request.security(benchmark, timeframe.period, close, ignore_invalid_symbol = true)
+
+// ---- Returns and relative strength ----
+float stockRet = ta.roc(close, rsLookback)
+float benchRet = ta.roc(benchClose, rsLookback)
+float rs = stockRet - benchRet
+
+// ---- Screen condition ----
+bool cond = not na(rs) and rs &gt;= minRs
+
+// ---- Output ----
+plot(rs, &quot;Relative Strength (6M) %&quot;, color = cond ? color.teal : color.gray)
+plot(stockRet, &quot;Stock 6M Return %&quot;, color = color.blue)
+plot(benchRet, &quot;Benchmark 6M Return %&quot;, color = color.purple)
+plot(cond ? 1 : 0, &quot;Outperform Signal&quot;, color = cond ? color.green : color.red, style = plot.style_columns)
+
+alertcondition(cond, &quot;Outperformer&quot;, &quot;Stock outperforming benchmark over 6 months&quot;)
+</code></pre>
+<h2 id="how-to-read-the-columns_4">How to read the columns</h2>
+<ul>
+<li><strong>"Relative Strength (6M) %"</strong> — sort descending to surface the biggest outperformers.</li>
+<li><strong>"Stock 6M Return %"</strong> and <strong>"Benchmark 6M Return %"</strong> — the two components, so you can see <em>why</em> a stock is an outperformer (strong stock vs. weak benchmark).</li>
+<li><strong>"Outperform Signal"</strong> — <code>1</code> = beating the benchmark, <code>0</code> = lagging.</li>
+</ul>
+<h2 id="honest-limitations_4">Honest limitations</h2>
+<ul>
+<li><strong>Relative, not absolute.</strong> A stock can be a "relative outperformer" while still <em>falling</em> (if it falls less than the benchmark). Pair with an absolute trend filter (Screener 4's Stage 2, or simply price &gt; 200-day MA) to require actual strength.</li>
+<li><strong>Benchmark mismatch.</strong> Relative strength vs. NIFTY 50 is less meaningful for small-caps (whose benchmark is really the broader market). Choose the benchmark that matches the watchlist you scan.</li>
+<li><strong>Benchmark input is fixed in the Pine Screener.</strong> The Pine Screener does not support <code>input.symbol()</code>: it ignores any benchmark chosen in the settings and uses the script's default (<code>NSE:NIFTY</code>). To scan against a different benchmark, change the default in the code.</li>
+<li><strong>Crowding.</strong> The most obvious outperformers are often the most crowded, and crowded names reverse sharply when leadership rotates.</li>
+</ul>
+<p>Next: Screener 6 — Price Contraction (VCP).</p>
+<h1 id="8-screener-6-price-contraction-vcp">8. Screener 6 — Price Contraction (VCP)</h1>
+<h2 id="the-strategy_5">The strategy</h2>
+<p>The <strong>Volatility Contraction Pattern (VCP)</strong> — associated with Mark Minervini's work — describes a specific, high-quality setup: a stock in an <strong>uptrend</strong> that is forming a <strong>tight base</strong>, with <strong>successive contractions</strong> in price range and a <strong>dry-up in volume</strong>. The logic is that a tightening range with shrinking volume marks a period of quiet accumulation after a rise, which is often cited as a precursor to the <em>next</em> leg up.</p>
+<p>This screener encodes VCP as three measurable conditions: uptrend, range contraction, and volume dry-up.</p>
+<h2 id="the-logic_5">The logic</h2>
+<ul>
+<li><strong>Uptrend</strong> — price above the 200-day MA (the stock has been rising).</li>
+<li><strong>Range contraction</strong> — the current ATR is a <em>fraction</em> of the ATR some time ago (the price range has tightened). Computed as <code>ta.atr(14) / ta.atr(14)[lookback]</code>.</li>
+<li><strong>Volume dry-up</strong> — the recent average volume is a <em>fraction</em> of the average volume some time ago (trading has quieted). Computed as <code>ta.sma(volume, 20) / ta.sma(volume, 20)[lookback]</code>.</li>
+</ul>
+<p>When the range has tightened below a threshold <em>and</em> volume has dried up below a threshold <em>within an uptrend</em>, the VCP condition is present.</p>
+<h2 id="the-code_5">The code</h2>
+<pre><code class="language-pine">//@version=6
+indicator(&quot;Price Contraction (VCP: Tight Base + Volume Dry-up)&quot;, overlay = false)
+
+// ---- Inputs ----
+int shortAtr  = input.int(14, &quot;ATR length&quot;)
+int lookback  = input.int(60, &quot;Contraction lookback (bars)&quot;)
+float maxContraction = input.float(0.60, &quot;Max range contraction (ATR now/prev)&quot;)
+float maxVolRatio    = input.float(0.75, &quot;Max volume ratio (now/prev)&quot;)
+
+// ---- Range contraction ----
+float atrNow  = ta.atr(shortAtr)
+float atrPrev = ta.atr(shortAtr)[lookback]
+float contraction = atrNow / atrPrev        // &lt; 1 → range tightened
+
+// ---- Volume dry-up ----
+float volNow  = ta.sma(volume, 20)
+float volPrev = ta.sma(volume, 20)[lookback]
+float volRatio = volNow / volPrev           // &lt; 1 → volume dried up
+
+// ---- Uptrend filter ----
+float ma200 = ta.sma(close, 200)
+
+// ---- Screen condition ----
+bool uptrend = close &gt; ma200
+bool tight   = not na(contraction) and contraction &lt; maxContraction
+bool dryUp   = not na(volRatio) and volRatio &lt; maxVolRatio
+
+bool cond = uptrend and tight and dryUp
+
+// ---- Output ----
+plot(contraction, &quot;Range Contraction (ATR now/prev)&quot;, color = color.blue)
+plot(volRatio, &quot;Volume Ratio (now/prev)&quot;, color = color.purple)
+plot(cond ? 1 : 0, &quot;VCP Signal&quot;, color = cond ? color.green : color.red, style = plot.style_columns)
+
+alertcondition(cond, &quot;VCP contraction&quot;, &quot;Tightening range and drying volume in an uptrend&quot;)
+</code></pre>
+<h2 id="how-to-read-the-columns_5">How to read the columns</h2>
+<ul>
+<li><strong>"Range Contraction (ATR now/prev)"</strong> — lower = tighter; sort ascending.</li>
+<li><strong>"Volume Ratio (now/prev)"</strong> — lower = drier; sort ascending.</li>
+<li><strong>"VCP Signal"</strong> — <code>1</code> = tight, dry, and in an uptrend.</li>
+</ul>
+<h2 id="honest-limitations_5">Honest limitations</h2>
+<ul>
+<li><strong>VCP is a <em>setup</em>, not a <em>trigger</em>.</strong> The screen flags the <em>condition</em> (a coiled spring); it does not tell you <em>when</em> the next leg begins. The traditional trigger is the <em>breakout</em> from the tight base — which this screen deliberately leaves for you to time.</li>
+<li><strong>A contraction can precede a <em>breakdown</em>, not just a breakout.</strong> A tight base near the top of an extended run can resolve downward. Review the trend context before acting.</li>
+<li><strong>Parameter sensitivity.</strong> "Tight" and "dry" are thresholds; the pattern is better read <em>visually</em> (on a chart) than by any single numeric cut. Use this as a shortlister, not a verdict.</li>
+</ul>
+<p>Next: Screener 7 — Dow Theory.</p>
+<h1 id="9-screener-7-dow-theory-trend-structure-volume">9. Screener 7 — Dow Theory (Trend Structure + Volume)</h1>
+<h2 id="the-strategy_6">The strategy</h2>
+<p><strong>Dow Theory</strong> — the oldest formal framework of technical analysis — holds that a genuine uptrend is defined by <strong>structure</strong> and <strong>confirmation</strong>:</p>
+<ul>
+<li><strong>Primary trend up</strong> (the stock's primary trend is up).</li>
+<li><strong>Higher highs and higher lows</strong> (the defining structure of an uptrend).</li>
+<li><strong>Volume confirmation</strong> (rising volume on up-moves, falling on down-moves).</li>
+</ul>
+<p>This screener encodes those three ideas into a single pass/fail condition.</p>
+<h2 id="the-logic_6">The logic</h2>
+<ul>
+<li><strong>Primary trend up</strong> — the stock is above its 200-day MA, and its 50-day MA is above its 200-day MA (an orderly uptrend).</li>
+<li><strong>Higher highs and higher lows</strong> — the recent N-day <em>high</em> is higher than the prior N-day high, and the recent N-day <em>low</em> is higher than the prior N-day low. (Using <code>ta.highest()</code>/<code>ta.lowest()</code> over a swing window, compared to the same window one swing ago.)</li>
+<li><strong>Volume confirmation</strong> — the average volume on up-days exceeds the average volume on down-days over the last 20 bars.</li>
+</ul>
+<h2 id="the-code_6">The code</h2>
+<pre><code class="language-pine">//@version=6
+indicator(&quot;Dow Theory (Trend Structure + Volume)&quot;, overlay = false)
+
+// ---- Inputs ----
+int swingLen = input.int(30, &quot;Swing window (bars)&quot;)
+
+// ---- Moving averages (primary trend) ----
+float ma200 = ta.sma(close, 200)
+float ma50  = ta.sma(close, 50)
+bool primaryUp = close &gt; ma200 and ma50 &gt; ma200
+
+// ---- Higher highs and higher lows ----
+float recentLow = ta.lowest(low, swingLen)
+float priorLow  = ta.lowest(low, swingLen)[swingLen]
+bool higherLow  = recentLow &gt; priorLow
+
+float recentHigh = ta.highest(high, swingLen)
+float priorHigh  = ta.highest(high, swingLen)[swingLen]
+bool higherHigh  = recentHigh &gt; priorHigh
+
+bool structure = higherHigh and higherLow
+
+// ---- Volume confirmation ----
+float upVol   = close &gt; close[1] ? volume : 0.0
+float downVol = close &lt; close[1] ? volume : 0.0
+bool volConfirm = ta.sma(upVol, 20) &gt; ta.sma(downVol, 20)
+
+// ---- Screen condition ----
+bool cond = primaryUp and structure and volConfirm
+
+// ---- Output ----
+plot(cond ? 1 : 0, &quot;Dow Uptrend Signal&quot;, color = cond ? color.green : color.red, style = plot.style_columns)
+plot(primaryUp ? 1 : 0, &quot;Primary Trend Up&quot;, color = color.blue, style = plot.style_columns)
+plot(structure ? 1 : 0, &quot;HH+HL Structure&quot;, color = color.purple, style = plot.style_columns)
+
+alertcondition(cond, &quot;Dow theory uptrend&quot;, &quot;Primary uptrend with higher highs/lows and volume confirmation&quot;)
+</code></pre>
+<h2 id="how-to-read-the-columns_6">How to read the columns</h2>
+<p>Three sub-columns, so you can see <em>which</em> condition a failing stock is missing:</p>
+<ul>
+<li><strong>"Primary Trend Up"</strong> — above the 200-day MA with the 50-day above it.</li>
+<li><strong>"HH+HL Structure"</strong> — making higher highs and higher lows.</li>
+<li><strong>"Dow Uptrend Signal"</strong> — <code>1</code> = all three (primary trend, structure, and volume) confirm.</li>
+</ul>
+<h2 id="honest-limitations_6">Honest limitations</h2>
+<ul>
+<li><strong>The swing window is a simplification.</strong> True Dow Theory reads <em>significant</em> swing points, not a fixed 30-bar window; the fixed window is a tractable proxy, not a faithful implementation.</li>
+<li><strong>Confirmation is late.</strong> "Higher highs/lows + volume confirmation" is only confirmable <em>after</em> the fact; the screen identifies an uptrend that is <em>already</em> established, not an early entry.</li>
+<li><strong>No fundamental layer.</strong> Dow Theory is purely technical; pair with a valuation or earnings screen if you want a techno-funda combination.</li>
+</ul>
+<p>Next: Screener 8 — Multi-Timeframe.</p>
+<h1 id="10-screener-8-multi-timeframe-weekly-trend-daily-trigger">10. Screener 8 — Multi-Timeframe (Weekly Trend + Daily Trigger)</h1>
+<h2 id="the-strategy_7">The strategy</h2>
+<p><strong>Multi-timeframe analysis</strong> holds that signals are stronger when <strong>two timeframes agree</strong>. The classic construction: the <strong>weekly</strong> timeframe defines the <em>trend</em> (are we in an uptrend?), and the <strong>daily</strong> timeframe provides the <em>trigger</em> (is the daily structure also aligned?). A stock is most attractive when <em>both</em> point the same way.</p>
+<p>This screener encodes that: a <strong>weekly uptrend</strong> (price above the 30-week MA) combined with a <strong>daily uptrend</strong> (price above the 50-day MA, with the 50-day above the 200-day) and a <strong>daily trigger</strong> (a fresh up-close).</p>
+<h2 id="the-logic_7">The logic</h2>
+<ul>
+<li><strong>Weekly trend</strong> — the weekly close is above the 30-week (30-bar weekly) MA. Pulled via <code>request.security(syminfo.tickerid, "W", ...)</code>.</li>
+<li><strong>Daily trend</strong> — price above the 50-day MA, and the 50-day above the 200-day.</li>
+<li><strong>Daily trigger</strong> — the daily close is above the 50-day MA <em>and</em> is a fresh up-close today (<code>close &gt; close[1]</code>), suggesting momentum is turning up <em>now</em>.</li>
+</ul>
+<p>The signal fires when all three align — the higher timeframe agrees, and the lower timeframe is confirming.</p>
+<h2 id="the-code_7">The code</h2>
+<pre><code class="language-pine">//@version=6
+indicator(&quot;Multi-Timeframe (Weekly Trend + Daily Trigger)&quot;, overlay = false)
+
+// ---- Weekly (higher timeframe) trend ----
+float weeklyClose = request.security(syminfo.tickerid, &quot;W&quot;, close, ignore_invalid_symbol = true)
+float weeklySma30 = request.security(syminfo.tickerid, &quot;W&quot;, ta.sma(close, 30), ignore_invalid_symbol = true)
+
+bool weeklyUptrend = not na(weeklyClose) and not na(weeklySma30) and weeklyClose &gt; weeklySma30
+
+// ---- Daily (lower timeframe) trend + trigger ----
+float dailySma50  = ta.sma(close, 50)
+float dailySma200 = ta.sma(close, 200)
+
+bool dailyUptrend = close &gt; dailySma50 and dailySma50 &gt; dailySma200
+bool dailyTrigger = close &gt; dailySma50 and close &gt; close[1]
+
+// ---- Screen condition ----
+bool cond = weeklyUptrend and dailyUptrend and dailyTrigger
+
+// ---- Output ----
+plot(cond ? 1 : 0, &quot;Multi-TF Alignment&quot;, color = cond ? color.green : color.red, style = plot.style_columns)
+plot(weeklyUptrend ? 1 : 0, &quot;Weekly Uptrend&quot;, color = color.blue, style = plot.style_columns)
+plot(dailyUptrend ? 1 : 0, &quot;Daily Uptrend&quot;, color = color.purple, style = plot.style_columns)
+
+alertcondition(cond, &quot;Multi-timeframe alignment&quot;, &quot;Weekly and daily trends aligned with a daily up-close&quot;)
+</code></pre>
+<h2 id="how-to-read-the-columns_7">How to read the columns</h2>
+<ul>
+<li><strong>"Weekly Uptrend"</strong> — the higher-timeframe trend.</li>
+<li><strong>"Daily Uptrend"</strong> — the lower-timeframe trend.</li>
+<li><strong>"Multi-TF Alignment"</strong> — <code>1</code> = both timeframes agree <em>and</em> the daily trigger fired.</li>
+</ul>
+<h2 id="honest-limitations_7">Honest limitations</h2>
+<ul>
+<li><strong>The trigger is a single bar.</strong> <code>close &gt; close[1]</code> is a weak "trigger"; in a real workflow it is replaced by something more specific (a breakout, a reversal off a level). It is kept simple here for clarity.</li>
+<li><strong>Two <code>request.security()</code> calls</strong> — well within the 40-call limit, leaving ample headroom if you want to add a benchmark too.</li>
+<li><strong>Timeframe is fixed to weekly.</strong> The Pine Screener supports standard timeframes, so weekly is fine — but you cannot switch to a <em>custom</em> higher timeframe within the scan.</li>
+</ul>
+<p>Next: loading and using your screeners.</p>
+<h1 id="11-loading-and-using-your-screeners">11. Loading and Using Your Screeners</h1>
+<h2 id="from-code-to-a-working-scan">From code to a working scan</h2>
+<p>A screener script is useless until it is running against a real watchlist. This chapter walks the exact steps, from the Pine Editor to the Pine Screener, and shows how the built-in screener fits in.</p>
+<h2 id="step-1-create-and-save-the-script">Step 1 — Create and save the script</h2>
+<ol>
+<li>Open the <strong>Pine Editor</strong> (bottom panel of any chart).</li>
+<li>Paste one of this book's scripts (replacing the default template).</li>
+<li>Click <strong>Save</strong> and give it a clear name (e.g., "Stage 2 Screener").</li>
+<li>Resolve any warnings the compiler shows. Two common fixes:
+   - <strong>"The function 'ta.sma' should be called on each calculation for consistency"</strong> — a consistency warning, not a performance hint: it appears when a <code>ta.*</code> call sits inside a conditional branch, so its history (and result) can be wrong. Move the call out of the branch into the global scope. None of this book's scripts trigger it.
+   - <strong><code>na</code> comparisons or type errors</strong> — check the script against the exact code here; a stray character is usually the cause.</li>
+</ol>
+<h2 id="step-2-make-it-available-to-the-screener">Step 2 — Make it available to the screener</h2>
+<p>TradingView's help page says the Pine Screener uses scripts saved <strong>in your favourites</strong>; a later update lets you pick any script from the full Indicators dialogue. Adding it to favourites does no harm and makes it easy to find:</p>
+<ol>
+<li>Open the <strong>Indicators</strong> dialogue.</li>
+<li>Go to <strong>My scripts</strong>.</li>
+<li>Find your saved script and click the <strong>star</strong> to add it to favourites.</li>
+</ol>
+<h2 id="step-3-narrow-the-universe-in-the-built-in-screener-optional">Step 3 — Narrow the universe in the built-in screener (optional)</h2>
+<p>The built-in screeners do not accept custom Pine scripts as columns or filters (at the time of writing), but they are still useful as a first pass:</p>
+<ol>
+<li>Open <strong>Products → Screeners → Stock Screener</strong> (or your market).</li>
+<li>Apply preset filters (market, sector, market cap, liquidity) to narrow the universe.</li>
+<li>Add the results to a <strong>watchlist</strong>.</li>
+<li>Scan that watchlist with your script in the Pine Screener (Step 4).</li>
+</ol>
+<p>This two-step route gives you the full preset-filter universe plus your custom signal.</p>
+<h2 id="step-4-use-it-in-the-pine-screener-script-driven-scan">Step 4 — Use it in the Pine Screener (script-driven scan)</h2>
+<ol>
+<li>Build a <strong>watchlist</strong> of the symbols you want to scan (e.g., the NIFTY 500, or a custom list). The Pine Screener scans one source at a time — a watchlist or an index's constituents — not the whole market.</li>
+<li>Open <strong>Products → Screeners → Pine</strong>.</li>
+<li>Select your <strong>watchlist</strong> (or an index) and your <strong>script</strong> from the dropdowns.</li>
+<li>Set the <strong>timeframe</strong> (daily is the default for these scripts).</li>
+<li>Click <strong>Scan</strong>. Each plot appears as a column; each <code>alertcondition()</code> appears as a filter. Sort, filter, and export the results.</li>
+</ol>
+<p>Remember the limits (Chapter 1): one script per scan, ≤40 <code>request.*</code> calls, ~500-bar lookback, standard timeframes.</p>
+<h2 id="step-5-read-the-results-as-a-shortlist-not-a-signal">Step 5 — Read the results as a shortlist, not a signal</h2>
+<p>This is the most important step. A screener returns <strong>candidates</strong>, not decisions. The correct workflow is:</p>
+<ol>
+<li><strong>Scan</strong> → get a shortlist.</li>
+<li><strong>Open each candidate's chart</strong> and <em>look</em> at it — confirm the pattern visually, check the trend context, check for events (earnings, corporate actions).</li>
+<li><strong>Apply your own risk rules</strong> (the <em>Risk Management and Position Sizing</em> book in this series) before any decision.</li>
+</ol>
+<p>A screener that is used as a <em>substitute</em> for judgment is a trap; used as a <em>shortlister</em>, it is a powerful time-saver.</p>
+<h2 id="summary_2">Summary</h2>
+<ul>
+<li>Save the script; resolve compiler warnings; add it to your <strong>favourites</strong>.</li>
+<li>Built-in screener: narrow the universe with preset filters and save it as a watchlist; it does not run custom scripts.</li>
+<li>Pine Screener: build a watchlist, select the script, scan; plots = columns, alertconditions = filters.</li>
+<li>Treat results as a shortlist, not a signal — always review each candidate on the chart.</li>
+</ul>
+<p>Next: code best practices and the disclaimers that govern these scripts.</p>
+<h1 id="12-code-best-practices-and-disclaimers">12. Code Best Practices and Disclaimers</h1>
+<h2 id="writing-screeners-that-behave">Writing screeners that behave</h2>
+<p>This closing chapter covers the practices that keep a screener script <em>correct</em> and <em>honest</em> — and the disclaimers that must accompany any code that touches trading decisions.</p>
+<h2 id="best-practices">Best practices</h2>
+<h3 id="1-guard-every-na">1. Guard every <code>na</code></h3>
+<p>Fundamental data is often missing; benchmarks may not exist for every symbol; a fresh listing may not have 252 bars of history. Every script in this book therefore guards against <code>na</code>:</p>
+<ul>
+<li><code>ignore_invalid_symbol = true</code> on every <code>request.financial()</code> / <code>request.security()</code> call.</li>
+<li>Explicit <code>not na(x)</code> checks in conditions.</li>
+<li>Ternary expressions that default to <code>na</code> rather than dividing by zero (e.g., <code>epsTtm &gt; 0 ? close / epsTtm : na</code>).</li>
+</ul>
+<p>The result: a symbol without data simply produces <strong>no signal</strong> — it never crashes the script, and never produces a false positive from garbage input.</p>
+<h3 id="2-respect-the-screener-limits">2. Respect the screener limits</h3>
+<p>Keep every script within the Pine Screener's constraints: <strong>≤40 <code>request.*</code> calls</strong>, <strong>≤500-bar lookback</strong>, <strong>standard timeframes only</strong>. If you extend a script, count the calls and check the lookback — a 750-bar momentum window will silently misbehave in the screener.</p>
+<h3 id="3-keep-the-signal-binary-and-named">3. Keep the signal binary and named</h3>
+<p>A screener is easiest to use when the pass/fail output is a single, clearly named plot:</p>
+<pre><code class="language-pine">plot(cond ? 1 : 0, &quot;Signal&quot;, color = cond ? color.green : color.red, style = plot.style_columns)
+</code></pre>
+<p>Name the plot what it <em>is</em> ("Stage 2 Signal", "Value Signal"), because the plot title becomes the column name.</p>
+<h3 id="4-plot-the-metrics-not-just-the-verdict">4. Plot the metrics, not just the verdict</h3>
+<p>The most useful screeners report <em>why</em> a stock passes, not just <em>that</em> it passes. Plotting the P/E, the momentum %, and the relative strength — alongside the signal — lets you <strong>sort</strong> the shortlist and spot <em>degree</em>, not just direction.</p>
+<h3 id="5-prefer-simple-explainable-logic">5. Prefer simple, explainable logic</h3>
+<p>Every strategy here can be explained in a sentence. If a screener needs fifty inputs and a dozen conditions to "work", it is almost certainly overfit to past data and will fail live. Keep it simple enough to explain.</p>
+<h2 id="the-disclaimers-why-they-matter">The disclaimers (why they matter)</h2>
+<p>These scripts sit at the boundary between code and trading decisions, so they carry three specific warnings — restated from the front of the book, because they are the part that protects you:</p>
+<ol>
+<li><strong>A screener is a filter, not a signal.</strong> It shortlists; it does not recommend. Every result is a <em>candidate for your own review</em>, never an instruction.</li>
+<li><strong>The code is illustrative and comes without warranty.</strong> It has not been certified against every plan, version, or market; it may need adjustment for your data subscription; and it may produce no results (rather than wrong results) when data is missing. Test in the Pine Editor, and on paper, before any reliance.</li>
+<li><strong>Historical patterns are not promises.</strong> Valuation, momentum, stage analysis, VCP, Dow Theory — all describe <em>tendencies</em>, and all fail at times. A screener operationalises a tendency; it does not guarantee the tendency will hold tomorrow.</li>
+</ol>
+<p>Framed as this book always frames such things: <em>these are recognised, widely discussed strategies, encoded for education. Historically, such conditions have tended to precede continued moves — but the tendency is probabilistic, not certain, and you are responsible for every decision you make from a screen's output.</em></p>
+<h2 id="summary_3">Summary</h2>
+<ul>
+<li>Guard every <code>na</code>; respect the 40-call/500-bar/standard-timeframe limits.</li>
+<li>Keep the signal binary and clearly named; plot the metrics too.</li>
+<li>Prefer simple, explainable logic — complexity is a symptom of overfitting.</li>
+<li>A screener is a filter, not a signal; the code is illustrative and comes without warranty; historical patterns are tendencies, not promises.</li>
+</ul>
+<p>This completes the main text. The appendix indexes all eight scripts.</p>
+<h1 id="appendix-consolidated-scripts">Appendix — Consolidated Scripts</h1>
+<h2 id="the-eight-screeners-at-a-glance">The eight screeners at a glance</h2>
+<p>The full code for each script is in its chapter (3–10). This appendix is the index and the shared template. A composite that merges all eight screens into one indicator (a 0–8 score) is supplied alongside this book as <code>consolidated-8-factor-screener.pine</code>.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Screener</th>
+<th>Signal (what makes it pass)</th>
+<th>Key columns</th>
+<th>Chapter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Valuation</td>
+<td>P/E ≤ max and P/B ≤ max (positive EPS)</td>
+<td>P/E (TTM), P/B</td>
+<td>3</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Earnings Power</td>
+<td>EPS growth ≥ min, revenue growth ≥ min, estimate &gt; trailing</td>
+<td>EPS Growth %, Revenue Growth %</td>
+<td>4</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Momentum</td>
+<td>12M return ≥ min, near 52-week high</td>
+<td>12M Return %, Dist from 52W High %</td>
+<td>5</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Stage Analysis</td>
+<td>Price &gt; rising 30-wk MA; 10-wk MA &gt; 30-wk MA</td>
+<td>Stage 2, Dist from 30W MA %</td>
+<td>6</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Outperformance</td>
+<td>Relative strength ≥ min vs. benchmark</td>
+<td>RS %, Stock %, Benchmark %</td>
+<td>7</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Price Contraction</td>
+<td>Tight range + dry volume in uptrend</td>
+<td>Range Contraction, Volume Ratio</td>
+<td>8</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Dow Theory</td>
+<td>Primary uptrend + HH/HL + volume confirm</td>
+<td>3 sub-signals</td>
+<td>9</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Multi-Timeframe</td>
+<td>Weekly uptrend + daily uptrend + daily trigger</td>
+<td>Weekly/Daily sub-signals</td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+<h2 id="the-shared-skeleton">The shared skeleton</h2>
+<p>Every script follows the same template — learn it once, and you can read and modify any of them:</p>
+<pre><code class="language-pine">//@version=6
+indicator(&quot;Your Screener Title&quot;, overlay = false)
+
+// ---- Inputs ----
+// thresholds and lengths as input.*() calls
+
+// ---- Data ----
+// request.financial() / request.security() / ta.* calculations
+
+// ---- Condition ----
+bool cond = &lt;your boolean logic, guarded against na&gt;
+
+// ---- Output ----
+plot(&lt;metric 1&gt;, &quot;Metric 1&quot;, color = color.blue)
+plot(&lt;metric 2&gt;, &quot;Metric 2&quot;, color = color.purple)
+plot(cond ? 1 : 0, &quot;Signal&quot;, color = cond ? color.green : color.red, style = plot.style_columns)
+
+// ---- Filter ----
+alertcondition(cond, &quot;Signal name&quot;, &quot;Human-readable message&quot;)
+</code></pre>
+<h2 id="the-three-rules-that-keep-them-working">The three rules that keep them working</h2>
+<ol>
+<li><strong>Guard every <code>na</code></strong> — <code>ignore_invalid_symbol = true</code> on every <code>request.*</code> call, and <code>not na(x)</code> in every condition. Missing data must produce <em>no signal</em>, not a crash.</li>
+<li><strong>Stay within limits</strong> — ≤40 <code>request.*</code> calls, ≤500-bar lookback, standard timeframes.</li>
+<li><strong>Keep the signal binary and named</strong> — one clearly titled <code>1</code>/<code>0</code> plot, plus the metric columns that let you sort.</li>
+</ol>
+<h2 id="a-reminder">A reminder</h2>
+<p>These scripts are <strong>educational and illustrative</strong> — not guaranteed to compile on every plan, not a recommendation, and not a substitute for your own review of each result. A screener shortlists; you decide.</p></body></html>

@@ -1,0 +1,177 @@
+//@version=6
+indicator("8-Factor Composite Screener (StratLab)", overlay = false)
+
+// ============================================================
+// NOTE ON SCOPE (read before use)
+// This script merges all 8 screeners from "TradingView Screeners with
+// Pine Script v6" into one indicator, for viewing on a single chart or
+// scanning a watchlist or index in the Pine Screener.
+// It uses 9 unique request.*() calls after de-duplication, which is
+// within Pine's general 40-call script limit and the Pine Screener's
+// 40-call limit (per TradingView's Pine Screener help page at the time
+// of writing). The built-in Stock Screener does not accept custom Pine
+// scripts, so the Pine Screener is the only way to batch-scan it.
+// The "5. Outperformance" benchmark input will not work as a
+// user-adjustable setting inside the Pine Screener (input.symbol() is
+// unsupported there and silently uses its default, NSE:NIFTY) — edit
+// the default in the code to change the benchmark for screener scans.
+// ============================================================
+
+// ---- GROUP 1: VALUATION ----
+float peMax = input.float(25.0, "Max P/E (TTM)", group = "1. Valuation")
+float pbMax = input.float(3.0, "Max P/B", group = "1. Valuation")
+
+float epsTtm = request.financial(syminfo.tickerid, "EARNINGS_PER_SHARE_BASIC", "TTM", ignore_invalid_symbol = true)
+float totEq  = request.financial(syminfo.tickerid, "TOTAL_EQUITY", "FY", ignore_invalid_symbol = true)
+float shares = request.financial(syminfo.tickerid, "TOTAL_SHARES_OUTSTANDING", "FQ", ignore_invalid_symbol = true)
+
+// Positive EPS is required implicitly: pe is na (never passes) when epsTtm <= 0.
+float pe   = epsTtm > 0 ? close / epsTtm : na
+float bvps = (totEq > 0 and shares > 0) ? totEq / shares : na
+float pb   = bvps > 0 ? close / bvps : na
+
+bool valuationOk = not na(pe) and pe > 0 and pe <= peMax and not na(pb) and pb > 0 and pb <= pbMax
+
+// ---- GROUP 2: EARNINGS POWER ----
+float minEpsGrowth = input.float(15.0, "Min EPS growth % YoY", group = "2. Earnings Power")
+float minRevGrowth = input.float(10.0, "Min revenue growth % YoY", group = "2. Earnings Power")
+
+float epsGrowth = request.financial(syminfo.tickerid, "EARNINGS_PER_SHARE_BASIC_ONE_YEAR_GROWTH", "TTM", ignore_invalid_symbol = true)
+float revGrowth = request.financial(syminfo.tickerid, "REVENUE_ONE_YEAR_GROWTH", "TTM", ignore_invalid_symbol = true)
+float epsEst    = request.financial(syminfo.tickerid, "EARNINGS_ESTIMATE", "FY", ignore_invalid_symbol = true)
+// epsTtm is reused from Group 1 — not a new call.
+
+bool epsGrowthOk = not na(epsGrowth) and epsGrowth >= minEpsGrowth
+bool revGrowthOk = not na(revGrowth) and revGrowth >= minRevGrowth
+bool estOk       = (na(epsEst) or na(epsTtm) or epsTtm <= 0) ? true : epsEst > epsTtm
+
+bool earningsPowerOk = epsGrowthOk and revGrowthOk and estOk
+
+// ---- GROUP 3: MOMENTUM ----
+float minReturn   = input.float(15.0, "Min 12-month return %", group = "3. Momentum")
+float maxFromHigh = input.float(-10.0, "Max distance below 52W high (%)", group = "3. Momentum")  // negative: -10 = within 10% of the high; a positive value silently matches nothing
+
+float roc12m       = ta.roc(close, 252)
+float high52       = ta.highest(close, 252)
+float pctFromHigh  = high52 > 0 ? (close / high52) * 100 - 100 : na
+
+bool momentumOk = not na(roc12m) and roc12m >= minReturn and not na(pctFromHigh) and pctFromHigh >= maxFromHigh
+
+// ---- GROUP 4: STAGE ANALYSIS (Weinstein Stage 2) ----
+int longMa       = input.int(150, "30-week MA (daily bars)", minval = 1, group = "4. Stage Analysis")
+int shortMaInput = input.int(50, "10-week MA (daily bars)", minval = 1, group = "4. Stage Analysis")
+
+float ma30w = ta.sma(close, longMa)
+float ma10w = ta.sma(close, shortMaInput)
+
+bool stage2Ok = close > ma30w and ma30w > ma30w[1] and ma10w > ma30w
+
+// ---- Shared technical baselines for Groups 6-8 (fixed lengths, matching the source chapters — kept independent of Group 4's user-adjustable inputs above) ----
+float ma200 = ta.sma(close, 200)
+float ma50  = ta.sma(close, 50)
+
+// ---- GROUP 5: OUTPERFORMANCE / RELATIVE STRENGTH ----
+// input.symbol() is unsupported inside the Pine Screener (uses the default there);
+// it works normally on a chart.
+string benchmark = input.symbol("NSE:NIFTY", "Benchmark", group = "5. Outperformance")
+int rsLookback    = input.int(126, "RS lookback (bars)", minval = 1, group = "5. Outperformance")
+float minRs       = input.float(0.0, "Min relative return %", group = "5. Outperformance")
+
+float benchClose  = request.security(benchmark, timeframe.period, close, ignore_invalid_symbol = true)
+float stockRet6m  = ta.roc(close, rsLookback)
+float benchRet6m  = ta.roc(benchClose, rsLookback)
+float relStrength = stockRet6m - benchRet6m
+
+bool outperformOk = not na(relStrength) and relStrength >= minRs
+
+// ---- GROUP 6: PRICE CONTRACTION (VCP) ----
+int shortAtr         = input.int(14, "ATR length", group = "6. Price Contraction (VCP)")
+int vcpLookback       = input.int(60, "Contraction lookback (bars)", group = "6. Price Contraction (VCP)")
+float maxContraction  = input.float(0.60, "Max range contraction (ATR now/prev)", group = "6. Price Contraction (VCP)")
+float maxVolRatio     = input.float(0.75, "Max volume ratio (now/prev)", group = "6. Price Contraction (VCP)")
+
+float atrNow  = ta.atr(shortAtr)
+float atrPrev = ta.atr(shortAtr)[vcpLookback]
+float contraction = atrNow / atrPrev
+
+float volNow  = ta.sma(volume, 20)
+float volPrev = ta.sma(volume, 20)[vcpLookback]
+float volRatio = volNow / volPrev
+
+bool vcpOk = close > ma200 and not na(contraction) and contraction < maxContraction and not na(volRatio) and volRatio < maxVolRatio
+
+// ---- GROUP 7: DOW THEORY ----
+int swingLen = input.int(30, "Swing window (bars)", group = "7. Dow Theory")
+
+bool primaryUp = close > ma200 and ma50 > ma200
+
+float recentLow  = ta.lowest(low, swingLen)
+float priorLow   = ta.lowest(low, swingLen)[swingLen]
+bool higherLow   = recentLow > priorLow
+
+float recentHigh = ta.highest(high, swingLen)
+float priorHigh  = ta.highest(high, swingLen)[swingLen]
+bool higherHigh  = recentHigh > priorHigh
+
+bool structureOk = higherHigh and higherLow
+
+float upVol   = close > close[1] ? volume : 0.0
+float downVol = close < close[1] ? volume : 0.0
+bool volConfirm = ta.sma(upVol, 20) > ta.sma(downVol, 20)
+
+bool dowTheoryOk = primaryUp and structureOk and volConfirm
+
+// ---- GROUP 8: MULTI-TIMEFRAME (Weekly Trend + Daily Trigger) ----
+float weeklyClose = request.security(syminfo.tickerid, "W", close, ignore_invalid_symbol = true)
+float weeklySma30 = request.security(syminfo.tickerid, "W", ta.sma(close, 30), ignore_invalid_symbol = true)
+
+bool weeklyUptrendOk = not na(weeklyClose) and not na(weeklySma30) and weeklyClose > weeklySma30
+bool dailyUptrendOk  = close > ma50 and ma50 > ma200
+bool dailyTriggerOk  = close > ma50 and close > close[1]
+
+bool multiTfOk = weeklyUptrendOk and dailyUptrendOk and dailyTriggerOk
+
+// ============================================================
+// COMPOSITE SCORE (0-8)
+// ============================================================
+int score = (valuationOk ? 1 : 0) + (earningsPowerOk ? 1 : 0) + (momentumOk ? 1 : 0) + (stage2Ok ? 1 : 0) +
+     (outperformOk ? 1 : 0) + (vcpOk ? 1 : 0) + (dowTheoryOk ? 1 : 0) + (multiTfOk ? 1 : 0)
+
+// ============================================================
+// OUTPUT — plots double as columns in the Pine Screener
+// ============================================================
+plot(score, "Composite Score (0-8)", color = color.orange, style = plot.style_columns)
+plot(valuationOk ? 1 : 0, "1. Valuation", color = valuationOk ? color.green : color.red, style = plot.style_columns)
+plot(earningsPowerOk ? 1 : 0, "2. Earnings Power", color = earningsPowerOk ? color.green : color.red, style = plot.style_columns)
+plot(momentumOk ? 1 : 0, "3. Momentum", color = momentumOk ? color.green : color.red, style = plot.style_columns)
+plot(stage2Ok ? 1 : 0, "4. Stage Analysis", color = stage2Ok ? color.green : color.red, style = plot.style_columns)
+plot(outperformOk ? 1 : 0, "5. Outperformance", color = outperformOk ? color.green : color.red, style = plot.style_columns)
+plot(vcpOk ? 1 : 0, "6. Price Contraction", color = vcpOk ? color.green : color.red, style = plot.style_columns)
+plot(dowTheoryOk ? 1 : 0, "7. Dow Theory", color = dowTheoryOk ? color.green : color.red, style = plot.style_columns)
+plot(multiTfOk ? 1 : 0, "8. Multi-Timeframe", color = multiTfOk ? color.green : color.red, style = plot.style_columns)
+
+// ---- On-chart scorecard table (last bar only) ----
+if barstate.islast
+    var table t = table.new(position.top_right, 2, 10, bgcolor = color.new(color.black, 0), border_width = 1, border_color = color.gray)
+    table.cell(t, 0, 0, "8-Factor Screen", text_color = color.white, bgcolor = color.gray)
+    table.cell(t, 1, 0, "Score " + str.tostring(score) + "/8", text_color = color.white, bgcolor = color.gray)
+    table.cell(t, 0, 1, "1. Valuation", text_color = color.white)
+    table.cell(t, 1, 1, valuationOk ? "PASS" : "-", text_color = valuationOk ? color.lime : color.gray)
+    table.cell(t, 0, 2, "2. Earnings Power", text_color = color.white)
+    table.cell(t, 1, 2, earningsPowerOk ? "PASS" : "-", text_color = earningsPowerOk ? color.lime : color.gray)
+    table.cell(t, 0, 3, "3. Momentum", text_color = color.white)
+    table.cell(t, 1, 3, momentumOk ? "PASS" : "-", text_color = momentumOk ? color.lime : color.gray)
+    table.cell(t, 0, 4, "4. Stage Analysis", text_color = color.white)
+    table.cell(t, 1, 4, stage2Ok ? "PASS" : "-", text_color = stage2Ok ? color.lime : color.gray)
+    table.cell(t, 0, 5, "5. Outperformance", text_color = color.white)
+    table.cell(t, 1, 5, outperformOk ? "PASS" : "-", text_color = outperformOk ? color.lime : color.gray)
+    table.cell(t, 0, 6, "6. Price Contraction", text_color = color.white)
+    table.cell(t, 1, 6, vcpOk ? "PASS" : "-", text_color = vcpOk ? color.lime : color.gray)
+    table.cell(t, 0, 7, "7. Dow Theory", text_color = color.white)
+    table.cell(t, 1, 7, dowTheoryOk ? "PASS" : "-", text_color = dowTheoryOk ? color.lime : color.gray)
+    table.cell(t, 0, 8, "8. Multi-Timeframe", text_color = color.white)
+    table.cell(t, 1, 8, multiTfOk ? "PASS" : "-", text_color = multiTfOk ? color.lime : color.gray)
+    table.cell(t, 0, 9, "Data availability", text_color = color.white)
+    table.cell(t, 1, 9, na(pe) or na(epsGrowth) ? "fundamentals missing" : "ok", text_color = (na(pe) or na(epsGrowth)) ? color.orange : color.lime)
+
+alertcondition(score >= 6, "High-conviction candidate", "6 or more of 8 screens passed")

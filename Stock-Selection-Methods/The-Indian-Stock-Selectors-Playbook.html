@@ -1,0 +1,935 @@
+<!DOCTYPE html><html><head><meta charset='utf-8'><style>
+* { box-sizing: border-box; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 11pt; line-height: 1.62; color: #1a1d21; margin: 0;
+}
+.cover {
+  height: 100vh; page-break-after: always;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 3cm 2.5cm; background: #0d1715; color: #e8f0ee;
+}
+.cover .rule { width: 64px; height: 4px; background: #2dd4bf; margin-bottom: 2.2rem; }
+.cover h1 { font-size: 38pt; line-height: 1.08; font-weight: 600; color: #fff; margin: 0 0 1.4rem; letter-spacing: -0.5px; }
+.cover .subtitle { font-size: 15pt; color: #9fb5ae; line-height: 1.5; max-width: 34em; }
+.cover .pub { margin-top: 3rem; font-size: 11pt; letter-spacing: 0.14em; text-transform: uppercase; color: #2dd4bf; }
+.cover .ednote { margin-top: 0.6rem; font-size: 9pt; color: #6c817b; }
+h1 { font-size: 23pt; font-weight: 600; color: #0f172a; page-break-before: always; margin: 0 0 1.1rem; padding-bottom: 0.4rem; border-bottom: 2px solid #2dd4bf; }
+h2 { font-size: 15.5pt; font-weight: 600; color: #0f766e; margin: 1.6rem 0 0.6rem; }
+h3 { font-size: 12.5pt; font-weight: 600; color: #1a1d21; margin: 1.2rem 0 0.4rem; }
+p { margin: 0.5rem 0; }
+strong { color: #0f172a; }
+em { color: #334155; }
+a { color: #0f766e; text-decoration: none; }
+hr { border: none; border-top: 1px solid #e2e8f0; margin: 2rem 0; }
+ul, ol { margin: 0.5rem 0 0.8rem; padding-left: 1.5rem; }
+li { margin: 0.25rem 0; }
+code { font-family: 'SF Mono', Menlo, Consolas, monospace; font-size: 9pt; background: #f1f5f9; padding: 1px 5px; border-radius: 3px; color: #0f766e; }
+pre { background: #0f172a; color: #e2e8f0; padding: 0.9rem 1.1rem; border-radius: 6px; font-size: 9pt; line-height: 1.5; white-space: pre-wrap; word-wrap: break-word; }
+pre code { background: none; color: inherit; padding: 0; }
+blockquote { border-left: 3px solid #2dd4bf; background: #f0fdfa; margin: 0.8rem 0; padding: 0.7rem 1rem; color: #0f3d37; font-style: italic; border-radius: 0 4px 4px 0; }
+blockquote p { margin: 0.3rem 0; }
+table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: 9.5pt; page-break-inside: avoid; }
+th, td { border: 1px solid #dbe3e8; padding: 5px 8px; text-align: left; vertical-align: top; }
+th { background: #0f766e; color: #fff; font-weight: 600; }
+tr:nth-child(even) td { background: #f8fafc; }
+h1:first-of-type { page-break-before: auto; }
+h2#important-disclaimer, h2#how-to-read-this-book, h2#table-of-contents { page-break-before: always; }
+</style></head><body><section class="cover"><div class="rule"></div><h1>The Indian Stock Selector's Playbook</h1><div class="subtitle">Three systematic methods for picking stocks on the NSE — Value, Momentum, and Multi-Factor</div><div class="pub">Published by StratLab</div><div class="ednote">Educational content only — not investment advice. StratLab is not SEBI-registered.</div></section><h1 id="the-indian-stock-selectors-playbook">The Indian Stock Selector's Playbook</h1>
+<h2 id="three-systematic-methods-for-picking-stocks-on-the-nse-value-momentum-and-multi-factor">Three systematic methods for picking stocks on the NSE — Value, Momentum, and Multi-Factor</h2>
+<hr />
+<p><strong>Published by StratLab</strong></p>
+<hr />
+<p><em>Written as a structured reference book. Educational content only — not investment advice. Do your own research; consult a SEBI-registered adviser before acting.</em></p>
+<hr />
+<h2 id="important-disclaimer">Important Disclaimer</h2>
+<p>This book is provided for <strong>educational purposes only</strong>. It is not investment advice, a recommendation, or a solicitation to buy or sell any security.</p>
+<ul>
+<li><strong>StratLab is not registered with SEBI</strong> as an investment adviser, research analyst, or portfolio manager, and does not provide investment advisory services.</li>
+<li>Trading involves substantial risk of loss and is not suitable for everyone. You can lose part or all of your trading capital.</li>
+<li>All examples, figures, and historical observations are illustrative. Historical performance never guarantees future results. Strategies described here have worked <em>historically</em> in certain conditions; that does not mean they will work in the future or in your specific situation.</li>
+<li>Margin, taxes (STT, stamp duty), brokerage, and other regulatory details change over time. Always verify current rules and costs before trading.</li>
+<li>Nothing in this book should be read as a promise of profit or a guarantee that any strategy will be profitable.</li>
+</ul>
+<p>By reading this book, you agree that you are solely responsible for your own trading decisions and that you will consult a SEBI-registered adviser where appropriate.</p>
+<hr />
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li>Foundations</li>
+<li>The Indian Universe &amp; Data</li>
+<li>Method 1 — Value Investing</li>
+<li>Method 2 — Momentum</li>
+<li>Method 3 — Multi-Factor</li>
+<li>Portfolio Construction &amp; Position Sizing</li>
+<li>Backtesting &amp; Validation</li>
+<li>Risk &amp; Position Management</li>
+<li>Pitfalls in Indian Markets</li>
+<li>The Master Workflow</li>
+</ol>
+<p>Appendix A — Formulas &amp; Metrics Reference
+Appendix B — Indian Data Sources &amp; Tools
+Appendix C — Example Screens
+Appendix D — Glossary</p>
+<hr />
+<h1 id="1-foundations">1. Foundations</h1>
+<h2 id="11-what-a-stock-selection-method-actually-is">1.1 What a stock selection method actually is</h2>
+<p>A stock selection method is a <strong>repeatable, rule-based process</strong> that ranks or filters a universe of stocks down to a shortlist you can act on. The three methods in this book — <strong>value</strong>, <strong>momentum</strong>, and <strong>multi-factor</strong> — are three different lenses on the same question: <em>"which stocks, out of the ~2,000 tradeable names on the NSE, are most likely to deliver outsized risk-adjusted returns over my holding period?"</em></p>
+<p>A good method has five properties:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>What it means</th>
+<th>Why it matters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Systematic</strong></td>
+<td>Rules you can write down and re-run</td>
+<td>Removes mood, ego, and hindsight</td>
+</tr>
+<tr>
+<td><strong>Ranking-based</strong></td>
+<td>Produces an ordered list, not a yes/no</td>
+<td>Lets you pick a portfolio size, not a binary</td>
+</tr>
+<tr>
+<td><strong>Testable</strong></td>
+<td>Can be backtested on historical data</td>
+<td>You can estimate edge <em>before</em> risking money</td>
+</tr>
+<tr>
+<td><strong>Survivable</strong></td>
+<td>Works across market regimes</td>
+<td>Not curve-fit to one bull market</td>
+</tr>
+<tr>
+<td><strong>Tradeable</strong></td>
+<td>Considers liquidity and costs</td>
+<td>A screen that can't be traded isn't a strategy</td>
+</tr>
+</tbody>
+</table>
+<h2 id="12-the-uncomfortable-truth-why-most-screens-fail">1.2 The uncomfortable truth: why most screens fail</h2>
+<p>Before we build anything, understand the three silent killers of retail screens:</p>
+<ol>
+<li>
+<p><strong>Survivorship bias.</strong> You backtest on today's Nifty 500 — but today's list already <em>excludes</em> every company that got delisted, merged, or went bankrupt over the test window. Your historical returns are inflated because you only tested survivors. <strong>Always use point-in-time universes.</strong></p>
+</li>
+<li>
+<p><strong>Look-ahead bias.</strong> Using data that wasn't available at the decision time. Classic example: screening on FY25 earnings in March 2025, before results are announced. In India, a company's FY is April–March; results for Q4 (Jan–Mar) typically land in April–May. Screening on "TTM earnings" that silently includes a just-announced quarter is look-ahead.</p>
+</li>
+<li>
+<p><strong>Costs &amp; impact.</strong> A beautiful 25% CAGR backtest that ignores brokerage, STT, GST, stamp duty, and — critically — <em>impact cost</em> (the price you actually get in an illiquid small-cap) can turn negative in live trading.</p>
+</li>
+</ol>
+<h2 id="13-the-core-formula-everything-is-built-on">1.3 The core formula everything is built on</h2>
+<p>Every method in this book reduces to the same equation — <strong>expected return</strong>:</p>
+<blockquote>
+<p><strong>E[return] ≈ (win rate × avg win) − (loss rate × avg loss) − costs</strong></p>
+</blockquote>
+<p>A method's job is to tilt this equation in your favor. Value tilts the <em>average win</em> (buy cheap, mean-revert up). Momentum tilts the <em>win rate</em> (ride confirmed trends). Multi-factor tries to do both while smoothing the ride.</p>
+<h2 id="14-a-word-on-the-indian-context">1.4 A word on the Indian context</h2>
+<p>India is a <strong>retail-heavy, structurally growing, but cyclical and governance-sensitive</strong> market:</p>
+<ul>
+<li><strong>Long runway.</strong> Nominal GDP growth that has historically run at roughly 10%+ means corporate earnings <em>can</em> compound at double digits — a tailwind most developed markets don't offer.</li>
+<li><strong>Wide quality dispersion.</strong> The gap between a clean compounding franchise and a value trap / fraud is enormous. Screening that works in the US often needs Indian adaptation.</li>
+<li><strong>Concentrated ownership.</strong> Promoter (founder-family) holdings of roughly 50–70% are common. Promoter behavior — pledging, related-party transactions, dilution — matters more than in the US.</li>
+<li><strong>Different cost &amp; tax regime.</strong> STT, stamp duty, and short-term capital gains (20%) vs long-term (12.5% over ₹1.25 lakh) (rates as of 2026 — check the current Finance Act) directly affect which methods are tradeable.</li>
+</ul>
+<h1 id="2-the-indian-universe-data">2. The Indian Universe &amp; Data</h1>
+<h2 id="21-the-universe-ladder">2.1 The universe ladder</h2>
+<p>India has a clean, liquid tiered index system. Pick your universe deliberately — it defines both your opportunity and your execution cost.</p>
+<table>
+<thead>
+<tr>
+<th>Universe</th>
+<th>Constituents</th>
+<th>Liquidity</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nifty 50</td>
+<td>50 large caps</td>
+<td>Excellent</td>
+<td>Mostly institutional; momentum is weaker, value plays classic</td>
+</tr>
+<tr>
+<td>Nifty Next 50</td>
+<td>51–100</td>
+<td>Very good</td>
+<td>Sweet spot for quality compounding + multi-factor</td>
+</tr>
+<tr>
+<td>Nifty Midcap 150</td>
+<td>101–250</td>
+<td>Good</td>
+<td>Higher growth, higher vol, momentum works well</td>
+</tr>
+<tr>
+<td>Nifty Smallcap 250</td>
+<td>251–500</td>
+<td>Mixed</td>
+<td>High returns, high illiquidity/impact risk</td>
+</tr>
+<tr>
+<td><strong>Nifty 500</strong></td>
+<td>1–500</td>
+<td>Broad</td>
+<td>Best default universe for systematic methods</td>
+</tr>
+<tr>
+<td>Nifty Total Market</td>
+<td>~750+</td>
+<td>Variable</td>
+<td>Adds microcaps; treat with caution</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Recommendation:</strong> start with <strong>Nifty 500</strong> for backtesting and screening, then tilt execution toward the top ~200–300 names where impact cost is tolerable. Avoid the microcap tail unless you have a dedicated illiquidity risk budget.</p>
+<h2 id="22-data-youll-need-and-where-to-get-it">2.2 Data you'll need (and where to get it)</h2>
+<table>
+<thead>
+<tr>
+<th>Data</th>
+<th>Why</th>
+<th>Sources</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Prices (EOD OHLCV)</td>
+<td>Returns, momentum, vol</td>
+<td>NSE/BSE bhavcopy, broker APIs (Zerodha Kite), <code>yfinance</code>, Chartink</td>
+</tr>
+<tr>
+<td>Fundamentals</td>
+<td>Value &amp; quality factors</td>
+<td>Screener.in, Tijori Finance, Trendlyne, exchange filings; Capitalmind (a PMS/mutual-fund house whose public research is useful context, not a data feed)</td>
+</tr>
+<tr>
+<td>Corporate actions</td>
+<td>Adjust for bonus/split/rights</td>
+<td>NSE announcements, bhavcopy metadata</td>
+</tr>
+<tr>
+<td>Index membership</td>
+<td>Universe definition</td>
+<td>NSE indices page, monthly rebalance lists</td>
+</tr>
+<tr>
+<td>Delistings/mergers</td>
+<td>Survivorship-bias correction</td>
+<td>NSE, SEBI orders, MCA</td>
+</tr>
+<tr>
+<td>Ownership</td>
+<td>Promoter/pledge/FII-DII</td>
+<td>BSE shareholding pattern (quarterly)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>See Appendix B (Indian Data Sources &amp; Tools) for a full tool list.</strong></p>
+<h2 id="23-adjustments-you-must-never-skip">2.3 Adjustments you must never skip</h2>
+<p>Indian companies issue <strong>bonus shares, stock splits, rights issues, and buybacks</strong> frequently. Raw price data will show phantom drops that ruin both momentum and volatility calculations. Three rules:</p>
+<ol>
+<li><strong>Use adjusted (split/bonus-adjusted) prices</strong> for anything involving multi-period returns.</li>
+<li><strong>For total return</strong>, add dividends back — India's market dividend yield has historically run at roughly 1–1.5%, which compounds materially over a decade. (Dividends are taxable in the investor's hands since FY21.)</li>
+<li><strong>Never mix standalone and consolidated financials.</strong> For companies with meaningful subsidiaries, always use <strong>consolidated</strong> figures; standalone hides the real picture for holding structures and diversified groups.</li>
+</ol>
+<h2 id="24-point-in-time-discipline">2.4 Point-in-time discipline</h2>
+<p>For an honest backtest, every factor value must be the value <em>known on that date</em>:</p>
+<ul>
+<li>Earnings: use the most recent <strong>announced</strong> quarter, not simply the latest quarter to have ended.</li>
+<li>Index membership: use the membership list <em>as of that month</em>.</li>
+<li>Shareholding: listed companies must file the quarterly pattern within 21 days of quarter-end (SEBI LODR Regulation 31) — use the filing date, not the quarter-end date.</li>
+</ul>
+<h1 id="3-method-1-value-investing">3. Method 1 — Value Investing</h1>
+<h2 id="31-the-philosophy">3.1 The philosophy</h2>
+<p>Value investing buys assets for <strong>less than their intrinsic worth</strong> and waits for the market to correct the mispricing. The payoff comes from the gap between <em>price</em> and <em>value</em> — the <strong>margin of safety</strong> — closing over time.</p>
+<p>It is the oldest, most-studied anomaly. In India it works best in:</p>
+<ul>
+<li>Deep market corrections (everyone's fearful, everything's cheap)</li>
+<li>Sectors temporarily out of favor (cyclicals at trough earnings, not peak)</li>
+<li>Neglected mid/small caps with real assets and earnings</li>
+</ul>
+<p>It underperforms in long speculative bull runs — which is exactly when it <em>should</em> feel uncomfortable to hold.</p>
+<h2 id="32-the-metrics">3.2 The metrics</h2>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Formula</th>
+<th>What it captures</th>
+<th>Watch out</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>P/E</strong></td>
+<td>Price / EPS (TTM)</td>
+<td>Cheapness of earnings</td>
+<td>Cyclical peak earnings → false cheap</td>
+</tr>
+<tr>
+<td><strong>P/B</strong></td>
+<td>Price / Book value</td>
+<td>Asset-based cheapness</td>
+<td>Best for <strong>financials</strong>; misleading for asset-light tech</td>
+</tr>
+<tr>
+<td><strong>EV/EBITDA</strong></td>
+<td>Enterprise value / EBITDA</td>
+<td>Operating cheapness, debt-aware</td>
+<td>Better than P/E across capital structures</td>
+</tr>
+<tr>
+<td><strong>Earnings yield</strong></td>
+<td>EPS / Price (=1/P/E)</td>
+<td>Direct comparable to bond yield</td>
+<td>Compare vs 10-yr G-sec yield</td>
+</tr>
+<tr>
+<td><strong>Dividend yield</strong></td>
+<td>DPS / Price</td>
+<td>Income + discipline signal</td>
+<td>High yield can signal distress</td>
+</tr>
+<tr>
+<td><strong>Graham number</strong></td>
+<td>√(22.5 × EPS × BVPS)</td>
+<td>Quick intrinsic-value ceiling</td>
+<td>Conservative; few large caps pass</td>
+</tr>
+<tr>
+<td><strong>P/S</strong></td>
+<td>Price / Sales</td>
+<td>For early/unprofitable growth</td>
+<td>Ignores profitability</td>
+</tr>
+</tbody>
+</table>
+<h2 id="33-india-specific-adaptations">3.3 India-specific adaptations</h2>
+<ol>
+<li>
+<p><strong>Use P/B for banks and NBFCs, not P/E.</strong> Provisioning, NPA cycles, and tax treatment make P/E noisy for financials. Screen banks on P/B (historically roughly 0.8–1.5× for PSU, 2–3× for quality private) <strong>plus</strong> ROA (&gt;1%), ROE (&gt;12%), and NPA trend.</p>
+</li>
+<li>
+<p><strong>Beware the commodity value trap.</strong> A steel or chemical company at 6× P/E is often at <strong>peak-cycle earnings</strong> — the P/E is low <em>because</em> earnings are about to fall. Always check whether current margins are above the 10-year average. Value ≠ cheap on a cyclical high.</p>
+</li>
+<li>
+<p><strong>Beware the governance discount.</strong> Some Indian "cheap" stocks are cheap for good reason: promoter pledging, opaque related-party deals, chronic dilution. A 5× P/E with a questionable promoter is not a bargain — it's a terminal-value bet.</p>
+</li>
+<li>
+<p><strong>Consolidated earnings only.</strong> Holding companies and diversified groups routinely trade at a "conglomerate discount" that <em>looks</em> like value but is structurally persistent.</p>
+</li>
+</ol>
+<h2 id="34-a-concrete-value-screen-example">3.4 A concrete value screen (example)</h2>
+<p>Rank the Nifty 500 on a composite value score, excluding financials (handled separately):</p>
+<pre><code>Universe        : Nifty 500 (ex-banks/NBFCs)
+Filters         :
+  - TTM P/E          &lt; 15
+  - P/B              &lt; 1.5
+  - Debt/Equity      &lt; 1.0  (or Net Debt/EBITDA &lt; 2)
+  - ROE (5-yr avg)   &gt; 10%  (value-trap guard)
+  - Positive operating cash flow, last 3 yrs
+  - Promoter pledge  &lt; 20%  (governance guard)
+Rank            : ascending EV/EBITDA
+Action          : top 15–25 names, equal weight, review quarterly
+</code></pre>
+<p><strong>The value-trap guard is non-negotiable.</strong> Cheap + deteriorating = a trap; cheap + stable/improving = a candidate.</p>
+<h2 id="35-when-value-works-and-when-to-abandon-it">3.5 When value works, and when to abandon it</h2>
+<ul>
+<li><strong>Works:</strong> post-crash recoveries, sector rotation into out-of-favor industries, mean-reversion regimes.</li>
+<li><strong>Struggles:</strong> long momentum bull markets, deflationary credit events (cheap gets cheaper), fraud-heavy microcaps.</li>
+</ul>
+<h1 id="4-method-2-momentum">4. Method 2 — Momentum</h1>
+<h2 id="41-the-philosophy">4.1 The philosophy</h2>
+<p>Momentum is the empirical observation that <strong>stocks that have outperformed recently tend to keep outperforming</strong> over the next 3–12 months — and underperformers keep underperforming. It is one of the most robust, cross-market anomalies ever documented (the "momentum premium").</p>
+<p>It works for a mix of behavioral (under-reaction to news, herding) and structural (slow diffusion of information) reasons. In India's retail-heavy, trend-following market, <strong>momentum in the midcap space has historically been strong.</strong></p>
+<h2 id="42-the-core-construction-rules">4.2 The core construction rules</h2>
+<p>The canonical momentum measure (popularized by Jegadeesh &amp; Titman, 1993; 12-1 is the standard academic convention) is:</p>
+<blockquote>
+<p><strong>Return over months t-12 to t-1</strong> — the last <strong>12 months, excluding the most recent month.</strong></p>
+</blockquote>
+<p>The "skip the last month" detail matters: short-term reversal (the last ~4 weeks) is negatively correlated with momentum, so including it actually <em>hurts</em>.</p>
+<table>
+<thead>
+<tr>
+<th>Variant</th>
+<th>Window</th>
+<th>Character</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>12-1 momentum</strong></td>
+<td>12 mo, skip last 1</td>
+<td>The classic, most robust</td>
+</tr>
+<tr>
+<td><strong>6-month</strong></td>
+<td>6 mo</td>
+<td>Faster, more turnover</td>
+</tr>
+<tr>
+<td><strong>3-month</strong></td>
+<td>3 mo</td>
+<td>Fast, high turnover, more reversal risk</td>
+</tr>
+<tr>
+<td><strong>52-week high proximity</strong></td>
+<td>price / 52-wk high</td>
+<td>Simple, surprisingly strong</td>
+</tr>
+<tr>
+<td><strong>Dual momentum</strong></td>
+<td>absolute + relative</td>
+<td>Adds a market-timing overlay</td>
+</tr>
+</tbody>
+</table>
+<h2 id="43-dual-momentum">4.3 Dual momentum</h2>
+<p>Two conditions must both hold:</p>
+<ol>
+<li><strong>Absolute momentum:</strong> the asset's own trailing return &gt; 0 (or &gt; risk-free rate). If the whole market is falling, sit in cash.</li>
+<li><strong>Relative momentum:</strong> rank the asset against its peers; own only the top.</li>
+</ol>
+<p>Absolute momentum is designed to keep you out of 2008-style crashes; relative momentum is what puts you in the leaders.</p>
+<h2 id="44-confirmation-filters-reduce-whipsaws">4.4 Confirmation filters (reduce whipsaws)</h2>
+<ul>
+<li><strong>Price above 200-day MA</strong> (long-term uptrend intact)</li>
+<li><strong>Price above 50-day MA</strong> (intermediate uptrend)</li>
+<li><strong>Volume expansion</strong> on the breakout (not just a price drift)</li>
+<li><strong>Liquidity floor:</strong> minimum average daily traded value (e.g., ₹10–20 crore) so you can actually exit</li>
+</ul>
+<h2 id="45-a-concrete-momentum-screen-example">4.5 A concrete momentum screen (example)</h2>
+<pre><code>Universe        : Nifty 500
+Compute         : 12-1 month total return, rank all names
+Filters         :
+  - Absolute 12-mo return     &gt; 0
+  - Price                     &gt; 200-DMA
+  - Price / 52-week high      &gt; 0.85
+  - Avg daily turnover        &gt; ₹10 cr (liquidity)
+  - Not stuck at a circuit (price-band) limit
+Rank            : descending 12-1 return
+Action          : top 20 names, equal weight, rebalance monthly
+</code></pre>
+<h2 id="46-the-momentum-crash-and-how-to-survive-it">4.6 The momentum crash — and how to survive it</h2>
+<p>Momentum's Achilles' heel is the <strong>momentum crash</strong>: when the market rebounds sharply after a decline, recent <em>losers</em> (by then often high-beta) surge hardest while recent <em>winners</em> lag. These crashes are fast, violent, and follow volatile down-markets.</p>
+<p>Mitigations:</p>
+<ul>
+<li>Keep the <strong>absolute-momentum filter</strong> (cash out when the market trend breaks).</li>
+<li>Combine momentum with a <strong>value or low-volatility factor</strong> (see Method 3) — pure momentum has the worst crash profile, mixed momentum is far smoother.</li>
+<li>Avoid over-concentration in high-beta names at the top of the momentum ranking.</li>
+</ul>
+<h1 id="5-method-3-multi-factor">5. Method 3 — Multi-Factor</h1>
+<h2 id="51-the-philosophy">5.1 The philosophy</h2>
+<p>No single factor works in every regime. Value works when momentum doesn't, and vice versa. A <strong>multi-factor</strong> approach combines several uncorrelated return drivers so that the portfolio is never wholly dependent on one of them being "in season." The aim — and the historical tendency — is a smoother equity curve and higher risk-adjusted return than any single factor alone.</p>
+<h2 id="52-the-four-factor-foundation">5.2 The four-factor foundation</h2>
+<p>For Indian equities, four factors capture most of the actionable premium:</p>
+<table>
+<thead>
+<tr>
+<th>Factor</th>
+<th>Definition (cross-sectional)</th>
+<th>Why it has worked</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Value</strong></td>
+<td>Cheap = earnings yield, book-to-price, EV/EBITDA</td>
+<td>Mean reversion of mispricing</td>
+</tr>
+<tr>
+<td><strong>Momentum</strong></td>
+<td>12-1 month return</td>
+<td>Under-reaction, trends</td>
+</tr>
+<tr>
+<td><strong>Quality</strong></td>
+<td>ROE/ROA, low debt, stable margins, low accruals</td>
+<td>Compounding, survivability</td>
+</tr>
+<tr>
+<td><strong>Low volatility</strong></td>
+<td>Low beta / low realized vol</td>
+<td>Retail preference for lottery-like stocks leaves low-vol underpriced</td>
+</tr>
+</tbody>
+</table>
+<h2 id="53-how-to-combine-factors-z-score-ranking">5.3 How to combine factors: z-score ranking</h2>
+<p>The clean, standard way to combine factors is <strong>cross-sectional z-scoring</strong>:</p>
+<ol>
+<li>For each factor, compute every stock's raw value.</li>
+<li>Standardize within the universe: <strong>z = (x − mean) / std</strong>.</li>
+<li>Flip sign where needed so <em>higher = better</em> (e.g., low vol → negative z is good, so invert).</li>
+<li>Take a weighted average of the z-scores (this book uses 30/30/25/15, as below).</li>
+<li>Rank by composite score; own the top 25–30 names.</li>
+</ol>
+<pre><code>composite_score = 0.30 * z_value
+                + 0.30 * z_momentum
+                + 0.25 * z_quality
+                + 0.15 * z_lowvol
+</code></pre>
+<h2 id="54-sector-neutrality-optional-but-valuable">5.4 Sector neutrality (optional but valuable)</h2>
+<p>Indian sectors are highly concentrated (a single IT or bank rally can dominate). Raw factor scores can load you 40% into one sector. Two fixes:</p>
+<ul>
+<li><strong>Sector-relative scoring:</strong> z-score within each sector, then combine. (Keeps you factor-pure, may still over-weight a hot sector.)</li>
+<li><strong>Sector cap:</strong> after ranking, cap any single sector at 20% and re-normalize.</li>
+</ul>
+<h2 id="55-a-concrete-multi-factor-screen-example">5.5 A concrete multi-factor screen (example)</h2>
+<pre><code>Universe        : Nifty 500
+Factors         :
+  - Value     : earnings yield + book-to-price (banks/NBFCs: book-to-price only, see §3.3)
+  - Momentum  : 12-1 return
+  - Quality   : ROE (5y avg), Net Debt/EBITDA (ex-banks/NBFCs), gross-margin stability (low gross-margin volatility)
+  - Low vol   : 1-yr realized volatility (inverted)
+Method          : cross-sectional z-scores, weighted 30/30/25/15 (value/momentum/quality/low vol)
+Filters         : liquidity floor (₹10 cr/day), no pledge &gt; 20%
+Rank            : descending composite score
+Action          : top 25–30 names, equal weight (or score-weight), rebalance quarterly
+</code></pre>
+<h2 id="56-rebalancing-cadence">5.6 Rebalancing cadence</h2>
+<ul>
+<li><strong>Momentum-heavy blends:</strong> rebalance <strong>monthly</strong> (momentum decays fast).</li>
+<li><strong>Value-heavy blends:</strong> rebalance <strong>quarterly</strong> (value is slow).</li>
+<li>Mixed 4-factor (as above): <strong>quarterly</strong> is a good balance of signal freshness vs turnover cost.</li>
+</ul>
+<h1 id="6-portfolio-construction-position-sizing">6. Portfolio Construction &amp; Position Sizing</h1>
+<p>A stock list is not a portfolio. How you size and hold positions determines whether your edge survives real trading.</p>
+<h2 id="61-how-many-stocks">6.1 How many stocks?</h2>
+<table>
+<thead>
+<tr>
+<th>Count</th>
+<th>Diversification</th>
+<th>Tracking to index</th>
+<th>Best for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10–14</td>
+<td>Low</td>
+<td>High deviation</td>
+<td>Conviction portfolios; accept high vol</td>
+</tr>
+<tr>
+<td>15–25</td>
+<td>Moderate</td>
+<td>Moderate</td>
+<td>The sweet spot for active factor portfolios</td>
+</tr>
+<tr>
+<td>30–50</td>
+<td>Good</td>
+<td>Tracks index closely</td>
+<td>Factor-neutral / near-index portfolios</td>
+</tr>
+</tbody>
+</table>
+<p>Beyond ~25–30 names in one strategy, you mostly dilute the active edge into a quasi-index fund (which you could own for roughly 0.2% a year or less).</p>
+<h2 id="62-position-sizing-methods">6.2 Position sizing methods</h2>
+<ol>
+<li><strong>Equal weight</strong> — 1/N. Simple, robust, forces rebalancing (which itself harvests a reversal premium). Default choice.</li>
+<li><strong>Score-weighted</strong> — weight ∝ factor score. More edge if scores are informative, more concentration risk.</li>
+<li><strong>Volatility targeting</strong> — weight ∝ 1/σ so each position contributes equal risk. Use 3–6 month realized vol. Particularly useful for the low-vol factor.</li>
+<li><strong>R-multiple risk sizing</strong> — size each position by <em>risk</em>, not capital: <strong>position size = (portfolio × risk %) / (entry − stop)</strong>. This is the trading-oriented approach from Tharp's school; it caps per-trade loss at a fixed % of capital.</li>
+</ol>
+<h2 id="63-basic-position-sizing-math">6.3 Basic position-sizing math</h2>
+<pre><code>Position value = Total capital × target_weight
+Shares         = Position value / price
+
+Risk-based:
+  Risk per trade  = Capital × 1%          (e.g. ₹1 lakh on ₹1 cr)
+  Position size   = Risk per trade / (entry − stop_loss)
+</code></pre>
+<p><strong>Rule of thumb:</strong> no single position &gt; ~7% of capital at cost (10% for a high-conviction value name), and never risk &gt; 1% of capital on any single trade.</p>
+<h2 id="64-rebalancing-and-taxes">6.4 Rebalancing and taxes</h2>
+<p>In India, rebalancing is <em>taxable</em>:</p>
+<ul>
+<li><strong>Held ≤ 12 months → STCG 20%</strong> on gains.</li>
+<li><strong>Held &gt; 12 months → LTCG 12.5%</strong> on gains above ₹1.25 lakh/year.</li>
+</ul>
+<p>This means <strong>high-turnover strategies (momentum) are tax-disadvantaged in taxable accounts.</strong> Practical fixes:</p>
+<ul>
+<li>Run momentum in a structure where churn doesn't trigger annual STCG (or accept the drag and size it in).</li>
+<li>Prefer <strong>quarterly rebalancing</strong> for value/multi-factor to push most positions past the 1-year LTCG mark.</li>
+<li>Tax-loss harvesting at year-end: realize losers to offset STCG, then re-buy (respect wash-sale/anti-avoidance intent).</li>
+</ul>
+<h1 id="7-backtesting-validation">7. Backtesting &amp; Validation</h1>
+<h2 id="71-the-golden-rules-of-an-honest-backtest">7.1 The golden rules of an honest backtest</h2>
+<ol>
+<li><strong>Point-in-time data only.</strong> See §2.4. If you can't reconstruct what was known on each date, your result is fiction.</li>
+<li><strong>Survivorship-free universe.</strong> Include delisted and merged names at their historical prices.</li>
+<li><strong>Costs included.</strong> Model STT (0.1% sell + buy on delivery), GST 18% on brokerage, stamp duty (~0.015%), exchange/SEBI charges, and <strong>impact cost</strong> (rule of thumb: 0.1–0.5% for small caps, less for large caps).</li>
+<li><strong>No look-ahead in rankings.</strong> Rank on day <em>t</em> using data through <em>t-1</em>; trade at <em>t+1</em> open.</li>
+<li><strong>Out-of-sample discipline.</strong> Never tune parameters on the full history and then declare victory. Reserve the last ~30% of the window as out-of-sample.</li>
+</ol>
+<h2 id="72-key-statistics-to-report">7.2 Key statistics to report</h2>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>What it tells you</th>
+<th>Healthy signal (rule of thumb)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CAGR</strong></td>
+<td>Compound growth</td>
+<td>&gt; benchmark by a real margin</td>
+</tr>
+<tr>
+<td><strong>Max drawdown</strong></td>
+<td>Worst peak-to-trough loss</td>
+<td>Within your emotional &amp; survival tolerance</td>
+</tr>
+<tr>
+<td><strong>Sharpe</strong></td>
+<td>Return per unit of vol</td>
+<td>&gt; 0.8 is decent; &gt; 1.2 strong</td>
+</tr>
+<tr>
+<td><strong>Sortino</strong></td>
+<td>Return per unit of <em>downside</em> vol</td>
+<td>Preferable to Sharpe for equity</td>
+</tr>
+<tr>
+<td><strong>Win rate</strong></td>
+<td>% of winning trades</td>
+<td>Informative, not decisive</td>
+</tr>
+<tr>
+<td><strong>Turnover</strong></td>
+<td>% of book traded per period</td>
+<td>Drives costs &amp; taxes</td>
+</tr>
+<tr>
+<td><strong>Alpha / beta vs Nifty 500</strong></td>
+<td>What's market, what's skill</td>
+<td>Alpha &gt; 0 net of costs</td>
+</tr>
+<tr>
+<td><strong>Hit rate vs benchmark</strong></td>
+<td>% of years beating index</td>
+<td>&gt; 60% is good</td>
+</tr>
+</tbody>
+</table>
+<h2 id="73-walk-forward-validation">7.3 Walk-forward validation</h2>
+<p>To guard against overfitting:</p>
+<ol>
+<li>Split history into rolling windows (e.g., 5-year train, 1-year test).</li>
+<li>Tune parameters only on the training window.</li>
+<li>Apply unchanged to the test window.</li>
+<li>Slide forward; repeat.</li>
+<li>If the method is profitable <em>out-of-sample across most windows</em>, you have a robust edge — not a curve-fit.</li>
+</ol>
+<h2 id="74-paper-trade-before-capital">7.4 Paper-trade before capital</h2>
+<p>Run the method live on paper for 1–2 quarters. Track: fill realism, impact cost vs model, slippage, and your own discipline in following the rules. If you can't follow your own system on paper, you won't follow it with money.</p>
+<h1 id="8-risk-position-management">8. Risk &amp; Position Management</h1>
+<h2 id="81-the-risk-pyramid">8.1 The risk pyramid</h2>
+<ol>
+<li><strong>Systemic (market) risk</strong> — you can't diversify it away. Manage with: absolute-momentum filter, cash allocation, index hedges (for advanced users).</li>
+<li><strong>Idiosyncratic (stock) risk</strong> — diversifiable. Manage with: N holdings, position caps, stop-losses.</li>
+<li><strong>Behavioral risk</strong> — <em>your own</em> over-trading, panic-selling, revenge-trading. Managed only by written rules and discipline. This is the biggest risk of all (Tharp stresses that the trader is the most important factor in any system).</li>
+</ol>
+<h2 id="82-position-level-controls">8.2 Position-level controls</h2>
+<ul>
+<li><strong>Stop-loss:</strong> a pre-committed exit price. For trend/momentum: below the 50-DMA or a trailing 8–10%. For value: a stop based on <em>thesis break</em> (fundamentals changed), not just price.</li>
+<li><strong>Max drawdown circuit-breaker:</strong> if the portfolio falls X% (say 15%) from peak, halve position sizes; if it falls 2X, go to cash and review. Write these numbers down <em>before</em> the drawdown happens.</li>
+<li><strong>Concentration limits:</strong> max ~7% per name at cost (10% for a high-conviction value name), max 20–25% per sector.</li>
+</ul>
+<h2 id="83-the-kelly-question-conceptual">8.3 The Kelly question (conceptual)</h2>
+<p>Kelly says the optimal bet fraction ≈ edge / odds. Full Kelly is wildly aggressive and assumes you know your edge exactly (you don't). <strong>Practical rule: use a small fraction (⅛ to ¼ Kelly)</strong> or, more simply, fixed-fractional risk of 0.5–1% per trade. Survival beats optimization.</p>
+<h1 id="9-pitfalls-in-indian-markets">9. Pitfalls in Indian Markets</h1>
+<p>These bite Indian retail investors more than the textbook factors.</p>
+<table>
+<thead>
+<tr>
+<th>Pitfall</th>
+<th>What happens</th>
+<th>Defense</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Value trap (cyclical)</strong></td>
+<td>Cheap at peak earnings, gets cheaper</td>
+<td>Check margin vs 10-yr average; avoid "cheap" cyclicals at peak</td>
+</tr>
+<tr>
+<td><strong>Value trap (governance)</strong></td>
+<td>Cheap because fraud/dilution/pledge</td>
+<td>Pledge &lt; 20%, related-party check, promoter history</td>
+</tr>
+<tr>
+<td><strong>Illiquidity</strong></td>
+<td>Can't exit at quoted price</td>
+<td>Avg daily turnover floor; avoid &lt; ₹5 cr</td>
+</tr>
+<tr>
+<td><strong>Circuit filters</strong></td>
+<td>2/5/10/20% price bands freeze trading</td>
+<td>Avoid names routinely hitting circuits</td>
+</tr>
+<tr>
+<td><strong>Survivorship in data</strong></td>
+<td>Backtests look too good</td>
+<td>Point-in-time universes</td>
+</tr>
+<tr>
+<td><strong>Overtrading (STCG)</strong></td>
+<td>20% STCG eats momentum edge</td>
+<td>Quarterly+ rebalancing; tax-aware sizing</td>
+</tr>
+<tr>
+<td><strong>Holding-company discount</strong></td>
+<td>"Cheap" conglomerate never re-rates</td>
+<td>Use consolidated; know structural discounts persist</td>
+</tr>
+<tr>
+<td><strong>PSU trap</strong></td>
+<td>Cheap, high yield, but policy-dependent &amp; capital-unfriendly</td>
+<td>Treat PSUs as a distinct factor, not classic value</td>
+</tr>
+<tr>
+<td><strong>FII/DII flow chasing</strong></td>
+<td>Buying what's already crowded</td>
+<td>Don't chase a factor at its 90th-percentile valuation</td>
+</tr>
+<tr>
+<td><strong>Reversal after IPO/lock-in</strong></td>
+<td>New listings distort short-term momentum</td>
+<td>Exclude &lt; 12 months listed from backtests</td>
+</tr>
+</tbody>
+</table>
+<h1 id="10-the-master-workflow">10. The Master Workflow</h1>
+<p>A complete weekly/quarterly operating loop for running any of the three methods:</p>
+<h2 id="101-weekly-30-minutes">10.1 Weekly (~30 minutes)</h2>
+<ol>
+<li>Download latest EOD prices + any corporate actions for your universe.</li>
+<li>Update liquidity filters (average daily turnover).</li>
+<li>Flag any stop-loss / thesis-break triggers on existing holdings.</li>
+<li>Check the market regime (Nifty vs 200-DMA) for the absolute-momentum cash switch.</li>
+</ol>
+<h2 id="102-monthly-momentum">10.2 Monthly (momentum)</h2>
+<ol>
+<li>Recompute 12-1 momentum and 52-week-high proximity.</li>
+<li>Re-rank; sell anything that fell out of the top 20 (or a buffer such as the top 30).</li>
+<li>Buy replacements at next open; record fills.</li>
+</ol>
+<h2 id="103-quarterly-value-multi-factor">10.3 Quarterly (value / multi-factor)</h2>
+<ol>
+<li>Pull latest quarterly fundamentals (announced, not estimates).</li>
+<li>Recompute z-scores across the universe.</li>
+<li>Re-rank, rebalance to targets, tax-aware (sell losers, hold &gt; 12 months for LTCG).</li>
+<li>Review governance flags (new pledges, related-party deals).</li>
+</ol>
+<h2 id="104-annually">10.4 Annually</h2>
+<ol>
+<li>Full post-mortem: CAGR, drawdown, Sharpe, turnover, taxes paid.</li>
+<li>Re-test on fresh out-of-sample data.</li>
+<li>Decide: keep, adjust, or retire the method — on evidence, not emotion.</li>
+</ol>
+<h2 id="105-the-decision-journal">10.5 The decision journal</h2>
+<p>Log every trade: <em>why</em> you entered (which rule), <em>what</em> you expected, and <em>what</em> actually happened. After 20–30 trades the journal reveals whether you're failing at the <em>method</em> or at <em>execution</em> — the two failures need completely different fixes.</p>
+<h1 id="appendix-a-formulas-metrics-reference">Appendix A — Formulas &amp; Metrics Reference</h1>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Formula</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EPS (TTM)</td>
+<td>Net profit (consolidated, TTM) / weighted shares</td>
+</tr>
+<tr>
+<td>P/E</td>
+<td>Price / EPS (TTM)</td>
+</tr>
+<tr>
+<td>Book value/share</td>
+<td>(Equity − preference) / shares</td>
+</tr>
+<tr>
+<td>P/B</td>
+<td>Price / Book value/share</td>
+</tr>
+<tr>
+<td>EV</td>
+<td>Market cap + total debt − cash &amp; equivalents</td>
+</tr>
+<tr>
+<td>EV/EBITDA</td>
+<td>EV / EBITDA (TTM)</td>
+</tr>
+<tr>
+<td>Earnings yield</td>
+<td>EPS / Price</td>
+</tr>
+<tr>
+<td>Dividend yield</td>
+<td>DPS (TTM) / Price</td>
+</tr>
+<tr>
+<td>ROE</td>
+<td>Net profit / average equity</td>
+</tr>
+<tr>
+<td>ROA</td>
+<td>Net profit / average total assets</td>
+</tr>
+<tr>
+<td>Net Debt/EBITDA</td>
+<td>(Total debt − cash) / EBITDA</td>
+</tr>
+<tr>
+<td>Current ratio</td>
+<td>Current assets / current liabilities</td>
+</tr>
+<tr>
+<td>Interest coverage</td>
+<td>EBIT / interest expense</td>
+</tr>
+<tr>
+<td>12-1 momentum</td>
+<td>(P[t-1] / P[t-12]) − 1</td>
+</tr>
+<tr>
+<td>52-wk proximity</td>
+<td>Price / 52-week high</td>
+</tr>
+<tr>
+<td>Realized vol (1y)</td>
+<td>std of daily returns × √252</td>
+</tr>
+<tr>
+<td>Beta</td>
+<td>cov(stock, index) / var(index)</td>
+</tr>
+<tr>
+<td>Graham number</td>
+<td>√(22.5 × EPS × BVPS)</td>
+</tr>
+<tr>
+<td>Z-score</td>
+<td>(x − μ) / σ</td>
+</tr>
+</tbody>
+</table>
+<h1 id="appendix-b-indian-data-sources-tools">Appendix B — Indian Data Sources &amp; Tools</h1>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Tools</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Screening &amp; fundamentals</strong></td>
+<td>Screener.in, Tijori Finance, Trendlyne, StockEdge, Tickertape (Capitalmind publishes research commentary but is a PMS/mutual-fund house, not a screener)</td>
+</tr>
+<tr>
+<td><strong>EOD / historical prices</strong></td>
+<td>NSE/BSE bhavcopy, Zerodha Kite API, Upstox API, <code>yfinance</code>, <code>nselib</code>, <code>jugaad-data</code>, <code>nsepython</code></td>
+</tr>
+<tr>
+<td><strong>Charts &amp; technical</strong></td>
+<td>TradingView, Chartink, GoCharting</td>
+</tr>
+<tr>
+<td><strong>Corporate actions / filings</strong></td>
+<td>NSE &amp; BSE announcement feeds, MCA, company IR pages</td>
+</tr>
+<tr>
+<td><strong>Shareholding &amp; pledge</strong></td>
+<td>BSE quarterly shareholding pattern, Trendlyne pledge tracker</td>
+</tr>
+<tr>
+<td><strong>Index data</strong></td>
+<td>NSE indices (Nifty 50/Next 50/Midcap/Smallcap/500), Nifty rebalance lists</td>
+</tr>
+<tr>
+<td><strong>Institutional flows</strong></td>
+<td>NSE FII/DII provisional data (daily), NSDL/CDSL FPI reports</td>
+</tr>
+<tr>
+<td><strong>Screen automation</strong></td>
+<td>Python (pandas) + broker APIs, or no-code: Chartink, Screener.in exports</td>
+</tr>
+</tbody>
+</table>
+<h1 id="appendix-c-example-screens">Appendix C — Example Screens</h1>
+<h2 id="c1-value-screen-ex-financials">C.1 Value screen (ex-financials)</h2>
+<pre><code>P/E (TTM)              &lt; 15
+P/B                    &lt; 1.5
+Net Debt/EBITDA        &lt; 2
+ROE (5-yr avg)         &gt; 10%
+Operating CF           positive 3 yrs
+Promoter pledge        &lt; 20%
+→ rank by EV/EBITDA ascending, take top 20
+</code></pre>
+<h2 id="c2-financials-banksnbfcs-value-screen">C.2 Financials (banks/NBFCs) value screen</h2>
+<pre><code>P/B                    &lt; 1.5  (PSU)  /  &lt; 2.5 (private)
+ROA                    &gt; 1.0%
+ROE                    &gt; 12%
+Gross NPA trend        stable or falling
+Capital adequacy       &gt; regulatory floor
+→ rank by P/B ascending
+</code></pre>
+<h2 id="c3-momentum-screen">C.3 Momentum screen</h2>
+<pre><code>12-1 total return      &gt; 0
+Price                  &gt; 200-DMA
+Price / 52w-high       &gt; 0.85
+Avg daily turnover     &gt; ₹10 cr
+Exclude                &lt; 12 months listed, circuit-stuck
+→ rank by 12-1 return descending, take top 20, monthly
+</code></pre>
+<h2 id="c4-multi-factor-screen">C.4 Multi-factor screen</h2>
+<pre><code>z_value      = z(earnings yield) + z(book-to-price)
+z_momentum   = z(12-1 return)
+z_quality    = z(ROE 5y) − z(Net Debt/EBITDA; ex-banks/NBFCs) − z(gross-margin volatility)
+z_lowvol     = −z(1y realized vol)
+composite    = 0.30*z_value + 0.30*z_momentum + 0.25*z_quality + 0.15*z_lowvol
+→ rank composite descending, top 25–30, quarterly, sector cap 20%
+</code></pre>
+<h1 id="appendix-d-glossary">Appendix D — Glossary</h1>
+<ul>
+<li><strong>Alpha</strong> — return above what the market (beta) explains.</li>
+<li><strong>Beta</strong> — sensitivity to the market index.</li>
+<li><strong>Circuit filter</strong> — NSE price band (2/5/10/20%) halting trades beyond the limit.</li>
+<li><strong>Consolidated financials</strong> — includes all subsidiaries; the correct view for groups.</li>
+<li><strong>Drawdown</strong> — peak-to-trough decline in portfolio value.</li>
+<li><strong>EBITDA</strong> — earnings before interest, tax, depreciation, and amortization.</li>
+<li><strong>EV</strong> — enterprise value = market cap + debt − cash.</li>
+<li><strong>FII / DII</strong> — foreign / domestic institutional investors.</li>
+<li><strong>Impact cost</strong> — the price penalty for trading a stock, worst for illiquid names.</li>
+<li><strong>LTCG / STCG</strong> — long / short-term capital gains (12-month threshold; 12.5% / 20% for listed equity; rates as of 2026 — check the current Finance Act).</li>
+<li><strong>Margin of safety</strong> — the discount between price and intrinsic value.</li>
+<li><strong>Momentum crash</strong> — violent underperformance of recent winners vs recent losers when the market rebounds after a sharp decline.</li>
+<li><strong>Pledge</strong> — promoter shares pledged as loan collateral; high pledge = risk flag.</li>
+<li><strong>Relative strength</strong> — a stock's return vs its benchmark.</li>
+<li><strong>Sharpe ratio</strong> — excess return per unit of volatility.</li>
+<li><strong>STT</strong> — securities transaction tax, levied on buys/sells.</li>
+<li><strong>Survivorship bias</strong> — overestimating returns by only testing stocks that still exist.</li>
+<li><strong>Walk-forward</strong> — rolling out-of-sample validation to prevent overfitting.</li>
+<li><strong>z-score</strong> — a value standardized to a distribution's mean and standard deviation.</li>
+</ul>
+<hr />
+<blockquote>
+<p><strong>Disclaimer:</strong> This document is for educational purposes only and does not constitute investment advice, a recommendation, or an offer to buy or sell any security. Past performance of any factor or strategy does not guarantee future results. Indian equity investing involves risk, including loss of principal. Please consult a SEBI-registered investment adviser before making investment decisions.</p>
+</blockquote></body></html>

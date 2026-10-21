@@ -1,0 +1,506 @@
+<!DOCTYPE html><html><head><meta charset='utf-8'><style>
+* { box-sizing: border-box; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 11pt; line-height: 1.62; color: #1a1d21; margin: 0;
+}
+.cover {
+  height: 100vh; page-break-after: always;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 3cm 2.5cm; background: #0d1715; color: #e8f0ee;
+}
+.cover .rule { width: 64px; height: 4px; background: #2dd4bf; margin-bottom: 2.2rem; }
+.cover h1 { font-size: 38pt; line-height: 1.08; font-weight: 600; color: #fff; margin: 0 0 1.4rem; letter-spacing: -0.5px; }
+.cover .subtitle { font-size: 15pt; color: #9fb5ae; line-height: 1.5; max-width: 34em; }
+.cover .pub { margin-top: 3rem; font-size: 11pt; letter-spacing: 0.14em; text-transform: uppercase; color: #2dd4bf; }
+.cover .ednote { margin-top: 0.6rem; font-size: 9pt; color: #6c817b; }
+h1 { font-size: 23pt; font-weight: 600; color: #0f172a; page-break-before: always; margin: 0 0 1.1rem; padding-bottom: 0.4rem; border-bottom: 2px solid #2dd4bf; }
+h2 { font-size: 15.5pt; font-weight: 600; color: #0f766e; margin: 1.6rem 0 0.6rem; }
+h3 { font-size: 12.5pt; font-weight: 600; color: #1a1d21; margin: 1.2rem 0 0.4rem; }
+p { margin: 0.5rem 0; }
+strong { color: #0f172a; }
+em { color: #334155; }
+a { color: #0f766e; text-decoration: none; }
+hr { border: none; border-top: 1px solid #e2e8f0; margin: 2rem 0; }
+ul, ol { margin: 0.5rem 0 0.8rem; padding-left: 1.5rem; }
+li { margin: 0.25rem 0; }
+code { font-family: 'SF Mono', Menlo, Consolas, monospace; font-size: 9pt; background: #f1f5f9; padding: 1px 5px; border-radius: 3px; color: #0f766e; }
+pre { background: #0f172a; color: #e2e8f0; padding: 0.9rem 1.1rem; border-radius: 6px; font-size: 9pt; line-height: 1.5; white-space: pre-wrap; word-wrap: break-word; }
+pre code { background: none; color: inherit; padding: 0; }
+blockquote { border-left: 3px solid #2dd4bf; background: #f0fdfa; margin: 0.8rem 0; padding: 0.7rem 1rem; color: #0f3d37; font-style: italic; border-radius: 0 4px 4px 0; }
+blockquote p { margin: 0.3rem 0; }
+table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: 9.5pt; page-break-inside: avoid; }
+th, td { border: 1px solid #dbe3e8; padding: 5px 8px; text-align: left; vertical-align: top; }
+th { background: #0f766e; color: #fff; font-weight: 600; }
+tr:nth-child(even) td { background: #f8fafc; }
+img { max-width: 100%; height: auto; display: block; margin: 1rem auto; page-break-inside: avoid; }
+h1:first-of-type { page-break-before: auto; }
+h2#important-disclaimer, h2#how-to-read-this-book, h2#table-of-contents { page-break-before: always; }
+</style></head><body><section class="cover"><div class="rule"></div><h1>Options Trading Adjustments</h1><div class="subtitle">Top 5 Option Strategies, Their Scenarios and Their Adjustments — for the NSE</div><div class="pub">Published by StratLab</div><div class="ednote">Educational content only — not investment advice. StratLab is not SEBI-registered.</div></section><h1 id="options-trading-adjustments">Options Trading Adjustments</h1>
+<h2 id="top-5-option-strategies-their-scenarios-and-their-adjustments-for-the-nse">Top 5 Option Strategies, Their Scenarios and Their Adjustments — for the NSE</h2>
+<hr />
+<p><strong>Published by StratLab</strong></p>
+<hr />
+<p><strong>A practical reference with payoff diagrams. Illustrative Nifty-style strikes.</strong></p>
+<hr />
+<blockquote>
+<p><strong>Disclaimer.</strong> This book is for <strong>education only</strong>. It is not investment advice, not a recommendation to buy or sell any security, and the author is not a SEBI-registered investment adviser. <strong>Options — and especially short options — can lose more than the premium received, and carry high risk.</strong> Margin requirements, lot sizes, strike intervals and expiry days change over time: always confirm the current contract specifications on the NSE website before trading. All strikes, premiums and P&amp;L figures in this book are illustrative.</p>
+</blockquote>
+<hr />
+<h2 id="important-disclaimer">Important Disclaimer</h2>
+<p>This book is provided for <strong>educational purposes only</strong>. It is not investment advice, a recommendation, or a solicitation to buy or sell any security.</p>
+<ul>
+<li><strong>StratLab is not registered with SEBI</strong> as an investment adviser, research analyst, or portfolio manager, and does not provide investment advisory services.</li>
+<li>Trading involves substantial risk of loss and is not suitable for everyone. You can lose part or all of your trading capital.</li>
+<li>All examples, figures, and historical observations are illustrative. Historical performance never guarantees future results. Strategies described here have worked <em>historically</em> in certain conditions; that does not mean they will work in the future or in your specific situation.</li>
+<li>Margin, taxes (STT, stamp duty), brokerage, and other regulatory details change over time. Always verify current rules and costs before trading.</li>
+<li>Nothing in this book should be read as a promise of profit or a guarantee that any strategy will be profitable.</li>
+</ul>
+<p>By reading this book, you agree that you are solely responsible for your own trading decisions and that you will consult a SEBI-registered adviser where appropriate.</p>
+<hr />
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li>The Option Refresher</li>
+<li>The Greeks That Drive Adjustments</li>
+<li>The Adjustment Mindset</li>
+<li>NSE Specifics That Matter</li>
+<li>Strategy 1 — The Covered Call</li>
+<li>Strategy 2 — The Bull Call Spread</li>
+<li>Strategy 3 — The Iron Condor</li>
+<li>Strategy 4 — The Short Strangle</li>
+<li>Strategy 5 — The Long Straddle</li>
+<li>The Techniques</li>
+<li>A Decision Framework</li>
+<li>The One-Page Reference</li>
+</ol>
+<p>Glossary</p>
+<hr />
+<h1 id="1-the-option-refresher">1. The Option Refresher</h1>
+<p><em>Part I — Foundations</em></p>
+<p>An <strong>option</strong> is a right, but not an obligation, to buy (a <strong>call</strong>) or sell (a <strong>put</strong>) an underlying at a fixed <strong>strike price</strong> on or before <strong>expiry</strong>. On the NSE, index options (Nifty, BankNifty) are the most liquid instruments and are <strong>cash-settled</strong>.</p>
+<h2 id="the-premium">The premium</h2>
+<p>The price of an option is its <strong>premium</strong>, which has two parts:</p>
+<ul>
+<li><strong>Intrinsic value</strong> — the amount the option is in-the-money (<code>spot − strike</code> for a call, <code>strike − spot</code> for a put). Zero for out-of-the-money options.</li>
+<li><strong>Time value</strong> — everything else; the market's price for <em>time</em> and <em>uncertainty</em> remaining until expiry.</li>
+</ul>
+<p><strong>The single most important fact for every strategy in this book:</strong> time value decays to <strong>zero at expiry</strong>. An option at expiry is worth <em>exactly</em> its intrinsic value, nothing more. Every payoff diagram here is drawn <strong>at expiry</strong>, which is where all the time value has vanished.</p>
+<h2 id="buying-vs-selling">Buying vs selling</h2>
+<ul>
+<li><strong>Buying an option</strong> gives you the right; your loss is capped at the premium, your profit is theoretically large. You <em>pay</em> time decay.</li>
+<li><strong>Selling (writing) an option</strong> obligates you; you <em>collect</em> the premium, and you <em>earn</em> time decay — but your risk can be large (or, for an uncovered option, unbounded).</li>
+</ul>
+<p>Almost all "adjustments" in this book exist to manage the risk of the <strong>sold</strong> side, because that is where the obligations live.</p>
+<h1 id="2-the-greeks-that-drive-adjustments">2. The Greeks That Drive Adjustments</h1>
+<p>The Greeks describe how an option's price responds to its inputs. You do not need to compute them — you need to know what each one <em>means</em> for a position, because every adjustment in this book is a deliberate change to one of these exposures.</p>
+<table>
+<thead>
+<tr>
+<th>Greek</th>
+<th>Measures</th>
+<th>What it means for you</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Delta</strong></td>
+<td>Change in option price per 1-point move in the underlying</td>
+<td>Directional exposure; ~+1 for a deep in-the-money call, ~−1 for a deep in-the-money put, ~±0.5 at-the-money</td>
+</tr>
+<tr>
+<td><strong>Gamma</strong></td>
+<td>Rate of change of delta</td>
+<td>How <em>fast</em> your directional exposure changes as the market moves — highest at-the-money and near expiry</td>
+</tr>
+<tr>
+<td><strong>Theta</strong></td>
+<td>Change in price per day of time passing</td>
+<td>Time decay; <strong>positive</strong> for option sellers, negative for buyers</td>
+</tr>
+<tr>
+<td><strong>Vega</strong></td>
+<td>Change in price per 1% change in implied volatility</td>
+<td>Volatility exposure; short options are <strong>short vega</strong> (hurt by rising IV), long options are long vega</td>
+</tr>
+</tbody>
+</table>
+<p><strong>How to read a position through the Greeks:</strong></p>
+<ul>
+<li>A <strong>short strangle / iron condor</strong> is <em>short gamma and short vega, long theta</em>. It profits from time passing and calm; it loses when the market moves fast or volatility spikes. Adjustments to these strategies are usually about <strong>managing the directional (delta) drift</strong> after a move.</li>
+<li>A <strong>long straddle</strong> is <em>long gamma and long vega, short theta</em>. It profits from a big move or a volatility pop; it bleeds time. Its "adjustment" is usually <em>not</em> to hold it too long.</li>
+<li>A <strong>covered call</strong> is net long delta (the stock) with positive theta from the short call; it is a <em>reduce-upside, add-income</em> trade.</li>
+<li>A <strong>bull call spread</strong> is long delta with a defined risk; its adjustment is about <em>locking in</em> or <em>rolling up</em> when the view proves right.</li>
+</ul>
+<h1 id="3-the-adjustment-mindset">3. The Adjustment Mindset</h1>
+<p>An adjustment is a <strong>change to an existing position to alter its risk or its outlook</strong>. It is not a separate trade; it is a deliberate repair or enhancement of the trade you already have on.</p>
+<h2 id="the-three-questions-before-any-adjustment">The three questions before any adjustment</h2>
+<ol>
+<li><strong>Is my original view still valid?</strong> If the reason you entered no longer holds, the answer is usually to <strong>close</strong>, not to adjust. Adjustments are for positions whose <em>reason</em> is intact but whose <em>shape</em> is now wrong.</li>
+<li><strong>What risk am I actually fixing?</strong> Name the exposure: too much delta after a move, too much gamma near expiry, a vega hole ahead of an event. Adjust the <em>specific</em> risk, not the general feeling.</li>
+<li><strong>What would I do if I had no position?</strong> If the answer is "this trade", hold or adjust toward it. If the answer is "nothing", close. This single test prevents most bad adjustments.</li>
+</ol>
+<h2 id="the-rules-of-thumb">The rules of thumb</h2>
+<ul>
+<li><strong>Adjust early, not late.</strong> Small, early adjustments (rolling an untested side, trimming delta) are cheap and controlled. Waiting until a short option is deep in-the-money makes every choice expensive and forced.</li>
+<li><strong>Adjust in small steps.</strong> One step at a time, then re-read the position. Over-adjusting (adding multiple legs in panic) usually just locks in a worse position.</li>
+<li><strong>Know the cost.</strong> Every adjustment has a debit or credit and changes your breakevens. Recompute the payoff (or re-run the diagram) after the adjustment, or you are flying blind.</li>
+<li><strong>Never let a small defined-risk position become a large undefined-risk one through "one more roll".</strong> A strangle rolled repeatedly into a losing trend is how accounts get hurt.</li>
+</ul>
+<h2 id="when-not-to-adjust">When NOT to adjust</h2>
+<ul>
+<li>When the original premise is broken — <strong>close</strong>.</li>
+<li>When the position is small and the cost of adjusting exceeds the risk being fixed — <strong>let it be or close</strong>.</li>
+<li>When you cannot articulate what the adjustment does in one sentence — <strong>do nothing</strong>.</li>
+<li>When you are adjusting out of emotion (to "feel productive") rather than to fix a named risk — <strong>do nothing</strong>.</li>
+</ul>
+<h1 id="4-nse-specifics-that-matter">4. NSE Specifics That Matter</h1>
+<p>Before the strategies, the practical Indian context:</p>
+<ul>
+<li><strong>Instruments.</strong> Nifty and BankNifty index options are the deep, liquid core. Individual stock options exist but are thinner and physically settled — check the contract before trading.</li>
+<li><strong>Expiries.</strong> Since SEBI's November 2024 rules, each exchange may offer only <strong>one weekly</strong> index expiry. On the NSE that is Nifty (weekly expiry on <strong>Tuesday</strong> since September 2025, previously Thursday); BankNifty and the other NSE indices now have <strong>monthly</strong> expiries only. Weekly-expiry conventions (which day, which index) have been revised by SEBI/NSE over time — <strong>confirm the current weekly expiry day</strong> before trading weeklies.</li>
+<li><strong>Lot sizes.</strong> Index option lot sizes have changed over the years (and differ between Nifty and BankNifty). <strong>Check the current lot size</strong> and multiply the point-based P&amp;L diagrams here by the lot size to get rupee P&amp;L.</li>
+<li><strong>Margins.</strong> Buying an option costs only the premium. <strong>Selling</strong> an option requires margin (SPAN + exposure). Covered positions (covered call on a futures/stock position) attract lower margin than naked shorts. Margin is a first-class constraint in every short-option strategy in this book.</li>
+<li><strong>Settlement.</strong> Index options are European and cash-settled at expiry — no early exercise, no delivery worry. Payoff at expiry is exactly what the diagrams show.</li>
+</ul>
+<p><strong>A note on the diagrams.</strong> All payoff diagrams are drawn <strong>at expiry, in points</strong> (not rupees). To convert: <code>rupee P&amp;L = point P&amp;L × lot size</code>. The illustrative spot is 22,000 with strikes around it; substitute your own spot and strikes in real use.</p>
+<h1 id="5-strategy-1-the-covered-call">5. Strategy 1 — The Covered Call</h1>
+<p><em>Part II — The Five Strategies</em></p>
+<h2 id="what-it-is">What it is</h2>
+<p>Hold the underlying (stock, or a long futures position) and <strong>sell a call</strong> against it at a strike above the current price. You collect the call premium as income; in exchange, your upside beyond the strike is given up.</p>
+<p><strong>Illustrative setup (see diagram):</strong> long Nifty-equivalent at 22,000; sell a 22,300 call @ 120 → max profit 420 (300 + 120); breakeven 21,880.</p>
+<p><img alt="Covered call payoff diagram" src="diagrams/covered_call.png" /></p>
+<h2 id="when-to-use-it">When to use it</h2>
+<ul>
+<li>You are <strong>mildly bullish to neutral</strong> — you want to hold the position but do not expect a large rally.</li>
+<li>You want to <strong>enhance yield</strong> on a position you are willing to hold (the premium is income).</li>
+<li>Volatility is <strong>elevated</strong>, so the call you sell carries a fat premium.</li>
+</ul>
+<h2 id="greeks-profile">Greeks profile</h2>
+<ul>
+<li>Net <strong>positive delta</strong> (you are still long the market, just less so than the raw position).</li>
+<li><strong>Positive theta</strong> (the short call decays in your favour).</li>
+<li>Mildly <strong>short vega</strong> (a volatility crush helps the short call slightly).</li>
+</ul>
+<h2 id="scenarios-at-expiry">Scenarios at expiry</h2>
+<ul>
+<li><strong>Market up, beyond the strike:</strong> you keep the premium and gain up to the strike; beyond the strike your profit is capped. This is the <em>cost</em> of the income.</li>
+<li><strong>Market up, but below the strike:</strong> you gain the premium <em>plus</em> the stock's rise — and the closer to the strike, the better; profit peaks at the strike.</li>
+<li><strong>Market sideways:</strong> you keep the full premium while the stock sits flat.</li>
+<li><strong>Market down:</strong> the premium cushions the loss by the amount received; the stock loss is still real and uncapped to the downside.</li>
+</ul>
+<h2 id="adjustments">Adjustments</h2>
+<ul>
+<li><strong>Roll the call up and out</strong> if the market rallies hard and you now want more upside: buy back the short call and sell a higher-strike, later-expiry call (for a small credit or debit). This raises your ceiling at the cost of giving the trade more time.</li>
+<li><strong>Roll down</strong> if the market has fallen and you want more income protection: buy back the call and sell a lower-strike call (nearer the money) — more premium, but a lower cap.</li>
+<li><strong>Close the call leg alone</strong> if your view turns outright bullish — the stock is free to run again.</li>
+<li><strong>Exit the whole position (stock + call)</strong> if the view turns bearish — the premium will not protect you from a real decline.</li>
+</ul>
+<h2 id="when-not-to-use-it">When NOT to use it</h2>
+<ul>
+<li>When you are <strong>strongly bullish</strong> — you are selling your own upside for a small premium.</li>
+<li>When you are <strong>not willing to hold the stock through a decline</strong> — the premium cushion is small.</li>
+<li>When volatility is very low and the call premium is not worth the cap you are giving up.</li>
+</ul>
+<h1 id="6-strategy-2-the-bull-call-spread">6. Strategy 2 — The Bull Call Spread</h1>
+<h2 id="what-it-is_1">What it is</h2>
+<p>Buy a call at a lower strike and <strong>sell a call at a higher strike</strong> (same expiry). You pay a <strong>net debit</strong> (the premium of the bought call minus the credit from the sold leg), your risk is capped at that debit, and your profit is capped at the spread width minus the debit.</p>
+<p><strong>Illustrative setup:</strong> buy 22,000 call @ 250, sell 22,300 call @ 120 → net debit 130; max profit 170; max loss 130; breakeven 22,130.</p>
+<p><img alt="Bull call spread payoff diagram" src="diagrams/bull_call_spread.png" /></p>
+<h2 id="when-to-use-it_1">When to use it</h2>
+<ul>
+<li>You are <strong>moderately bullish</strong> and want a <em>defined-risk</em> alternative to buying a naked call.</li>
+<li>Volatility is high (a debit spread is cheaper to buy than a naked call because you sell away some vega).</li>
+<li>You want a fixed, known maximum loss.</li>
+</ul>
+<h2 id="greeks-profile_1">Greeks profile</h2>
+<ul>
+<li><strong>Positive delta</strong> (bullish), but <em>lower</em> than a naked call because the short leg offsets some delta.</li>
+<li><strong>Lower vega</strong> than a naked call (the two legs partially cancel volatility exposure).</li>
+<li><strong>Negative theta</strong> (debit), but decays <em>slower</em> than a naked call.</li>
+</ul>
+<h2 id="scenarios-at-expiry_1">Scenarios at expiry</h2>
+<ul>
+<li><strong>Market up past the upper strike:</strong> you earn the maximum profit (170) — no more, even if it keeps rising.</li>
+<li><strong>Market up but between strikes:</strong> above the 22,130 breakeven you are in partial profit, growing toward the cap; below it, a partial loss.</li>
+<li><strong>Market sideways:</strong> you lose time value; at or below 22,000 at expiry the whole debit is lost.</li>
+<li><strong>Market down:</strong> you lose the net debit, but no more than that.</li>
+</ul>
+<h2 id="adjustments_1">Adjustments</h2>
+<ul>
+<li><strong>Roll up</strong> if the market has run through your upper strike and you want more participation: buy back the spread and re-establish it at higher strikes, ideally for a credit or small debit. This keeps you in a winning trend with fresh upside.</li>
+<li><strong>Convert to a butterfly</strong> near the upper strike if you now expect a <em>pause</em>: sell an <em>additional</em> call at your short strike and buy one the same distance above it, turning the capped profile into a small sweet-spot range.</li>
+<li><strong>Close the short leg</strong> if you turn strongly bullish — leaving just the long call (now with more upside but more cost).</li>
+<li><strong>Take profit</strong> by closing the whole spread when the maximum profit is nearly in hand — a debit spread's remaining time value is small once fully in-the-money, and holding for the last few points is usually poor risk/reward.</li>
+</ul>
+<h2 id="when-not-to-use-it_1">When NOT to use it</h2>
+<ul>
+<li>When you are <strong>only mildly bullish and short on time</strong> — the spread needs the market to move, and time works against it.</li>
+<li>When you are <strong>bearish</strong> (obviously) — this is a bullish position.</li>
+<li>When volatility is very low and the debit is cheap relative to the expected move — consider a naked call or a different structure.</li>
+</ul>
+<h1 id="7-strategy-3-the-iron-condor">7. Strategy 3 — The Iron Condor</h1>
+<h2 id="what-it-is_2">What it is</h2>
+<p>A <strong>neutral, defined-risk, credit</strong> strategy: sell an out-of-the-money <strong>put spread</strong> below the market and an out-of-the-money <strong>call spread</strong> above it. You collect a <strong>net credit</strong> and profit if the market stays between the short strikes.</p>
+<p><strong>Illustrative setup:</strong> sell 21,700 put @ 110, buy 21,500 put @ 35; sell 22,300 call @ 120, buy 22,500 call @ 40 → net credit 155; max profit 155; max loss 45 (wing width 200 − credit 155); breakevens 21,545 and 22,455.</p>
+<p><em>The premiums are illustrative: real condors usually collect a much smaller credit relative to the wing width, so the maximum loss is typically larger than the maximum profit.</em></p>
+<p><img alt="Iron condor payoff diagram" src="diagrams/iron_condor.png" /></p>
+<h2 id="when-to-use-it_2">When to use it</h2>
+<ul>
+<li>You expect the market to be <strong>range-bound</strong> or <strong>low-volatility</strong> through expiry.</li>
+<li>You want a <strong>defined risk</strong> (unlike a naked strangle) with a known maximum loss.</li>
+<li>You want to earn premium from <strong>time decay and a volatility crush</strong>.</li>
+</ul>
+<h2 id="greeks-profile_2">Greeks profile</h2>
+<ul>
+<li><strong>Near-zero delta</strong> at entry (balanced above and below).</li>
+<li><strong>Positive theta</strong> (both sold spreads decay in your favour).</li>
+<li><strong>Short vega</strong> (you profit if implied volatility falls; you lose if it spikes).</li>
+<li><strong>Short gamma</strong> near the short strikes as expiry approaches — the position becomes increasingly sensitive to a move late in its life.</li>
+</ul>
+<h2 id="scenarios-at-expiry_2">Scenarios at expiry</h2>
+<ul>
+<li><strong>Market closes between the short strikes:</strong> you keep the full credit — the ideal outcome.</li>
+<li><strong>Market drifts toward one wing:</strong> the untested side decays toward zero; the tested side is worth more. You still profit as long as price stays inside the breakevens.</li>
+<li><strong>Market breaks a breakeven:</strong> the loss begins, capped at the maximum loss beyond the long wing.</li>
+<li><strong>Market gaps hard through a wing:</strong> you hit maximum loss on that side (capped — that is the point of the wings).</li>
+</ul>
+<h2 id="adjustments_2">Adjustments</h2>
+<p>The classic adjustment is <strong>rolling the untested side</strong> toward the move (see the diagram — rolling the put side up after a rally):</p>
+<p><img alt="Iron condor adjustment" src="diagrams/iron_condor_adjust.png" /></p>
+<ul>
+<li><strong>Roll the untested side closer</strong> to re-centre the condor and collect more credit: if the market rallies toward the call wing, buy back the put spread and sell a <em>higher-strike</em> put spread. This re-balances the delta and adds premium, at the cost of narrowing your profit zone.</li>
+<li><strong>Roll the tested side out</strong> to buy time or space if the market is approaching a wing but you still think it will revert.</li>
+<li><strong>Close one side</strong> if the trend is clearly one-way: keep the untested (now near-worthless) side's credit, and close/roll the tested side.</li>
+<li><strong>Convert to an iron fly</strong> (both short options at the same strike) if you now expect a tight range around the current price.</li>
+<li><strong>Close the whole condor</strong> if the premise (range-bound) breaks — taking a small loss beats hoping a broken thesis repairs itself.</li>
+</ul>
+<h2 id="when-not-to-use-it_2">When NOT to use it</h2>
+<ul>
+<li><strong>Before a known volatility event</strong> (earnings, budget, policy) — a gap will blow through a wing. (Deliberately selling an event's IV crush with a small, defined-risk condor is a separate trade that knowingly accepts this gap risk — see <em>Event &amp; Earnings Trading on the NSE</em>.)</li>
+<li>When <strong>volatility is very low</strong> — you collect little premium for a large defined risk, and a single expansion hurts.</li>
+<li>When you expect a <strong>trend</strong>, not a range — a condor is a bet <em>against</em> a big move.</li>
+</ul>
+<h1 id="8-strategy-4-the-short-strangle">8. Strategy 4 — The Short Strangle</h1>
+<h2 id="what-it-is_3">What it is</h2>
+<p>A <strong>neutral, undefined-risk, credit</strong> strategy: sell an out-of-the-money put <em>and</em> an out-of-the-money call, both <strong>naked</strong> (no wings). You collect a larger credit than an iron condor, but the loss is <strong>uncapped</strong> beyond the breakevens.</p>
+<p><strong>Illustrative setup:</strong> sell 21,700 put @ 110, sell 22,300 call @ 120 → net credit 230; breakevens 21,470 and 22,530.</p>
+<p><img alt="Short strangle payoff diagram" src="diagrams/short_strangle.png" /></p>
+<h2 id="when-to-use-it_3">When to use it</h2>
+<ul>
+<li>You expect a <strong>range</strong> and are confident the market stays inside the breakevens.</li>
+<li>You accept the <strong>undefined risk</strong> (with a stop or a margin buffer) in exchange for a fatter credit and wider profit zone than a condor.</li>
+<li>Volatility is <strong>elevated</strong> and likely to fall.</li>
+</ul>
+<h2 id="greeks-profile_3">Greeks profile</h2>
+<ul>
+<li><strong>Near-zero delta</strong> at entry.</li>
+<li><strong>Strong positive theta</strong> — this is the purest "sell time" trade in the book.</li>
+<li><strong>Short vega and short gamma</strong> — the position is genuinely exposed to a fast move; this is why it needs discipline.</li>
+</ul>
+<h2 id="scenarios-at-expiry_3">Scenarios at expiry</h2>
+<ul>
+<li><strong>Market closes between the strikes:</strong> full credit kept.</li>
+<li><strong>Market drifts to one side but inside the breakeven:</strong> still a profit (smaller).</li>
+<li><strong>Market moves past a breakeven:</strong> the loss grows linearly and is <strong>not capped</strong> — this is the danger.</li>
+<li><strong>Market gaps hard:</strong> a gap can carry price far beyond a breakeven before you can react; losses can be severe.</li>
+</ul>
+<h2 id="adjustments_3">Adjustments</h2>
+<p>The key discipline of a strangle is <strong>not letting the delta run away</strong> after a move. The classic adjustment is <strong>rolling the untested side</strong> (see diagram):</p>
+<p><img alt="Short strangle adjustment" src="diagrams/short_strangle_adjust.png" /></p>
+<ul>
+<li><strong>Roll the untested side toward the move</strong> to re-balance delta and collect credit: if the market rallies, buy back the short put and sell a <em>higher-strike</em> put. This centres the trade and adds premium, at the cost of a narrower profit zone.</li>
+<li><strong>Buy wings to convert to an iron condor</strong> if you want to cap the risk after collecting early credit — this converts undefined risk into defined risk at a small cost.</li>
+<li><strong>Leg into an inverted strangle</strong> if the market runs far: roll the <em>untested</em> side through the tested side's strike (the put strike ends up above the call strike, so the trade becomes "inverted"), which can buy time and credit — but this is advanced and increases gamma risk.</li>
+<li><strong>Stop out</strong> on a predetermined breach (e.g., close when price crosses a breakeven by a defined amount) — the discipline that keeps an undefined-risk trade from becoming a disaster.</li>
+<li><strong>Close entirely</strong> if volatility spikes or the range premise is broken.</li>
+</ul>
+<h2 id="when-not-to-use-it_3">When NOT to use it</h2>
+<ul>
+<li>If you are <strong>not willing to define and honour a stop</strong> on an undefined-risk position — do not sell a naked strangle; use an iron condor instead.</li>
+<li><strong>Before any event</strong> that can gap the market.</li>
+<li>When <strong>volatility is low</strong> — you are collecting little for unbounded risk.</li>
+</ul>
+<h1 id="9-strategy-5-the-long-straddle">9. Strategy 5 — The Long Straddle</h1>
+<h2 id="what-it-is_4">What it is</h2>
+<p>Buy a call and a put at the <strong>same strike</strong> (same expiry). You pay a <strong>net debit</strong>, and you profit if the market makes a <strong>large move in either direction</strong> — you do not need to predict <em>which</em> way, only that it moves far.</p>
+<p><strong>Illustrative setup:</strong> buy 22,000 call @ 250 and 22,000 put @ 240 → net debit 490; breakevens 21,510 and 22,490.</p>
+<p><img alt="Long straddle payoff diagram" src="diagrams/long_straddle.png" /></p>
+<h2 id="when-to-use-it_4">When to use it</h2>
+<ul>
+<li>Before a <strong>known catalyst</strong> (earnings, budget, policy, a key data print) where the <em>direction</em> is uncertain but the <em>magnitude</em> is expected to be large.</li>
+<li>When <strong>implied volatility is low</strong> (you pay less for the options) and you expect a big move.</li>
+<li>When you want to <strong>profit from a volatility expansion</strong>, not just a price move.</li>
+</ul>
+<h2 id="greeks-profile_4">Greeks profile</h2>
+<ul>
+<li><strong>Near-zero delta</strong> at entry (the call and put roughly offset).</li>
+<li><strong>Long gamma</strong> — you gain on a big move in <em>either</em> direction, increasingly as price moves away.</li>
+<li><strong>Long vega</strong> — you profit if implied volatility rises after entry.</li>
+<li><strong>Negative theta</strong> — the position bleeds time every day the market does not move; this is the cost.</li>
+</ul>
+<h2 id="scenarios-at-expiry_4">Scenarios at expiry</h2>
+<ul>
+<li><strong>Big move either way (past a breakeven):</strong> profit, and it grows with the size of the move.</li>
+<li><strong>Small move:</strong> the loss is between 0 and the full debit (the "tent" of the diagram).</li>
+<li><strong>No move (closes at the strike):</strong> you lose the entire debit — the maximum loss.</li>
+</ul>
+<h2 id="adjustments_4">Adjustments</h2>
+<p>The long straddle's "adjustment" is mostly about <strong>timing and money management</strong>, because the position's risk is already defined (the debit). Common moves:</p>
+<ul>
+<li><strong>Take profit into the move:</strong> if the market gaps and one leg becomes deep in-the-money, consider closing part or all — a straddle near expiry loses the loser's remaining value fast.</li>
+<li><strong>Sell the losing leg and hold the winner</strong> (rare, and only if the trend is now clear) — this converts the position into a directional trade.</li>
+<li><strong>Roll into a strangle</strong> by selling the at-the-money call and put and buying further out-of-the-money ones, taking cash out of the trade (a "straddle-to-strangle" that cheapens the position, at the cost of needing an even bigger move).</li>
+<li><strong>Close before expiry</strong> if the expected move does not materialise — do not ride a long-vega, short-theta position into a quiet expiry hoping for a late break.</li>
+<li><strong>Do not double down</strong> by buying more premium as the position decays — that is chasing, not adjusting.</li>
+</ul>
+<h2 id="when-not-to-use-it_4">When NOT to use it</h2>
+<ul>
+<li>When <strong>implied volatility is already high</strong> — you are paying a rich premium for a move that may already be priced in (this is the "IV crush" problem covered in <em>Event &amp; Earnings Trading on the NSE</em>).</li>
+<li>When there is <strong>no catalyst</strong> — a straddle without a reason is just paying theta for nothing.</li>
+<li>When you are not prepared to lose the full debit — the max loss happens <em>precisely</em> when nothing happens.</li>
+</ul>
+<h1 id="10-the-techniques">10. The Techniques</h1>
+<p><em>Part III — The Adjustment Toolkit</em></p>
+<p>Every adjustment in this book is one of a small set of techniques. Learn the techniques and you can apply them to any position.</p>
+<table>
+<thead>
+<tr>
+<th>Technique</th>
+<th>What it does</th>
+<th>Typical use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Roll (same side, new strike/expiry)</strong></td>
+<td>Close a leg, open a new one further away or later</td>
+<td>Re-centre, add credit, buy time</td>
+</tr>
+<tr>
+<td><strong>Roll up / down</strong></td>
+<td>Move a sold strike higher / lower</td>
+<td>Chase a trend, capture more premium</td>
+</tr>
+<tr>
+<td><strong>Leg in / out</strong></td>
+<td>Add or remove a single leg</td>
+<td>Reduce cost, define or un-define risk</td>
+</tr>
+<tr>
+<td><strong>Convert</strong></td>
+<td>Change the structure (strangle→condor, spread→butterfly)</td>
+<td>Cap risk, narrow a range view</td>
+</tr>
+<tr>
+<td><strong>Hedge</strong></td>
+<td>Add an offsetting position (futures, an opposite leg)</td>
+<td>Neutralise runaway delta</td>
+</tr>
+<tr>
+<td><strong>Close</strong></td>
+<td>Exit part or all of the position</td>
+<td>When the premise breaks</td>
+</tr>
+</tbody>
+</table>
+<h2 id="how-to-choose">How to choose</h2>
+<ul>
+<li><strong>Risk is getting too big</strong> → reduce it (buy a wing, hedge, or close).</li>
+<li><strong>Delta has drifted one-way</strong> → re-balance (roll the untested side).</li>
+<li><strong>Time is running out</strong> → roll out (if the view still holds) or close (if it does not).</li>
+<li><strong>Volatility regime changed</strong> → reassess the whole position (a short-vega trade in a rising-IV market is a different animal).</li>
+</ul>
+<h1 id="11-a-decision-framework">11. A Decision Framework</h1>
+<p>For any position that has moved against you, run this checklist <strong>before</strong> acting:</p>
+<ol>
+<li><strong>Is the original premise intact?</strong> No → close. Yes → continue.</li>
+<li><strong>Which exposure is now wrong?</strong> Name it (delta, gamma, vega, theta).</li>
+<li><strong>What is the smallest change that fixes that exposure?</strong> Pick the technique.</li>
+<li><strong>What is the new payoff after the adjustment?</strong> Recompute or re-plot it. If you cannot state the new breakevens and max profit/loss, do not make the change.</li>
+<li><strong>Would I enter the <em>adjusted</em> position today if I had nothing on?</strong> Yes → adjust. No → close.</li>
+</ol>
+<p><strong>The golden rule that ties it together:</strong> an adjustment should make you <em>want</em> to be in the new position, not merely <em>tolerate</em> it. If the adjusted position is not one you would happily enter fresh, you are just clinging to a losing idea — close instead.</p>
+<h1 id="12-the-one-page-reference">12. The One-Page Reference</h1>
+<p><strong>The five strategies at a glance:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Strategy</th>
+<th>View</th>
+<th>Risk</th>
+<th>Earns</th>
+<th>Bleeds</th>
+<th>Primary adjustment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Covered Call</td>
+<td>Mildly bullish</td>
+<td>Downside uncapped</td>
+<td>Time decay, income</td>
+<td>Upside (capped)</td>
+<td>Roll the call up/down</td>
+</tr>
+<tr>
+<td>Bull Call Spread</td>
+<td>Moderately bullish</td>
+<td>Defined (debit)</td>
+<td>A rising market</td>
+<td>Time</td>
+<td>Roll up on a run</td>
+</tr>
+<tr>
+<td>Iron Condor</td>
+<td>Neutral / range</td>
+<td>Defined (wing − credit)</td>
+<td>Time + IV crush</td>
+<td>A big move</td>
+<td>Roll the untested side</td>
+</tr>
+<tr>
+<td>Short Strangle</td>
+<td>Neutral / range</td>
+<td><strong>Undefined</strong></td>
+<td>Time (strong)</td>
+<td>A fast move / IV spike</td>
+<td>Roll untested side, or add wings</td>
+</tr>
+<tr>
+<td>Long Straddle</td>
+<td>Big move, either way</td>
+<td>Defined (debit)</td>
+<td>A big move / IV up</td>
+<td>Time (strong)</td>
+<td>Take profit into the move</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The rules:</strong></p>
+<ul>
+<li>Define your risk <em>before</em> entry; honour stops on undefined-risk trades.</li>
+<li>Adjust early and in small steps; one leg at a time.</li>
+<li>Recompute the payoff after every adjustment.</li>
+<li>Adjust to fix a <em>named</em> risk, never out of emotion.</li>
+<li>If the premise breaks, close — do not "one more roll" a losing undefined-risk trade.</li>
+<li>Convert point-based P&amp;L to rupees: multiply by the current NSE lot size (which changes — verify).</li>
+</ul>
+<h1 id="glossary">Glossary</h1>
+<p><strong>At-the-money (ATM)</strong> — a strike equal to the underlying's current price.</p>
+<p><strong>Breakeven</strong> — the underlying price(s) at which a position neither profits nor loses at expiry.</p>
+<p><strong>Cash-settled</strong> — settled in cash at expiry rather than by delivery (index options).</p>
+<p><strong>Credit / debit</strong> — a position entered for a net premium received (credit) or paid (debit).</p>
+<p><strong>Defined risk</strong> — a position whose maximum loss is known in advance.</p>
+<p><strong>Expiry</strong> — the date the option's rights lapse and settlement occurs.</p>
+<p><strong>In-the-money (ITM) / out-of-the-money (OTM)</strong> — an option with / without intrinsic value.</p>
+<p><strong>Iron condor</strong> — a short put spread plus a short call spread (neutral, defined-risk credit).</p>
+<p><strong>Iron fly</strong> — a short straddle with long wings (a tighter, centred condor).</p>
+<p><strong>Leg</strong> — a single option within a multi-option position.</p>
+<p><strong>Premium</strong> — the price of an option (intrinsic + time value).</p>
+<p><strong>Roll</strong> — close a leg and open a new one at a different strike or expiry.</p>
+<p><strong>Straddle</strong> — a put and a call at the same strike.</p>
+<p><strong>Strangle</strong> — a put and a call at different (both OTM) strikes.</p>
+<p><strong>Strike</strong> — the fixed price at which an option can be exercised.</p>
+<p><strong>Undefined risk</strong> — a position (e.g., a naked short) whose loss is not capped.</p>
+<p><strong>Wing</strong> — the long (protective) option in a spread that defines the risk.</p></body></html>
